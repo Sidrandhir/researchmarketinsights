@@ -91,6 +91,7 @@ model Lead {
   company     String?
   phone       String?
   country     String?
+  subject     String?
   message     String?
   source      String?
   status      LeadStatus @default(NEW)
