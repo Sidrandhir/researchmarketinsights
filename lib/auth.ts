@@ -1,9 +1,8 @@
-import { AuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import type { AuthOptions } from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './db';
-import { User } from '@prisma/client';
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -25,12 +24,10 @@ export const authOptions: AuthOptions = {
           },
         });
 
-        // Check if user exists and if they have a password set.
         if (!user || !user.password) {
           return null;
         }
 
-        // Compare the provided password with the hashed password in the database
         const isPasswordValid = await bcrypt.compare(
           credentials.password,
           user.password
@@ -40,7 +37,6 @@ export const authOptions: AuthOptions = {
           return null;
         }
 
-        // Return the user object if credentials are valid
         return {
           id: user.id,
           email: user.email,
@@ -56,10 +52,8 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        // Note: 'user' here is the object returned from the authorize callback
-        const dbUser = user as User & { role: string };
-        token.role = dbUser.role;
-        token.id = dbUser.id;
+        token.role = user.role;
+        token.id = user.id;
       }
       return token;
     },
@@ -73,7 +67,6 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: '/auth/signin',
-    // signUp: '/auth/signup', // This page does not exist, so we comment it out
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
