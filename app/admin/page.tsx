@@ -12,6 +12,23 @@ import {
   Star
 } from 'lucide-react'
 
+type Lead = {
+  id: number;
+  name: string;
+  email: string;
+  company: string;
+  date: string;
+  status: string;
+};
+
+type Report = {
+  id: number;
+  title: string;
+  views: number;
+  downloads: number;
+  revenue: number;
+};
+
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -24,8 +41,8 @@ export default function AdminDashboard() {
     averageRating: 0,
   })
 
-  const [recentLeads, setRecentLeads] = useState([])
-  const [recentReports, setRecentReports] = useState([])
+  const [recentLeads, setRecentLeads] = useState<Lead[]>([])
+  const [recentReports, setRecentReports] = useState<Report[]>([])
 
   useEffect(() => {
     // Simulate loading data
