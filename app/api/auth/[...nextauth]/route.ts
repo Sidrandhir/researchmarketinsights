@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth/next'; // This is the correct import for the App Router handler
+import NextAuth from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
 const handler = NextAuth(authOptions);

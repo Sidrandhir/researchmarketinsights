@@ -1,10 +1,10 @@
-import { NextAuthOptions } from 'next-auth'; // This is the correct type for the options object
+import { AuthOptions } from 'next-auth'; // Correct for latest versions
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './db';
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
