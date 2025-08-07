@@ -130,7 +130,7 @@ export function isValidUrl(string: string): boolean {
   try {
     new URL(string);
     return true;
-  } catch (_) {
+  } catch {
     return false;
   }
 }
@@ -205,7 +205,7 @@ export function copyToClipboard(text: string): Promise<boolean> {
     document.execCommand('copy');
     document.body.removeChild(textArea);
     return Promise.resolve(true);
-  } catch (err) {
+  } catch {
     document.body.removeChild(textArea);
     return Promise.resolve(false);
   }
