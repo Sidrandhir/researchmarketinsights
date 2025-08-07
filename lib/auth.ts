@@ -1,10 +1,10 @@
-import type { AuthOptions, SessionStrategy } from 'next-auth';
+import { NextAuthOptions } from 'next-auth'; // Using NextAuthOptions is correct
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './db';
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -19,9 +19,7 @@ export const authOptions: AuthOptions = {
         }
 
         const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
+          where: { email: credentials.email },
         });
 
         if (!user || !user.password) {
@@ -47,7 +45,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   session: {
-    strategy: 'jwt' as SessionStrategy,
+    strategy: 'jwt', // This is correct
   },
   callbacks: {
     async jwt({ token, user }) {

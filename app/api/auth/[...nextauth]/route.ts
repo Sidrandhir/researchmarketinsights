@@ -1,5 +1,5 @@
-import NextAuth from "next-auth/next" // <-- This is the crucial fix
-import { authOptions } from "@/lib/auth"
+import NextAuth from 'next-auth'; // This is the correct import for the handler
+import { authOptions } from '@/lib/auth';
 
 const handler = NextAuth(authOptions);
 
