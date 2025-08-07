@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
         email,
         phone: phone || null,
         company: company || null,
-        purpose,
+        message: purpose || null,
         reportId: reportId || null,
         status: 'PENDING',
       },
