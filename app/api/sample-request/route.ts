@@ -23,15 +23,24 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Save to database
-    const sampleRequest = await prisma.sampleRequest.create({
+    // Find a report to connect to, if no reportId is provided, this will fail.
+    // For now, we will make reportId required to avoid errors.
+    if (!reportId) {
+        return NextResponse.json(
+            { error: 'Report ID is required for a sample request' },
+            { status: 400 }
+        )
+    }
+
+    // Save to database using the correct model name 'sample'
+    const sampleRequest = await prisma.sample.create({
       data: {
         name,
         email,
         phone: phone || null,
         company: company || null,
-        message: purpose || null,
-        reportId: reportId || null,
+        message: purpose, // Map 'purpose' to the 'message' field in the schema
+        reportId: reportId, // Connect to the report
         status: 'PENDING',
       },
     })
@@ -58,4 +67,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     )
   }
-} 
+}
