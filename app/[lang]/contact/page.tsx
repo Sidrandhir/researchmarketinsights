@@ -126,7 +126,7 @@ export default function ContactPage({
                   Message Sent Successfully!
                 </h3>
                 <p className="text-green-700">
-                  Thank you for contacting us. We'll get back to you within 24 hours.
+                  Thank you for contacting us. We&apos;ll get back to you within 24 hours.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -248,7 +248,7 @@ export default function ContactPage({
               Get in Touch
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              We're here to help and answer any questions you might have. We look forward to hearing from you.
+              We&apos;re here to help and answer any questions you might have. We look forward to hearing from you.
             </p>
 
             <div className="space-y-6">

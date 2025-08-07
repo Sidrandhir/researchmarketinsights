@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
-import { Search, Filter, TrendingUp, Users, DollarSign, Globe } from 'lucide-react'
+import { Search, TrendingUp, Users, DollarSign, Globe } from 'lucide-react'
 
 export default function IndustryPage({
   params,
@@ -300,7 +300,7 @@ export default function IndustryPage({
               Need Custom Research?
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-              Can't find what you're looking for? Our expert team can create custom research reports tailored to your specific needs.
+              Can&apos;t find what you&apos;re looking for? Our expert team can create custom research reports tailored to your specific needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">

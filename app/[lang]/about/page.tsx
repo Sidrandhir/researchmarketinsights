@@ -234,7 +234,7 @@ export default function AboutPage({
               Ready to Partner With Us?
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-              Join thousands of businesses that trust us for their market research needs. Let's work together to drive your success.
+              Join thousands of businesses that trust us for their market research needs. Let&apos;s work together to drive your success.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
