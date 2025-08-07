@@ -114,7 +114,7 @@ export default function AboutPage({
                 {t('about.vision')}
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We envision becoming the world's most trusted partner for market research and business intelligence. Our goal is to be at the forefront of research innovation, leveraging cutting-edge technologies and methodologies to provide insights that drive business success and contribute to global economic growth.
+                We envision becoming the world&apos;s most trusted partner for market research and business intelligence. Our goal is to be at the forefront of research innovation, leveraging cutting-edge technologies and methodologies to provide insights that drive business success and contribute to global economic growth.
               </p>
             </motion.div>
           </div>
@@ -249,4 +249,4 @@ export default function AboutPage({
       </section>
     </div>
   )
-} 
+}
