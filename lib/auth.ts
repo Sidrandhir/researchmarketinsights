@@ -1,4 +1,4 @@
-import { NextAuthOptions } from 'next-auth'; // Using NextAuthOptions is correct
+import { NextAuthOptions } from 'next-auth'; // This is the correct type for the options object
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   session: {
-    strategy: 'jwt', // This is correct
+    strategy: 'jwt',
   },
   callbacks: {
     async jwt({ token, user }) {
