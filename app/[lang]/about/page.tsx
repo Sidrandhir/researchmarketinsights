@@ -1,16 +1,9 @@
 import React from 'react';
-import { PageProps } from '@/types';
 import { Metadata } from 'next';
-import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lucide-react';
-
+import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText, Headphones } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const lang = params.lang;
-
-  export default function AboutPage({ params }: PageProps) {
-  const lang = params.lang;
-
-
   
   return {
     title: lang === 'en' ? 'About Us - Market Research Insights' : '关于我们 - 市场研究洞察',
