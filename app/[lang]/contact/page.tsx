@@ -2,8 +2,13 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+
+type PageProps = {
+  params: Promise<{ lang: string }>;
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Contact Us - Research Market Insights' : '联系我们 - 市场研究洞察',
@@ -13,8 +18,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-const ContactPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
-  const lang = params.lang;
+const ContactPage: React.FC<PageProps>= async ({ params }) => {
+  const { lang }= await params;
 
   const contactInfo = [
     {
