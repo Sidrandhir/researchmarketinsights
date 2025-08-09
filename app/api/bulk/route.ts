@@ -1,21 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import type { Prisma } from '@prisma/client'
 
 // Interface definitions remain the same
 interface ReportData {
   title: string
   description?: string
-  content?: Record<string, unknown>
+  content?: Prisma.JsonValue
   price: string
   discount?: string
   reportCode?: string
   category?: string
   subcategory?: string | null
   imageUrl?: string | null
-  toc?: Record<string, unknown>
-  scope?: Record<string, unknown>
-  segments?: Record<string, unknown>
-  faqs?: Record<string, unknown>
+  toc?: Prisma.JsonValue
+  scope?: Prisma.JsonValue
+  segments?: Prisma.JsonValue
+  faqs?: Prisma.JsonValue
   metaTitle?: string | null
   metaDescription?: string | null
   keywords?: string | null
