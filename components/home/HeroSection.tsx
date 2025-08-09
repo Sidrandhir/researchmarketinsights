@@ -66,24 +66,24 @@ const HeroSection: React.FC = () => {
 
   const slideData = [
     {
-      title: t('hero.slide1.title', 'Market Research Insights'),
-      subtitle: t('hero.slide1.subtitle', 'Discover comprehensive market intelligence'),
-      description: t('hero.slide1.description', 'Get detailed insights across all industries to drive informed business decisions'),
-      cta: t('hero.slide1.cta', 'Explore Reports'),
+      title: t('hero.slide1.title'),
+      subtitle: t('hero.slide1.subtitle'),
+      description: t('hero.slide1.description'),
+      cta: t('hero.slide1.cta'),
       link: `/${currentLang}/reports`
     },
     {
-      title: t('hero.slide2.title', 'Industry Analysis'),
-      subtitle: t('hero.slide2.subtitle', 'Expert consulting services'),
-      description: t('hero.slide2.description', 'Strategic insights and market analysis for your business growth'),
-      cta: t('hero.slide2.cta', 'Learn More'),
+      title: t('hero.slide2.title'),
+      subtitle: t('hero.slide2.subtitle'),
+      description: t('hero.slide2.description'),
+      cta: t('hero.slide2.cta'),
       link: `/${currentLang}/about`
     },
     {
-      title: t('hero.slide3.title', 'Custom Research'),
-      subtitle: t('hero.slide3.subtitle', 'Tailored solutions'),
-      description: t('hero.slide3.description', 'Custom research reports designed for your specific business needs'),
-      cta: t('hero.slide3.cta', 'Get Quote'),
+      title: t('hero.slide3.title'),
+      subtitle: t('hero.slide3.subtitle'),
+      description: t('hero.slide3.description'),
+      cta: t('hero.slide3.cta'),
       link: `/${currentLang}/contact`
     }
   ];

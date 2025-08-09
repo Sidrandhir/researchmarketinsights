@@ -28,7 +28,16 @@ export async function GET(request: NextRequest) {
     const query = querySchema.parse(Object.fromEntries(searchParams))
 
     // Build where clause for filtering
-    const where: any = {}
+    const where: {
+      status?: string
+      source?: string
+      OR?: Array<{
+        name?: { contains: string; mode: 'insensitive' }
+        email?: { contains: string; mode: 'insensitive' }
+        company?: { contains: string; mode: 'insensitive' }
+        subject?: { contains: string; mode: 'insensitive' }
+      }>
+    } = {}
 
     if (query.status) {
       where.status = query.status

@@ -20,7 +20,20 @@ export async function GET(request: NextRequest) {
     const query = querySchema.parse(Object.fromEntries(searchParams))
 
     // Build where clause for filtering
-    const where: any = {
+    const where: {
+      status: string
+      category?: string
+      OR?: Array<{
+        title?: { contains: string; mode: 'insensitive' }
+        description?: { contains: string; mode: 'insensitive' }
+        content?: { path: string[]; string_contains: string }
+      }>
+      featured?: boolean
+      price?: {
+        gte?: number
+        lte?: number
+      }
+    } = {
       status: 'PUBLISHED',
     }
 

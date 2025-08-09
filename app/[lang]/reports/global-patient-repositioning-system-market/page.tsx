@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Download, Eye, Calendar, User, DollarSign, FileText, TrendingUp, Globe, Users, BarChart3, Bed } from 'lucide-react';
+import { Download, Eye, Calendar, FileText, TrendingUp, Users, Bed } from 'lucide-react';
 import StickySidebar from '@/components/reports/StickySidebar';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
@@ -329,7 +329,7 @@ const PatientRepositioningPage: React.FC<{ params: { lang: string } }> = ({ para
                 </div>
                 
                 <div className="border-l-4 border-primary-500 pl-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">FDA Approval for Stryker's Smart Repositioning Technology</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">FDA Approval for Stryker&apos;s Smart Repositioning Technology</h4>
                   <p className="text-gray-600 text-sm mb-2">December 2023 - AI-powered patient positioning with safety sensors</p>
                   <span className="text-xs text-gray-500">Source: FDA Database</span>
                 </div>

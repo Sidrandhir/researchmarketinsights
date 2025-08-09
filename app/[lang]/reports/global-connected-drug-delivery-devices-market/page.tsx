@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Download, Eye, Calendar, User, DollarSign, FileText, TrendingUp, Globe, Users, BarChart3 } from 'lucide-react';
+import { Download, Eye, Calendar, FileText, TrendingUp, Users, BarChart3 } from 'lucide-react';
 import StickySidebar from '@/components/reports/StickySidebar';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {

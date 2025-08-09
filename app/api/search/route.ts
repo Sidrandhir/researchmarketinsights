@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
               ],
             },
             { status: 'PUBLISHED' },
-            ...(category ? [{ category: category as any }] : []),
+            ...(category ? [{ category: category }] : []),
           ],
         },
         select: {
@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
               ],
             },
             { status: 'PUBLISHED' },
-            ...(category ? [{ category: category as any }] : []),
+            ...(category ? [{ category: category }] : []),
           ],
         },
         select: {

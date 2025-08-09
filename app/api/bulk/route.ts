@@ -1,10 +1,57 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 
+interface ReportData {
+  title: string
+  description?: string
+  content?: Record<string, unknown>
+  price: string
+  discount?: string
+  reportCode?: string
+  category?: string
+  subcategory?: string | null
+  imageUrl?: string | null
+  toc?: Record<string, unknown>
+  scope?: Record<string, unknown>
+  segments?: Record<string, unknown>
+  faqs?: Record<string, unknown>
+  metaTitle?: string | null
+  metaDescription?: string | null
+  keywords?: string | null
+  status?: string
+  featured?: boolean
+}
+
+interface PressReleaseData {
+  title: string
+  content?: string
+  excerpt?: string | null
+  imageUrl?: string | null
+  category?: string
+  metaTitle?: string | null
+  metaDescription?: string | null
+  keywords?: string | null
+  status?: string
+  featured?: boolean
+  publishedAt?: string | null
+}
+
+interface FilterData {
+  ids?: string[]
+  category?: string
+  status?: string
+}
+
+type PrismaWhereClause = {
+  id?: { in: string[] }
+  category?: string
+  status?: string
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { action, data, type } = body
+    const { action, data } = body
 
     switch (action) {
       case 'upload_reports':
@@ -30,7 +77,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleBulkReportUpload(data: any[]) {
+async function handleBulkReportUpload(data: ReportData[]) {
   try {
     const reports = []
     
@@ -41,8 +88,8 @@ async function handleBulkReportUpload(data: any[]) {
           slug: reportData.title.toLowerCase().replace(/\s+/g, '-'),
           description: reportData.description || '',
           content: reportData.content || {},
-          price: parseFloat(reportData.price) || 0,
-          discount: reportData.discount ? parseFloat(reportData.discount) : null,
+          price: reportData.price,
+          discount: reportData.discount || null,
           reportCode: reportData.reportCode || `REPORT-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
           category: reportData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS',
           subcategory: reportData.subcategory || null,
@@ -78,7 +125,7 @@ async function handleBulkReportUpload(data: any[]) {
   }
 }
 
-async function handleBulkPressReleaseUpload(data: any[]) {
+async function handleBulkPressReleaseUpload(data: PressReleaseData[]) {
   try {
     const pressReleases = []
     
@@ -119,9 +166,9 @@ async function handleBulkPressReleaseUpload(data: any[]) {
   }
 }
 
-async function handleBulkReportDownload(data: { ids?: string[], category?: string, status?: string }) {
+async function handleBulkReportDownload(data: FilterData) {
   try {
-    const where: any = {}
+    const where: PrismaWhereClause = {}
     
     if (data.ids) {
       where.id = { in: data.ids }
@@ -166,9 +213,9 @@ async function handleBulkReportDownload(data: { ids?: string[], category?: strin
   }
 }
 
-async function handleBulkPressReleaseDownload(data: { ids?: string[], category?: string, status?: string }) {
+async function handleBulkPressReleaseDownload(data: FilterData) {
   try {
-    const where: any = {}
+    const where: PrismaWhereClause = {}
     
     if (data.ids) {
       where.id = { in: data.ids }
