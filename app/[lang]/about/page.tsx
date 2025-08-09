@@ -1,12 +1,10 @@
 import React from 'react';
 import { Metadata } from 'next';
-
 import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lucide-react';
 
+// CORRECT: generateMetadata is a top-level export
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang as string;
-// export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-//   const lang = params.lang;
+  const lang = params.lang;
   
   return {
     title: lang === 'en' ? 'About Us - Market Research Insights' : '关于我们 - 市场研究洞察',
@@ -16,10 +14,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
+// CORRECT: The main component is the default export
 export default function AboutPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang as string;
-// const AboutPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
-//   const lang = params.lang;
+  const lang = params.lang;
 
   const stats = [
     { icon: TrendingUp, value: '500+', label: 'Reports Published' },
@@ -249,4 +246,4 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
       </div>
     </div>
   );
-};
+}
