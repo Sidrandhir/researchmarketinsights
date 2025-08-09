@@ -78,8 +78,8 @@ const MOCK_REPORTS_DB: Array<{
   // Add more mock reports here if you want
 ];
 
-export default function IndustryCategoryPage({ params }: { params: { lang: string, categorySlug: string } }) {
-  const { lang, categorySlug } = params;
+export default async function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }>}) {
+  const { lang, categorySlug } = await params;
 
   // Filter our mock database to find reports for this specific category
   const reports = MOCK_REPORTS_DB.filter(report => report.categorySlug === categorySlug);
