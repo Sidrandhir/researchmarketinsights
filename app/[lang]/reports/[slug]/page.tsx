@@ -1,6 +1,7 @@
 // file: app/[lang]/reports/[slug]/page.tsx
 import { prisma } from '@/lib/db';
 import Link from 'next/link';
+import { PageProps } from '@/types';
 import { notFound } from 'next/navigation';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
@@ -31,9 +32,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ReportDetailPage({ params }: { params: Promise<{ lang: string, slug: string }> }) {
-  const { lang, slug } = await params;
-  const report = await getReport(slug);
+export default async function ReportDetailPage({ params }: PageProps) {
+  const { lang, slug } = params;
+  const report = await getReport(slug as string);
   // Type assertion to let TypeScript know these fields exist and are JSON
   const content = report.content as any;
   const faqs = report.faqs as any;

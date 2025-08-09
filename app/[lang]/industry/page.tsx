@@ -1,16 +1,13 @@
 'use client'
 
+import { PageProps } from '@/types';
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
 import { Search, TrendingUp, Users, DollarSign, Globe } from 'lucide-react'
 
-export default function IndustryPage({
-  params,
-}: {
-  params: { lang: string };
-}) {
+export default function IndustryPage({ params }: PageProps) { 
   const currentLang = getLanguageFromPathname(`/${params.lang}`)
   const { t } = useTranslation(currentLang)
   const [searchTerm, setSearchTerm] = useState('')

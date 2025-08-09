@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import { PageProps } from '@/types';
 import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 }
 
 export default function AboutPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+  const lang = params.lang as string;
 // const AboutPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
 //   const lang = params.lang;
 
@@ -248,4 +249,4 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
       </div>
     </div>
   );
-}
+};
