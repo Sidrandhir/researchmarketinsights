@@ -1,6 +1,8 @@
-import { PageProps } from '@/types';
 import { Metadata } from 'next';
 
+type PageProps = {
+  params: { lang: string };
+};
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const lang = params.lang;
   
