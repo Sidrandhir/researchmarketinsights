@@ -4,6 +4,8 @@ import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lu
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const lang = params.lang;
+// export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+//   const lang = params.lang;
   
   return {
     title: lang === 'en' ? 'About Us - Market Research Insights' : '关于我们 - 市场研究洞察',
@@ -13,8 +15,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-const AboutPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
+export default function AboutPage({ params }: { params: { lang: string } }) {
   const lang = params.lang;
+// const AboutPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
+//   const lang = params.lang;
 
   const stats = [
     { icon: TrendingUp, value: '500+', label: 'Reports Published' },
@@ -244,6 +248,4 @@ const AboutPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
       </div>
     </div>
   );
-};
-
-export default AboutPage;
+}
