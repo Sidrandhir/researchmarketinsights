@@ -3,6 +3,9 @@
 import { useState } from 'react';
 // import { PageProps } from '@/types';
 
+type PageProps = {
+  params: Promise<{ lang: string }>;
+};
 export default function BuyNowPage({ params }: { params: { lang: string } }) {
   const lang = params.lang;
   const [selectedLicense, setSelectedLicense] = useState('single');
