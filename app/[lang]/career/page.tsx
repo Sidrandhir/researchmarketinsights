@@ -1,6 +1,12 @@
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+// This is the correct, simplified type for Server Component pages
+type PageProps = {
+  params: { lang: string };
+};
+
+// CORRECT: generateMetadata is a top-level export
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const lang = params.lang;
   
   return {
@@ -9,7 +15,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
            lang === 'ko' ? '채용 정보 - 시장 조사 인사이트' :
            lang === 'ar' ? 'الوظائف - رؤى أبحاث السوق' :
            lang === 'fr' ? 'Carrières - Insights de recherche de marché' :
-           lang === 'es' ? 'Carreras - Perspectivas de investigación de mercado' :
+           lang ==='es' ? 'Carreras - Perspectivas de investigación de mercado' :
            lang === 'de' ? 'Karriere - Marktforschung Einblicke' :
            lang === 'jp' ? '採用情報 - 市場調査インサイト' : 'Careers - Market Research Insights',
     description: lang === 'en' ? 'Join our team of market research experts and contribute to shaping the future of business intelligence.' :
@@ -23,7 +29,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function CareerPage({ params }: { params: { lang: string } }) {
+// CORRECT: The main component is the default export
+export default function CareerPage({ params }: PageProps) {
   const lang = params.lang;
   
   const positions = [
