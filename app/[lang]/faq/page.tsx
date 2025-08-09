@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+type PageProps = {
+  params: Promise<{ lang: string }>;
+};
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Frequently Asked Questions - Market Research Insights' : 
@@ -23,8 +26,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function FAQPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+export default async function FAQPage({ params }: PageProps) {
+  const { lang } = await params;
   
   const faqs = [
     {
