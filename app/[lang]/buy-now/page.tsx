@@ -1,15 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-// import { PageProps } from '@/types';
+import { useState, use } from 'react';
 
 type PageProps = {
   params: Promise<{ lang: string }>;
 };
-export default function BuyNowPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
-  const [selectedLicense, setSelectedLicense] = useState('single');
 
+export default function BuyNowPage({ params }: PageProps) {
+  // For client components, use the 'use' hook to unwrap the Promise
+  const { lang } = use(params);
+  const [selectedLicense, setSelectedLicense] = useState('single');
 
   const licenses = [
     {
@@ -299,7 +299,7 @@ export default function BuyNowPage({ params }: { params: { lang: string } }) {
                 <div className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor = "firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                         {lang === 'en' ? 'First Name *' :
                          lang === 'zh' ? '名字 *' :
                          lang === 'ko' ? '이름 *' :
