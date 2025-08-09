@@ -1,0 +1,471 @@
+'use client'
+import React from 'react';
+// import { Metadata } from 'next';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, TrendingUp, FileText, Globe, Users } from 'lucide-react';
+
+// export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+//   const lang = params.lang;
+  
+//   return {
+//     title: lang === 'en' ? 'Market Research Reports - Market Research Insights' : 
+//            lang === 'zh' ? '市场研究报告 - 市场研究洞察' :
+//            lang === 'ko' ? '시장 조사 보고서 - 시장 조사 인사이트' :
+//            lang === 'ar' ? 'تقارير أبحاث السوق - رؤى أبحاث السوق' :
+//            lang === 'fr' ? 'Rapports de Recherche de Marché - Insights de recherche de marché' :
+//            lang === 'es' ? 'Informes de Investigación de Mercado - Perspectivas de investigación de mercado' :
+//            lang === 'de' ? 'Marktforschungsberichte - Marktforschung Einblicke' :
+//            lang === 'jp' ? '市場調査レポート - 市場調査インサイト' : 'Market Research Reports - Market Research Insights',
+//     description: lang === 'en' ? 'Browse comprehensive market research reports across all industries. Get detailed insights, market analysis, and strategic recommendations.' :
+//                  lang === 'zh' ? '浏览所有行业的综合市场研究报告。获取详细洞察、市场分析和战略建议。' :
+//                  lang === 'ko' ? '모든 산업 분야의 포괄적인 시장 조사 보고서를 둘러보세요. 상세한 인사이트, 시장 분석 및 전략적 권장사항을 얻으세요.' :
+//                  lang === 'ar' ? 'تصفح تقارير أبحاث السوق الشاملة عبر جميع الصناعات. احصل على رؤى مفصلة وتحليل السوق والتوصيات الاستراتيجية.' :
+//                  lang === 'fr' ? 'Parcourez des rapports complets de recherche de marché dans tous les secteurs. Obtenez des insights détaillés, des analyses de marché et des recommandations stratégiques.' :
+//                  lang === 'es' ? 'Explore informes completos de investigación de mercado en todas las industrias. Obtenga información detallada, análisis de mercado y recomendaciones estratégicas.' :
+//                  lang === 'de' ? 'Durchsuchen Sie umfassende Marktforschungsberichte in allen Branchen. Erhalten Sie detaillierte Einblicke, Marktanalysen und strategische Empfehlungen.' :
+//                  lang === 'jp' ? 'すべての業界の包括的な市場調査レポートを閲覧してください。詳細なインサイト、市場分析、戦略的推奨事項を取得します。' : 'Browse comprehensive market research reports across all industries. Get detailed insights, market analysis, and strategic recommendations.',
+//   };
+// }
+
+const ReportsPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
+  const lang = params.lang;
+  
+  const categories = [
+    {
+      name: lang === 'en' ? 'Aerospace & Defense' :
+            lang === 'zh' ? '航空航天与国防' :
+            lang === 'ko' ? '항공우주 및 방위' :
+            lang === 'ar' ? 'الفضاء والدفاع' :
+            lang === 'fr' ? 'Aérospatiale et Défense' :
+            lang === 'es' ? 'Aeroespacial y Defensa' :
+            lang === 'de' ? 'Luft- und Raumfahrt & Verteidigung' :
+            lang === 'jp' ? '航空宇宙・防衛' : 'Aerospace & Defense',
+      slug: 'aerospace-defense',
+      description: lang === 'en' ? 'Comprehensive analysis of aerospace and defense markets, including commercial aviation, military aircraft, and defense systems.' :
+                   lang === 'zh' ? '航空航天和国防市场的综合分析，包括商用航空、军用飞机和国防系统。' :
+                   lang === 'ko' ? '상용 항공, 군용 항공기 및 방위 시스템을 포함한 항공우주 및 방위 시장의 포괄적 분석.' :
+                   lang === 'ar' ? 'تحليل شامل لأسواق الفضاء والدفاع، بما في ذلك الطيران التجاري والطائرات العسكرية وأنظمة الدفاع.' :
+                   lang === 'fr' ? 'Analyse complète des marchés aérospatiaux et de défense, y compris l\'aviation commerciale, les aéronefs militaires et les systèmes de défense.' :
+                   lang === 'es' ? 'Análisis completo de los mercados aeroespaciales y de defensa, incluyendo aviación comercial, aeronaves militares y sistemas de defensa.' :
+                   lang === 'de' ? 'Umfassende Analyse der Luft- und Raumfahrt- und Verteidigungsmärkte, einschließlich kommerzieller Luftfahrt, Militärflugzeuge und Verteidigungssysteme.' :
+                   lang === 'jp' ? '商用航空、軍用機、防衛システムを含む航空宇宙・防衛市場の包括的分析。' : 'Comprehensive analysis of aerospace and defense markets, including commercial aviation, military aircraft, and defense systems.',
+      count: 45,
+      color: 'from-blue-500 to-blue-600',
+      icon: '✈️'
+    },
+    {
+      name: lang === 'en' ? 'Automotive & Transportation' :
+            lang === 'zh' ? '汽车与运输' :
+            lang === 'ko' ? '자동차 및 교통' :
+            lang === 'ar' ? 'السيارات والنقل' :
+            lang === 'fr' ? 'Automobile et Transport' :
+            lang === 'es' ? 'Automotriz y Transporte' :
+            lang === 'de' ? 'Automobil & Transport' :
+            lang === 'jp' ? '自動車・運輸' : 'Automotive & Transportation',
+      slug: 'automotive-transportation',
+      description: lang === 'en' ? 'In-depth research on automotive industry trends, electric vehicles, autonomous driving, and transportation infrastructure.' :
+                   lang === 'zh' ? '汽车行业趋势、电动汽车、自动驾驶和交通基础设施的深入研究。' :
+                   lang === 'ko' ? '자동차 산업 동향, 전기 자동차, 자율 주행 및 교통 인프라에 대한 심층 연구.' :
+                   lang === 'ar' ? 'بحث متعمق في اتجاهات صناعة السيارات والمركبات الكهربائية والقيادة الذاتية والبنية التحتية للنقل.' :
+                   lang === 'fr' ? 'Recherche approfondie sur les tendances de l\'industrie automobile, les véhicules électriques, la conduite autonome et les infrastructures de transport.' :
+                   lang === 'es' ? 'Investigación profunda sobre tendencias de la industria automotriz, vehículos eléctricos, conducción autónoma e infraestructura de transporte.' :
+                   lang === 'de' ? 'Tiefgehende Forschung zu Automobilindustrie-Trends, Elektrofahrzeugen, autonomen Fahren und Transportinfrastruktur.' :
+                   lang === 'jp' ? '自動車業界トレンド、電気自動車、自動運転、交通インフラの詳細研究。' : 'In-depth research on automotive industry trends, electric vehicles, autonomous driving, and transportation infrastructure.',
+      count: 67,
+      color: 'from-gray-500 to-gray-600',
+      icon: '🚗'
+    },
+    {
+      name: lang === 'en' ? 'Banking, Financial Services & Insurance' :
+            lang === 'zh' ? '银行、金融服务与保险' :
+            lang === 'ko' ? '은행, 금융 서비스 및 보험' :
+            lang === 'ar' ? 'الخدمات المصرفية والمالية والتأمين' :
+            lang === 'fr' ? 'Banque, Services Financiers et Assurance' :
+            lang === 'es' ? 'Banca, Servicios Financieros y Seguros' :
+            lang === 'de' ? 'Bankwesen, Finanzdienstleistungen & Versicherung' :
+            lang === 'jp' ? '銀行・金融サービス・保険' : 'Banking, Financial Services & Insurance',
+      slug: 'banking-financial-services-insurance',
+      description: lang === 'en' ? 'Comprehensive analysis of banking, fintech, insurance markets, and financial technology innovations.' :
+                   lang === 'zh' ? '银行、金融科技、保险市场和金融技术创新的综合分析。' :
+                   lang === 'ko' ? '은행, 핀테크, 보험 시장 및 금융 기술 혁신에 대한 포괄적 분석.' :
+                   lang === 'ar' ? 'تحليل شامل لأسواق البنوك والتكنولوجيا المالية والتأمين والابتكارات المالية.' :
+                   lang === 'fr' ? 'Analyse complète des marchés bancaires, de la fintech, des assurances et des innovations technologiques financières.' :
+                   lang === 'es' ? 'Análisis completo de mercados bancarios, fintech, seguros e innovaciones en tecnología financiera.' :
+                   lang === 'de' ? 'Umfassende Analyse von Bank-, Fintech-, Versicherungsmärkten und Finanztechnologie-Innovationen.' :
+                   lang === 'jp' ? '銀行、フィンテック、保険市場、金融技術革新の包括的分析。' : 'Comprehensive analysis of banking, fintech, insurance markets, and financial technology innovations.',
+      count: 89,
+      color: 'from-green-500 to-green-600',
+      icon: '🏦'
+    },
+    {
+      name: lang === 'en' ? 'Chemicals & Materials' :
+            lang === 'zh' ? '化学品与材料' :
+            lang === 'ko' ? '화학 및 소재' :
+            lang === 'ar' ? 'المواد الكيميائية والمواد' :
+            lang === 'fr' ? 'Produits Chimiques et Matériaux' :
+            lang === 'es' ? 'Productos Químicos y Materiales' :
+            lang === 'de' ? 'Chemikalien & Materialien' :
+            lang === 'jp' ? '化学品・材料' : 'Chemicals & Materials',
+      slug: 'chemicals-materials',
+      description: lang === 'en' ? 'Market research on chemical industry trends, advanced materials, and sustainable manufacturing processes.' :
+                   lang === 'zh' ? '化学工业趋势、先进材料和可持续制造工艺的市场研究。' :
+                   lang === 'ko' ? '화학 산업 동향, 첨단 소재 및 지속 가능한 제조 공정에 대한 시장 연구.' :
+                   lang === 'ar' ? 'بحث السوق حول اتجاهات الصناعة الكيميائية والمواد المتقدمة وعمليات التصنيع المستدامة.' :
+                   lang === 'fr' ? 'Recherche de marché sur les tendances de l\'industrie chimique, les matériaux avancés et les processus de fabrication durables.' :
+                   lang === 'es' ? 'Investigación de mercado sobre tendencias de la industria química, materiales avanzados y procesos de fabricación sostenibles.' :
+                   lang === 'de' ? 'Marktforschung zu Chemieindustrie-Trends, fortschrittlichen Materialien und nachhaltigen Fertigungsprozessen.' :
+                   lang === 'jp' ? '化学産業トレンド、先進材料、持続可能な製造プロセスの市場調査。' : 'Market research on chemical industry trends, advanced materials, and sustainable manufacturing processes.',
+      count: 34,
+      color: 'from-purple-500 to-purple-600',
+      icon: '🧪'
+    },
+    {
+      name: lang === 'en' ? 'Consumer Goods' :
+            lang === 'zh' ? '消费品' :
+            lang === 'ko' ? '소비재' :
+            lang === 'ar' ? 'السلع الاستهلاكية' :
+            lang === 'fr' ? 'Biens de Consommation' :
+            lang === 'es' ? 'Bienes de Consumo' :
+            lang === 'de' ? 'Konsumgüter' :
+            lang === 'jp' ? '消費財' : 'Consumer Goods',
+      slug: 'consumer-goods',
+      description: lang === 'en' ? 'Analysis of consumer behavior, retail trends, and FMCG market dynamics across global markets.' :
+                   lang === 'zh' ? '全球市场消费者行为、零售趋势和快速消费品市场动态分析。' :
+                   lang === 'ko' ? '글로벌 시장의 소비자 행동, 소매 트렌드 및 FMCG 시장 역학 분석.' :
+                   lang === 'ar' ? 'تحليل سلوك المستهلك واتجاهات التجزئة وديناميكيات سوق السلع الاستهلاكية سريعة الحركة عبر الأسواق العالمية.' :
+                   lang === 'fr' ? 'Analyse du comportement des consommateurs, des tendances de détail et de la dynamique du marché des biens de consommation rapide dans les marchés mondiaux.' :
+                   lang === 'es' ? 'Análisis del comportamiento del consumidor, tendencias minoristas y dinámica del mercado de bienes de consumo rápido en mercados globales.' :
+                   lang === 'de' ? 'Analyse des Konsumverhaltens, Einzelhandelstrends und FMCG-Marktdynamik in globalen Märkten.' :
+                   lang === 'jp' ? 'グローバル市場における消費者行動、小売トレンド、FMCG市場動態の分析。' : 'Analysis of consumer behavior, retail trends, and FMCG market dynamics across global markets.',
+      count: 56,
+      color: 'from-pink-500 to-pink-600',
+      icon: '🛍️'
+    },
+    {
+      name: lang === 'en' ? 'Electronics & Semiconductor' :
+            lang === 'zh' ? '电子与半导体' :
+            lang === 'ko' ? '전자 및 반도체' :
+            lang === 'ar' ? 'الإلكترونيات وأشباه الموصلات' :
+            lang === 'fr' ? 'Électronique et Semi-conducteurs' :
+            lang === 'es' ? 'Electrónica y Semiconductores' :
+            lang === 'de' ? 'Elektronik & Halbleiter' :
+            lang === 'jp' ? '電子・半導体' : 'Electronics & Semiconductor',
+      slug: 'electronics-semiconductor',
+      description: lang === 'en' ? 'Comprehensive research on semiconductor industry, electronics manufacturing, and emerging technologies.' :
+                   lang === 'zh' ? '半导体行业、电子制造和新兴技术的综合研究。' :
+                   lang === 'ko' ? '반도체 산업, 전자 제조 및 신흥 기술에 대한 포괄적 연구.' :
+                   lang === 'ar' ? 'بحث شامل في صناعة أشباه الموصلات والتصنيع الإلكتروني والتقنيات الناشئة.' :
+                   lang === 'fr' ? 'Recherche complète sur l\'industrie des semi-conducteurs, la fabrication électronique et les technologies émergentes.' :
+                   lang === 'es' ? 'Investigación completa sobre la industria de semiconductores, fabricación electrónica y tecnologías emergentes.' :
+                   lang === 'de' ? 'Umfassende Forschung zu Halbleiterindustrie, Elektronikfertigung und aufstrebenden Technologien.' :
+                   lang === 'jp' ? '半導体産業、電子製造、新興技術の包括的研究。' : 'Comprehensive research on semiconductor industry, electronics manufacturing, and emerging technologies.',
+      count: 78,
+      color: 'from-indigo-500 to-indigo-600',
+      icon: '💻'
+    },
+    {
+      name: lang === 'en' ? 'Energy & Power' :
+            lang === 'zh' ? '能源与电力' :
+            lang === 'ko' ? '에너지 및 전력' :
+            lang === 'ar' ? 'الطاقة والطاقة الكهربائية' :
+            lang === 'fr' ? 'Énergie et Électricité' :
+            lang === 'es' ? 'Energía y Energía Eléctrica' :
+            lang === 'de' ? 'Energie & Strom' :
+            lang === 'jp' ? 'エネルギー・電力' : 'Energy & Power',
+      slug: 'energy-power',
+      description: lang === 'en' ? 'Market analysis of renewable energy, power generation, distribution, and energy storage solutions.' :
+                   lang === 'zh' ? '可再生能源、发电、配电和储能解决方案的市场分析。' :
+                   lang === 'ko' ? '재생 에너지, 발전, 배전 및 에너지 저장 솔루션에 대한 시장 분석.' :
+                   lang === 'ar' ? 'تحليل السوق للطاقة المتجددة وتوليد الطاقة والتوزيع وحلول تخزين الطاقة.' :
+                   lang === 'fr' ? 'Analyse de marché des énergies renouvelables, de la production d\'électricité, de la distribution et des solutions de stockage d\'énergie.' :
+                   lang === 'es' ? 'Análisis de mercado de energías renovables, generación de energía, distribución y soluciones de almacenamiento de energía.' :
+                   lang === 'de' ? 'Marktanalyse von erneuerbaren Energien, Stromerzeugung, -verteilung und Energiespeicherlösungen.' :
+                   lang === 'jp' ? '再生可能エネルギー、発電、配電、エネルギー貯蔵ソリューションの市場分析。' : 'Market analysis of renewable energy, power generation, distribution, and energy storage solutions.',
+      count: 42,
+      color: 'from-yellow-500 to-yellow-600',
+      icon: '⚡'
+    },
+    {
+      name: lang === 'en' ? 'Food & Beverages' :
+            lang === 'zh' ? '食品与饮料' :
+            lang === 'ko' ? '식품 및 음료' :
+            lang === 'ar' ? 'الأغذية والمشروبات' :
+            lang === 'fr' ? 'Alimentation et Boissons' :
+            lang === 'es' ? 'Alimentos y Bebidas' :
+            lang === 'de' ? 'Lebensmittel & Getränke' :
+            lang === 'jp' ? '食品・飲料' : 'Food & Beverages',
+      slug: 'food-beverages',
+      description: lang === 'en' ? 'Research on food processing, beverage industry trends, and agricultural market dynamics.' :
+                   lang === 'zh' ? '食品加工、饮料行业趋势和农业市场动态研究。' :
+                   lang === 'ko' ? '식품 가공, 음료 산업 동향 및 농업 시장 역학에 대한 연구.' :
+                   lang === 'ar' ? 'بحث في معالجة الأغذية واتجاهات صناعة المشروبات وديناميكيات السوق الزراعية.' :
+                   lang === 'fr' ? 'Recherche sur la transformation alimentaire, les tendances de l\'industrie des boissons et la dynamique du marché agricole.' :
+                   lang === 'es' ? 'Investigación sobre procesamiento de alimentos, tendencias de la industria de bebidas y dinámica del mercado agrícola.' :
+                   lang === 'de' ? 'Forschung zu Lebensmittelverarbeitung, Getränkeindustrie-Trends und Agrar-Marktdynamik.' :
+                   lang === 'jp' ? '食品加工、飲料業界トレンド、農業市場動態の研究。' : 'Research on food processing, beverage industry trends, and agricultural market dynamics.',
+      count: 38,
+      color: 'from-orange-500 to-orange-600',
+      icon: '🍔'
+    },
+    {
+      name: lang === 'en' ? 'Life Sciences' :
+            lang === 'zh' ? '生命科学' :
+            lang === 'ko' ? '생명 과학' :
+            lang === 'ar' ? 'علوم الحياة' :
+            lang === 'fr' ? 'Sciences de la Vie' :
+            lang === 'es' ? 'Ciencias de la Vida' :
+            lang === 'de' ? 'Biowissenschaften' :
+            lang === 'jp' ? 'ライフサイエンス' : 'Life Sciences',
+      slug: 'life-sciences',
+      description: lang === 'en' ? 'In-depth analysis of pharmaceuticals, biotechnology, medical devices, and healthcare markets.' :
+                   lang === 'zh' ? '制药、生物技术、医疗器械和医疗保健市场的深入分析。' :
+                   lang === 'ko' ? '제약, 생명공학, 의료기기 및 의료보건 시장에 대한 심층 분석.' :
+                   lang === 'ar' ? 'تحليل متعمق لأسواق الأدوية والتكنولوجيا الحيوية والأجهزة الطبية والرعاية الصحية.' :
+                   lang === 'fr' ? 'Analyse approfondie des marchés pharmaceutiques, biotechnologiques, des dispositifs médicaux et de la santé.' :
+                   lang === 'es' ? 'Análisis profundo de mercados farmacéuticos, biotecnología, dispositivos médicos و atención médica.' :
+                   lang === 'de' ? 'Tiefgehende Analyse von Pharma-, Biotechnologie-, Medizintechnik- und Gesundheitsmärkten.' :
+                   lang === 'jp' ? '製薬、バイオテクノロジー、医療機器、ヘルスケア市場の詳細分析。' : 'In-depth analysis of pharmaceuticals, biotechnology, medical devices, and healthcare markets.',
+      count: 81,
+      color: 'from-red-500 to-red-600',
+      icon: '🏥'
+    },
+    {
+      name: lang === 'en' ? 'Technology, Media & Telecommunications' :
+            lang === 'zh' ? '技术、媒体与电信' :
+            lang === 'ko' ? '기술, 미디어 및 통신' :
+            lang === 'ar' ? 'التكنولوجيا والإعلام والاتصالات' :
+            lang === 'fr' ? 'Technologie, Médias et Télécommunications' :
+            lang === 'es' ? 'Tecnología, Medios y Telecomunicaciones' :
+            lang === 'de' ? 'Technologie, Medien & Telekommunikation' :
+            lang === 'jp' ? '技術・メディア・通信' : 'Technology, Media & Telecommunications',
+      slug: 'technology-media-telecommunications',
+      description: lang === 'en' ? 'Comprehensive research on software, IT services, media, telecommunications, and digital transformation.' :
+                   lang === 'zh' ? '软件、IT服务、媒体、电信和数字化转型的综合研究。' :
+                   lang === 'ko' ? '소프트웨어, IT 서비스, 미디어, 통신 및 디지털 전환에 대한 포괄적 연구.' :
+                   lang === 'ar' ? 'بحث شامل في البرمجيات وخدمات تكنولوجيا المعلومات والإعلام والاتصالات والتحول الرقمي.' :
+                   lang === 'fr' ? 'Recherche complète sur les logiciels, services informatiques, médias, télécommunications et transformation numérique.' :
+                   lang === 'es' ? 'Investigación completa sobre software, servicios de TI, medios, telecomunicaciones y transformación digital.' :
+                   lang === 'de' ? 'Umfassende Forschung zu Software, IT-Diensten, Medien, Telekommunikation und digitaler Transformation.' :
+                   lang === 'jp' ? 'ソフトウェア、ITサービス、メディア、通信、デジタル変革の包括的研究。' : 'Comprehensive research on software, IT services, media, telecommunications, and digital transformation.',
+      count: 95,
+      color: 'from-teal-500 to-teal-600',
+      icon: '📱'
+    }
+  ];
+  
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 opacity-20 bg-dots-pattern"></div>
+        </div>
+
+        <div className="relative container-responsive py-20 lg:py-32">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
+            >
+              <FileText className="h-4 w-4" />
+              Market Research Reports
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="heading-responsive font-bold mb-6"
+            >
+              {lang === 'en' ? 'Market Research Reports' :
+               lang === 'zh' ? '市场研究报告' :
+               lang === 'ko' ? '시장 조사 보고서' :
+               lang === 'ar' ? 'تقارير أبحاث السوق' :
+               lang === 'fr' ? 'Rapports de Recherche de Marché' :
+               lang === 'es' ? 'Informes de Investigación de Mercado' :
+               lang === 'de' ? 'Marktforschungsberichte' :
+               lang === 'jp' ? '市場調査レポート' : 'Market Research Reports'}
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-responsive opacity-90 max-w-3xl mx-auto leading-relaxed"
+            >
+              {lang === 'en' ? 'Comprehensive insights across all industries to drive informed business decisions' :
+               lang === 'zh' ? '涵盖所有行业的综合洞察，推动明智的商业决策' :
+               lang === 'ko' ? '정보에 입각한 비즈니스 결정을 주도하는 모든 산업 분야의 포괄적 인사이트' :
+               lang === 'ar' ? 'رؤى شاملة عبر جميع الصناعات لدفع قرارات الأعمال المدروسة' :
+               lang === 'fr' ? 'Insights complets dans tous les secteurs pour stimuler les décisions commerciales éclairées' :
+               lang === 'es' ? 'Perspectivas completas en todas las industrias para impulsar decisiones comerciales informadas' :
+               lang === 'de' ? 'Umfassende Einblicke in alle Branchen für fundierte Geschäftsentscheidungen' :
+               lang === 'jp' ? '情報に基づくビジネス決定を推進する全業界の包括的インサイト' : 'Comprehensive insights across all industries to drive informed business decisions'}
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Grid */}
+      <section className="section-responsive">
+        <div className="container-responsive">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            >
+              <Globe className="h-4 w-4" />
+              Browse by Industry
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="heading-responsive font-bold text-gray-900 mb-6"
+            >
+              {lang === 'en' ? 'Browse by Industry' :
+               lang === 'zh' ? '按行业浏览' :
+               lang === 'ko' ? '산업별 둘러보기' :
+               lang === 'ar' ? 'تصفح حسب الصناعة' :
+               lang === 'fr' ? 'Parcourir par Industrie' :
+               lang === 'es' ? 'Explorar por Industria' :
+               lang === 'de' ? 'Nach Branche Durchsuchen' :
+               lang === 'jp' ? '業界別に閲覧' : 'Browse by Industry'}
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-responsive text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            >
+              {lang === 'en' ? 'Explore our comprehensive collection of market research reports organized by industry sectors' :
+               lang === 'zh' ? '探索我们按行业部门组织的综合市场研究报告集合' :
+               lang === 'ko' ? '산업 부문별로 구성된 포괄적인 시장 조사 보고서 컬렉션을 탐색하세요' :
+               lang === 'ar' ? 'استكشف مجموعتنا الشاملة من تقارير أبحاث السوق المنظمة حسب القطاعات الصناعية' :
+               lang === 'fr' ? 'Explorez notre collection complète de rapports de recherche de marché organisés par secteurs industriels' :
+               lang === 'es' ? 'Explore nuestra colección completa de informes de investigación de mercado organizados por sectores industriales' :
+               lang === 'de' ? 'Entdecken Sie unsere umfassende Sammlung von Marktforschungsberichten, organisiert nach Branchensektoren' :
+               lang === 'jp' ? '業界セクター別に整理された包括的な市場調査レポートコレクションを探索してください' : 'Explore our comprehensive collection of market research reports organized by industry sectors'}
+            </motion.p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {categories.map((category, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group"
+              >
+                <Link href={`/${lang}/reports/${category.slug}`} className="block h-full">
+                  <div className="card h-full overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:border-primary-200 relative">
+                    {/* Background Gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    
+                    {/* Header */}
+                    <div className={`h-48 bg-gradient-to-br ${category.color} flex items-center justify-center relative overflow-hidden`}>
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-black/20"></div>
+                      <div className="text-center relative z-10">
+                        <div className="text-4xl mb-4">{category.icon}</div>
+                        <h3 className="text-xl font-semibold text-white group-hover:scale-105 transition-transform duration-300">
+                          {category.name}
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    <div className="p-6 relative">
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                        {category.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-primary-600 font-semibold bg-primary-50 px-3 py-1 rounded-full">
+                          {category.count} {lang === 'en' ? 'Reports' :
+                                           lang === 'zh' ? '报告' :
+                                           lang === 'ko' ? '보고서' :
+                                           lang === 'ar' ? 'تقرير' :
+                                           lang === 'fr' ? 'Rapports' :
+                                           lang === 'es' ? 'Informes' :
+                                           lang === 'de' ? 'Berichte' :
+                                           lang === 'jp' ? 'レポート' : 'Reports'}
+                        </span>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-200" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-responsive bg-gradient-to-r from-primary-600 to-primary-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 opacity-20 bg-dots-pattern"></div>
+        </div>
+
+        <div className="relative container-responsive text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="heading-responsive font-bold mb-6">
+              {lang === 'en' ? 'Need Custom Research?' :
+               lang === 'zh' ? '需要定制研究？' :
+               lang === 'ko' ? '맞춤형 연구가 필요하신가요?' :
+               lang === 'ar' ? 'هل تحتاج إلى بحث مخصص؟' :
+               lang === 'fr' ? 'Besoin de Recherche Personnalisée ?' :
+               lang === 'es' ? '¿Necesita Investigación Personalizada?' :
+               lang === 'de' ? 'Benötigen Sie maßgeschneiderte Forschung?' :
+               lang === 'jp' ? 'カスタム研究が必要ですか？' : 'Need Custom Research?'}
+            </h2>
+            <p className="text-responsive mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed">
+              {lang === 'en' ? 'Our expert team can conduct tailored research for your specific business needs' :
+               lang === 'zh' ? '我们的专家团队可以为您的特定业务需求进行定制研究' :
+               lang === 'ko' ? '저희 전문가 팀이 귀하의 특정 비즈니스 요구사항에 맞춤형 연구를 수행할 수 있습니다' :
+               lang === 'ar' ? 'يمكن لفريق الخبراء لدينا إجراء بحث مخصص لاحتياجات عملك المحددة' :
+               lang === 'fr' ? 'Notre équipe d\'experts peut mener des recherches personnalisées pour vos besoins commerciaux spécifiques' :
+               lang === 'es' ? 'Nuestro equipo de expertos puede realizar investigaciones personalizadas para sus necesidades comerciales específicas' :
+               lang === 'de' ? 'Unser Expertenteam kann maßgeschneiderte Forschung für Ihre spezifischen Geschäftsanforderungen durchführen' :
+               lang === 'jp' ? '当社の専門チームがお客様の特定のビジネスニーズに合わせたカスタム研究を実施できます' : 'Our expert team can conduct tailored research for your specific business needs'}
+            </p>
+            <Link
+              href={`/${lang}/contact`}
+              className="btn-primary bg-white text-primary-600 hover:bg-gray-100 inline-flex items-center gap-2"
+            >
+              {lang === 'en' ? 'Contact Us' :
+               lang === 'zh' ? '联系我们' :
+               lang === 'ko' ? '문의하기' :
+               lang === 'ar' ? 'اتصل بنا' :
+               lang === 'fr' ? 'Contactez-nous' :
+               lang === 'es' ? 'Contáctenos' :
+               lang === 'de' ? 'Kontaktieren Sie uns' :
+               lang === 'jp' ? 'お問い合わせ' : 'Contact Us'}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default ReportsPage;

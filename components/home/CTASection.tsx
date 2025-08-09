@@ -1,25 +1,57 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Download, Phone, Mail } from 'lucide-react'
+import { ArrowRight, Download, Phone, Mail, Shield, Clock, Users } from 'lucide-react'
 
-const CTASection = () => {
+const CTASection: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-800 relative overflow-hidden">
+    <section className="section-responsive bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-white/5"></div>
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        ></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <motion.h2
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"
+        />
+        <motion.div
+          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full blur-xl"
+        />
+      </div>
+
+      <div className="relative container-responsive">
+        <div className="text-center max-w-4xl mx-auto">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
+            className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
+          >
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+            Get Started Today
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="heading-responsive font-bold text-white mb-6"
           >
             Ready to Make Informed Decisions?
           </motion.h2>
@@ -29,10 +61,10 @@ const CTASection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto"
+            className="text-responsive text-primary-100 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             Get access to comprehensive market research reports, expert analysis, 
-            and actionable insights that drive business growth.
+            and actionable insights that drive business growth and competitive advantage.
           </motion.p>
 
           <motion.div
@@ -44,18 +76,18 @@ const CTASection = () => {
           >
             <Link
               href="/reports"
-              className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center"
+              className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-200 inline-flex items-center gap-2 shadow-lg hover:shadow-xl active:scale-95"
             >
               Browse Reports
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="h-5 w-5" />
             </Link>
             
             <Link
-              href="/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center"
+              href="/sample-request"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-200 inline-flex items-center gap-2 backdrop-blur-sm"
             >
               Get Free Sample
-              <Download className="ml-2 h-5 w-5" />
+              <Download className="h-5 w-5" />
             </Link>
           </motion.div>
 
@@ -65,23 +97,27 @@ const CTASection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12"
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-              <Phone className="h-8 w-8 text-white mx-auto mb-3" />
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
+                <Phone className="h-6 w-6 text-white" />
+              </div>
               <h3 className="text-lg font-semibold text-white mb-2">Call Us</h3>
-              <p className="text-primary-100 mb-3">Speak with our experts</p>
-              <a href="tel:+15551234567" className="text-white font-semibold hover:underline">
-                +1 (555) 123-4567
+              <p className="text-primary-100 mb-3 text-sm">Speak with our experts</p>
+              <a href="tel:+1 (315) 908-8888" className="text-white font-semibold hover:underline text-lg">
+                +1 (315) 908-8888
               </a>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-              <Mail className="h-8 w-8 text-white mx-auto mb-3" />
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
+                <Mail className="h-6 w-6 text-white" />
+              </div>
               <h3 className="text-lg font-semibold text-white mb-2">Email Us</h3>
-              <p className="text-primary-100 mb-3">Get detailed information</p>
-              <a href="mailto:info@marketresearch.com" className="text-white font-semibold hover:underline">
-                info@marketresearch.com
+              <p className="text-primary-100 mb-3 text-sm">Get detailed information</p>
+              <a href="mailto:sales@researchmarketinsights.com" className="text-white font-semibold hover:underline text-lg">
+                sales@researchmarketinsights.com
               </a>
             </div>
           </motion.div>
@@ -92,25 +128,25 @@ const CTASection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
-            className="mt-12 flex flex-wrap justify-center items-center gap-6 text-primary-200"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
           >
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
-                <span className="text-white text-xs font-bold">✓</span>
+            <div className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <Shield className="h-4 w-4 text-white" />
               </div>
-              <span className="text-sm">ISO 27001 Certified</span>
+              <span className="text-white text-sm font-medium">ISO 27001 Certified</span>
             </div>
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
-                <span className="text-white text-xs font-bold">✓</span>
+            <div className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <Users className="h-4 w-4 text-white" />
               </div>
-              <span className="text-sm">GDPR Compliant</span>
+              <span className="text-white text-sm font-medium">GDPR Compliant</span>
             </div>
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
-                <span className="text-white text-xs font-bold">✓</span>
+            <div className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <Clock className="h-4 w-4 text-white" />
               </div>
-              <span className="text-sm">24/7 Support</span>
+              <span className="text-white text-sm font-medium">24/7 Support</span>
             </div>
           </motion.div>
         </div>
@@ -119,4 +155,4 @@ const CTASection = () => {
   )
 }
 
-export default CTASection 
+export default CTASection

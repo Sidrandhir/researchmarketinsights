@@ -1,300 +1,112 @@
-// import { motion } from 'framer-motion'
-// import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
-// import { Users, Award, Globe, TrendingUp, Shield, Heart } from 'lucide-react'
+import React from 'react';
+import { Metadata } from 'next';
+import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText, Headphones } from 'lucide-react';
 
-// export default function AboutPage({
-//   params,
-// }: {
-//   params: { lang: string };
-// }) {
-//   const currentLang = getLanguageFromPathname(`/${params.lang}`)
-//   const { t } = useTranslation(currentLang)
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const lang = params.lang;
+  
+  return {
+    title: lang === 'en' ? 'About Us - Market Research Insights' : '关于我们 - 市场研究洞察',
+    description: lang === 'en' 
+      ? 'Learn about Market Research Insights - your trusted partner for comprehensive market research, industry analysis, and strategic insights.'
+      : '了解市场研究洞察 - 您值得信赖的市场研究、行业分析和战略洞察合作伙伴。',
+  };
+}
 
-//   const stats = [
-//     { icon: Users, value: '50,000+', label: t('home.stats.clients') },
-//     { icon: Award, value: '15+', label: t('home.stats.years') },
-//     { icon: Globe, value: '150+', label: t('home.stats.countries') },
-//     { icon: TrendingUp, value: '10,000+', label: t('home.stats.reports') },
-//   ]
-
-//   const values = [
-//     {
-//       icon: Shield,
-//       title: 'Integrity',
-//       description: 'We maintain the highest standards of integrity and ethical practices in all our research and business operations.',
-//     },
-//     {
-//       icon: Heart,
-//       title: 'Excellence',
-//       description: 'We strive for excellence in every aspect of our work, from research methodology to client service.',
-//     },
-//     {
-//       icon: Users,
-//       title: 'Collaboration',
-//       description: 'We believe in the power of collaboration and work closely with our clients to achieve their goals.',
-//     },
-//     {
-//       icon: Award,
-//       title: 'Innovation',
-//       description: 'We continuously innovate our research methods and technologies to provide cutting-edge insights.',
-//     },
-//   ]
-
-//   return (
-//     <div className="min-h-screen">
-//       {/* Hero Section */}
-//       <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             className="text-center"
-//           >
-//             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-//               {t('about.title')}
-//             </h1>
-//             <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
-//               {t('about.subtitle')}
-//             </p>
-//           </motion.div>
-//         </div>
-//       </section>
-
-//       {/* Stats Section */}
-//       <section className="py-16 bg-white">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-//             {stats.map((stat, index) => (
-//               <motion.div
-//                 key={stat.label}
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: index * 0.1 }}
-//                 className="text-center"
-//               >
-//                 <div className="flex justify-center mb-4">
-//                   <stat.icon className="h-8 w-8 text-primary-600" />
-//                 </div>
-//                 <div className="text-3xl font-bold text-gray-900 mb-2">
-//                   {stat.value}
-//                 </div>
-//                 <div className="text-gray-600">
-//                   {stat.label}
-//                 </div>
-//               </motion.div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Mission & Vision */}
-//       <section className="py-20 bg-gray-50">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-//             <motion.div
-//               initial={{ opacity: 0, x: -20 }}
-//               animate={{ opacity: 1, x: 0 }}
-//               transition={{ duration: 0.6 }}
-//             >
-//               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-//                 {t('about.mission')}
-//               </h2>
-//               <p className="text-lg text-gray-600 leading-relaxed">
-//                 Our mission is to provide comprehensive, accurate, and actionable market research insights that empower businesses to make informed decisions and achieve sustainable growth. We are committed to delivering high-quality research that meets the highest industry standards while maintaining the utmost integrity and ethical practices.
-//               </p>
-//             </motion.div>
-
-//             <motion.div
-//               initial={{ opacity: 0, x: 20 }}
-//               animate={{ opacity: 1, x: 0 }}
-//               transition={{ duration: 0.6, delay: 0.2 }}
-//             >
-//               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-//                 {t('about.vision')}
-//               </h2>
-//               <p className="text-lg text-gray-600 leading-relaxed">
-//                 We envision becoming the world&apos;s most trusted partner for market research and business intelligence. Our goal is to be at the forefront of research innovation, leveraging cutting-edge technologies and methodologies to provide insights that drive business success and contribute to global economic growth.
-//               </p>
-//             </motion.div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Values */}
-//       <section className="py-20 bg-white">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             className="text-center mb-16"
-//           >
-//             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-//               {t('about.values')}
-//             </h2>
-//             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-//               Our core values guide everything we do and shape our relationships with clients, partners, and the global community.
-//             </p>
-//           </motion.div>
-
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-//             {values.map((value, index) => (
-//               <motion.div
-//                 key={value.title}
-//                 initial={{ opacity: 0, y: 20 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: index * 0.1 }}
-//                 className="text-center p-6 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
-//               >
-//                 <div className="flex justify-center mb-4">
-//                   <value.icon className="h-12 w-12 text-primary-600" />
-//                 </div>
-//                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-//                   {value.title}
-//                 </h3>
-//                 <p className="text-gray-600">
-//                   {value.description}
-//                 </p>
-//               </motion.div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* History */}
-//       <section className="py-20 bg-gray-50">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             className="text-center mb-16"
-//           >
-//             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-//               {t('about.history')}
-//             </h2>
-//             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-//               Our journey from a small research firm to a global leader in market intelligence.
-//             </p>
-//           </motion.div>
-
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6, delay: 0.1 }}
-//               className="text-center"
-//             >
-//               <div className="text-4xl font-bold text-primary-600 mb-2">2009</div>
-//               <h3 className="text-xl font-semibold text-gray-900 mb-3">Foundation</h3>
-//               <p className="text-gray-600">
-//                 Founded with a vision to provide high-quality market research services to businesses worldwide.
-//               </p>
-//             </motion.div>
-
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6, delay: 0.2 }}
-//               className="text-center"
-//             >
-//               <div className="text-4xl font-bold text-primary-600 mb-2">2015</div>
-//               <h3 className="text-xl font-semibold text-gray-900 mb-3">Global Expansion</h3>
-//               <p className="text-gray-600">
-//                 Expanded operations to serve clients across 50+ countries with localized research capabilities.
-//               </p>
-//             </motion.div>
-
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6, delay: 0.3 }}
-//               className="text-center"
-//             >
-//               <div className="text-4xl font-bold text-primary-600 mb-2">2024</div>
-//               <h3 className="text-xl font-semibold text-gray-900 mb-3">Innovation Leader</h3>
-//               <p className="text-gray-600">
-//                 Leading the industry with AI-powered research methodologies and real-time market intelligence.
-//               </p>
-//             </motion.div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* CTA Section */}
-//       <section className="py-20 bg-primary-600 text-white">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//           >
-//             <h2 className="text-3xl font-bold mb-6">
-//               Ready to Partner With Us?
-//             </h2>
-//             <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-//               Join thousands of businesses that trust us for their market research needs. Let&apos;s work together to drive your success.
-//             </p>
-//             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-//               <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-//                 Get Started
-//               </button>
-//               <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-//                 Contact Us
-//               </button>
-//             </div>
-//           </motion.div>
-//         </div>
-//       </section>
-//     </div>
-//   )
-// }
-
-import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
-import { Users, Award, Globe, TrendingUp, Shield, Heart } from 'lucide-react'
-
-export default function AboutPage({
-  params,
-}: {
-  params: { lang: string };
-}) {
-  const currentLang = getLanguageFromPathname(`/${params.lang}`)
-  const { t } = useTranslation(currentLang)
+const AboutPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
+  const lang = params.lang;
 
   const stats = [
-    { icon: Users, value: '50,000+', label: t('home.stats.clients') },
-    { icon: Award, value: '15+', label: t('home.stats.years') },
-    { icon: Globe, value: '150+', label: t('home.stats.countries') },
-    { icon: TrendingUp, value: '10,000+', label: t('home.stats.reports') },
-  ]
+    { icon: TrendingUp, value: '500+', label: 'Reports Published' },
+    { icon: Users, value: '50K+', label: 'Clients Served' },
+    { icon: Globe, value: '25+', label: 'Countries Covered' },
+    { icon: Award, value: '15+', label: 'Years Experience' }
+  ];
 
   const values = [
-    { icon: Shield, title: 'Integrity', description: 'We maintain the highest standards of integrity and ethical practices in all our research and business operations.' },
-    { icon: Heart, title: 'Excellence', description: 'We strive for excellence in every aspect of our work, from research methodology to client service.' },
-    { icon: Users, title: 'Collaboration', description: 'We believe in the power of collaboration and work closely with our clients to achieve their goals.' },
-    { icon: Award, title: 'Innovation', description: 'We continuously innovate our research methods and technologies to provide cutting-edge insights.' },
-  ]
+    {
+      icon: Target,
+      title: lang === 'en' ? 'Excellence' : '卓越',
+      description: lang === 'en' 
+        ? 'We strive for excellence in every report, analysis, and insight we deliver.'
+        : '我们努力在每份报告、分析和洞察中追求卓越。'
+    },
+    {
+      icon: BarChart3,
+      title: lang === 'en' ? 'Accuracy' : '准确性',
+      description: lang === 'en'
+        ? 'Our data-driven approach ensures accurate and reliable market intelligence.'
+        : '我们以数据驱动的方法确保准确可靠的市场情报。'
+    },
+    {
+      icon: Users,
+      title: lang === 'en' ? 'Innovation' : '创新',
+      description: lang === 'en'
+        ? 'We continuously innovate our research methodologies and delivery platforms.'
+        : '我们不断创新研究方法和交付平台。'
+    },
+    {
+      icon: FileText,
+      title: lang === 'en' ? 'Transparency' : '透明度',
+      description: lang === 'en'
+        ? 'We maintain complete transparency in our research processes and methodologies.'
+        : '我们在研究过程和方法中保持完全透明。'
+    }
+  ];
+
+  const team = [
+    {
+      name: lang === 'en' ? 'Dr. Sarah Johnson' : 'Sarah Johnson 博士',
+      role: lang === 'en' ? 'Chief Research Officer' : '首席研究官',
+      expertise: lang === 'en' ? 'Market Analysis & Strategy' : '市场分析与战略',
+      experience: '15+ years'
+    },
+    {
+      name: lang === 'en' ? 'Michael Chen' : 'Michael Chen',
+      role: lang === 'en' ? 'Head of Data Analytics' : '数据分析主管',
+      expertise: lang === 'en' ? 'Data Science & AI' : '数据科学与人工智能',
+      experience: '12+ years'
+    },
+    {
+      name: lang === 'en' ? 'Dr. Emily Rodriguez' : 'Emily Rodriguez 博士',
+      role: lang === 'en' ? 'Industry Research Director' : '行业研究总监',
+      expertise: lang === 'en' ? 'Healthcare & Life Sciences' : '医疗保健与生命科学',
+      experience: '18+ years'
+    },
+    {
+      name: lang === 'en' ? 'David Kim' : 'David Kim',
+      role: lang === 'en' ? 'Technology Research Lead' : '技术研究主管',
+      expertise: lang === 'en' ? 'Emerging Technologies' : '新兴技术',
+      experience: '10+ years'
+    }
+  ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">{t('about.title')}</h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">{t('about.subtitle')}</p>
+      <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+        <div className="container-responsive py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              {lang === 'en' ? 'About Market Research Insights' : '关于市场研究洞察'}
+            </h1>
+            <p className="text-xl lg:text-2xl text-primary-100 leading-relaxed">
+              {lang === 'en' 
+                ? 'Empowering businesses with data-driven insights and strategic market intelligence for informed decision-making.'
+                : '为商业决策提供数据驱动的洞察和战略性市场情报。'
+              }
+            </p>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-16 bg-white">
+        <div className="container-responsive">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="flex justify-center mb-4">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="h-8 w-8 text-primary-600" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
@@ -303,85 +115,135 @@ export default function AboutPage({
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-16 bg-gray-50">
+        <div className="container-responsive">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('about.mission')}</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">Our mission is to provide comprehensive, accurate, and actionable market research insights that empower businesses to make informed decisions and achieve sustainable growth. We are committed to delivering high-quality research that meets the highest industry standards while maintaining the utmost integrity and ethical practices.</p>
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                <Target className="h-8 w-8 text-blue-600" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                {lang === 'en' ? 'Our Mission' : '我们的使命'}
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {lang === 'en'
+                  ? 'To provide comprehensive, accurate, and actionable market research insights that empower organizations to make strategic decisions and achieve sustainable growth in an ever-evolving global marketplace.'
+                  : '提供全面、准确和可操作的市场研究洞察，使组织能够在不断发展的全球市场中做出战略决策并实现可持续增长。'
+                }
+              </p>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('about.vision')}</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">We envision becoming the world&apos;s most trusted partner for market research and business intelligence. Our goal is to be at the forefront of research innovation, leveraging cutting-edge technologies and methodologies to provide insights that drive business success and contribute to global economic growth.</p>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <Globe className="h-8 w-8 text-green-600" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                {lang === 'en' ? 'Our Vision' : '我们的愿景'}
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {lang === 'en'
+                  ? 'To be the global leader in market research and business intelligence, recognized for our innovative methodologies, exceptional quality, and unwavering commitment to client success.'
+                  : '成为市场研究和商业智能领域的全球领导者，以我们的创新方法、卓越质量和坚定不移的客户成功承诺而闻名。'
+                }
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Values */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('about.values')}</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">Our core values guide everything we do and shape our relationships with clients, partners, and the global community.</p>
+      {/* Core Values */}
+      <div className="py-16 bg-white">
+        <div className="container-responsive">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              {lang === 'en' ? 'Our Core Values' : '我们的核心价值观'}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {lang === 'en'
+                ? 'The principles that guide our work and define our relationship with clients and stakeholders.'
+                : '指导我们工作并定义我们与客户和利益相关者关系的原则。'
+              }
+            </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="text-center p-6 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                <div className="flex justify-center mb-4">
-                  <value.icon className="h-12 w-12 text-primary-600" />
+            {values.map((value, index) => (
+              <div key={index} className="text-center p-6 bg-gray-50 rounded-xl">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="h-8 w-8 text-primary-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* History */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('about.history')}</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">Our journey from a small research firm to a global leader in market intelligence.</p>
+      {/* Team Section */}
+      <div className="py-16 bg-gray-50">
+        <div className="container-responsive">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              {lang === 'en' ? 'Our Expert Team' : '我们的专家团队'}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {lang === 'en'
+                ? 'Meet the dedicated professionals who make our research excellence possible.'
+                : '认识使我们的研究卓越成为可能的专业团队。'
+              }
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">2009</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Foundation</h3>
-              <p className="text-gray-600">Founded with a vision to provide high-quality market research services to businesses worldwide.</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">2015</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Global Expansion</h3>
-              <p className="text-gray-600">Expanded operations to serve clients across 50+ countries with localized research capabilities.</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-600 mb-2">2024</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Innovation Leader</h3>
-              <p className="text-gray-600">Leading the industry with AI-powered research methodologies and real-time market intelligence.</p>
-            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-10 w-10 text-primary-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-primary-600 font-medium mb-2">{member.role}</p>
+                <p className="text-sm text-gray-600 mb-3">{member.expertise}</p>
+                <p className="text-xs text-gray-500">{member.experience}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Ready to Partner With Us?</h2>
-            <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">Join thousands of businesses that trust us for their market research needs. Let&apos;s work together to drive your success.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">Get Started</button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">Contact Us</button>
-            </div>
+      <div className="py-16 bg-primary-600 text-white">
+        <div className="container-responsive text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+            {lang === 'en' ? 'Ready to Get Started?' : '准备开始了吗？'}
+          </h2>
+          <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
+            {lang === 'en'
+              ? 'Discover how our market research insights can transform your business strategy and drive growth.'
+              : '了解我们的市场研究洞察如何改变您的商业战略并推动增长。'
+            }
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`/${lang}/reports`}
+              className="bg-white text-primary-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+            >
+              {lang === 'en' ? 'Browse Reports' : '浏览报告'}
+            </a>
+            <a
+              href={`/${lang}/contact`}
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-primary-600 transition-colors"
+            >
+              {lang === 'en' ? 'Contact Us' : '联系我们'}
+            </a>
           </div>
         </div>
-      </section>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default AboutPage;

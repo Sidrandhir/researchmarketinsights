@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
 import { Search, TrendingUp, Users, DollarSign, Globe } from 'lucide-react'
 
@@ -81,7 +82,7 @@ export default function IndustryPage({
       icon: '🍽️',
     },
     {
-      id: 'lifeSciences',
+      id: 'life-sciences',
       name: t('industry.categories.lifeSciences'),
       description: 'Healthcare, pharmaceuticals, and biotechnology',
       reports: 789,
@@ -214,9 +215,12 @@ export default function IndustryPage({
                     <TrendingUp className="h-4 w-4 mr-1" />
                     {category.reports} reports
                   </div>
-                  <button className="text-primary-600 hover:text-primary-700 font-medium text-sm">
+                  <Link 
+                    href={`/${params.lang}/industry/${category.id}`}
+                    className="text-primary-600 hover:text-primary-700 font-medium text-sm hover:underline transition-all duration-200"
+                  >
                     View Reports →
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}

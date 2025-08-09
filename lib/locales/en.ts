@@ -14,12 +14,27 @@ export default {
   // Home page
   home: {
     hero: {
-      title: 'Discover Market Insights That Drive Growth',
-      subtitle: 'Get comprehensive market research reports, industry analysis, and data-driven insights to make informed business decisions and stay ahead of the competition.',
-      searchPlaceholder: 'Search for reports, industries, or keywords...',
+      searchPlaceholder: 'Search 10,000+ reports by keyword or ID...',
       searchButton: 'Search',
-      popularSearches: 'Popular:',
-      cta: 'Explore Reports',
+      
+      slide1: {
+        badge: 'Data-Driven Intelligence',
+        title: 'Navigate Your Market with Precision',
+        subtitle: 'Access over 10,000+ reports to unlock competitive advantages and drive strategic growth.'
+      },
+      slide2: {
+        badge: '360° Industry Coverage',
+        title: 'Explore Unseen Growth Opportunities',
+        subtitle: 'We provide granular data and strategic analysis across all major industries. Discover your next move.',
+        cta: 'Browse All Industries'
+      },
+      slide3: {
+        badge: 'Expert Consulting',
+        title: 'Need a Custom Solution?',
+        subtitle: 'Our team of analysts can craft a tailored research report to meet your specific business objectives.',
+        cta1: 'Request Custom Report',
+        cta2: 'Speak to an Analyst'
+      }
     },
     stats: {
       reports: 'Reports Published',
