@@ -1,4 +1,5 @@
 'use client';
+import { PageProps } from '@/types';
 //import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -25,8 +26,8 @@ import Link from 'next/link';
 //   };
 // }
 
-export default function PressReleasesPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+export default function PressReleasesPage({ params }: PageProps) {
+  const { lang } = params;
   
   const categories = [
     {
