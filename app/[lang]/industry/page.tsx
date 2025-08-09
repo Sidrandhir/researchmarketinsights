@@ -1,17 +1,27 @@
 'use client'
 
-import { PageProps } from '@/types';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
+import { useTranslation } from '@/lib/i18n'
 import { Search, TrendingUp, Users, DollarSign, Globe } from 'lucide-react'
 
-export default async function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }> }) { 
-  const { lang, categorySlug } = await params;
-  const { t } = useTranslation(currentLang)
+export default function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }> }) { 
+  const [resolvedParams, setResolvedParams] = useState<{ lang: string, categorySlug: string } | null>(null);
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+
+  // Resolve params in useEffect
+  useEffect(() => {
+    params.then(setResolvedParams);
+  }, [params]);
+
+  const { t } = useTranslation((resolvedParams?.lang as import('@/lib/i18n').Language) || 'en')
+
+  // Don't render until params are resolved
+  if (!resolvedParams) {
+    return <div>Loading...</div>;
+  }
 
   const categories = [
     {
@@ -218,7 +228,7 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
                     {category.reports} reports
                   </div>
                   <Link 
-                    href={`/${params.lang}/industry/${category.id}`}
+                    href={`/${resolvedParams.lang}/industry/${category.id}`}
                     className="text-primary-600 hover:text-primary-700 font-medium text-sm hover:underline transition-all duration-200"
                   >
                     View Reports →
@@ -321,4 +331,4 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
       </section>
     </div>
   )
-} 
+}
