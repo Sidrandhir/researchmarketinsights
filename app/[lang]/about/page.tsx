@@ -2,9 +2,14 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lucide-react';
 
-// CORRECT: generateMetadata is a top-level export
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+// Define the correct type for Next.js 15
+type PageProps = {
+  params: Promise<{ lang: string }>;
+};
+
+// FIXED: generateMetadata now handles async params
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'About Us - Market Research Insights' : '关于我们 - 市场研究洞察',
@@ -14,9 +19,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-// CORRECT: The main component is the default export
-export default function AboutPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+// FIXED: The main component now handles async params
+export default async function AboutPage({ params }: PageProps) {
+  const { lang } = await params;
 
   const stats = [
     { icon: TrendingUp, value: '500+', label: 'Reports Published' },
