@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+// Define the correct type for Next.js 15
+type PageProps = {
+  params: Promise<{ lang: string }>;
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Careers - Market Research Insights' : 
@@ -23,8 +28,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function CareerPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+export default async function CareerPage({ params }: PageProps) {
+  const { lang } = await params;
   
   const positions = [
     {
