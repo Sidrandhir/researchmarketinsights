@@ -1,15 +1,11 @@
 'use client'
 
 import { Suspense } from 'react'
-import { 
-  TrendingUp, 
-  Users, 
-  FileText, 
-  DollarSign, 
-  Eye, 
+import {
+  Users,
+  FileText,
   Download,
-  Mail,
-  Clock
+  Mail
 } from 'lucide-react'
 import DashboardStats from '@/components/admin/DashboardStats'
 import RecentActivity from '@/components/admin/RecentActivity'
@@ -22,7 +18,7 @@ export default function AdminDashboard() {
       {/* Page Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome back! Here's what's happening with your market research platform.</p>
+        <p className="text-gray-600 mt-2">Welcome back! Here&apos;s what&apos;s happening with your market research platform.</p>
       </div>
 
       {/* Stats Grid */}

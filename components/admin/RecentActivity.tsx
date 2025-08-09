@@ -19,7 +19,7 @@ interface Activity {
   description: string
   timestamp: Date
   status: 'success' | 'warning' | 'error' | 'info'
-  metadata?: Record<string, any>
+  metadata?: Record<string, string | number>
 }
 
 export default function RecentActivity() {

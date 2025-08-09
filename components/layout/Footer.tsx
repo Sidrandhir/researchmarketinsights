@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
@@ -8,10 +8,7 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, A
 import { useTranslation, getLanguageFromPathname } from '@/lib/i18n'
 
 const Footer: React.FC = () => {
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true) // Ensure this runs only on the client side
-  }, [])
+
   
   const pathname = usePathname()
   const currentLang = getLanguageFromPathname(pathname)

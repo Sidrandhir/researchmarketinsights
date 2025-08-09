@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Users, ArrowRight, MessageSquare } from 'lucide-react';
+import { Users, MessageSquare } from 'lucide-react';
 
 interface SolutionsSlideProps {
   isActive: boolean;

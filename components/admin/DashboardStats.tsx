@@ -8,8 +8,7 @@ import {
   DollarSign, 
   Eye, 
   Download,
-  Mail,
-  Clock
+  Mail
 } from 'lucide-react'
 
 interface Stats {

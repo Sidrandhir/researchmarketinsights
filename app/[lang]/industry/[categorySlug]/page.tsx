@@ -1,11 +1,20 @@
 // file: app/[lang]/industry/[categorySlug]/page.tsx
 import Link from 'next/link';
 import ComingSoon from '@/components/ui/ComingSoon';
-import { ArrowRight, Tag, Calendar, TrendingUp, Users, DollarSign, Globe, Microscope, Pill, Heart, Brain } from 'lucide-react';
+import { ArrowRight, Tag, Calendar, Microscope, Pill, Heart, Brain } from 'lucide-react';
 
 // In the future, this data will come from a database.
 // For now, it's our "mock" database.
-const MOCK_REPORTS_DB: any[] = [
+const MOCK_REPORTS_DB: Array<{
+  id: string;
+  title: string;
+  slug: string;
+  categorySlug: string;
+  description: string;
+  reportCode: string;
+  price: string;
+  createdAt: string;
+}> = [
   {
     id: '1',
     title: 'Global Patient Repositioning System Market',
@@ -186,7 +195,7 @@ export default function IndustryCategoryPage({ params }: { params: { lang: strin
                 { icon: Pill, value: '50,000+', label: 'Pharmaceutical Studies', color: 'text-blue-600' },
                 { icon: Heart, value: '$2.5B+', label: 'Market Value Analyzed', color: 'text-green-600' },
                 { icon: Brain, value: '150+', label: 'Countries Covered', color: 'text-purple-600' },
-              ].map((stat, index) => (
+              ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className={`flex justify-center mb-4 ${stat.color}`}>
                     <stat.icon className="h-8 w-8" />

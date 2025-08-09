@@ -5,16 +5,7 @@ import { useState } from 'react';
 export default function BuyNowPage({ params }: { params: { lang: string } }) {
   const lang = params.lang;
   const [selectedLicense, setSelectedLicense] = useState('single');
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    phone: '',
-    reportTitle: '',
-    reportCode: '',
-    message: ''
-  });
+
 
   const licenses = [
     {

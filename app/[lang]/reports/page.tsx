@@ -3,7 +3,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { prisma } from '@/lib/db';
-import { FileText, TrendingUp, Globe, Search, Filter, ArrowRight, Download, Eye, Calendar, User } from 'lucide-react';
+import { FileText, TrendingUp, Search, Filter, ArrowRight, Download, Calendar, User } from 'lucide-react';
 import StickyContactForm from '@/components/reports/StickyContactForm';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
@@ -280,7 +280,7 @@ const ReportsPage: React.FC<{ params: { lang: string } }> = async ({ params }) =
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {reports.map((report, index) => (
+                {reports.map((report) => (
                   <article key={report.id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden">
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">

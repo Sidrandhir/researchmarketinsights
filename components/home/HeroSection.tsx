@@ -1,6 +1,6 @@
 // file: components/home/HeroSection.tsx
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTranslation, getLanguageFromPathname } from '@/lib/i18n';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,27 +11,28 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
 
-import HeroSlide1_Search from './hero-slides/HeroSlide1_Search';
-import HeroSlide2_Industries from './hero-slides/HeroSlide2_Industries';
-import HeroSlide3_Consulting from './hero-slides/HeroSlide3_Consulting';
+
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
+// Type for Swiper instance
+type SwiperInstance = {
+  autoplay: {
+    start: () => void;
+    stop: () => void;
+  };
+};
+
 const HeroSection: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperInstance | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const currentLang = getLanguageFromPathname(pathname);
   const { t } = useTranslation(currentLang);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/${currentLang}/search?q=${encodeURIComponent(searchQuery)}`);
-    }
-  };
+
 
   const toggleAutoplay = () => {
     if (swiperInstance) {

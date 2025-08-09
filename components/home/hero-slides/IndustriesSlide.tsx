@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Globe, ArrowRight, TrendingUp } from 'lucide-react';
+import { TrendingUp } from 'lucide-react';
 
 interface IndustriesSlideProps {
   isActive: boolean;

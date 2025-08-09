@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText, Headphones } from 'lucide-react';
+import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const lang = params.lang;

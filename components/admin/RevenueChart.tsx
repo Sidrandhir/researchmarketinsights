@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { TrendingUp, TrendingDown, DollarSign, Calendar } from 'lucide-react'
+import { TrendingUp, TrendingDown, Calendar } from 'lucide-react'
 
 interface RevenueData {
   month: string
@@ -11,16 +11,7 @@ interface RevenueData {
   downloads: number
 }
 
-interface ChartData {
-  labels: string[]
-  datasets: {
-    label: string
-    data: number[]
-    borderColor: string
-    backgroundColor: string
-    tension: number
-  }[]
-}
+
 
 export default function RevenueChart() {
   const [timeframe, setTimeframe] = useState<'7d' | '30d' | '90d' | '1y'>('30d')
@@ -78,35 +69,7 @@ export default function RevenueChart() {
     fetchRevenueData()
   }, [timeframe])
 
-  const getChartData = (): ChartData => {
-    const labels = revenueData.map(d => d.month)
-    const data = revenueData.map(d => d[selectedMetric])
-    
-    let borderColor = '#3B82F6'
-    let backgroundColor = 'rgba(59, 130, 246, 0.1)'
-    
-    if (selectedMetric === 'growth') {
-      borderColor = '#10B981'
-      backgroundColor = 'rgba(16, 185, 129, 0.1)'
-    } else if (selectedMetric === 'reports') {
-      borderColor = '#8B5CF6'
-      backgroundColor = 'rgba(139, 92, 246, 0.1)'
-    } else if (selectedMetric === 'downloads') {
-      borderColor = '#F59E0B'
-      backgroundColor = 'rgba(245, 158, 11, 0.1)'
-    }
 
-    return {
-      labels,
-      datasets: [{
-        label: selectedMetric.charAt(0).toUpperCase() + selectedMetric.slice(1),
-        data,
-        borderColor,
-        backgroundColor,
-        tension: 0.4
-      }]
-    }
-  }
 
   const getMetricValue = () => {
     if (revenueData.length === 0) return { current: 0, previous: 0, change: 0 }
@@ -151,7 +114,7 @@ export default function RevenueChart() {
         
         <select
           value={selectedMetric}
-          onChange={(e) => setSelectedMetric(e.target.value as any)}
+          onChange={(e) => setSelectedMetric(e.target.value as 'revenue' | 'growth' | 'reports' | 'downloads')}
           className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         >
           <option value="revenue">Revenue</option>
