@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { PageProps } from '@/types';
+
 import { Users, Target, Award, Globe, TrendingUp, BarChart3, FileText } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
