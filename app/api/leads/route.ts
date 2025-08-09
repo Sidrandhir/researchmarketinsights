@@ -40,11 +40,11 @@ export async function GET(request: NextRequest) {
     } = {}
 
     if (query.status) {
-      where.status = query.status
+      where.status = query.status as any
     }
 
     if (query.source) {
-      where.source = query.source
+      where.source = query.source as any
     }
 
     if (query.search) {

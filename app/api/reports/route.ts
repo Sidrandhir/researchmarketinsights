@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (query.category) {
-      where.category = query.category
+      where.category = query.category as any
     }
 
     if (query.search) {

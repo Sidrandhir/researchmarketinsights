@@ -31,9 +31,9 @@ async function main() {
       },
       price: 2999.00,
       reportCode: 'MR-001-2024',
-      category: 'LIFE_SCIENCES',
+      category: 'LIFE_SCIENCES' as const,
       subcategory: 'Medical Devices',
-      status: 'PUBLISHED',
+      status: 'PUBLISHED' as const,
       featured: true,
       authorId: adminUser.id,
       metaTitle: 'Global Patient Repositioning System Market Report 2024',
@@ -51,9 +51,9 @@ async function main() {
       },
       price: 3499.00,
       reportCode: 'MR-002-2024',
-      category: 'LIFE_SCIENCES',
+      category: 'LIFE_SCIENCES' as const,
       subcategory: 'Pharmaceuticals',
-      status: 'PUBLISHED',
+      status: 'PUBLISHED' as const,
       featured: true,
       authorId: adminUser.id,
       metaTitle: 'Global Connected Drug Delivery Devices Market Report 2024',
@@ -71,9 +71,9 @@ async function main() {
       },
       price: 2499.00,
       reportCode: 'MR-003-2024',
-      category: 'LIFE_SCIENCES',
+      category: 'LIFE_SCIENCES' as const,
       subcategory: 'Packaging',
-      status: 'PUBLISHED',
+      status: 'PUBLISHED' as const,
       featured: false,
       authorId: adminUser.id,
       metaTitle: 'Global Pharmaceutical Packaging Market Report 2024',
@@ -98,8 +98,8 @@ async function main() {
       slug: 'life-sciences-division-launch',
       content: 'Market Research Insights is excited to announce the launch of our new Life Sciences division...',
       excerpt: 'Expanding our expertise in healthcare, pharmaceuticals, and biotechnology market research.',
-      category: 'LIFE_SCIENCES',
-      status: 'PUBLISHED',
+      category: 'LIFE_SCIENCES' as const,
+      status: 'PUBLISHED' as const,
       featured: true,
       authorId: adminUser.id,
       publishedAt: new Date(),
@@ -129,17 +129,24 @@ async function main() {
       subject: 'Patient Monitoring Report Inquiry',
       message: 'Interested in detailed analysis of patient monitoring devices market.',
       source: 'Website Contact Form',
-      status: 'NEW',
+      status: 'NEW' as const,
     },
   ]
 
   for (const leadData of leads) {
-    const lead = await prisma.lead.upsert({
+    // Check if lead exists by email
+    const existingLead = await prisma.lead.findFirst({
       where: { email: leadData.email },
-      update: {},
-      create: leadData,
     })
-    console.log('✅ Lead created:', lead.name)
+    
+    if (existingLead) {
+      console.log('✅ Lead already exists:', existingLead.name)
+    } else {
+      const lead = await prisma.lead.create({
+        data: leadData,
+      })
+      console.log('✅ Lead created:', lead.name)
+    }
   }
 
   console.log('🎉 Database seeding completed successfully!')

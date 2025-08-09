@@ -20,21 +20,21 @@ export async function GET(request: NextRequest) {
 
     const results = [];
 
-    // Search reports
-    if (type === 'all' || type === 'reports') {
-      const reports = await prisma.report.findMany({
-        where: {
-          AND: [
-            {
-              OR: [
-                { title: { contains: query, mode: 'insensitive' } },
-                { description: { contains: query, mode: 'insensitive' } },
+            // Search reports
+        if (type === 'all' || type === 'reports') {
+          const reports = await prisma.report.findMany({
+            where: {
+              AND: [
+                {
+                  OR: [
+                    { title: { contains: query, mode: 'insensitive' } },
+                    { description: { contains: query, mode: 'insensitive' } },
+                  ],
+                },
+                { status: 'PUBLISHED' },
+                ...(category ? [{ category: category as any }] : []),
               ],
             },
-            { status: 'PUBLISHED' },
-            ...(category ? [{ category: category }] : []),
-          ],
-        },
         select: {
           id: true,
           title: true,
@@ -70,21 +70,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Search press releases
-    if (type === 'all' || type === 'press-releases') {
-      const pressReleases = await prisma.pressRelease.findMany({
-        where: {
-          AND: [
-            {
-              OR: [
-                { title: { contains: query, mode: 'insensitive' } },
-                { content: { contains: query, mode: 'insensitive' } },
+            // Search press releases
+        if (type === 'all' || type === 'press-releases') {
+          const pressReleases = await prisma.pressRelease.findMany({
+            where: {
+              AND: [
+                {
+                  OR: [
+                    { title: { contains: query, mode: 'insensitive' } },
+                    { content: { contains: query, mode: 'insensitive' } },
+                  ],
+                },
+                { status: 'PUBLISHED' },
+                ...(category ? [{ category: category as any }] : []),
               ],
             },
-            { status: 'PUBLISHED' },
-            ...(category ? [{ category: category }] : []),
-          ],
-        },
         select: {
           id: true,
           title: true,

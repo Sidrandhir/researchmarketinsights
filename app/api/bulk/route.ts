@@ -91,7 +91,7 @@ async function handleBulkReportUpload(data: ReportData[]) {
           price: reportData.price,
           discount: reportData.discount || null,
           reportCode: reportData.reportCode || `REPORT-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-          category: reportData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS',
+          category: (reportData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS') as any,
           subcategory: reportData.subcategory || null,
           imageUrl: reportData.imageUrl || null,
           toc: reportData.toc || {},
@@ -101,7 +101,7 @@ async function handleBulkReportUpload(data: ReportData[]) {
           metaTitle: reportData.metaTitle || null,
           metaDescription: reportData.metaDescription || null,
           keywords: reportData.keywords || null,
-          status: reportData.status || 'DRAFT',
+          status: (reportData.status || 'DRAFT') as any,
           featured: reportData.featured || false,
           authorId: 'system'
         }
@@ -137,11 +137,11 @@ async function handleBulkPressReleaseUpload(data: PressReleaseData[]) {
           content: prData.content || '',
           excerpt: prData.excerpt || null,
           imageUrl: prData.imageUrl || null,
-          category: prData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS',
+          category: (prData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS') as any,
           metaTitle: prData.metaTitle || null,
           metaDescription: prData.metaDescription || null,
           keywords: prData.keywords || null,
-          status: prData.status || 'DRAFT',
+          status: (prData.status || 'DRAFT') as any,
           featured: prData.featured || false,
           publishedAt: prData.publishedAt ? new Date(prData.publishedAt) : null,
           authorId: 'system' // You'll need to handle this properly with authentication
@@ -168,7 +168,7 @@ async function handleBulkPressReleaseUpload(data: PressReleaseData[]) {
 
 async function handleBulkReportDownload(data: FilterData) {
   try {
-    const where: PrismaWhereClause = {}
+    const where: any = {}
     
     if (data.ids) {
       where.id = { in: data.ids }
@@ -215,7 +215,7 @@ async function handleBulkReportDownload(data: FilterData) {
 
 async function handleBulkPressReleaseDownload(data: FilterData) {
   try {
-    const where: PrismaWhereClause = {}
+    const where: any = {}
     
     if (data.ids) {
       where.id = { in: data.ids }
