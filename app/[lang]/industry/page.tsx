@@ -147,7 +147,12 @@ export default function IndustryPage({
 
             {/* Filter */}
             <div className="md:w-64">
+              <label htmlFor="industry-category-select" className="sr-only">
+                {t('industry.filter.selectLabel') || 'Select Industry Category'}
+              </label>
               <select
+                id="industry-category-select"
+                aria-label={t('industry.filter.selectLabel') || 'Select Industry Category'}
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+// import { PageProps } from '@/types';
 
 export default function BuyNowPage({ params }: { params: { lang: string } }) {
   const lang = params.lang;
