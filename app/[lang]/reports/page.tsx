@@ -122,10 +122,10 @@ async function getRelatedReports() {
 }
 
 // Fixed: Updated component type definition to use PageProps interface
-const GlobalPatientRepositioningSystemMarketPage: React.FC<PageProps> = async ({ params }) => {
-  const { lang } = await params; // Fixed: Added await to destructure params
-  const report = await getReport();
-  const relatedReports = await getRelatedReports();
+export default function GlobalPatientRepositioningSystemMarketPage({ params }: { params: {lang: string} }) {
+  const { lang } = params; // Fixed: Added await to destructure params
+  const report = getReport();
+  const relatedReports = getRelatedReports();
 
   if (!report) {
     notFound();
@@ -444,4 +444,3 @@ const GlobalPatientRepositioningSystemMarketPage: React.FC<PageProps> = async ({
   );
 };
 
-export default GlobalPatientRepositioningSystemMarketPage;
