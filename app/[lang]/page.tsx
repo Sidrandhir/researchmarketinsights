@@ -1,17 +1,33 @@
-// app/[lang]/xml/page.tsx
+// import { Suspense } from 'react';
+// import HeroSection from '@/components/home/HeroSection';
+// import StatsSection from '@/components/home/StatsSection';
+// import IndustryCategories from '@/components/home/IndustryCategories';
+// import FeaturedReports from '@/components/home/FeaturedReports';
+// import TestimonialsSection from '@/components/home/TestimonialsSection';
+// import CTASection from '@/components/home/CTASection';
+// import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
-interface PageProps {
-  params: Promise<{ lang: string }>;
-}
+// export default function HomePage() {
+//   return (
+//     <div className="min-h-screen">
+//       <HeroSection />
+//       <StatsSection />
+//       <IndustryCategories />
+//       <Suspense fallback={<LoadingSpinner />}>
+//         <FeaturedReports />
+//       </Suspense>
+//       <TestimonialsSection />
+//       <CTASection />
+//     </div>
+//   );
+// } 
+// file: app/[lang]/page.tsx
+import HomePageClient from '@/components/home/HomePageClient';
 
-export default async function XmlPage({ params }: PageProps) {
-  // Await the params since they're now a Promise in Next.js 15
-  const { lang } = await params;
-  
-  // Your existing XML page logic here
+export default function HomePage() {
   return (
-    <div>
-      {/* Your XML content for language: {lang} */}
+    <div className="min-h-screen">
+      <HomePageClient />
     </div>
   );
 }
