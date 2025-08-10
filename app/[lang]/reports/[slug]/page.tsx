@@ -32,8 +32,8 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ReportDetailPage({ params }: PageProps) {
-  const { lang, slug } = params;
+export default async function ReportDetailPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
+  const { lang, slug } = await params;
   const report = await getReport(slug as string);
   // Type assertion to let TypeScript know these fields exist and are JSON
   const content = report.content as any;
