@@ -17,10 +17,10 @@ const updateLeadSchema = z.object({
 
 export async function GET(
   request: NextRequest, 
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params
+    const { id } = await context.params
 
     // Validate ID format (assuming UUID)
     if (!id || typeof id !== 'string') {
@@ -71,10 +71,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params
+    const { id } = await context.params
     const body = await request.json()
 
     // Validate ID format
@@ -132,10 +132,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest, 
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params
+    const { id } = await context.params
 
     // Validate ID format
     if (!id || typeof id !== 'string') {
