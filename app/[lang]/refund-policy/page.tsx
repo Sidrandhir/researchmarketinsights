@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang }= await params;
   
   return {
     title: lang === 'en' ? 'Refund Policy - Market Research Insights' : 
@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function RefundPolicyPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+export default async function RefundPolicyPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   
   return (
     <div className="min-h-screen bg-gray-50 py-12">
