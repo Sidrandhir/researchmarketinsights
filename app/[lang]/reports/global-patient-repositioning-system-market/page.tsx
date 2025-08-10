@@ -4,35 +4,17 @@ import Link from 'next/link';
 import { Download, Eye, Calendar, FileText, TrendingUp, Users, Bed } from 'lucide-react';
 import StickySidebar from '@/components/reports/StickySidebar';
 
-type PageProps = {
-  params: {
-    lang: string;
-    slug: string;
-  };
-  searchParams?: Record<string, string | string[] | undefined>;
-};
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { lang } = params;
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const lang = params.lang;
+  
   return {
     title: lang === 'en' ? 'Global Patient Repositioning System Market - Market Research Insights' : 'Global Patient Repositioning System Market - Market Research Insights',
     description: 'Comprehensive analysis of the global patient repositioning system market, including market size, growth trends, key players, and future opportunities.',
   };
 }
 
-const PatientRepositioningPage = ({ params }: PageProps) => {
-  const { lang } = params;
-// export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-//   const { lang } = await params;
-  
-//   return {
-//     title: lang === 'en' ? 'Global Patient Repositioning System Market - Market Research Insights' : 'Global Patient Repositioning System Market - Market Research Insights',
-//     description: 'Comprehensive analysis of the global patient repositioning system market, including market size, growth trends, key players, and future opportunities.',
-//   };
-// }
-
-// const PatientRepositioningPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
-//   const { lang } = await params;
+const PatientRepositioningPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
+  const lang = params.lang;
 
   const reportData = {
     title: 'Global Patient Repositioning System Market',
