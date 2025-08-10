@@ -6,8 +6,8 @@ import { prisma } from '@/lib/db';
 import { FileText, TrendingUp, Search, Filter, ArrowRight, Download, Calendar, User } from 'lucide-react';
 import StickyContactForm from '@/components/reports/StickyContactForm';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Market Research Reports - Market Research Insights' : 
