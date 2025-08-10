@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Terms and Conditions - Market Research Insights' : 
@@ -23,8 +27,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function TermsPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+export default async function TermsPage({ params }: PageProps) {
+  const { lang } = await params;
   
   return (
     <div className="min-h-screen bg-gray-50 py-12">
