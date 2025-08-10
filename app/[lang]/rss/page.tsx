@@ -1,5 +1,10 @@
 import { redirect } from 'next/navigation';
 
-export default function RSSPage({ params }: { params: { lang: string } }) {
-  redirect(`/${params.lang}/rss.xml`);
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export default async function RSSPage({ params }: PageProps) {
+  const { lang } = await params;
+  redirect(`/${lang}/rss.xml`);
 }
