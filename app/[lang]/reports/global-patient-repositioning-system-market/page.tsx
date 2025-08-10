@@ -4,14 +4,6 @@ import Link from 'next/link';
 import { Download, Eye, Calendar, FileText, TrendingUp, Users, Bed } from 'lucide-react';
 import StickySidebar from '@/components/reports/StickySidebar';
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params;
-  
-  return {
-    title: lang === 'en' ? 'Global Patient Repositioning System Market - Market Research Insights' : 'Global Patient Repositioning System Market - Market Research Insights',
-    description: 'Comprehensive analysis of the global patient repositioning system market, including market size, growth trends, key players, and future opportunities.',
-  };
-}
 type PageProps = {
   params: {
     lang: string;
@@ -20,8 +12,27 @@ type PageProps = {
   searchParams?: Record<string, string | string[] | undefined>;
 };
 
-const PatientRepositioningPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
-  const { lang } = await params;
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = params;
+  return {
+    title: lang === 'en' ? 'Global Patient Repositioning System Market - Market Research Insights' : 'Global Patient Repositioning System Market - Market Research Insights',
+    description: 'Comprehensive analysis of the global patient repositioning system market, including market size, growth trends, key players, and future opportunities.',
+  };
+}
+
+const PatientRepositioningPage = ({ params }: PageProps) => {
+  const { lang } = params;
+// export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+//   const { lang } = await params;
+  
+//   return {
+//     title: lang === 'en' ? 'Global Patient Repositioning System Market - Market Research Insights' : 'Global Patient Repositioning System Market - Market Research Insights',
+//     description: 'Comprehensive analysis of the global patient repositioning system market, including market size, growth trends, key players, and future opportunities.',
+//   };
+// }
+
+// const PatientRepositioningPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
+//   const { lang } = await params;
 
   const reportData = {
     title: 'Global Patient Repositioning System Market',
