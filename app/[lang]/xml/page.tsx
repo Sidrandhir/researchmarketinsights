@@ -1,5 +1,10 @@
 import { redirect } from 'next/navigation';
 
-export default function XMLPage({ params }: { params: { lang: string } }) {
-  redirect(`/${params.lang}/sitemap.xml`);
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export default async function XMLPage({ params }: PageProps) {
+  const { lang } = await params;
+  redirect(`/${lang}/sitemap.xml`);
 }
