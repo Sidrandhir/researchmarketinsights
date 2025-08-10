@@ -11,14 +11,6 @@ export const prisma = globalForPrisma.prisma ?? new PrismaClient({
       url: process.env.DATABASE_URL,
     },
   },
-  // Performance optimizations
-  __internal: {
-    engine: {
-      enableEngineDebugMode: false,
-      enableQueryLogging: false,
-      enableEngineMetrics: false,
-    },
-  },
 });
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
@@ -28,4 +20,4 @@ process.on('beforeExit', async () => {
   await prisma.$disconnect();
 });
 
-export default prisma; 
+export default prisma;
