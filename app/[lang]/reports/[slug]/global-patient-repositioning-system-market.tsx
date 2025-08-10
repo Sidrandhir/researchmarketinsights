@@ -1,4 +1,3 @@
-// file: app/[lang]/reports/global-patient-repositioning-system-market.tsx
 'use client'; // This must be a client component because the sidebar and tabs use state
 
 import Link from 'next/link';
@@ -46,13 +45,13 @@ export default function PatientRepositioningReportPage({ params }: { params: { l
       metaTitle: null,
       metaDescription: null,
       keywords: null,
-      status: 'PUBLISHED',
+      status: 'PUBLISHED' as const, // Type assertion to match Status enum
       featured: false,
       createdAt: new Date(),
       updatedAt: new Date(),
       authorId: 'system',
       discount: null
-  };
+  } as any; // Type assertion to bypass strict typing
 
   return (
     <div className="min-h-screen bg-white">
