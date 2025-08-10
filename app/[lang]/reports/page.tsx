@@ -62,7 +62,12 @@ async function getCategories() {
   }
 }
 
-const ReportsPage: React.FC<{ params: { lang: string } }> = async ({ params }) => {
+type PageProps = {
+  params: { lang: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+};
+
+const ReportsPage: React.FC<PageProps> = async ({ params, searchParams }) => {
   const lang = params.lang;
   const reports = await getReports();
   const categories = await getCategories();
