@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { z } from 'zod'
+import { LeadStatus } from '@prisma/client'
 
 // Input validation schema
 const leadSchema = z.object({
@@ -28,23 +29,14 @@ export async function GET(request: NextRequest) {
     const query = querySchema.parse(Object.fromEntries(searchParams))
 
     // Build where clause for filtering
-    const where: {
-      status?: string
-      source?: string
-      OR?: Array<{
-        name?: { contains: string; mode: 'insensitive' }
-        email?: { contains: string; mode: 'insensitive' }
-        company?: { contains: string; mode: 'insensitive' }
-        subject?: { contains: string; mode: 'insensitive' }
-      }>
-    } = {}
+    const where: any = {}
 
     if (query.status) {
-      where.status = query.status as any
+      where.status = query.status as LeadStatus
     }
 
     if (query.source) {
-      where.source = query.source as any
+      where.source = query.source
     }
 
     if (query.search) {
@@ -122,7 +114,7 @@ export async function POST(request: NextRequest) {
     const lead = await prisma.lead.create({
       data: {
         ...validatedData,
-        status: 'NEW',
+        status: LeadStatus.NEW,
       },
     })
 
