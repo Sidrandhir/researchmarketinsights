@@ -62,8 +62,8 @@ async function getCategories() {
   }
 }
 
-const ReportsPage: React.FC<{ params: { lang: string } }> = async ({ params }) => {
-  const lang = params.lang;
+const ReportsPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
+  const { lang } = await params;
   const reports = await getReports();
   const categories = await getCategories();
   
