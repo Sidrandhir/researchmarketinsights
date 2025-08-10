@@ -1,7 +1,6 @@
 // file: app/[lang]/reports/[slug]/page.tsx
 import { prisma } from '@/lib/db';
 import Link from 'next/link';
-import { PageProps } from '@/types';
 import { notFound } from 'next/navigation';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
