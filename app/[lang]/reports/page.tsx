@@ -64,7 +64,7 @@ async function getCategories() {
 
 type PageProps = {
   params: Promise<{ lang: string }>;
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 const ReportsPage: React.FC<PageProps> = async ({ params }) => {
