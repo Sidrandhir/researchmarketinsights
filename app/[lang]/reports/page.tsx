@@ -67,7 +67,7 @@ type PageProps = {
   searchParams?: Record<string, string | string[] | undefined>;
 };
 
-const ReportsPage: React.FC<PageProps> = async ({ params, searchParams }) => {
+const ReportsPage: React.FC<PageProps> = async ({ params }) => {
   const lang = params.lang;
   const reports = await getReports();
   const categories = await getCategories();
