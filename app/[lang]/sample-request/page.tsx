@@ -1,9 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 
-export default function SampleRequestPage({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export default function SampleRequestPage({ params }: PageProps) {
+  const { lang } = use(params);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
