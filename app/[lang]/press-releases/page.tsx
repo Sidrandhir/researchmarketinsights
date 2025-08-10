@@ -1,5 +1,5 @@
 'use client';
-import { PageProps } from '@/types';
+import { useState, useEffect } from 'react';
 //import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -26,8 +26,20 @@ import Link from 'next/link';
 //   };
 // }
 
-export default function PressReleasesPage({ params }: PageProps) {
-  const { lang } = params;
+export default function PressReleasesPage({ params }: { params: Promise<{ lang: string }> }) {
+  const [resolvedParams, setResolvedParams] = useState<{ lang: string } | null>(null);
+
+  // Resolve params in useEffect
+  useEffect(() => {
+    params.then(setResolvedParams);
+  }, [params]);
+
+  // Don't render until params are resolved
+  if (!resolvedParams) {
+    return <div>Loading...</div>;
+  }
+
+  const { lang } = resolvedParams;
   
   const categories = [
     {
