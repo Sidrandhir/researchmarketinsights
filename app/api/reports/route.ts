@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { z } from 'zod'
+import { Category, Status } from '@prisma/client'
 
 // Input validation schema
 const querySchema = z.object({
@@ -20,25 +21,12 @@ export async function GET(request: NextRequest) {
     const query = querySchema.parse(Object.fromEntries(searchParams))
 
     // Build where clause for filtering
-    const where: {
-      status: string
-      category?: string
-      OR?: Array<{
-        title?: { contains: string; mode: 'insensitive' }
-        description?: { contains: string; mode: 'insensitive' }
-        content?: { path: string[]; string_contains: string }
-      }>
-      featured?: boolean
-      price?: {
-        gte?: number
-        lte?: number
-      }
-    } = {
-      status: 'PUBLISHED',
+    const where: any = {
+      status: Status.PUBLISHED,
     }
 
     if (query.category) {
-      where.category = query.category as any
+      where.category = query.category as Category
     }
 
     if (query.search) {
@@ -158,8 +146,9 @@ export async function POST(request: NextRequest) {
     const report = await prisma.report.create({
       data: {
         ...validatedData,
+        category: validatedData.category as Category,
         authorId: 'temp-author-id', // This should come from authenticated user
-        status: 'DRAFT',
+        status: Status.DRAFT,
       },
     })
 
