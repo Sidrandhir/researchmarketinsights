@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { Shield, Eye, Lock, Users, Database, Globe, FileText, Calendar } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Privacy Policy - Market Research Insights' : '隐私政策 - 市场研究洞察',
@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-const PrivacyPolicyPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
-  const lang = params.lang;
+const PrivacyPolicyPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
+  const { lang } = await params;
 
   const lastUpdated = '2024-01-15';
 
