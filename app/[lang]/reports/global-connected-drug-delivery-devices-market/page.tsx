@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Download, Eye, Calendar, FileText, TrendingUp, Users, BarChart3 } from 'lucide-react';
 import StickySidebar from '@/components/reports/StickySidebar';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = params.lang;
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
   
   return {
     title: lang === 'en' ? 'Global Connected Drug Delivery Devices Market - Market Research Insights' : 'Global Connected Drug Delivery Devices Market - Market Research Insights',
@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-const ConnectedDrugDeliveryPage: React.FC<{ params: { lang: string } }> = ({ params }) => {
-  const lang = params.lang;
+const ConnectedDrugDeliveryPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
+  const { lang } = await params;
 
   const reportData = {
     title: 'Global Connected Drug Delivery Devices Market',
