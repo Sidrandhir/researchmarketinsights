@@ -22,8 +22,13 @@ import {
 import StickyContactForm from '@/components/reports/StickyContactForm';
 import ReportContent from '@/components/reports/ReportContent';
 
+// Define the proper PageProps type for Next.js 15
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
 // Fixed: Updated type definition to use Promise<{ lang: string }>
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params;
   
   // Get the report data for metadata
@@ -116,8 +121,8 @@ async function getRelatedReports() {
   }
 }
 
-// Fixed: Updated component type definition to use Promise<{ lang: string }>
-const GlobalPatientRepositioningSystemMarketPage: React.FC<{ params: Promise<{ lang: string }> }> = async ({ params }) => {
+// Fixed: Updated component type definition to use PageProps interface
+const GlobalPatientRepositioningSystemMarketPage: React.FC<PageProps> = async ({ params }) => {
   const { lang } = await params; // Fixed: Added await to destructure params
   const report = await getReport();
   const relatedReports = await getRelatedReports();
@@ -382,7 +387,6 @@ const GlobalPatientRepositioningSystemMarketPage: React.FC<{ params: Promise<{ l
 
               {/* Report Content */}
               <ReportContent report={report} lang={lang} />
-
               {/* Related Reports */}
               {relatedReports.length > 0 && (
                 <section className="mt-16">
