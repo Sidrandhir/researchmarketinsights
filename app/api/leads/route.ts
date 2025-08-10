@@ -15,13 +15,12 @@ const updateLeadSchema = z.object({
   status: z.enum(['NEW', 'CONTACTED', 'QUALIFIED', 'CONVERTED', 'LOST']).optional(),
 })
 
-interface RouteContext {
-  params: Promise<{ id: string }>
-}
-
-export async function GET(request: NextRequest, context: RouteContext) {
+export async function GET(
+  request: NextRequest, 
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const { id } = await context.params
+    const { id } = await params
 
     // Validate ID format (assuming UUID)
     if (!id || typeof id !== 'string') {
@@ -70,9 +69,12 @@ export async function GET(request: NextRequest, context: RouteContext) {
   }
 }
 
-export async function PUT(request: NextRequest, context: RouteContext) {
+export async function PUT(
+  request: NextRequest, 
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const { id } = await context.params
+    const { id } = await params
     const body = await request.json()
 
     // Validate ID format
@@ -128,9 +130,12 @@ export async function PUT(request: NextRequest, context: RouteContext) {
   }
 }
 
-export async function DELETE(request: NextRequest, context: RouteContext) {
+export async function DELETE(
+  request: NextRequest, 
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const { id } = await context.params
+    const { id } = await params
 
     // Validate ID format
     if (!id || typeof id !== 'string') {
