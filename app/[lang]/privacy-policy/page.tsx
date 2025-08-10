@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Shield, Eye, Lock, Users, Database, Globe, FileText, Calendar } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   
   return {
