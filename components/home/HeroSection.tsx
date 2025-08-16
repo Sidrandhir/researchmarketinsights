@@ -1,214 +1,156 @@
-// file: components/home/HeroSection.tsx
-'use client';
-import React, { useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { useTranslation, getLanguageFromPathname } from '@/lib/i18n';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, EffectFade, Navigation, EffectCreative } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-creative';
+"use client";
 
+import { useState, useEffect } from "react";
 
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+export default function HeroCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-// Type for Swiper instance
-type SwiperInstance = {
-  autoplay: {
-    start: () => void;
-    stop: () => void;
-  };
-};
-
-const HeroSection: React.FC = () => {
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperInstance | null>(null);
-  const router = useRouter();
-  const pathname = usePathname();
-  const currentLang = getLanguageFromPathname(pathname);
-  const { t } = useTranslation(currentLang);
-
-
-
-  const toggleAutoplay = () => {
-    if (swiperInstance) {
-      if (isPaused) {
-        swiperInstance.autoplay.start();
-        setIsPaused(false);
-      } else {
-        swiperInstance.autoplay.stop();
-        setIsPaused(true);
-      }
-    }
-  };
-
-  const slideBackgrounds = [
+  const slides = [
     {
-      type: 'video',
-      src: '/videos/hero-background.mp4',
-      fallback: '/images/hero-slide-1.jpg'
+      id: 1,
+      image: "/images/hero/hero1.jpg",
+      alt: "",
+      title: "",
+      subtitle: "",
+      description: ""
     },
     {
-      type: 'image',
-      src: '/images/hero-slide-2.jpg',
-      overlay: 'from-blue-900/60 to-purple-900/60'
+      id: 2,
+      image: "/images/hero/hero2.avif",
+      alt: "",
+      title: "",
+      subtitle: "",
+      description: ""
     },
     {
-      type: 'image',
-      src: '/images/hero-slide-3.jpg',
-      overlay: 'from-green-900/60 to-blue-900/60'
+      id: 3,
+      image: "/images/hero/hero3.avif",
+      alt: "",
+      title: "",
+      subtitle: "",
+      description: ""
     }
   ];
 
-  const slideData = [
-    {
-      title: t('hero.slide1.title'),
-      subtitle: t('hero.slide1.subtitle'),
-      description: t('hero.slide1.description'),
-      cta: t('hero.slide1.cta'),
-      link: `/${currentLang}/reports`
-    },
-    {
-      title: t('hero.slide2.title'),
-      subtitle: t('hero.slide2.subtitle'),
-      description: t('hero.slide2.description'),
-      cta: t('hero.slide2.cta'),
-      link: `/${currentLang}/about`
-    },
-    {
-      title: t('hero.slide3.title'),
-      subtitle: t('hero.slide3.subtitle'),
-      description: t('hero.slide3.description'),
-      cta: t('hero.slide3.cta'),
-      link: `/${currentLang}/contact`
-    }
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const handleKnowMore = (slideId: number) => {
+    // Handle navigation to specific page based on slide
+    console.log(`Know More clicked for slide ${slideId}`);
+    // You can add navigation logic here
+    // For example: router.push(`/reports/${slideId}`)
+  };
 
   return (
-    <section className="relative h-screen bg-gray-900 text-white overflow-hidden">
-      {/* Enhanced Swiper with Creative Effects */}
-      <Swiper
-        modules={[Pagination, Autoplay, EffectFade, Navigation, EffectCreative]}
-        effect="creative"
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            translate: [0, 0, -400],
-          },
-          next: {
-            translate: ['100%', 0, 0],
-          },
-        }}
-        loop={true}
-        speed={1200}
-        autoplay={{ 
-          delay: 5000, 
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true
-        }}
-        pagination={{ 
-          clickable: true, 
-          renderBullet: (index, className) => 
-            `<span class="${className} w-3 h-3 bg-white/50 hover:bg-white transition-all duration-300"></span>`
-        }}
-        navigation={{
-          nextEl: '.swiper-button-next-custom',
-          prevEl: '.swiper-button-prev-custom',
-        }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        onSwiper={setSwiperInstance}
-        className="w-full h-full"
-      >
-        {/* Enhanced Backgrounds with Better Overlays */}
-        <div slot="container-start" className="absolute inset-0 z-0">
-          {slideBackgrounds.map((bg, index) => (
-            <div 
-              key={index} 
-              className={`absolute inset-0 w-full h-full transition-all duration-1000 ${
-                activeIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-              }`}
-            >
-              {bg.type === 'video' ? (
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="w-full h-full object-cover"
-                  poster={bg.fallback}
-                >
-                  <source src={bg.src} type="video/mp4" />
-                  <img src={bg.fallback} alt="Hero background" className="w-full h-full object-cover" />
-                </video>
-              ) : (
-                <div 
-                  className="w-full h-full bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${bg.src})` }}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${bg.overlay}`}></div>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+    <div
+      id="carouselExampleControls"
+      className="carousel slide w-screen h-[60vh] md:h-[70vh] lg:h-[80vh]"
+      data-ride="carousel"
+    >
+      <div className="carousel-inner h-full">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`carousel-item h-full ${
+              index === currentSlide ? 'active' : ''
+            }`}
+          >
+            <img
+              className="d-block w-full h-full object-cover"
+              src={slide.image}
+              alt={slide.alt}
+            />
 
-        {/* Enhanced Slide Content with Better Typography */}
-        {slideData.map((slide, index) => (
-          <SwiperSlide key={index} className="flex items-center justify-center z-10 p-4">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="mb-6">
-                <h2 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+            {/* Content Overlay with CTA Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-shadow-md">
                   {slide.title}
-                </h2>
-                <h3 className="text-xl md:text-2xl text-blue-200 mb-4 font-medium">
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed text-shadow">
                   {slide.subtitle}
-                </h3>
-                <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto">
+                </p>
+                <p className="text-sm sm:text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-shadow opacity-90">
                   {slide.description}
                 </p>
-                <button 
-                  onClick={() => router.push(slide.link)}
-                  className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                >
-                  {slide.cta}
-                </button>
+
+                {/* Know More CTA Button - Positioned on the right */}
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-8 lg:mr-16">
+                  <button
+                    onClick={() => handleKnowMore(slide.id)}
+                    className="bg-white text-gray-900 font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-lg text-sm sm:text-base md:text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    Know More
+                  </button>
+                </div>
               </div>
             </div>
-          </SwiperSlide>
+          </div>
         ))}
-
-        {/* Enhanced Navigation Buttons */}
-        <div className="swiper-button-prev-custom absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-20 cursor-pointer p-4 bg-black/30 backdrop-blur-sm rounded-full hover:bg-black/50 transition-all duration-300 hover:scale-110">
-          <ChevronLeft className="h-6 w-6 text-white" />
-        </div>
-        <div className="swiper-button-next-custom absolute top-1/2 right-4 md:right-8 -translate-y-1/2 z-20 cursor-pointer p-4 bg-black/30 backdrop-blur-sm rounded-full hover:bg-black/50 transition-all duration-300 hover:scale-110">
-          <ChevronRight className="h-6 w-6 text-white" />
-        </div>
-
-        {/* Enhanced Controls */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
-          <button
-            onClick={toggleAutoplay}
-            className="p-3 bg-black/30 backdrop-blur-sm rounded-full hover:bg-black/50 transition-all duration-300"
-          >
-            {isPaused ? <Play className="h-5 w-5 text-white" /> : <Pause className="h-5 w-5 text-white" />}
-          </button>
-        </div>
-      </Swiper>
-
-      {/* Enhanced Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 z-20">
-        <div 
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
-          style={{ width: `${((activeIndex + 1) / slideData.length) * 100}%` }}
-        ></div>
       </div>
-    </section>
-  );
-};
 
-export default HeroSection;
+      {/* Navigation Arrows */}
+      <a
+        className="carousel-control-prev"
+        href="#carouselExampleControls"
+        role="button"
+        data-slide="prev"
+        onClick={(e) => {
+          e.preventDefault();
+          goToPrev();
+        }}
+      >
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="sr-only">Previous</span>
+      </a>
+
+      <a
+        className="carousel-control-next"
+        href="#carouselExampleControls"
+        role="button"
+        data-slide="next"
+        onClick={(e) => {
+          e.preventDefault();
+          goToNext();
+        }}
+      >
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="sr-only">Next</span>
+      </a>
+
+      {/* Bottom Indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide
+                ? 'bg-white scale-125'
+                : 'bg-white/50 hover:bg-white/75'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

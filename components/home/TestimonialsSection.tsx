@@ -1,213 +1,286 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Star, Quote, Users, Award, Clock } from 'lucide-react'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
-const TestimonialsSection: React.FC = () => {
+export default function TestimonialsSection() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   const testimonials = [
     {
-      id: 1,
-      name: 'Sarah Johnson',
-      position: 'Marketing Director',
-      company: 'TechCorp',
-      content: 'The market research reports provided invaluable insights that helped us make strategic decisions. The depth of analysis and actionable recommendations exceeded our expectations.',
-      rating: 5,
-      avatar: '/images/testimonials/sarah.jpg'
+      name: "Sarah Johnson",
+      position: "VP of Strategy",
+      company: "TechCorp Solutions",
+      content: "The market insights provided by Research Market Insights have been invaluable for our strategic planning. Their reports are comprehensive and actionable.",
+      rating: 5
     },
     {
-      id: 2,
-      name: 'Michael Chen',
-      position: 'CEO',
-      company: 'InnovateLab',
-      content: 'Exceptional quality and depth of analysis. The reports gave us the competitive edge we needed to enter new markets successfully.',
-      rating: 5,
-      avatar: '/images/testimonials/michael.jpg'
+      name: "Michael Chen",
+      position: "Director of Research",
+      company: "Global Industries Ltd",
+      content: "We've been working with RMI for over 3 years. Their industry expertise and timely delivery have consistently exceeded our expectations.",
+      rating: 5
     },
     {
-      id: 3,
-      name: 'Emily Rodriguez',
-      position: 'Strategy Manager',
-      company: 'Global Solutions',
-      content: 'Comprehensive, well-researched, and actionable insights. The reports provided exactly what we were looking for to drive our business strategy.',
-      rating: 5,
-      avatar: '/images/testimonials/emily.jpg'
+      name: "Emily Rodriguez",
+      position: "Head of Business Development",
+      company: "InnovateTech",
+      content: "The quality of their market research reports is outstanding. They've helped us identify new opportunities worth millions in revenue.",
+      rating: 5
     },
     {
-      id: 4,
-      name: 'David Thompson',
-      position: 'VP of Business Development',
-      company: 'FutureTech',
-      content: 'Outstanding research quality and customer service. The insights helped us identify new opportunities and optimize our market positioning.',
-      rating: 5,
-      avatar: '/images/testimonials/david.jpg'
+      name: "David Thompson",
+      position: "CEO",
+      company: "FutureTech Ventures",
+      content: "Research Market Insights has been our trusted partner for market intelligence. Their insights have guided our expansion into new markets.",
+      rating: 5
+    },
+    {
+      name: "Lisa Wang",
+      position: "Marketing Director",
+      company: "Global Solutions Inc",
+      content: "The depth of analysis and actionable recommendations from RMI have transformed our marketing strategy and market positioning.",
+      rating: 5
     }
-  ]
+  ];
 
-  const stats = [
+  const whyChooseUs = [
     {
-      icon: Users,
-      value: '500+',
-      label: 'Companies Served',
-      description: 'Trusted by leading organizations worldwide'
+      title: "Expert Analysts",
+      description: "Our team of 500+ industry experts with 15+ years of experience",
+      icon: "👨‍💼"
     },
     {
-      icon: Award,
-      value: '98%',
-      label: 'Client Satisfaction',
-      description: 'Consistently high satisfaction ratings'
+      title: "Comprehensive Coverage",
+      description: "25+ industry sectors across 150+ countries worldwide",
+      icon: "🌍"
     },
     {
-      icon: Clock,
-      value: '15+',
-      label: 'Years Experience',
-      description: 'Decades of market research expertise'
+      title: "Quality Assurance",
+      description: "ISO 27001 certified with 99.9% accuracy guarantee",
+      icon: "✅"
+    },
+    {
+      title: "24/7 Support",
+      description: "Round-the-clock customer support and consultation",
+      icon: "🕐"
+    },
+    {
+      title: "Fast Delivery",
+      description: "Reports delivered within 24-48 hours of purchase",
+      icon: "⚡"
+    },
+    {
+      title: "Custom Solutions",
+      description: "Tailored research and consulting services available",
+      icon: "🎯"
     }
-  ]
+  ];
+
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <span key={i} className={`text-lg ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}>
+        ★
+      </span>
+    ));
+  };
+
+  // Auto-slide testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  const goToTestimonial = (index: number) => {
+    setCurrentTestimonial(index);
+  };
+
+  const goToNext = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
-    <section className="section-responsive bg-gradient-to-br from-gray-50 to-white">
-      <div className="container-responsive">
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
-          >
-            <Quote className="h-4 w-4" />
-            Client Testimonials
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="heading-responsive font-bold text-gray-900 mb-6"
-          >
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What Our Clients Say
-          </motion.h2>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover why industry leaders choose Research Market Insights for their strategic decisions
+          </p>
+        </div>
+
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-responsive text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          >
-            Don&apos;t just take our word for it. Here&apos;s what industry leaders and decision-makers have to say about our research and insights.
-          </motion.p>
-        </div>
-
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="group"
-            >
-              <div className="card h-full p-6 text-center hover:shadow-xl transition-all duration-300 relative">
-                {/* Quote Icon */}
-                <div className="absolute top-4 right-4 opacity-10">
-                  <Quote className="h-8 w-8 text-primary-600" />
-                </div>
-
-                {/* Rating */}
-                <div className="flex justify-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${
-                        i < testimonial.rating
-                          ? 'text-yellow-400 fill-current'
-                          : 'text-gray-300'
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Content */}
-                <blockquote className="text-gray-700 mb-6 italic leading-relaxed text-sm">
-                  &ldquo;{testimonial.content}&rdquo;
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex items-center justify-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-3 shadow-lg">
-                    <span className="text-white font-semibold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </span>
-                  </div>
-                  <div className="text-left">
-                    <div className="font-semibold text-gray-900 text-sm">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      {testimonial.position}
-                    </div>
-                    <div className="text-xs text-primary-600 font-medium">
-                      {testimonial.company}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Client Satisfaction Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-8">
-              Trusted by Industry Leaders
+          {/* Left Column: Client Testimonials Carousel */}
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              Client Testimonials
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center group"
+            {/* Testimonials Carousel */}
+            <div className="relative">
+              <div className="overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
                 >
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl group-hover:bg-white/30 transition-all duration-300">
-                      <stat.icon className="h-6 w-6 text-white" />
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="w-full flex-shrink-0">
+                      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div className="flex items-center mb-3">
+                          <div className="flex mr-3">
+                            {renderStars(testimonial.rating)}
+                          </div>
+                        </div>
+                        
+                        <p className="text-gray-700 mb-4 italic text-lg">
+                          "{testimonial.content}"
+                        </p>
+                        
+                        <div className="flex items-center">
+                          <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <span className="text-blue-600 font-semibold text-lg">
+                              {testimonial.name.charAt(0)}
+                            </span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                            <div className="text-sm text-gray-600">{testimonial.position}, {testimonial.company}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={goToPrev}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -ml-4 w-8 h-8 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 shadow-sm"
+                aria-label="Previous testimonial"
+              >
+                <span className="text-gray-600">‹</span>
+              </button>
+              
+              <button
+                onClick={goToNext}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 -mr-4 w-8 h-8 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 shadow-sm"
+                aria-label="Next testimonial"
+              >
+                <span className="text-gray-600">›</span>
+              </button>
+
+              {/* Carousel Indicators */}
+              <div className="flex justify-center mt-4 space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToTestimonial(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial 
+                        ? 'bg-blue-600 w-6' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Read Client Testimonials Button */}
+            <div className="text-center mt-8">
+              <Link 
+                href="/about#testimonials"
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 inline-flex items-center"
+              >
+                Read Client Testimonials
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column: Why Choose Us */}
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              Why Choose Us
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {whyChooseUs.map((item, index) => (
+                <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-2xl">{item.icon}</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600">{item.description}</p>
                     </div>
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-lg font-semibold mb-1">
-                    {stat.label}
-                  </div>
-                  <div className="text-primary-100 text-sm">
-                    {stat.description}
-                  </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Additional Stats Section */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            Our Success Metrics
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">98%</div>
+              <div className="text-gray-600">Client Satisfaction</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-green-600 mb-2">15+</div>
+              <div className="text-gray-600">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
+              <div className="text-gray-600">Expert Analysts</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
+              <div className="text-gray-600">Support Available</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA Section */}
+        <div className="mt-12 text-center">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white">
+            <h3 className="text-2xl font-bold mb-4">
+              Ready to Get Started?
+            </h3>
+            <p className="text-lg mb-6 opacity-90">
+              Join thousands of companies worldwide who trust our insights
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+                Get Free Sample
+              </button>
+              <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200">
+                Contact Sales
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  )
-}
-
-export default TestimonialsSection 
+  );
+} 

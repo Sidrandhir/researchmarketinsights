@@ -1,158 +1,153 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { ArrowRight, Download, Phone, Mail, Shield, Clock, Users } from 'lucide-react'
+import Link from "next/link";
 
-const CTASection: React.FC = () => {
+export default function CTASection() {
+  const consultingServices = [
+    {
+      title: "Growth Strategy",
+      description: "Develop comprehensive growth strategies tailored to your business objectives",
+      icon: "📈"
+    },
+    {
+      title: "Market Entry",
+      description: "Navigate new markets with confidence using our expert analysis",
+      icon: "🌍"
+    },
+    {
+      title: "Competitive Intelligence",
+      description: "Stay ahead of competition with detailed market insights",
+      icon: "🎯"
+    },
+    {
+      title: "Industry Analysis",
+      description: "Deep-dive into industry trends and opportunities",
+      icon: "🔍"
+    }
+  ];
+
+  const handleRequestQuote = () => {
+    // Handle quote request
+    console.log('Request Quote clicked');
+    // You can implement navigation logic here
+    // For example: router.push('/request-quote')
+  };
+
+  const handleContactUs = () => {
+    // Handle contact us
+    console.log('Contact Us clicked');
+    // You can implement navigation logic here
+    // For example: router.push('/contact')
+  };
+
   return (
-    <section className="section-responsive bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          }}
-        ></div>
-      </div>
+    <section className="py-16 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Consulting Services
+          </h2>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            Get expert consulting services with actionable insights and tailor-made solutions for your business growth
+          </p>
+        </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"
-        />
-        <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full blur-xl"
-        />
-      </div>
+        {/* Main CTA Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Get Started?
+          </h2>
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto">
+            Get in touch with our expert team to discuss your market research needs 
+            and discover how we can help your business grow.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contact"
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+            >
+              Contact Us
+            </Link>
+            <Link 
+              href="/services"
+              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors duration-200"
+            >
+              Our Services
+            </Link>
+          </div>
+        </div>
 
-      <div className="relative container-responsive">
-        <div className="text-center max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
-          >
-            <span className="w-2 h-2 bg-white rounded-full"></span>
-            Get Started Today
-          </motion.div>
+        {/* Consulting Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {consultingServices.map((service, index) => (
+            <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transition-all duration-300">
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+              <p className="text-blue-100 text-sm">{service.description}</p>
+            </div>
+          ))}
+        </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="heading-responsive font-bold text-white mb-6"
-          >
-            Ready to Make Informed Decisions?
-          </motion.h2>
+        {/* Additional Benefits */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 mb-12">
+          <h3 className="text-2xl font-bold mb-6 text-center">
+            Why Choose Our Consulting Services?
+          </h3>
           
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-responsive text-primary-100 mb-8 max-w-3xl mx-auto leading-relaxed"
-          >
-            Get access to comprehensive market research reports, expert analysis, 
-            and actionable insights that drive business growth and competitive advantage.
-          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-3xl mb-3">🎯</div>
+              <h4 className="text-lg font-semibold mb-2">Tailored Solutions</h4>
+              <p className="text-blue-100 text-sm">
+                Customized strategies designed specifically for your business needs
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl mb-3">⚡</div>
+              <h4 className="text-lg font-semibold mb-2">Fast Delivery</h4>
+              <p className="text-blue-100 text-sm">
+                Quick turnaround times without compromising on quality
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl mb-3">🤝</div>
+              <h4 className="text-lg font-semibold mb-2">Expert Support</h4>
+              <p className="text-blue-100 text-sm">
+                Dedicated consultants available throughout your project
+              </p>
+            </div>
+          </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-          >
-            <Link
-              href="/reports"
-              className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-200 inline-flex items-center gap-2 shadow-lg hover:shadow-xl active:scale-95"
-            >
-              Browse Reports
-              <ArrowRight className="h-5 w-5" />
-            </Link>
+        {/* Contact Information */}
+        <div className="text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-6">
+              Ready to Transform Your Business?
+            </h3>
+            <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+              Our team of 500+ expert analysts is ready to help you make informed decisions and drive growth
+            </p>
             
-            <Link
-              href="/sample-request"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-200 inline-flex items-center gap-2 backdrop-blur-sm"
-            >
-              Get Free Sample
-              <Download className="h-5 w-5" />
-            </Link>
-          </motion.div>
-
-          {/* Contact Options */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12"
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
-                <Phone className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Call Us</h3>
-              <p className="text-primary-100 mb-3 text-sm">Speak with our experts</p>
-              <a href="tel:+1 (315) 908-8888" className="text-white font-semibold hover:underline text-lg">
-                +1 (315) 908-8888
-              </a>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <button
+                onClick={handleRequestQuote}
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Get Free Consultation
+              </button>
+              <button
+                onClick={handleContactUs}
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105"
+              >
+                Schedule a Call
+              </button>
             </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300">
-                <Mail className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Email Us</h3>
-              <p className="text-primary-100 mb-3 text-sm">Get detailed information</p>
-              <a href="mailto:sales@researchmarketinsights.com" className="text-white font-semibold hover:underline text-lg">
-                sales@researchmarketinsights.com
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Trust Badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
-          >
-            <div className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Shield className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-white text-sm font-medium">ISO 27001 Certified</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Users className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-white text-sm font-medium">GDPR Compliant</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Clock className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-white text-sm font-medium">24/7 Support</span>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-export default CTASection

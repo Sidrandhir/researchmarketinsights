@@ -1,334 +1,251 @@
-'use client'
+import { Metadata } from 'next';
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useTranslation } from '@/lib/i18n'
-import { Search, TrendingUp, Users, DollarSign, Globe } from 'lucide-react'
+export const metadata: Metadata = {
+  title: 'Industries - Research Market Insights',
+  description: 'Explore market research reports across 25+ industry sectors including technology, healthcare, energy, automotive, and more.',
+};
 
-export default function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }> }) { 
-  const [resolvedParams, setResolvedParams] = useState<{ lang: string, categorySlug: string } | null>(null);
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('all')
-
-  // Resolve params in useEffect
-  useEffect(() => {
-    params.then(setResolvedParams);
-  }, [params]);
-
-  const { t } = useTranslation((resolvedParams?.lang as import('@/lib/i18n').Language) || 'en')
-
-  // Don't render until params are resolved
-  if (!resolvedParams) {
-    return <div>Loading...</div>;
-  }
-
-  const categories = [
-    {
-      id: 'aerospace',
-      name: t('industry.categories.aerospace'),
-      description: 'Defense systems, aircraft manufacturing, and space technology',
-      reports: 245,
-      growth: '+12.5%',
-      icon: '🚀',
-    },
-    {
-      id: 'automotive',
-      name: t('industry.categories.automotive'),
-      description: 'Vehicle manufacturing, transportation, and mobility solutions',
-      reports: 389,
-      growth: '+8.3%',
-      icon: '🚗',
-    },
-    {
-      id: 'banking',
-      name: t('industry.categories.banking'),
-      description: 'Financial services, insurance, and digital banking',
-      reports: 567,
-      growth: '+15.2%',
-      icon: '🏦',
-    },
-    {
-      id: 'chemicals',
-      name: t('industry.categories.chemicals'),
-      description: 'Chemical manufacturing, materials, and industrial processes',
-      reports: 234,
-      growth: '+6.7%',
-      icon: '🧪',
-    },
-    {
-      id: 'consumer',
-      name: t('industry.categories.consumer'),
-      description: 'Consumer goods, retail, and lifestyle products',
-      reports: 456,
-      growth: '+9.1%',
-      icon: '🛍️',
-    },
-    {
-      id: 'electronics',
-      name: t('industry.categories.electronics'),
-      description: 'Semiconductors, electronics, and digital devices',
-      reports: 678,
-      growth: '+18.4%',
-      icon: '💻',
-    },
-    {
-      id: 'energy',
-      name: t('industry.categories.energy'),
-      description: 'Power generation, renewable energy, and utilities',
-      reports: 345,
-      growth: '+11.8%',
-      icon: '⚡',
-    },
-    {
-      id: 'food',
-      name: t('industry.categories.food'),
-      description: 'Food processing, beverages, and agricultural products',
-      reports: 298,
-      growth: '+7.2%',
-      icon: '🍽️',
-    },
-    {
-      id: 'life-sciences',
-      name: t('industry.categories.lifeSciences'),
-      description: 'Healthcare, pharmaceuticals, and biotechnology',
-      reports: 789,
-      growth: '+22.1%',
-      icon: '🏥',
-    },
-    {
-      id: 'technology',
-      name: t('industry.categories.technology'),
-      description: 'Software, IT services, and digital transformation',
-      reports: 892,
-      growth: '+25.6%',
-      icon: '🔧',
-    },
-  ]
-
-  const filteredCategories = categories.filter(category => {
-    const matchesSearch = category.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         category.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'all' || category.id === selectedCategory
-    return matchesSearch && matchesCategory
-  })
-
+export default function IndustryPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              {t('industry.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
-              {t('industry.subtitle')}
-            </p>
-          </motion.div>
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Industry Sectors
+          </h1>
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            Comprehensive market research and analysis across 25+ industry sectors worldwide
+          </p>
         </div>
       </section>
 
-      {/* Search and Filter Section */}
-      <section className="bg-white py-12 border-b border-gray-200">
+      {/* Industries Grid */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-6">
-            {/* Search */}
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder={t('industry.filter.search')}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                />
-              </div>
-            </div>
-
-            {/* Filter */}
-            <div className="md:w-64">
-              <label htmlFor="industry-category-select" className="sr-only">
-                {t('industry.filter.selectLabel') || 'Select Industry Category'}
-              </label>
-              <select
-                id="industry-category-select"
-                aria-label={t('industry.filter.selectLabel') || 'Select Industry Category'}
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              >
-                <option value="all">{t('industry.filter.all')}</option>
-                {categories.map(category => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industry Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">
-                Browse Industries
-              </h2>
-              <div className="text-sm text-gray-600">
-                {filteredCategories.length} of {categories.length} industries
-              </div>
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCategories.map((category, index) => (
-              <motion.div
-                key={category.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200 cursor-pointer"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl">{category.icon}</div>
-                  <div className="text-right">
-                    <div className="text-sm font-medium text-green-600">
-                      {category.growth}
-                    </div>
-                    <div className="text-xs text-gray-500">Growth</div>
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {category.name}
-                </h3>
-
-                <p className="text-gray-600 mb-4 text-sm">
-                  {category.description}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-sm text-gray-500">
-                    <TrendingUp className="h-4 w-4 mr-1" />
-                    {category.reports} reports
-                  </div>
-                  <Link 
-                    href={`/${resolvedParams.lang}/industry/${category.id}`}
-                    className="text-primary-600 hover:text-primary-700 font-medium text-sm hover:underline transition-all duration-200"
-                  >
-                    View Reports →
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {filteredCategories.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
-            >
-              <div className="text-gray-400 mb-4">
-                <Search className="h-12 w-12 mx-auto" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                No industries found
-              </h3>
-              <p className="text-gray-600">
-                Try adjusting your search or filter criteria.
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {/* Aerospace & Defence */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🚀</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Aerospace & Defence</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Military aircraft, commercial aviation, defense electronics, and space technology.
               </p>
-            </motion.div>
-          )}
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 150+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Automotive & Transportation */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🚗</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Automotive & Transportation</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Electric vehicles, autonomous driving, logistics, and supply chain solutions.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 200+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Banking & Financial */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🏦</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Banking & Financial</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Digital banking, fintech innovation, wealth management, and financial services.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 180+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Chemicals & Materials */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🧪</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Chemicals & Materials</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Specialty chemicals, advanced materials, sustainable packaging, and industrial solutions.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 120+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Consumer Goods */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🛍️</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Consumer Goods</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                E-commerce growth, personal care, food & beverage, and retail innovation.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 250+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Electronics & Semiconductor */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Electronics & Semiconductor</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Global semiconductor industry, IoT devices, consumer electronics, and smart technology.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 300+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Energy & Power */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">⚡</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Energy & Power</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Renewable energy, smart grid technologies, oil & gas, and energy storage solutions.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 220+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Food & Beverages */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🍔</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Food & Beverages</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Plant-based foods, beverage trends, food packaging, and consumer preferences.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 180+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Life Sciences */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">🧬</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Life Sciences</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Biotechnology, pharmaceuticals, medical devices, and healthcare innovation.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 280+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+
+            {/* Technology & Media */}
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 p-6">
+              <div className="text-4xl mb-4">📱</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Technology & Media</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Artificial intelligence, cloud computing, digital media, and emerging technologies.
+              </p>
+              <div className="text-sm text-gray-500 mb-4">
+                <div>• 400+ Reports</div>
+                <div>• Latest: Dec 2024</div>
+              </div>
+              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+                View Reports
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
+      {/* Industry Statistics */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Industry Research Statistics
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Industry Coverage Statistics
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Comprehensive coverage across all major industries with detailed market analysis and insights.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our comprehensive coverage spans across multiple dimensions of market research
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { icon: TrendingUp, value: '4,500+', label: 'Reports Published', color: 'text-blue-600' },
-              { icon: Users, value: '50,000+', label: 'Industry Experts', color: 'text-green-600' },
-              { icon: DollarSign, value: '$2.5B+', label: 'Market Value Analyzed', color: 'text-purple-600' },
-              { icon: Globe, value: '150+', label: 'Countries Covered', color: 'text-orange-600' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className={`flex justify-center mb-4 ${stat.color}`}>
-                  <stat.icon className="h-8 w-8" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-2">25+</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">Industry Sectors</div>
+              <div className="text-sm text-gray-600">Comprehensive coverage across all major industries</div>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-2">150+</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">Countries Covered</div>
+              <div className="text-sm text-gray-600">Global market analysis and regional insights</div>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-2">10,000+</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">Reports Published</div>
+              <div className="text-sm text-gray-600">Extensive library of market research reports</div>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">Expert Analysts</div>
+              <div className="text-sm text-gray-600">Industry specialists and research professionals</div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-600 text-white">
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold mb-6">
-              Need Custom Research?
-            </h2>
-            <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-              Can&apos;t find what you&apos;re looking for? Our expert team can create custom research reports tailored to your specific needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Request Custom Report
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Speak to Expert
-              </button>
-            </div>
-          </motion.div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Need Industry-Specific Research?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Our expert analysts can provide tailored research and insights for your specific industry needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              Contact Our Experts
+            </button>
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              Request Custom Research
+            </button>
+          </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

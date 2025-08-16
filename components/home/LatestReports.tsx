@@ -1,0 +1,219 @@
+"use client";
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { Calendar, FileText, TrendingUp, Eye, Download, Building, ArrowRight } from 'lucide-react';
+
+export default function LatestReports() {
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  // Latest reports data - only available reports
+  const latestReports = [
+    {
+      id: 1,
+      title: "Global Patient Repositioning System Market Size, Share & Industry Analysis",
+      category: "Life Sciences",
+      pages: 189,
+      lastUpdated: "January 12, 2024",
+      image: "🛏️",
+      slug: "global-patient-repositioning-system-market",
+      description: "Comprehensive analysis of patient repositioning systems market with air-assisted, mechanical, and robotic solutions.",
+      marketSize: "USD 1.2 billion",
+      forecastValue: "USD 2.8 billion",
+      cagr: "15.8%",
+      isAvailable: true
+    },
+    {
+      id: 2,
+      title: "Global Connected Drug Delivery Devices Market Size, Share & Industry Analysis",
+      category: "Life Sciences",
+      pages: 245,
+      lastUpdated: "January 15, 2024",
+      image: "💊",
+      slug: "global-connected-drug-delivery-devices-market",
+      description: "In-depth research on connected drug delivery devices market including smart inhalers, connected injectors, and IoT integration.",
+      marketSize: "USD 2.8 billion",
+      forecastValue: "USD 8.5 billion",
+      cagr: "22.4%",
+      isAvailable: true
+    }
+  ];
+
+  // Categories for filtering
+  const categories = [
+    { key: 'all', label: 'All Reports', count: latestReports.filter(r => r.isAvailable).length },
+    { key: 'life-sciences', label: 'Life Sciences', count: latestReports.filter(r => r.category.toLowerCase() === 'life sciences' && r.isAvailable).length }
+  ];
+
+  // Filter reports based on selected category
+  const filteredReports = activeCategory === 'all' 
+    ? latestReports 
+    : activeCategory === 'life-sciences'
+    ? latestReports.filter(report => report.category.toLowerCase() === 'life sciences')
+    : latestReports;
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Latest Market Research Reports
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+            Discover our most recent comprehensive market analysis reports covering emerging trends, 
+            industry insights, and growth opportunities across various sectors.
+          </p>
+          <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 bg-green-400 rounded-full"></span>
+              <span>Available Reports</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category.key}
+              onClick={() => setActiveCategory(category.key)}
+              className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+                activeCategory === category.key
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {category.label}
+              <span className="ml-2 px-2 py-1 bg-white/20 rounded-full text-xs">
+                {category.count}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Reports Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {filteredReports.map((report) => (
+            <div
+              key={report.id}
+              className={`bg-white border border-gray-200 rounded-xl shadow-sm transition-all duration-300 ${
+                report.isAvailable 
+                  ? 'hover:shadow-lg hover:-translate-y-1' 
+                  : 'opacity-75 cursor-not-allowed'
+              }`}
+            >
+              {/* Report Header */}
+              <div className="p-6 border-b border-gray-100">
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl flex-shrink-0">{report.image}</div>
+                  <div className="flex-1 min-w-0">
+                    {/* Status Badge */}
+                    <div className="mb-2">
+                      {report.isAvailable ? (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <span className="w-2 h-2 bg-green-400 rounded-full mr-1.5"></span>
+                          Available
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          <span className="w-2 h-2 bg-yellow-400 rounded-full mr-1.5"></span>
+                          Coming Soon
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="font-semibold text-gray-900 text-lg mb-2 line-clamp-2 leading-tight">
+                      {report.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+                      <Building className="w-4 h-4" />
+                      <span>{report.category}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Report Details */}
+              <div className="p-6">
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {report.description}
+                </p>
+                
+                {/* Market Stats */}
+                <div className="grid grid-cols-3 gap-3 mb-4 text-xs">
+                  <div className="text-center p-2 bg-blue-50 rounded-lg">
+                    <div className="font-semibold text-blue-900">Market Size</div>
+                    <div className="text-blue-700">{report.marketSize}</div>
+                  </div>
+                  <div className="text-center p-2 bg-green-50 rounded-lg">
+                    <div className="font-semibold text-green-900">Forecast</div>
+                    <div className="text-green-700">{report.forecastValue}</div>
+                  </div>
+                  <div className="text-center p-2 bg-purple-50 rounded-lg">
+                    <div className="font-semibold text-purple-900">CAGR</div>
+                    <div className="text-purple-700">{report.cagr}</div>
+                  </div>
+                </div>
+
+                {/* Report Meta */}
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-4 h-4" />
+                    <span>{report.pages} Pages</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    <span>{report.lastUpdated}</span>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  {report.isAvailable ? (
+                    <>
+                      <Link
+                        href={`/reports/${report.slug}`}
+                        className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors duration-200 text-center"
+                      >
+                        View Report
+                      </Link>
+                      <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium text-sm hover:bg-gray-50 transition-colors duration-200">
+                        <Download className="w-4 h-4" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button 
+                        disabled
+                        className="flex-1 bg-gray-400 text-white py-2 px-4 rounded-lg font-medium text-sm cursor-not-allowed text-center"
+                      >
+                        Coming Soon
+                      </button>
+                      <button 
+                        disabled
+                        className="px-4 py-2 border border-gray-300 text-gray-400 rounded-lg font-medium text-sm cursor-not-allowed"
+                      >
+                        <Download className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View All Reports CTA */}
+        <div className="text-center">
+          <Link
+            href="/reports"
+            className="inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+          >
+            View All Reports
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

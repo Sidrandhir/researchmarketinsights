@@ -1,16 +1,47 @@
 export default {
   // Navigation
-  nav: {
-    home: 'Home',
-    industry: 'Industry',
-    about: 'About',
-    pressRelease: 'Press Release',
-    contact: 'Contact Us',
-    reports: 'Reports',
-    samples: 'Samples',
-    buyNow: 'Buy Now',
-  },
+   nav: {
+    home: 'HOME',
+    industries: 'INDUSTRIES',
+    services: 'SERVICES',
+    insights: 'INSIGHTS',
+    about: 'ABOUT',
+    contact: 'CONTACT',
+    
+    // Industries
+    healthcare: 'HEALTHCARE',
+    chemicals: 'CHEMICALS & MATERIALS',
+    ict: 'INFORMATION & TECHNOLOGY',
+    machinery: 'MACHINERY & EQUIPMENT',
+    energy: 'ENERGY & POWER',
+    electronics: 'SEMICONDUCTOR & ELECTRONICS',
+    aerospace: 'AEROSPACE & DEFENCE',
+    automotive: 'AUTOMOTIVE & TRANSPORTATION',
+    food: 'FOOD & BEVERAGES',
+    agriculture: 'AGRICULTURE',
+    consumer: 'CONSUMER GOODS',
+    packaging: 'PACKAGING',
+    bfsi: 'BANKING FINANCIAL SERVICES & INSURANCE',
 
+    // Services
+    consulting: 'Consulting Services',
+    syndicated: 'Syndicated Market Research',
+    marketIntel: 'Market Intelligence',
+    growthStrategy: 'Growth Strategy',
+    goToMarket: 'Go to Market Strategy',
+    esg: 'ESG Analysis',
+    aiOverview: 'AI Overview',
+    usTariff: 'US Tariff',
+
+    // Insights
+    pressReleases: 'Press Release',
+    blogs: 'Blogs',
+    
+    // About
+    aboutUs: 'About Us',
+    ourClients: 'Our Clients',
+    testimonials: 'Client Testimonials',
+  },
   // Home page
   home: {
     hero: {

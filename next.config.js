@@ -4,7 +4,7 @@ const nextConfig = {
     // Remove appDir as it's now default in Next.js 14
   },
   images: {
-    domains: ['localhost', 'marketresearchinsights.com'],
+    domains: ['localhost', 'marketresearchinsights.com', 'images.unsplash.com'],
     formats: ['image/webp', 'image/avif'],
   },
   // Remove i18n config as we're using middleware for internationalization

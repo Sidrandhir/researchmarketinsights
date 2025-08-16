@@ -2,6 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure fixed header works properly */
+header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+}
+
+/* Add padding to body to account for fixed header */
+body {
+  padding-top: 80px; /* 20px (h-20) for header height */
+}
+
+/* Ensure main content doesn't hide behind header */
+main, .min-h-screen {
+  padding-top: 0;
+}
+
+/* Ensure all content is contained within viewport */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow on main containers */
+main, .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ensure dropdowns don't cause horizontal scroll */
+.fixed {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Prevent vertical scrollbars in specific sections */
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+/* Ensure proper content containment */
+.carousel-container,
+.featured-reports-section,
+.industry-categories-section {
+  overflow: hidden !important;
+  max-height: none !important;
+}
+
+/* Prevent line-clamp overflow issues */
+.line-clamp-2,
+.line-clamp-3 {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Line-clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  max-height: 2.8em;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  max-height: 4.2em;
+}
+
+/* Hide scrollbars for horizontal scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Ensure flex containers don't overflow */
+.flex-col {
+  min-height: 0;
+}
+
+/* Prevent text overflow in cards */
+.card-content {
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+/* Ensure proper grid alignment */
+.grid {
+  align-items: stretch;
+}
+
+.grid > * {
+  min-height: 0;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
@@ -52,14 +170,9 @@
 }
 
 @layer base {
-  * {
-    @apply border-gray-200;
-  }
   body {
     @apply bg-white text-gray-900 font-sans antialiased;
   }
-  
-  /* Improved typography */
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
   }
@@ -81,141 +194,137 @@
   }
   
   .btn-outline {
-    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-sm hover:shadow-md active:scale-95;
+    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
   
-  /* Enhanced card styles */
+  /* Card styles */
   .card {
-    @apply bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden;
   }
   
-  .card-hover {
-    @apply hover:shadow-xl hover:-translate-y-2 transition-all duration-300;
+  .card-header {
+    @apply p-6 border-b border-gray-200;
   }
   
-  /* Enhanced input styles */
-  .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white shadow-sm;
+  .card-body {
+    @apply p-6;
   }
   
-  /* Gradient backgrounds */
-  .gradient-bg {
-    @apply bg-gradient-to-br from-primary-50 via-white to-secondary-50;
+  .card-footer {
+    @apply p-6 border-t border-gray-200 bg-gray-50;
   }
   
-  .hero-gradient {
-    @apply bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800;
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
   }
   
-  /* Professional shadows */
-  .shadow-soft {
-    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
   }
   
-  .shadow-medium {
-    box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  .form-error {
+    @apply text-red-600 text-sm mt-1;
   }
   
-  /* Responsive grid utilities */
-  .grid-responsive {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  /* Navigation styles */
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-600 font-medium py-2 px-3 rounded-md transition-all duration-200;
   }
   
-  .grid-responsive-2 {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  .nav-link.active {
+    @apply text-blue-600 bg-blue-50;
   }
   
-  .grid-responsive-3 {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
-  }
-  
-  /* Mobile-first responsive sections */
-  .section-responsive {
-    @apply py-8 sm:py-12 lg:py-16 xl:py-20;
-  }
-  
-  .container-responsive {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
-  /* Enhanced text utilities */
-  .text-responsive {
-    @apply text-base sm:text-lg lg:text-xl;
-  }
-  
-  .heading-responsive {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
-  }
-  
-  /* Professional spacing */
-  .space-responsive {
-    @apply space-y-4 sm:space-y-6 lg:space-y-8;
-  }
-  
-  /* Enhanced animations */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
-  }
-  
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
-  }
-  
-  /* Professional hover effects */
-  .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
-  }
-  
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
-  }
-  
-  /* SVG Dots Background */
-  .bg-svg-dots {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Mobile-first responsive utilities */
-  .mobile-grid {
-    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
-  }
-  
-  .mobile-flex {
-    @apply flex flex-col sm:flex-row;
-  }
-  
-  .mobile-text {
-    @apply text-sm sm:text-base lg:text-lg;
-  }
-  
-  .mobile-padding {
-    @apply p-4 sm:p-6 lg:p-8;
-  }
-  
-  /* Professional spacing utilities */
+  /* Section styles */
   .section-padding {
-    @apply py-12 sm:py-16 lg:py-20 xl:py-24;
+    @apply py-16;
   }
   
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
+}
+
+/* Bootstrap Carousel Styles */
+.carousel {
+  position: relative;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-control-prev {
+  left: 16px;
+}
+
+.carousel-control-next {
+  right: 16px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e") no-repeat 50% 50%;
+  mask-size: 100% 100%;
+}
+
+.carousel-control-next-icon {
+  transform: rotate(180deg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Custom animations */
@@ -230,84 +339,331 @@
   }
 }
 
-@keyframes slideUp {
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-/* Enhanced responsive breakpoints */
-@media (max-width: 640px) {
-  .mobile-stack {
-    @apply flex flex-col space-y-4;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
   }
-  
-  .mobile-center {
-    @apply text-center;
-  }
-  
-  .mobile-full {
-    @apply w-full;
-  }
-}
-
-@media (min-width: 768px) {
-  .desktop-grid {
-    @apply grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
-  }
-  
-  .desktop-flex {
-    @apply flex flex-row;
-  }
-}
-
-/* Example for CTASection, HeroSection, Footer, or Reports page */
-.absolute {
-  inset: 0;
-  opacity: 0.2;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-}
-/* Swiper Custom Pagination */
-.swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+  to {
     opacity: 1;
-    transition: all 300ms ease;
-    margin: 0 5px !important;
+    transform: translateX(0);
+  }
 }
 
-.swiper-pagination-bullet-active {
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+/* Text shadows */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-md {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container-padding {
+    @apply px-4;
+  }
+  
+  .section-padding {
+    @apply py-12;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-padding {
+    @apply px-6;
+  }
+  
+  .section-padding {
+    @apply py-14;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    @apply px-8;
+  }
+  
+  .section-padding {
+    @apply py-20;
+  }
+}
+
+/* Custom animations for carousel */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Bootstrap-like carousel styles */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-control-prev {
+  left: 20px;
+}
+
+.carousel-control-next {
+  right: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev-icon::before {
+  content: "‹";
+  font-weight: bold;
+}
+
+.carousel-control-next-icon::before {
+  content: "›";
+  font-weight: bold;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .carousel-control-prev,
+  .carousel-control-next {
     width: 40px;
-    border-radius: 5px;
-    background-color: white;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .carousel-control-prev {
+    left: 10px;
+  }
+  
+  .carousel-control-next {
+    right: 10px;
+  }
 }
-/* Swiper Custom Navigation */
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  display: none; /* Hide the default ugly arrows */
-}
-/* file: app/globals.css */
 
-@layer utilities {
-  .text-shadow {
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+/* Ensure no horizontal scroll on mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
   }
-  .text-shadow-md {
-    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  }
-}
-@layer utilities {
-  .text-shadow {
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  .text-shadow-md {
-    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+  
+  .container, main {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 }
+
+/* Report page segmentation grid styles */
+.segmentation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.segment-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.segment-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.segment-card h4 {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+.segment-card p {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.segment-card p:last-child {
+  margin-bottom: 0;
+}
+
+.segment-card strong {
+  color: #334155;
+  font-weight: 600;
+}
+
+/* Responsive adjustments for segmentation grid */
+@media (max-width: 640px) {
+  .segmentation-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .segment-card {
+    padding: 1rem;
+  }
+}
+

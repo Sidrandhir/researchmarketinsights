@@ -1,81 +1,47 @@
-import type { Metadata } from 'next';
-import { Inter, Poppins } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import { Toaster } from 'react-hot-toast';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Market Research Insights - Comprehensive Industry Analysis',
-    template: '%s | Market Research Insights',
-  },
-  description: 'Discover comprehensive market research reports, industry analysis, and business insights. Get detailed market intelligence across various sectors.',
-  keywords: [
-    'market research',
-    'industry analysis',
-    'business intelligence',
-    'market reports',
-    'industry trends',
-    'market insights',
-    'business research',
-    'market analysis',
-  ],
-  authors: [{ name: 'Market Research Insights' }],
-  creator: 'Market Research Insights',
-  publisher: 'Market Research Insights',
+  title: 'Research Market Insights - Global Market Research Reports',
+  description: 'Discover comprehensive market research reports, industry analysis, and business insights across 25+ industry sectors. Get expert analysis from 500+ analysts covering 150+ countries.',
+  keywords: 'market research, industry reports, business intelligence, market analysis, consulting services, global markets',
+  authors: [{ name: 'Research Market Insights' }],
+  creator: 'Research Market Insights',
+  publisher: 'Research Market Insights',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://marketresearchinsights.com'),
+  metadataBase: new URL('https://researchmarketinsights.com'),
   alternates: {
     canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'zh-CN': '/zh',
-      'ko-KR': '/ko',
-      'ar-SA': '/ar',
-      'fr-FR': '/fr',
-      'es-ES': '/es',
-      'de-DE': '/de',
-      'ja-JP': '/jp',
-    },
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://marketresearchinsights.com',
-    title: 'Market Research Insights - Comprehensive Industry Analysis',
-    description: 'Discover comprehensive market research reports, industry analysis, and business insights.',
-    siteName: 'Market Research Insights',
+    title: 'Research Market Insights - Global Market Research Reports',
+    description: 'Discover comprehensive market research reports, industry analysis, and business insights across 25+ industry sectors.',
+    url: 'https://researchmarketinsights.com',
+    siteName: 'Research Market Insights',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Market Research Insights',
+        alt: 'Research Market Insights',
       },
     ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Market Research Insights - Comprehensive Industry Analysis',
-    description: 'Discover comprehensive market research reports, industry analysis, and business insights.',
+    title: 'Research Market Insights - Global Market Research Reports',
+    description: 'Discover comprehensive market research reports, industry analysis, and business insights across 25+ industry sectors.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -94,32 +60,77 @@ export const metadata: Metadata = {
     yandex: 'your-yandex-verification-code',
     yahoo: 'your-yahoo-verification-code',
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}suppressHydrationWarning>
-      <body className="font-sans antialiased">
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Research Market Insights" />
+        <meta name="msapplication-TileColor" content="#2563eb" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Favicon and app icons */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Research Market Insights",
+              "url": "https://researchmarketinsights.com",
+              "logo": "https://researchmarketinsights.com/logo.png",
+              "description": "Global market research and business intelligence company",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Office No. 208, Vision Mall",
+                "addressLocality": "Pune",
+                "addressRegion": "Maharashtra",
+                "postalCode": "411057",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-XXXXXXXXXX",
+                "contactType": "customer service",
+                "email": "sales@researchmarketinsights.com"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/research-market-insights",
+                "https://www.facebook.com/researchmarketinsights",
+                "https://twitter.com/rmi_insights",
+                "https://www.instagram.com/researchmarketinsights"
+              ]
+            })
+          }}
+        />
+      </head>
+      <body className={inter.className}>
         <Header />
-        <main className="min-h-screen">
+        <main className="min-h-screen w-full overflow-x-hidden">
           {children}
         </main>
         <Footer />
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-            },
-          }}
-        />
       </body>
     </html>
-  );
+  )
 } 

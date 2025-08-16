@@ -1,236 +1,294 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { 
-  Plane, 
-  Car, 
-  Building2, 
-  FlaskConical, 
-  ShoppingBag, 
-  Cpu, 
-  Zap, 
-  Coffee, 
-  Heart, 
-  Smartphone,
-  ArrowRight
-} from 'lucide-react'
+import { useState, useRef } from 'react';
+import Link from 'next/link';
 
-const IndustryCategories: React.FC = () => {
-  const categories = [
+export default function IndustryCategories() {
+  const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const industries = [
     {
-      name: 'Aerospace & Defense',
-      slug: 'aerospace-defense',
-      icon: Plane,
-      description: 'Aviation, defense systems, and space technology',
-      color: 'from-blue-500 to-blue-600',
-      gradient: 'from-blue-400 to-blue-600',
-      count: '2,500+ reports',
-      bgColor: 'bg-blue-50'
+      name: "Aerospace & Defence",
+      icon: "🚀",
+      description: "Military aircraft, defense technology, space exploration",
+      color: "from-blue-500 to-blue-600",
+      href: "/industry/aerospace-defence"
     },
     {
-      name: 'Automotive & Transportation',
-      slug: 'automotive-transportation',
-      icon: Car,
-      description: 'Vehicle manufacturing, mobility, and logistics',
-      color: 'from-gray-500 to-gray-600',
-      gradient: 'from-gray-400 to-gray-600',
-      count: '3,200+ reports',
-      bgColor: 'bg-gray-50'
+      name: "Automotive & Transportation",
+      icon: "🚗",
+      description: "Electric vehicles, autonomous driving, logistics",
+      color: "from-green-500 to-green-600",
+      href: "/industry/automotive-transportation"
     },
     {
-      name: 'Banking, Financial Services & Insurance',
-      slug: 'banking-financial-services-insurance',
-      icon: Building2,
-      description: 'Financial markets, banking, and insurance',
-      color: 'from-green-500 to-green-600',
-      gradient: 'from-green-400 to-green-600',
-      count: '4,100+ reports',
-      bgColor: 'bg-green-50'
+      name: "Banking & Financial",
+      icon: "🏦",
+      description: "Digital banking, fintech, investment strategies",
+      color: "from-purple-500 to-purple-600",
+      href: "/industry/banking-financial"
     },
     {
-      name: 'Chemicals & Materials',
-      slug: 'chemicals-materials',
-      icon: FlaskConical,
-      description: 'Chemical industry and advanced materials',
-      color: 'from-purple-500 to-purple-600',
-      gradient: 'from-purple-400 to-purple-600',
-      count: '1,800+ reports',
-      bgColor: 'bg-purple-50'
+      name: "Chemicals & Materials",
+      icon: "🧪",
+      description: "Sustainable materials, advanced polymers, green chemistry",
+      color: "from-indigo-500 to-indigo-600",
+      href: "/industry/chemicals-materials"
     },
     {
-      name: 'Consumer Goods',
-      slug: 'consumer-goods',
-      icon: ShoppingBag,
-      description: 'Retail, consumer products, and FMCG',
-      color: 'from-pink-500 to-pink-600',
-      gradient: 'from-pink-400 to-pink-600',
-      count: '2,900+ reports',
-      bgColor: 'bg-pink-50'
+      name: "Consumer Goods",
+      icon: "🛍️",
+      description: "E-commerce, sustainable products, digital marketing",
+      color: "from-pink-500 to-pink-600",
+      href: "/industry/consumer-goods"
     },
     {
-      name: 'Electronics & Semiconductor',
-      slug: 'electronics-semiconductor',
-      icon: Cpu,
-      description: 'Electronics, semiconductors, and components',
-      color: 'from-indigo-500 to-indigo-600',
-      gradient: 'from-indigo-400 to-indigo-600',
-      count: '3,600+ reports',
-      bgColor: 'bg-indigo-50'
+      name: "Electronics & Semiconductor",
+      icon: "💻",
+      description: "AI chips, 5G technology, IoT devices",
+      color: "from-cyan-500 to-cyan-600",
+      href: "/industry/electronics-semiconductor"
     },
     {
-      name: 'Energy & Power',
-      slug: 'energy-power',
-      icon: Zap,
-      description: 'Energy generation, distribution, and renewables',
-      color: 'from-yellow-500 to-yellow-600',
-      gradient: 'from-yellow-400 to-yellow-600',
-      count: '2,300+ reports',
-      bgColor: 'bg-yellow-50'
+      name: "Energy & Power",
+      icon: "⚡",
+      description: "Renewable energy, smart grids, energy storage",
+      color: "from-yellow-500 to-yellow-600",
+      href: "/industry/energy-power"
     },
     {
-      name: 'Food & Beverages',
-      slug: 'food-beverages',
-      icon: Coffee,
-      description: 'Food processing, beverages, and agriculture',
-      color: 'from-orange-500 to-orange-600',
-      gradient: 'from-orange-400 to-orange-600',
-      count: '1,700+ reports',
-      bgColor: 'bg-orange-50'
+      name: "Food & Beverages",
+      icon: "🍔",
+      description: "Plant-based foods, food safety, sustainable packaging",
+      color: "from-orange-500 to-orange-600",
+      href: "/industry/food-beverages"
     },
     {
-      name: 'Life Sciences',
-      slug: 'life-sciences',
-      icon: Heart,
-      description: 'Healthcare, pharmaceuticals, and biotechnology',
-      color: 'from-red-500 to-red-600',
-      gradient: 'from-red-400 to-red-600',
-      count: '4,500+ reports',
-      bgColor: 'bg-red-50'
+      name: "Life Sciences",
+      icon: "🧬",
+      description: "Gene therapy, digital health, biopharmaceuticals",
+      color: "from-red-500 to-red-600",
+      href: "/industry/life-sciences"
     },
     {
-      name: 'Technology, Media & Telecommunications',
-      slug: 'technology-media-telecommunications',
-      icon: Smartphone,
-      description: 'IT, media, telecom, and digital transformation',
-      color: 'from-teal-500 to-teal-600',
-      gradient: 'from-teal-400 to-teal-600',
-      count: '5,200+ reports',
-      bgColor: 'bg-teal-50'
+      name: "Technology & Media",
+      icon: "📱",
+      description: "Artificial intelligence, cloud computing, digital media",
+      color: "from-teal-500 to-teal-600",
+      href: "/industry/technology-media"
     }
-  ]
+  ];
+
+  // Mock data for industry reports - in real app, this would come from API
+  const industryReports = {
+    "Aerospace & Defence": [
+      {
+        id: 1,
+        title: "Global Military Aircraft Market Analysis 2024-2030",
+        date: "December 2024",
+        pages: 280,
+        format: "PDF + Excel"
+      },
+      {
+        id: 2,
+        title: "Space Exploration Technology Market Report",
+        date: "November 2024",
+        pages: 220,
+        format: "PDF + Excel"
+      },
+      {
+        id: 3,
+        title: "Defense Electronics Market Trends & Forecast",
+        date: "October 2024",
+        pages: 195,
+        format: "PDF + Excel"
+      }
+    ],
+    "Automotive & Transportation": [
+      {
+        id: 4,
+        title: "Electric Vehicle Market: Global Analysis 2024-2030",
+        date: "December 2024",
+        pages: 240,
+        format: "PDF + Excel"
+      },
+      {
+        id: 5,
+        title: "Autonomous Driving Technology Market Report",
+        date: "November 2024",
+        pages: 260,
+        format: "PDF + Excel"
+      },
+      {
+        id: 6,
+        title: "Logistics & Supply Chain Market Analysis",
+        date: "October 2024",
+        pages: 180,
+        format: "PDF + Excel"
+      }
+    ],
+    "Technology & Media": [
+      {
+        id: 7,
+        title: "Global Artificial Intelligence Market Analysis 2024-2030",
+        date: "December 2024",
+        pages: 250,
+        format: "PDF + Excel"
+      },
+      {
+        id: 8,
+        title: "Cloud Computing Market: Trends & Opportunities",
+        date: "November 2024",
+        pages: 220,
+        format: "PDF + Excel"
+      },
+      {
+        id: 9,
+        title: "Digital Media & Entertainment Market Report",
+        date: "October 2024",
+        pages: 195,
+        format: "PDF + Excel"
+      }
+    ]
+  };
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+
+  const handleIndustryClick = (industryName: string) => {
+    setSelectedIndustry(selectedIndustry === industryName ? null : industryName);
+  };
 
   return (
-    <section className="section-responsive bg-gradient-to-br from-gray-50 to-white">
-      <div className="container-responsive">
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
-          >
-            <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
-            Industry Categories
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="heading-responsive font-bold text-gray-900 mb-6"
-          >
-            Explore Industry Categories
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-responsive text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          >
-            Discover comprehensive market research reports across all major industry sectors. 
-            Find insights that drive your business decisions and stay ahead of the competition.
-          </motion.p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Explore Your Industry
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Dive deep into specific sectors with our specialized market research reports and expert analysis
+          </p>
         </div>
 
-        {/* Categories Grid - Responsive Design */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group"
-            >
-              <Link href={`/reports/${category.slug}`} className="block h-full">
-                <div className={`card h-full p-6 text-center hover:shadow-xl transition-all duration-300 group-hover:border-primary-200 relative overflow-hidden ${category.bgColor} hover:bg-white`}>
-                  {/* Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+        {/* Industry Menu Container */}
+        <div className="relative mb-12">
+          {/* Navigation Arrows */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+          >
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+          >
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Horizontal Industry Menu */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-8 overflow-x-auto scrollbar-hide px-12 py-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {industries.map((industry) => (
+              <button
+                key={industry.name}
+                onClick={() => handleIndustryClick(industry.name)}
+                className={`flex-shrink-0 px-6 py-3 rounded-full font-semibold text-lg transition-all duration-300 whitespace-nowrap ${
+                  selectedIndustry === industry.name
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
+                }`}
+              >
+                {industry.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Industry Reports Section */}
+        {selectedIndustry && (
+          <div className="mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {(industryReports[selectedIndustry as keyof typeof industryReports] || []).map((report) => (
+                <div
+                  key={report.id}
+                  className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                >
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 leading-tight line-clamp-2">
+                    {report.title}
+                  </h4>
                   
-                  {/* Icon */}
-                  <div className={`relative w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl`}>
-                    <category.icon className="h-8 w-8 text-white" />
+                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <span>{report.date}</span>
+                    <span>{report.pages} Pages</span>
                   </div>
-
-                  {/* Content */}
-                  <div className="relative">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-200 line-clamp-2">
-                      {category.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-relaxed">
-                      {category.description}
-                    </p>
-                    <div className="text-xs text-primary-600 font-semibold bg-primary-50 px-3 py-1 rounded-full inline-block">
-                      {category.count}
-                    </div>
-                  </div>
-
-                  {/* Arrow Icon */}
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
-                    <ArrowRight className="h-5 w-5 text-primary-500" />
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">{report.format}</span>
+                    <Link 
+                      href={`/reports/${report.id}`}
+                      className="text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors duration-200"
+                    >
+                      View Details →
+                    </Link>
                   </div>
                 </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-8">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link 
+                  href={`/industry/${selectedIndustry.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  View All {selectedIndustry} Reports
+                </Link>
+                
+                <Link 
+                  href="/industry"
+                  className="inline-block bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  Explore All Industries
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Explore More?
-            </h3>
-            <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-              Access our complete library of market research reports and industry insights to make informed business decisions.
-            </p>
-            <Link
-              href="/reports"
-              className="btn-primary bg-white text-primary-600 hover:bg-gray-100 inline-flex items-center gap-2"
+        {/* CTA Button - Only show when no industry is selected */}
+        {!selectedIndustry && (
+          <div className="text-center">
+            <Link 
+              href="/industry"
+              className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              View All Industries
-              <ArrowRight className="h-4 w-4" />
+              Explore All Industries
             </Link>
           </div>
-        </motion.div>
+        )}
       </div>
     </section>
-  )
+  );
 }
 
-export default IndustryCategories 
