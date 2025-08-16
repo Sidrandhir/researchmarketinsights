@@ -285,16 +285,12 @@ export default function PatientRepositioningSystemReport() {
         <p style="margin-bottom: 1.5rem;">The increased concern for patient safety in surgical procedures is anticipated to strongly increase the demand for patient positioning systems in Europe. The European Commission has also released a new medical device identification system based on the xUDI (extensible Unique Device Identifier). This system will help identify products more easily and accurately. The demand in the Asia Pacific market is also likely to grow at the highest rate, due to the improving healthcare infrastructure of its emerging economies. Similarly, the region of MEA is expected to behave in the same manner; however, lack of awareness about these systems poses a significant challenge in terms of addressing them so that their complete potential can be analysed.</p>
 
         <div style="margin: 2rem 0; text-align: center;">
-          <img 
+          <Image 
             src="/images/regional-insights.jpg" 
             alt="Patient Repositioning System Market Regional Analysis" 
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              borderRadius: '8px',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-              border: '1px solid #e5e7eb'
-            }}
+            width={800}
+            height={400}
+            className="rounded-lg shadow-md border border-gray-200"
           />
           <p style="margin-top: 0.75rem; font-size: 0.875rem; color: #6b7280; font-style: italic;">
             Regional distribution and market penetration of Patient Repositioning Systems across different geographical markets

@@ -77,8 +77,9 @@ export default function HeroCarousel() {
             <Image
               src={slide.image}
               alt={slide.alt}
-              layout="fill"
-              objectFit="cover"
+              fill
+              className="object-cover"
+              priority={index === 0}
             />
 
             {/* Content Overlay with CTA Button */}
