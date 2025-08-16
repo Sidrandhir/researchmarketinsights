@@ -30,8 +30,8 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ReportPage({ params }: { params: { lang: string; slug: string } }) {
-  const { slug } = params;
+export default async function ReportPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
+  const { slug } = await params;
   const report = await getReport(slug as string);
   
   if (!report) {

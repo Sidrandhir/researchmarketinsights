@@ -27,7 +27,8 @@ const reportData = {
 // NOTE: This is a simplified version of the reportData. 
 // You should copy the full JSON for `content` and `faqs` from my previous response here.
 
-export default function PatientRepositioningReportPage({ params }: { params: { lang: string } }) {
+export default async function PatientRepositioningReportPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   const categoryName = reportData.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
   // We need to simulate the full report object for our components
@@ -58,11 +59,11 @@ export default function PatientRepositioningReportPage({ params }: { params: { l
       <div className="bg-gray-50 py-8 border-b">
         <div className="container-responsive">
           <nav className="text-sm text-gray-500 mb-4">
-            <Link href={`/${params.lang}`} className="hover:text-primary-600">Home</Link>
+            <Link href={`/${lang}`} className="hover:text-primary-600">Home</Link>
             {' > '}
-            <Link href={`/${params.lang}/industry`} className="hover:text-primary-600">Industries</Link>
+            <Link href={`/${lang}/industry`} className="hover:text-primary-600">Industries</Link>
             {' > '}
-            <Link href={`/${params.lang}/industry/life-sciences`} className="hover:text-primary-600">{categoryName}</Link>
+            <Link href={`/${lang}/industry/life-sciences`} className="hover:text-primary-600">{categoryName}</Link>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800">{reportData.title}</h1>
         </div>

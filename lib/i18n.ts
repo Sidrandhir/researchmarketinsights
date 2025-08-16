@@ -46,9 +46,11 @@ export function getLocalizedPathname(pathname: string, language: Language): stri
 }
 
 // Translation function
-export function t(key: string, lang: Language = 'en'): string {
+export function getTranslation(lang: string, key: string): string {
+  const defaultLanguage = 'en' as const;
   const keys = key.split('.');
-  let value: unknown = translations[lang] || translations[defaultLanguage];
+  
+  let value: any = translations[lang as Language] || translations[defaultLanguage];
   
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {
@@ -63,6 +65,7 @@ export function t(key: string, lang: Language = 'en'): string {
           return key; // Return the key if translation not found
         }
       }
+      break;
     }
   }
   
@@ -72,7 +75,7 @@ export function t(key: string, lang: Language = 'en'): string {
 // Hook for client-side translation
 export function useTranslation(lang: Language = 'en') {
   return {
-    t: (key: string) => t(key, lang),
+    t: (key: string) => getTranslation(lang, key),
     language: lang,
     languages,
   };

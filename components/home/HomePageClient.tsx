@@ -9,7 +9,7 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner';
 const HeroSection = dynamic(() => import('@/components/home/HeroSection'), { ssr: false });
 const StatsSection = dynamic(() => import('@/components/home/StatsSection'), { ssr: false });
 const IndustryCategories = dynamic(() => import('@/components/home/IndustryCategories'), { ssr: false });
-const FeaturedReports = dynamic(() => import('@/components/home/FeaturedReports'), { ssr: false });
+const LatestReports = dynamic(() => import('@/components/home/LatestReports'), { ssr: false });
 const TestimonialsSection = dynamic(() => import('@/components/home/TestimonialsSection'), { ssr: false });
 const CTASection = dynamic(() => import('@/components/home/CTASection'), { ssr: false });
 
@@ -19,7 +19,7 @@ export default function HomePageClient() {
       <HeroSection />
       <StatsSection />
       <IndustryCategories />
-      <FeaturedReports />
+      <LatestReports />
       <TestimonialsSection />
       <CTASection />
     </Suspense>
