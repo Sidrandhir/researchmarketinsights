@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   FileText, 
   Download, 
   Mail, 
   Phone, 
-  ChevronRight, 
   CheckCircle, 
-  ShoppingCart, 
   Clock, 
   AlertCircle
 } from 'lucide-react';
@@ -184,7 +183,7 @@ export default function SampleRequestPage() {
                 Request Your Free Sample
               </h2>
               <p className="text-lg text-gray-600">
-                Fill out the form below and we'll send you sample reports tailored to your interests.
+                Fill out the form below and we&apos;ll send you sample reports tailored to your interests.
               </p>
             </div>
 
@@ -194,7 +193,7 @@ export default function SampleRequestPage() {
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <span className="text-green-800 font-medium">
                     Thank you! Your sample request has been submitted successfully. 
-                    We'll send you the requested samples within 24-48 hours.
+                    We&apos;ll send you the requested samples within 24-48 hours.
                   </span>
                 </div>
               </div>
@@ -454,7 +453,7 @@ export default function SampleRequestPage() {
               What Happens After You Submit?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Here's what you can expect after submitting your sample request form.
+              Here&apos;s what you can expect after submitting your sample request form.
             </p>
           </div>
 
@@ -503,18 +502,18 @@ export default function SampleRequestPage() {
             of our market research insights.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <Link 
               href="#sample-form"
               className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Request Samples
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/contact"
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>

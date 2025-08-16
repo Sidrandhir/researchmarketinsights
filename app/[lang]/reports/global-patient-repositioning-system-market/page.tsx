@@ -760,8 +760,7 @@ export default function PatientRepositioningSystemReport() {
                                  type="text"
                                  placeholder="Search countries..."
                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm mb-2"
-                                 onKeyUp={(e) => {
-                                   const searchTerm = e.currentTarget.value.toLowerCase();
+                                 onKeyUp={() => {
                                    // You can implement search filtering here
                                  }}
                                />

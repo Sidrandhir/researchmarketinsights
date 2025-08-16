@@ -95,7 +95,7 @@ export default function SearchPage() {
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Search Results for "{query}"
+            Search Results for &ldquo;{query}&rdquo;
           </h1>
           <p className="text-gray-600">
             {loading ? 'Searching...' : `${results.length} results found`}

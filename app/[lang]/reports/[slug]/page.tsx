@@ -1,6 +1,5 @@
 // file: app/[lang]/reports/[slug]/page.tsx
 import { prisma } from '@/lib/db';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
@@ -32,7 +31,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ReportPage({ params }: { params: { lang: string; slug: string } }) {
-  const { lang, slug } = params;
+  const { slug } = params;
   const report = await getReport(slug as string);
   
   if (!report) {

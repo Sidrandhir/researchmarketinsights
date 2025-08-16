@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
-import { useState } from 'react';
 
 // This is our MOCK data for this specific report page
 const reportData = {
