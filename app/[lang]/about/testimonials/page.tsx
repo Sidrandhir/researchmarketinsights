@@ -1,6 +1,7 @@
 "use client";
+import React from 'react';
 import Link from 'next/link';
-import { Star, Quote, Users, CheckCircle } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 
 export default function TestimonialsPage() {
   const testimonials = [

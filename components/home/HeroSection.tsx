@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -73,10 +74,11 @@ export default function HeroCarousel() {
               index === currentSlide ? 'active' : ''
             }`}
           >
-            <img
-              className="d-block w-full h-full object-cover"
+            <Image
               src={slide.image}
               alt={slide.alt}
+              layout="fill"
+              objectFit="cover"
             />
 
             {/* Content Overlay with CTA Button */}

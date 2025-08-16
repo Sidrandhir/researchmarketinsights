@@ -97,10 +97,6 @@ export default function Header() {
     setActiveDropdown(null);
   };
 
-  const handleIndustriesClick = () => {
-    router.push('/industry');
-  };
-
   const handleDropdownToggle = (name: string) => {
     if (clickedDropdown === name) {
       setClickedDropdown(null);

@@ -146,8 +146,8 @@ export default function TestimonialsSection() {
                           </div>
                         </div>
                         
-                        <p className="text-gray-700 mb-4 italic text-lg">
-                          "{testimonial.content}"
+                        <p className="text-gray-600 italic">
+                          &ldquo;The market insights provided by Research Market Insights have been invaluable for our strategic planning. Their reports are comprehensive and actionable.&rdquo;
                         </p>
                         
                         <div className="flex items-center">

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
+import { useState } from 'react';
 
 // This is our MOCK data for this specific report page
 const reportData = {
@@ -70,7 +71,7 @@ export default function PatientRepositioningReportPage({ params }: { params: { l
       <div className="container-responsive py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <ReportContent report={fullReportObject} />
+            <ReportContent report={fullReportObject} activeTab="summary" />
           </div>
           <div className="lg:col-span-1">
             <StickySidebar reportCode={reportData.reportCode} />

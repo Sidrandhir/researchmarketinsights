@@ -31,45 +31,33 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ReportDetailPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
-  const { lang, slug } = await params;
+export default async function ReportPage({ params }: { params: { lang: string; slug: string } }) {
+  const { lang, slug } = params;
   const report = await getReport(slug as string);
-  // Type assertion to let TypeScript know these fields exist and are JSON
-  const content = report.content as any;
-  const faqs = report.faqs as any;
+  
+  if (!report) {
+    notFound();
+  }
 
-  const categoryName = report.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  // We need to simulate the full report object for our components
+  const fullReport = {
+    id: report.id,
+    title: report.title,
+    category: report.category,
+    content: report.content as Record<string, string>,
+    faqs: report.faqs || [],
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumbs and Title Section */}
-      <div className="bg-gray-50 py-8 border-b">
-        <div className="container-responsive">
-          <nav className="text-sm text-gray-500 mb-4">
-            <Link href={`/${lang}`} className="hover:text-primary-600">Home</Link>
-            {' > '}
-            <Link href={`/${lang}/industry`} className="hover:text-primary-600">Industries</Link>
-            {' > '}
-            <span className="text-gray-800">{categoryName}</span>
-          </nav>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">{report.title}</h1>
-        </div>
-      </div>
-
-      {/* Main Two-Column Layout */}
-      <div className="container-responsive py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          
-          {/* Left Column: Main Content */}
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <ReportContent report={{ ...report, content, faqs }} />
+            <ReportContent report={fullReport} activeTab="summary" />
           </div>
-
-          {/* Right Column: Sticky Sidebar */}
           <div className="lg:col-span-1">
-            <StickySidebar reportCode={report.reportCode} />
+            <StickySidebar reportCode={report.reportCode || slug} />
           </div>
-
         </div>
       </div>
     </div>

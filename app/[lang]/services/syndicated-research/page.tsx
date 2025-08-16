@@ -1,6 +1,12 @@
 "use client";
+import React from 'react';
 import Link from 'next/link';
-import { BarChart3, FileText, TrendingUp, Globe, CheckCircle } from 'lucide-react';
+import { 
+  BarChart3, 
+  TrendingUp, 
+  CheckCircle,
+  FileText
+} from 'lucide-react';
 
 export default function SyndicatedResearchPage() {
   const services = [

@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   FileText, 
   Download, 
+  Mail, 
+  Phone, 
+  ChevronRight, 
   CheckCircle, 
-  AlertCircle,
-  Mail,
-  Phone,
-  Building,
-  User,
-  Calendar,
-  Clock
+  ShoppingCart, 
+  Clock, 
+  AlertCircle
 } from 'lucide-react';
 
 export default function SampleRequestPage() {
@@ -464,12 +463,12 @@ export default function SampleRequestPage() {
               {
                 icon: Mail,
                 title: 'Confirmation Email',
-                description: 'You\'ll receive an immediate confirmation email with your request details and estimated delivery timeline.'
+                description: 'You&apos;ll receive an immediate confirmation email with your request details and estimated delivery timeline.'
               },
               {
                 icon: FileText,
                 title: 'Sample Delivery',
-                description: 'Within 24-48 hours, you\'ll receive sample chapters and executive summaries via email.'
+                description: 'Within 24-48 hours, you&apos;ll receive sample chapters and executive summaries via email.'
               },
               {
                 icon: Phone,

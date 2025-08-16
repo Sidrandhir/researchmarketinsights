@@ -80,7 +80,9 @@ export default function SearchPage() {
           <div className="text-center">
             <Search className="mx-auto h-12 w-12 text-gray-400" />
             <h1 className="mt-4 text-2xl font-bold text-gray-900">Search Reports & Insights</h1>
-            <p className="mt-2 text-gray-600">Enter a search term to find market research reports and press releases.</p>
+            <p className="mt-2 text-gray-600">
+              Find the latest market research reports and insights. Search by industry, keyword, or &ldquo;market size&rdquo; to discover relevant reports.
+            </p>
           </div>
         </div>
       </div>

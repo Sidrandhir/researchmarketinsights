@@ -1,7 +1,7 @@
-import { type ClassValue, clsx } from 'clsx';
+import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: (string | undefined | null | boolean)[]) {
   return twMerge(clsx(inputs));
 }
 
@@ -14,11 +14,11 @@ export function formatPrice(price: number, currency = 'USD'): string {
 
 export function formatDate(date: Date | string): string {
   const d = typeof date === 'string' ? new Date(date) : date;
-  return new Intl.DateTimeFormat('en-US', {
+  return d.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(d);
+  });
 }
 
 export function formatDateTime(date: Date | string): string {
@@ -32,9 +32,9 @@ export function formatDateTime(date: Date | string): string {
   }).format(d);
 }
 
-export function truncateText(text: string, maxLength: number): string {
-  if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength) + '...';
+export function truncateText(text: string, length: number): string {
+  if (text.length <= length) return text;
+  return text.slice(0, length) + '...';
 }
 
 export function generateSlug(text: string): string {
@@ -60,7 +60,7 @@ export function validatePhone(phone: string): boolean {
   return phoneRegex.test(phone.replace(/\s/g, ''));
 }
 
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -71,7 +71,7 @@ export function debounce<T extends (...args: any[]) => any>(
   };
 }
 
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {

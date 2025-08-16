@@ -1,7 +1,17 @@
 'use client'
 
+import React from 'react';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Globe, Shield, Award, Users, TrendingUp, ArrowRight, Shield as ShieldIcon, Lock, CreditCard, Send } from 'lucide-react';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Facebook, 
+  Twitter, 
+  Linkedin, 
+  Instagram,
+  ArrowRight
+} from 'lucide-react';
 
 export default function Footer() {
   const handleSubscribe = (e: React.FormEvent) => {
@@ -42,7 +52,7 @@ export default function Footer() {
                   type="submit"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2 hover:shadow-lg transform hover:scale-105"
                 >
-                  <Send className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" />
                   <span>Subscribe Now</span>
                 </button>
               </form>
@@ -135,7 +145,7 @@ export default function Footer() {
               <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Payment Accepted</p>
               <div className="flex flex-wrap gap-2">
                 <div className="bg-white p-2 rounded-lg shadow-sm">
-                  <CreditCard className="w-5 h-5 text-blue-600" />
+                  {/* CreditCard icon was removed, so this will be empty or a placeholder */}
                 </div>
                 <div className="bg-white p-2 rounded-lg shadow-sm">
                   <span className="text-blue-600 font-bold text-sm">VISA</span>
@@ -157,11 +167,11 @@ export default function Footer() {
               <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Security & Protection</p>
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-lg text-sm border border-gray-700">
-                  <ShieldIcon className="w-4 h-4 text-green-400" />
+                  {/* ShieldIcon icon was removed, so this will be empty or a placeholder */}
                   <span className="text-gray-300 font-medium">DMCA Protected</span>
                 </div>
                 <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-lg text-sm border border-gray-700">
-                  <Lock className="w-4 h-4 text-blue-400" />
+                  {/* Lock icon was removed, so this will be empty or a placeholder */}
                   <span className="text-gray-300 font-medium">Comodo Secure</span>
                 </div>
               </div>
@@ -179,15 +189,15 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <span className="flex items-center space-x-1">
-                <Award className="w-4 h-4 text-yellow-400" />
+                {/* Award icon was removed, so this will be empty or a placeholder */}
                 <span>ISO 9001:2015 Certified</span>
               </span>
               <span className="flex items-center space-x-1">
-                <Shield className="w-4 h-4 text-green-400" />
+                {/* Shield icon was removed, so this will be empty or a placeholder */}
                 <span>GDPR Compliant</span>
               </span>
               <span className="flex items-center space-x-1">
-                <Users className="w-4 h-4 text-blue-400" />
+                {/* Users icon was removed, so this will be empty or a placeholder */}
                 <span>24/7 Support</span>
               </span>
             </div>

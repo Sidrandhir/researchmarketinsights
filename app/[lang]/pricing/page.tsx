@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Check, Star, Users, FileText, Clock, Shield, Zap, Globe } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 export default function PricingPage() {
   const [selectedReport, setSelectedReport] = useState('patient-repositioning-system');

@@ -1,7 +1,15 @@
 "use client";
 
+import React from 'react';
 import Link from 'next/link';
-import { Search, BarChart3, Users, TrendingUp, Globe, Target, FileText, Shield, Zap, Lightbulb } from 'lucide-react';
+import { 
+  Search,
+  BarChart3, 
+  Users, 
+  Target, 
+  TrendingUp, 
+  Globe
+} from 'lucide-react';
 
 export default function ServicesPage() {
   const services = [

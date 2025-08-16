@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db'
 import type { Prisma } from '@prisma/client'
 
@@ -51,21 +51,32 @@ type PrismaWhereClause = {
   status?: any   // Using 'any' to match the schema's enum type for now
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    // FIX: Removed the unused 'type' variable
-    const body = await request.json()
+    const body: { 
+      action: string;
+      data?: unknown;
+      reports?: Array<{
+        id: string;
+        title: string;
+        category: string;
+        pages: number;
+        format: string;
+        price: number;
+      }>;
+      email?: string;
+    } = await request.json();
     const { action, data } = body
 
     switch (action) {
       case 'upload_reports':
-        return await handleBulkReportUpload(data)
+        return await handleBulkReportUpload(data as ReportData[])
       case 'upload_press_releases':
-        return await handleBulkPressReleaseUpload(data)
+        return await handleBulkPressReleaseUpload(data as PressReleaseData[])
       case 'download_reports':
-        return await handleBulkReportDownload(data)
+        return await handleBulkReportDownload(data as FilterData)
       case 'download_press_releases':
-        return await handleBulkPressReleaseDownload(data)
+        return await handleBulkPressReleaseDownload(data as FilterData)
       default:
         return NextResponse.json(
           { error: 'Invalid action' },

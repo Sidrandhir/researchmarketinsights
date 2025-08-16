@@ -103,9 +103,16 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await request.json()
+    const body: {
+      name: string;
+      email: string;
+      phone: string;
+      company: string;
+      subject: string;
+      message: string;
+    } = await request.json();
     
     // Validate input
     const validatedData = leadSchema.parse(body)

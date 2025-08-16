@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Calendar, FileText, TrendingUp, Eye, Download, Building, ArrowRight } from 'lucide-react';
+import { Calendar, User, DollarSign, BarChart3 } from 'lucide-react';
 
 export default function LatestReports() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeCategory, setActiveCategory] = React.useState('all');
 
   // Latest reports data - only available reports
   const latestReports = [
@@ -126,7 +126,7 @@ export default function LatestReports() {
                       {report.title}
                     </h3>
                     <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
-                      <Building className="w-4 h-4" />
+                      <User className="w-4 h-4" />
                       <span>{report.category}</span>
                     </div>
                   </div>
@@ -158,7 +158,7 @@ export default function LatestReports() {
                 {/* Report Meta */}
                 <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4" />
+                    <BarChart3 className="w-4 h-4" />
                     <span>{report.pages} Pages</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -178,7 +178,7 @@ export default function LatestReports() {
                         View Report
                       </Link>
                       <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg font-medium text-sm hover:bg-gray-50 transition-colors duration-200">
-                        <Download className="w-4 h-4" />
+                        <DollarSign className="w-4 h-4" />
                       </button>
                     </>
                   ) : (
@@ -193,7 +193,7 @@ export default function LatestReports() {
                         disabled
                         className="px-4 py-2 border border-gray-300 text-gray-400 rounded-lg font-medium text-sm cursor-not-allowed"
                       >
-                        <Download className="w-4 h-4" />
+                        <DollarSign className="w-4 h-4" />
                       </button>
                     </>
                   )}
@@ -210,7 +210,7 @@ export default function LatestReports() {
             className="inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
           >
             View All Reports
-            <ArrowRight className="w-5 h-5" />
+            <User className="w-5 h-5" />
           </Link>
         </div>
       </div>

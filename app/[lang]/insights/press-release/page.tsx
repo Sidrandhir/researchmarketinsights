@@ -1,6 +1,7 @@
 "use client";
+import React from 'react';
 import Link from 'next/link';
-import { FileText, Calendar, TrendingUp, Globe, ArrowRight } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 export default function PressReleasePage() {
   const pressReleases = [
@@ -57,7 +58,7 @@ export default function PressReleasePage() {
                   href="#" 
                   className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
                 >
-                  Read More <ArrowRight className="w-4 h-4 ml-2" />
+                  Read More <Clock className="w-4 h-4 ml-2" />
                 </Link>
               </div>
             </div>

@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Calendar, FileText, TrendingUp, Eye, Download, Mail, Phone, MapPin, ChevronRight, Star, Users, Award, CheckCircle, ShoppingCart, Clock, User, Building, Globe, ChevronDown } from 'lucide-react';
+import { 
+  Calendar, 
+  DollarSign, 
+  ChevronRight,
+  User as UserIcon
+} from 'lucide-react';
 
 // Country data with flags and codes
 const countries = [
@@ -525,7 +530,7 @@ export default function PatientRepositioningSystemReport() {
               <Link href="/life-sciences" className="hover:underline">Life Sciences</Link> / Patient Repositioning System Market
             </div>
             <div className="text-sm italic">
-              "Designing Growth Strategies is in our DNA"
+              &ldquo;Designing Growth Strategies is in our DNA&rdquo;
             </div>
           </div>
         </div>
@@ -646,11 +651,11 @@ export default function PatientRepositioningSystemReport() {
                      <span className="font-medium">Last Updated: {reportData.lastUpdated}</span>
                    </div>
                    <div className="flex items-center justify-center gap-2">
-                     <FileText className="w-3 h-3" />
+                     <DollarSign className="w-3 h-3" />
                      <span className="text-gray-700 font-semibold">{reportData.pages} Pages</span>
                    </div>
                    <div className="flex items-center justify-center gap-2">
-                     <Building className="w-3 h-3" />
+                     <UserIcon className="w-3 h-3" />
                      <span className="font-medium">{reportData.industry}</span>
                    </div>
                  </div>
@@ -745,7 +750,7 @@ export default function PatientRepositioningSystemReport() {
                          >
                            <span className="text-lg">{selectedCountry.flag}</span>
                            <span className="text-gray-700">{selectedCountry.code}</span>
-                           <ChevronDown className="w-4 h-4 text-gray-500" />
+                           <ChevronRight className="w-4 h-4 text-gray-500" />
                          </button>
                          
                          {isCountryDropdownOpen && (
@@ -757,10 +762,6 @@ export default function PatientRepositioningSystemReport() {
                                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm mb-2"
                                  onKeyUp={(e) => {
                                    const searchTerm = e.currentTarget.value.toLowerCase();
-                                   const filteredCountries = countries.filter(country => 
-                                     country.name.toLowerCase().includes(searchTerm) ||
-                                     country.code.includes(searchTerm)
-                                   );
                                    // You can implement search filtering here
                                  }}
                                />

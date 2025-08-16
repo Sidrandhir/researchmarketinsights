@@ -17,7 +17,7 @@ export type Language = keyof typeof languages;
 export const defaultLanguage: Language = 'en';
 
 // Translation data
-const translations: Record<Language, any> = {
+const translations: Record<Language, Record<string, unknown>> = {
   en,
   zh,
   ko: en, // Fallback to English for now
@@ -48,7 +48,7 @@ export function getLocalizedPathname(pathname: string, language: Language): stri
 // Translation function
 export function t(key: string, lang: Language = 'en'): string {
   const keys = key.split('.');
-  let value: any = translations[lang] || translations[defaultLanguage];
+  let value: unknown = translations[lang] || translations[defaultLanguage];
   
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {

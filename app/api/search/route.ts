@@ -1,21 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q') || '';
-    const type = searchParams.get('type') || 'all';
     const category = searchParams.get('category') || '';
+    const type = searchParams.get('type') || 'all';
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = (page - 1) * limit;
 
-    if (!query.trim()) {
-      return NextResponse.json({
-        success: false,
-        message: 'Search query is required',
-      });
+    if (!query) {
+      return NextResponse.json({ results: [], total: 0 });
     }
 
     const results = [];
