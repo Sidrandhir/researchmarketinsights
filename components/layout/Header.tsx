@@ -145,7 +145,18 @@ export default function Header() {
                     onError={(e) => {
                       console.error('Logo failed to load:', e);
                     }}
+                    onLoad={() => {
+                      console.log('Logo loaded successfully');
+                    }}
+                    className="max-w-full max-h-full object-contain"
                   />
+                  {/* Fallback Text Logo */}
+                  <div className="absolute inset-0 flex items-center justify-center text-blue-600 font-bold text-lg opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    <div className="text-center">
+                      <div>RESEARCH</div>
+                      <div>MARKET INSIGHT</div>
+                    </div>
+                  </div>
                 </div>
               </Link>
             </div>
