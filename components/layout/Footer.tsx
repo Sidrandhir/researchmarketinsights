@@ -35,7 +35,6 @@ export default function Footer() {
                   alt="Research Market Insight Logo" 
                   width={192}
                   height={80}
-                  className="max-w-full max-h-full object-contain filter brightness-0 invert"
                 />
               </div>
             </div>
