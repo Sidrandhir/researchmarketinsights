@@ -63,8 +63,8 @@ export default function Header() {
       href: '/insights',
       hasDropdown: true,
       dropdownItems: [
-        { name: '📰 Press Release', href: '/insights/press-release' },
-        { name: '✍️ Blogs', href: '/insights/blogs' }
+        { name: '📰 PRESS RELEASE', href: '/insights/press-release' },
+        { name: '✍️ BLOGS', href: '/insights/blogs' }
       ]
     },
     {
@@ -72,9 +72,9 @@ export default function Header() {
       href: '/about',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'ℹ️ About us', href: '/about' },
-        { name: '💬 Client Testimonials', href: '/about/testimonials' },
-        { name: '🤝 Our Clients', href: '/about/clients' }
+        { name: 'ABOUT US', href: '/about' },
+        { name: 'CLIENT TESTIMONIALS', href: '/about/testimonials' },
+        { name: 'OUR CLIENTS', href: '/about/clients' }
       ]
     },
     { name: 'CONTACT', href: '/contact', hasDropdown: false }
@@ -287,49 +287,43 @@ export default function Header() {
       {/* Dropdown Menu Below Header */}
       {isDropdownVisible('INDUSTRIES') && (
         <div 
-          className="hidden lg:block fixed top-20 left-0 right-0 bg-gradient-to-r from-blue-50 via-white to-indigo-50 border-b border-blue-200 shadow-xl z-50 backdrop-blur-sm"
+          className="hidden lg:block fixed top-20 z-50"
+          style={{ left: 'calc(50% - 200px)' }}
           onMouseEnter={() => setActiveDropdown('INDUSTRIES')}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-5xl mx-auto px-6 py-4">
-            <div className="grid grid-cols-2 gap-6">
-              {/* Column 1 - First 5 Industries */}
-              <div className="space-y-3">
-                <Link href="/industry/aerospace-defence" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🚀 Aerospace and Defence
-                </Link>
-                <Link href="/industry/automotive-transportation" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🚗 Automotive and Transportation
-                </Link>
-                <Link href="/industry/banking-financial" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🏦 Banking and Financial
-                </Link>
-                <Link href="/industry/chemicals-materials" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🧪 Chemicals and Materials
-                </Link>
-                <Link href="/industry/consumer-goods" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🛍️ Consumer Goods
-                </Link>
-              </div>
-              
-              {/* Column 2 - Last 5 Industries */}
-              <div className="space-y-3">
-                <Link href="/industry/electronics-semiconductor" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  💻 Electronics and Semiconductor
-                </Link>
-                <Link href="/industry/energy-power" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  ⚡ Energy and Power
-                </Link>
-                <Link href="/industry/food-beverages" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🍔 Food and Beverages
-                </Link>
-                <Link href="/industry/life-sciences" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  🧬 Life Sciences
-                </Link>
-                <Link href="/industry/technology-media" className="block px-4 py-3 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-blue-200 hover:shadow-md transform hover:scale-105">
-                  📱 Technology and Media
-                </Link>
-              </div>
+          <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[250px] py-2">
+            <div className="space-y-1">
+              <Link href="/industry/aerospace-defence" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🚀 AEROSPACE AND DEFENCE
+              </Link>
+              <Link href="/industry/automotive-transportation" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🚗 AUTOMOTIVE AND TRANSPORTATION
+              </Link>
+              <Link href="/industry/banking-financial" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🏦 BANKING AND FINANCIAL
+              </Link>
+              <Link href="/industry/chemicals-materials" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🧪 CHEMICALS AND MATERIALS
+              </Link>
+              <Link href="/industry/consumer-goods" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🛍️ CONSUMER GOODS
+              </Link>
+              <Link href="/industry/electronics-semiconductor" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                💻 ELECTRONICS AND SEMICONDUCTOR
+              </Link>
+              <Link href="/industry/energy-power" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                ⚡ ENERGY AND POWER
+              </Link>
+              <Link href="/industry/food-beverages" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🍔 FOOD AND BEVERAGES
+              </Link>
+              <Link href="/industry/life-sciences" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🧬 LIFE SCIENCES
+              </Link>
+              <Link href="/industry/technology-media" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                📱 TECHNOLOGY AND MEDIA
+              </Link>
             </div>
           </div>
         </div>
@@ -337,43 +331,37 @@ export default function Header() {
 
       {isDropdownVisible('SERVICES') && (
         <div 
-          className="hidden lg:block fixed top-20 left-0 right-0 bg-gradient-to-r from-purple-50 via-white to-pink-50 border-b border-purple-200 shadow-xl z-50 backdrop-blur-sm"
+          className="hidden lg:block fixed top-20 z-50"
+          style={{ left: 'calc(50% - 150px)' }}
           onMouseEnter={() => setActiveDropdown('SERVICES')}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-5xl mx-auto px-6 py-4">
-            <div className="grid grid-cols-2 gap-6">
-              {/* Column 1 - First 4 Services */}
-              <div className="space-y-3">
-                <Link href="/services/consulting" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  💼 Consulting Services
-                </Link>
-                <Link href="/services/syndicated-research" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  📊 Syndicated Market Research
-                </Link>
-                <Link href="/services/market-intelligence" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  🔍 Market Intelligence
-                </Link>
-                <Link href="/services/growth-strategy" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  📈 Growth Strategy
-                </Link>
-              </div>
-              
-              {/* Column 2 - Last 4 Services */}
-              <div className="space-y-3">
-                <Link href="/services/go-to-market" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  🎯 Go to Market Strategy
-                </Link>
-                <Link href="/services/esg-analysis" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  🌱 ESG Analysis
-                </Link>
-                <Link href="/services/ai-overview" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  🤖 AI (Artificial Intelligence) Overview
-                </Link>
-                <Link href="/services/us-tariff" className="block px-4 py-3 text-gray-700 hover:text-purple-700 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-purple-200 hover:shadow-md transform hover:scale-105 text-center">
-                  🇺🇸 US Tariff
-                </Link>
-              </div>
+          <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[280px] py-2">
+            <div className="space-y-1">
+              <Link href="/services/consulting" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                💼 CONSULTING SERVICES
+              </Link>
+              <Link href="/services/syndicated-research" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                📊 SYNDICATED MARKET RESEARCH
+              </Link>
+              <Link href="/services/market-intelligence" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🔍 MARKET INTELLIGENCE
+              </Link>
+              <Link href="/services/growth-strategy" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                📈 GROWTH STRATEGY
+              </Link>
+              <Link href="/services/go-to-market" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🎯 GO TO MARKET STRATEGY
+              </Link>
+              <Link href="/services/esg-analysis" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🌱 ESG ANALYSIS
+              </Link>
+              <Link href="/services/ai-overview" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🤖 AI (ARTIFICIAL INTELLIGENCE) OVERVIEW
+              </Link>
+              <Link href="/services/us-tariff" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🇺🇸 US TARIFF
+              </Link>
             </div>
           </div>
         </div>
@@ -381,25 +369,19 @@ export default function Header() {
 
       {isDropdownVisible('INSIGHTS') && (
         <div 
-          className="hidden lg:block fixed top-20 left-0 right-0 bg-gradient-to-r from-green-50 via-white to-emerald-50 border-b border-green-200 shadow-xl z-50 backdrop-blur-sm"
+          className="hidden lg:block fixed top-20 z-50"
+          style={{ left: 'calc(50% - 50px)' }}
           onMouseEnter={() => setActiveDropdown('INSIGHTS')}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-4xl mx-auto px-6 py-4">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Column 1 */}
-              <div className="space-y-3">
-                <Link href="/insights/press-release" className="block px-4 py-3 text-gray-700 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-100 hover:to-emerald-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-green-200 hover:shadow-md transform hover:scale-105 text-center">
-                  📰 Press Release
-                </Link>
-              </div>
-              
-              {/* Column 2 */}
-              <div className="space-y-3">
-                <Link href="/insights/blogs" className="block px-4 py-3 text-gray-700 hover:text-green-700 hover:bg-gradient-to-r hover:from-green-100 hover:to-emerald-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-green-200 hover:shadow-md transform hover:scale-105 text-center">
-                  ✍️ Blogs
-                </Link>
-              </div>
+          <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[200px] py-2">
+            <div className="space-y-1">
+              <Link href="/insights/press-release" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                📰 PRESS RELEASE
+              </Link>
+              <Link href="/insights/blogs" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                ✍️ BLOGS
+              </Link>
             </div>
           </div>
         </div>
@@ -407,32 +389,22 @@ export default function Header() {
 
       {isDropdownVisible('ABOUT') && (
         <div 
-          className="hidden lg:block fixed top-20 left-0 right-0 bg-gradient-to-r from-orange-50 via-white to-amber-50 border-b border-orange-200 shadow-xl z-50 backdrop-blur-sm"
+          className="hidden lg:block fixed top-20 z-50"
+          style={{ left: 'calc(50% + 100px)' }}
           onMouseEnter={() => setActiveDropdown('ABOUT')}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-3xl mx-auto px-6 py-4">
-            <div className="grid grid-cols-3 gap-3">
-              {/* Column 1 */}
-              <div className="space-y-3">
-                <Link href="/about" className="block px-4 py-3 text-gray-700 hover:text-orange-700 hover:bg-gradient-to-r hover:from-orange-100 hover:to-amber-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-orange-200 hover:shadow-md transform hover:scale-105 text-center">
-                  ℹ️ About us
-                </Link>
-              </div>
-              
-              {/* Column 2 */}
-              <div className="space-y-3">
-                <Link href="/about/testimonials" className="block px-4 py-3 text-gray-700 hover:text-orange-700 hover:bg-gradient-to-r hover:from-orange-100 hover:to-amber-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-orange-200 hover:shadow-md transform hover:scale-105 text-center">
-                  💬 Client Testimonials
-                </Link>
-              </div>
-              
-              {/* Column 3 */}
-              <div className="space-y-3">
-                <Link href="/about/clients" className="block px-4 py-3 text-gray-700 hover:text-orange-700 hover:bg-gradient-to-r hover:from-orange-100 hover:to-amber-100 transition-all duration-300 text-sm font-medium rounded-lg border border-transparent hover:border-orange-200 hover:shadow-md transform hover:scale-105 text-center">
-                  🤝 Our Clients
-                </Link>
-              </div>
+          <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[200px] py-2">
+            <div className="space-y-1">
+              <Link href="/about" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                ℹ️ ABOUT US
+              </Link>
+              <Link href="/about/testimonials" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                💬 CLIENT TESTIMONIALS
+              </Link>
+              <Link href="/about/clients" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+                🤝 OUR CLIENTS
+              </Link>
             </div>
           </div>
         </div>
