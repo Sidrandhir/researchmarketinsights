@@ -25,9 +25,20 @@ export async function generateStaticParams() {
         where: { status: 'PUBLISHED' },
         select: { slug: true },
     });
-    return reports.map((report) => ({
-        slug: report.slug,
-    }));
+    
+    const languages = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi'];
+    
+    const params = [];
+    for (const lang of languages) {
+        for (const report of reports) {
+            params.push({
+                lang: lang,
+                slug: report.slug,
+            });
+        }
+    }
+    
+    return params;
 }
 
 export default async function ReportPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
