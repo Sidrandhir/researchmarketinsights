@@ -16,6 +16,10 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     },
@@ -25,8 +29,27 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "image/svg+xml"
         }
       ]
+    },
+    {
+      "source": "/(.*\\.(jpg|jpeg|png|gif|svg|webp|avif))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/images/(.*)",
+      "destination": "/images/$1"
     }
   ]
 }

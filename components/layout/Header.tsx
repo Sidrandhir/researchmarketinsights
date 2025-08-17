@@ -137,7 +137,7 @@ export default function Header() {
               <Link href="/" className="flex items-center">
                 <div className="w-48 h-16 flex items-center justify-center">
                   <Image 
-                    src="/images/logo.svg" 
+                    src="/logo.svg" 
                     alt="Research Market Insight Logo" 
                     width={192}
                     height={64}

@@ -5,6 +5,13 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   // Remove i18n config as we're using middleware for internationalization
   async headers() {
