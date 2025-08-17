@@ -7,6 +7,7 @@ import {
   Mail, 
   Phone, 
   MapPin, 
+  Clock, 
   Facebook, 
   Twitter, 
   Linkedin, 
@@ -28,18 +29,15 @@ export default function Footer() {
           {/* Section 1: Company Logo & Name + Subscribe */}
           <div className="space-y-6">
             {/* Company Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-16 h-16 flex items-center justify-center">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="w-48 h-20 flex items-center justify-center">
                 <Image 
                   src="/images/logo.svg" 
                   alt="Research Market Insight Logo" 
-                  width={64}
-                  height={64}
-                  className="filter brightness-0 invert"
+                  width={192}
+                  height={80}
+                  /*className="max-w-full max-h-full object-contain filter brightness-0 invert"*/
                 />
-              </div>
-              <div>
-                <p className="text-sm text-gray-400 mt-1">Your Trusted Research Partner</p>
               </div>
             </div>
             

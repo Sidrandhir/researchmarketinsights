@@ -137,26 +137,15 @@ export default function Header() {
               <Link href="/" className="flex items-center">
                 <div className="w-48 h-16 flex items-center justify-center">
                   <Image 
-                    src="/logo.svg" 
-                    alt="" 
+                    src="/images/logo.svg" 
+                    alt="Research Market Insight Logo" 
                     width={192}
                     height={64}
                     priority
                     onError={(e) => {
                       console.error('Logo failed to load:', e);
                     }}
-                    onLoad={() => {
-                      console.log('Logo loaded successfully');
-                    }}
-                    className="max-w-full max-h-full object-contain"
                   />
-                  {/* Fallback Text Logo */}
-                  <div className="absolute inset-0 flex items-center justify-center text-blue-600 font-bold text-lg opacity-0 hover:opacity-100 transition-opacity duration-300">
-                    <div className="text-center">
-                      <div>RESEARCH</div>
-                      <div>MARKET INSIGHT</div>
-                    </div>
-                  </div>
                 </div>
               </Link>
             </div>
