@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Search, Menu, X, ChevronDown } from 'lucide-react';
 
@@ -135,10 +136,11 @@ export default function Header() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <div className="w-48 h-16 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/logo.svg" 
                     alt="Research Market Insight Logo" 
-                    className="h-full w-auto object-contain"
+                    width={192}
+                    height={64}
                   />
                 </div>
               </Link>
@@ -229,10 +231,11 @@ export default function Header() {
                 <div className="px-3 py-2 mb-4 w-full flex justify-center">
                   <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="w-40 h-12 flex items-center justify-center">
-                      <img 
+                      <Image 
                         src="/images/logo.svg" 
                         alt="Research Market Insight Logo" 
-                        className="h-full w-auto object-contain"
+                        width={160}
+                        height={48}
                       />
                     </div>
                   </Link>

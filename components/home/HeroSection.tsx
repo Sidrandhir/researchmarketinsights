@@ -9,7 +9,7 @@ export default function HeroCarousel() {
   const slides = [
     {
       id: 1,
-      image: "/images/hero/hero1.jpg",
+      image: "/images/hero/hero1.png",
       alt: "",
       title: "",
       subtitle: "",

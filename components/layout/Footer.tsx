@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Mail, 
   Phone, 
@@ -28,12 +29,16 @@ export default function Footer() {
           <div className="space-y-6">
             {/* Company Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">RMI</span>
+              <div className="w-16 h-16 flex items-center justify-center">
+                <Image 
+                  src="/images/logo.svg" 
+                  alt="Research Market Insight Logo" 
+                  width={64}
+                  height={64}
+                  className="filter brightness-0 invert"
+                />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white">RESEARCH</h3>
-                <h3 className="text-2xl font-bold text-blue-400">MARKET INSIGHTS</h3>
                 <p className="text-sm text-gray-400 mt-1">Your Trusted Research Partner</p>
               </div>
             </div>
