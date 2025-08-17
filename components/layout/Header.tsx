@@ -138,7 +138,7 @@ export default function Header() {
                 <div className="w-48 h-16 flex items-center justify-center">
                   <Image 
                     src="/logo.svg" 
-                    alt="Research Market Insight Logo" 
+                    alt="" 
                     width={192}
                     height={64}
                     priority
