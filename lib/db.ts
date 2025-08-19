@@ -4,11 +4,6 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-// Check if DATABASE_URL is available
-if (!process.env.DATABASE_URL && process.env.NODE_ENV === 'production') {
-  throw new Error('DATABASE_URL environment variable is required in production');
-}
-
 const createPrismaClient = () => {
   if (!process.env.DATABASE_URL) {
     console.warn('DATABASE_URL not found, creating PrismaClient without datasource override');

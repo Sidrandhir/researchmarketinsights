@@ -3,6 +3,14 @@ import { prisma } from '@/lib/db';
 
 export async function GET() {
   try {
+    // Check if database is available
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ 
+        reports: [],
+        message: 'Database not configured'
+      });
+    }
+
     const reports = await prisma.report.findMany({
       where: {
         status: 'PUBLISHED',
@@ -24,6 +32,14 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    // Check if database is available
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json(
+        { error: 'Database not configured' },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     
     const report = await prisma.report.create({

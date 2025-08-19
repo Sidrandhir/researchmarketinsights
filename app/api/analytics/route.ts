@@ -3,6 +3,17 @@ import { prisma } from '@/lib/db'
 
 export async function GET(request: NextRequest) {
   try {
+    // Check if database is available
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json(
+        { 
+          error: 'Database not configured',
+          message: 'DATABASE_URL environment variable is not set'
+        },
+        { status: 503 }
+      )
+    }
+
     const { searchParams } = new URL(request.url)
     const period = searchParams.get('period') || '30' // days
 
@@ -152,6 +163,18 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('Analytics error:', error)
+    
+    // Check if it's a database connection error
+    if (error instanceof Error && error.message.includes('DATABASE_URL')) {
+      return NextResponse.json(
+        { 
+          error: 'Database not configured',
+          message: 'Please configure DATABASE_URL environment variable'
+        },
+        { status: 503 }
+      )
+    }
+    
     return NextResponse.json(
       { error: 'Failed to fetch analytics' },
       { status: 500 }

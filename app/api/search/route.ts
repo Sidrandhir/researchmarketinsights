@@ -3,6 +3,15 @@ import { prisma } from '@/lib/db';
 
 export async function GET(request: Request) {
   try {
+    // Check if database is available
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ 
+        results: [], 
+        total: 0,
+        message: 'Database not configured'
+      });
+    }
+
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q') || '';
     const category = searchParams.get('category') || '';
