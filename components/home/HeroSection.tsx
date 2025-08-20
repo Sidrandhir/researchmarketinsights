@@ -1,15 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect, useMemo } from 'react';
+
+interface Slide {
+  id: number;
+  image: string;
+  fallbackImage: string;
+  alt: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
 
 export default function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [imageError, setImageError] = useState<{[key: number]: boolean}>({});
 
-  const slides = [
+  const slides: Slide[] = useMemo(() => [
     {
       id: 1,
-      image: "/images/hero/hero1.png",
+      image: "/images/hero/hero1.webp",
+      fallbackImage: "/images/hero/hero1.png",
       alt: "Market Research Insights",
       title: "Navigate Your Market with Confidence",
       subtitle: "Data-Driven Strategies for Business Growth",
@@ -17,7 +28,8 @@ export default function HeroCarousel() {
     },
     {
       id: 2,
-      image: "/images/hero/hero2.avif",
+      image: "/images/hero/hero2.webp",
+      fallbackImage: "/images/hero/hero11.jpg",
       alt: "Industry Analysis",
       title: "Discover the Future of Your Industry",
       subtitle: "Predictive Insights & Emerging Trends",
@@ -25,18 +37,22 @@ export default function HeroCarousel() {
     },
     {
       id: 3,
-      image: "/images/hero/hero3.avif",
+      image: "/images/hero/hero3.webp",
+      fallbackImage: "/images/hero/hero1.png",
       alt: "Strategic Consulting",
       title: "Expert Strategic Consulting",
       subtitle: "Transform Data into Actionable Insights",
       description: "Get personalized guidance from industry experts to make informed decisions and drive your business forward."
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
+
+    // Debug: Log image paths
+    console.log('HeroSection mounted with slides:', slides.map(s => ({ id: s.id, image: s.image })));
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -54,8 +70,16 @@ export default function HeroCarousel() {
   };
 
   const handleKnowMore = (slideId: number) => {
-    // Handle navigation to specific page based on slide
     console.log(`Know More clicked for slide ${slideId}`);
+  };
+
+  const handleImageError = (slideId: number) => {
+    console.error(`Image failed to load for slide ${slideId}`);
+    setImageError(prev => ({ ...prev, [slideId]: true }));
+  };
+
+  const handleImageLoad = (slideId: number) => {
+    console.log(`Image loaded successfully for slide ${slideId}`);
   };
 
   return (
@@ -71,15 +95,24 @@ export default function HeroCarousel() {
           >
             {/* Background Image */}
             <div className="relative w-full h-full">
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                className="object-cover"
-                priority={index === 0}
-              />
+              {!imageError[slide.id] ? (
+                <picture>
+                  <source srcSet={slide.image} type="image/webp" />
+                  <img
+                    src={slide.fallbackImage}
+                    alt={slide.alt}
+                    className="w-full h-full object-cover"
+                    onError={() => handleImageError(slide.id)}
+                    onLoad={() => handleImageLoad(slide.id)}
+                    style={{ objectPosition: 'center' }}
+                  />
+                </picture>
+              ) : (
+                // Fallback background when image fails to load
+                <div className="w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800"></div>
+              )}
               {/* Dark overlay for better text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              <div className="absolute inset-0 bg-black/30"></div>
             </div>
 
             {/* Content Overlay */}
@@ -112,7 +145,7 @@ export default function HeroCarousel() {
 
       {/* Navigation Arrows */}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
         onClick={goToPrev}
         aria-label="Previous slide"
       >
@@ -122,7 +155,7 @@ export default function HeroCarousel() {
       </button>
 
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
         onClick={goToNext}
         aria-label="Next slide"
       >
@@ -132,7 +165,7 @@ export default function HeroCarousel() {
       </button>
 
       {/* Bottom Indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
