@@ -1,5 +1,4 @@
 // file: app/[lang]/reports/[slug]/page.tsx
-import { prisma } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
@@ -7,6 +6,14 @@ import StickySidebar from '@/components/reports/StickySidebar';
 // This function fetches one specific report based on the URL slug
 async function getReport(reportSlug: string) {
   try {
+    // Only import prisma when needed and when database is available
+    if (!process.env.DATABASE_URL) {
+      console.warn('DATABASE_URL not found, cannot fetch report');
+      return null;
+    }
+
+    const { prisma } = await import('@/lib/db');
+    
     const report = await prisma.report.findUnique({
       where: {
         slug: reportSlug,
@@ -20,13 +27,21 @@ async function getReport(reportSlug: string) {
     return report;
   } catch (error) {
     console.error('Failed to fetch report:', error);
-    notFound();
+    return null;
   }
 }
 
 // This function tells Next.js what pages to pre-build
 export async function generateStaticParams() {
     try {
+        // Only import prisma when needed and when database is available
+        if (!process.env.DATABASE_URL) {
+            console.warn('DATABASE_URL not found, skipping static generation');
+            return [];
+        }
+
+        const { prisma } = await import('@/lib/db');
+        
         const reports = await prisma.report.findMany({
             where: { status: 'PUBLISHED' },
             select: { slug: true },
