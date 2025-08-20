@@ -10,26 +10,26 @@ export default function HeroCarousel() {
     {
       id: 1,
       image: "/images/hero/hero1.png",
-      alt: "",
-      title: "",
-      subtitle: "",
-      description: ""
+      alt: "Market Research Insights",
+      title: "Navigate Your Market with Confidence",
+      subtitle: "Data-Driven Strategies for Business Growth",
+      description: "Unlock in-depth analysis and competitive intelligence to stay ahead of the curve with our comprehensive market research reports."
     },
     {
       id: 2,
       image: "/images/hero/hero2.avif",
-      alt: "",
-      title: "",
-      subtitle: "",
-      description: ""
+      alt: "Industry Analysis",
+      title: "Discover the Future of Your Industry",
+      subtitle: "Predictive Insights & Emerging Trends",
+      description: "Leverage our predictive analytics to identify emerging trends and opportunities before they happen."
     },
     {
       id: 3,
       image: "/images/hero/hero3.avif",
-      alt: "",
-      title: "",
-      subtitle: "",
-      description: ""
+      alt: "Strategic Consulting",
+      title: "Expert Strategic Consulting",
+      subtitle: "Transform Data into Actionable Insights",
+      description: "Get personalized guidance from industry experts to make informed decisions and drive your business forward."
     }
   ];
 
@@ -56,50 +56,50 @@ export default function HeroCarousel() {
   const handleKnowMore = (slideId: number) => {
     // Handle navigation to specific page based on slide
     console.log(`Know More clicked for slide ${slideId}`);
-    // You can add navigation logic here
-    // For example: router.push(`/reports/${slideId}`)
   };
 
   return (
-    <div
-      id="carouselExampleControls"
-      className="carousel slide w-screen h-[60vh] md:h-[70vh] lg:h-[80vh]"
-      data-ride="carousel"
-    >
-      <div className="carousel-inner h-full">
+    <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+      {/* Carousel Container */}
+      <div className="relative h-full">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`carousel-item h-full ${
-              index === currentSlide ? 'active' : ''
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
+            {/* Background Image */}
+            <div className="relative w-full h-full">
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+              {/* Dark overlay for better text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
+            </div>
 
-            {/* Content Overlay with CTA Button */}
+            {/* Content Overlay */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-shadow-md">
+              <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative z-10">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-shadow-lg">
                   {slide.title}
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed text-shadow">
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-4 sm:mb-6 max-w-3xl mx-auto leading-relaxed text-shadow-md font-medium">
                   {slide.subtitle}
                 </p>
-                <p className="text-sm sm:text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-shadow opacity-90">
+                <p className="text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-shadow opacity-95">
                   {slide.description}
                 </p>
 
-                {/* Know More CTA Button - Positioned on the right */}
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-8 lg:mr-16">
+                {/* CTA Button */}
+                <div className="flex justify-center">
                   <button
                     onClick={() => handleKnowMore(slide.id)}
-                    className="bg-white text-gray-900 font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-lg text-sm sm:text-base md:text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="bg-white text-gray-900 font-semibold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     Know More
                   </button>
@@ -111,36 +111,28 @@ export default function HeroCarousel() {
       </div>
 
       {/* Navigation Arrows */}
-      <a
-        className="carousel-control-prev"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="prev"
-        onClick={(e) => {
-          e.preventDefault();
-          goToPrev();
-        }}
+      <button
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+        onClick={goToPrev}
+        aria-label="Previous slide"
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="sr-only">Previous</span>
-      </a>
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
 
-      <a
-        className="carousel-control-next"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="next"
-        onClick={(e) => {
-          e.preventDefault();
-          goToNext();
-        }}
+      <button
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+        onClick={goToNext}
+        aria-label="Next slide"
       >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="sr-only">Next</span>
-      </a>
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
 
       {/* Bottom Indicators */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -154,6 +146,6 @@ export default function HeroCarousel() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
