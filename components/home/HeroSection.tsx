@@ -19,8 +19,8 @@ export default function HeroCarousel() {
   const slides: Slide[] = useMemo(() => [
     {
       id: 1,
-      image: "/images/hero/hero1.webp",
-      fallbackImage: "/images/hero/hero1.webp",
+      image: "public/images/hero/hero1.webp",
+      fallbackImage: "public/images/hero/hero1.webp",
       alt: "",
       title: "",
       subtitle: "",
