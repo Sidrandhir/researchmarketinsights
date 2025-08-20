@@ -260,7 +260,7 @@ export default function IndustryCategories() {
             <div className="text-center mt-8">
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link 
-                  href={`/industry/${selectedIndustry.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={industries.find(ind => ind.name === selectedIndustry)?.href || `/industry/${selectedIndustry.toLowerCase().replace(/\s+/g, '-')}`}
                   className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   View All {selectedIndustry} Reports
