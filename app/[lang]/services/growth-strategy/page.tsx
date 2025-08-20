@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { TrendingUp, Target, Users, BarChart3, ArrowLeft, Globe, Zap, Lightbulb, Rocket, PieChart } from 'lucide-react';
+import { TrendingUp, Target, Users, BarChart3, ArrowLeft, Globe, Zap, Lightbulb, Rocket } from 'lucide-react';
 
 export default async function GrowthStrategyPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

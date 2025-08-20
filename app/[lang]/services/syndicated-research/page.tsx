@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, Users, BarChart3, ArrowLeft, Globe, TrendingUp, Download, Share2, Database, Target } from 'lucide-react';
+import { FileText, Users, BarChart3, ArrowLeft, Globe, TrendingUp, Target } from 'lucide-react';
 
 export default async function SyndicatedResearchPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -134,7 +134,7 @@ export default async function SyndicatedResearchPage({ params }: { params: Promi
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What's Included</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">What&apos;s Included</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Comprehensive content and features in every syndicated research report
             </p>

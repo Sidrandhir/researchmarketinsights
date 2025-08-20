@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Clock, Send, ArrowRight, Users, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Users, Globe } from 'lucide-react';
 
 export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -211,7 +211,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-xl text-red-100 mb-8">
-            Let's discuss how we can help drive your business growth with market insights
+            Let&apos;s discuss how we can help drive your business growth with market insights
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={`/${lang}/services`} className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">

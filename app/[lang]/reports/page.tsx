@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, Search, Filter, ArrowRight, TrendingUp, Globe, BarChart3, Download } from 'lucide-react';
+import { FileText, Search, Filter, ArrowRight, Download } from 'lucide-react';
 
 export default async function ReportsPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -234,7 +234,7 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Need Custom Research?</h2>
           <p className="text-xl text-indigo-100 mb-8">
-            Can't find what you're looking for? We offer custom research solutions tailored to your specific needs
+            Can&apos;t find what you&apos;re looking for? We offer custom research solutions tailored to your specific needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={`/${lang}/contact`} className="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">

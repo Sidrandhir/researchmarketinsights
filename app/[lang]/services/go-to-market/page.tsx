@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Rocket, Target, Users, Globe, ArrowLeft, BarChart3, TrendingUp, Zap, MapPin, Lightbulb } from 'lucide-react';
+import { Rocket, Target, Users, Globe, ArrowLeft, BarChart3, TrendingUp, Zap, Lightbulb } from 'lucide-react';
 
 export default async function GoToMarketPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -19,7 +19,7 @@ export default async function GoToMarketPage({ params }: { params: Promise<{ lan
               Go-to-Market Strategy
             </h1>
             <p className="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto">
-              Strategic market entry and expansion planning to maximize your product's success
+              Strategic market entry and expansion planning to maximize your product&apos;s success
             </p>
           </div>
         </div>

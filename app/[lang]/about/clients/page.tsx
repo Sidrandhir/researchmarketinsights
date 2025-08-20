@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, Building, Globe, Users, Award, CheckCircle, TrendingUp, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Building, Globe, Users, CheckCircle, TrendingUp, BarChart3 } from 'lucide-react';
 
 export default async function ClientsPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

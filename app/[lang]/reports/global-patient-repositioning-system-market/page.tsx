@@ -286,7 +286,7 @@ export default function PatientRepositioningSystemReport() {
 
         <div style="margin: 2rem 0; text-align: center;">
           <Image 
-                            src="/assets/regional-insights.svg" 
+                            src="/assets/regional-insights.webp" 
             alt="Patient Repositioning System Market Regional Analysis" 
             width={800}
             height={400}

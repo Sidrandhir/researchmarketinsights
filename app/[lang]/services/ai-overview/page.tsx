@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Cpu, Brain, ArrowLeft, BarChart3, Globe, TrendingUp, Users, Target, Zap, Lightbulb, Rocket, Database } from 'lucide-react';
+import { Cpu, Brain, ArrowLeft, BarChart3, Globe, Users, Target, Rocket } from 'lucide-react';
 
 export default async function AIOverviewPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

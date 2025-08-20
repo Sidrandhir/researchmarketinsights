@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, Star, Quote, User, Building, Award, ThumbsUp, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Star, Quote, User, Building } from 'lucide-react';
 
 export default async function TestimonialsPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -80,7 +80,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
                 </div>
               </div>
               <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-                "Research Market Insight delivered exceptional results that exceeded our expectations. Their comprehensive market analysis helped us make strategic decisions that increased our market share by 25% within the first year."
+                &quot;Research Market Insight delivered exceptional results that exceeded our expectations. Their comprehensive market analysis helped us make strategic decisions that increased our market share by 25% within the first year.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
@@ -106,7 +106,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
                 </div>
               </div>
               <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-                "The team's expertise in ESG analysis is unmatched. They provided us with actionable insights that helped us develop a sustainability strategy that resonated with our stakeholders and investors."
+                &quot;The team&apos;s expertise in ESG analysis is unmatched. They provided us with actionable insights that helped us develop a sustainability strategy that resonated with our stakeholders and investors.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
@@ -132,7 +132,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
                 </div>
               </div>
               <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-                "Their go-to-market strategy consulting was instrumental in our successful product launch. The market research and competitive analysis they provided gave us the confidence to enter new markets."
+                &quot;Their go-to-market strategy consulting was instrumental in our successful product launch. The market research and competitive analysis they provided gave us the confidence to enter new markets.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
@@ -158,7 +158,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
                 </div>
               </div>
               <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-                "Working with Research Market Insight transformed our approach to market intelligence. Their AI-powered insights platform provides real-time data that helps us stay ahead of market trends."
+                &quot;Working with Research Market Insight transformed our approach to market intelligence. Their AI-powered insights platform provides real-time data that helps us stay ahead of market trends.&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
@@ -186,7 +186,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Healthcare & Life Sciences</h3>
               <p className="text-gray-600 mb-4">
-                "Their expertise in pharmaceutical market research helped us navigate complex regulatory landscapes and identify new opportunities."
+                &quot;Their expertise in pharmaceutical market research helped us navigate complex regulatory landscapes and identify new opportunities.&quot;
               </p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
@@ -202,7 +202,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Technology & Media</h3>
               <p className="text-gray-600 mb-4">
-                "The team's understanding of emerging tech trends and market dynamics is exceptional. They've been our go-to partner for strategic insights."
+                &quot;The team&apos;s understanding of emerging tech trends and market dynamics is exceptional. They&apos;ve been our go-to partner for strategic insights.&quot;
               </p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (
@@ -218,7 +218,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Manufacturing & Industrial</h3>
               <p className="text-gray-600 mb-4">
-                "Their supply chain analysis and market forecasting capabilities have been crucial for our strategic planning and operational decisions."
+                &quot;Their supply chain analysis and market forecasting capabilities have been crucial for our strategic planning and operational decisions.&quot;
               </p>
               <div className="flex justify-center text-yellow-400">
                 {[...Array(5)].map((_, i) => (

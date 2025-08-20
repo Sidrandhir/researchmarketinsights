@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 export default async function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }> }) {
-  const { lang, categorySlug } = await params;
+  const { categorySlug } = await params;
 
   // Define valid industry categories
   const validCategories = [

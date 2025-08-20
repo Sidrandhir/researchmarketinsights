@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Shield, Globe, BarChart3, ArrowLeft, TrendingUp, AlertTriangle, FileText, Target, DollarSign, MapPin } from 'lucide-react';
+import { Shield, Globe, BarChart3, ArrowLeft, TrendingUp, AlertTriangle, FileText, Target } from 'lucide-react';
 
 export default async function USTariffPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

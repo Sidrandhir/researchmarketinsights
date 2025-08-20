@@ -140,7 +140,7 @@ export default function Header() {
               <Link href="/" className="flex items-center">
                 <div className="w-48 h-16 flex items-center justify-center">
                                   <Image 
-                  src="/assets/logo.svg" 
+                  src="/assets/logo.webp" 
                   alt="Research Market Insight Logo" 
                   width={192}
                   height={64}
@@ -240,7 +240,7 @@ export default function Header() {
                   <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="w-40 h-12 flex items-center justify-center">
                       <Image 
-                        src="/assets/logo.svg" 
+                        src="/assets/logo.webp" 
                         alt="Research Market Insight Logo" 
                         width={160}
                         height={48}

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, Calendar, User, Tag, Share2, BookOpen, TrendingUp, Globe, BarChart3, Eye, Heart } from 'lucide-react';
+import { ArrowLeft, Calendar, User, BookOpen, TrendingUp, Eye, Heart } from 'lucide-react';
 
 export default async function BlogsPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -61,7 +61,7 @@ export default async function BlogsPage({ params }: { params: Promise<{ lang: st
                   The Future of AI in Market Research: 2025 Predictions
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Artificial Intelligence is revolutionizing how we approach market research. From predictive analytics to automated data processing, discover what's next in the AI-driven research landscape.
+                  Artificial Intelligence is revolutionizing how we approach market research. From predictive analytics to automated data processing, discover what&apos;s next in the AI-driven research landscape.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-sm text-gray-500">

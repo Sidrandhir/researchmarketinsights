@@ -172,7 +172,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Work Together?</h2>
           <p className="text-xl text-purple-100 mb-8">
-            Let's discuss how we can help drive your business success
+            Let&apos;s discuss how we can help drive your business success
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={`/${lang}/contact`} className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">

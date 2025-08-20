@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, Calendar, User, Tag, Share2, BookOpen, TrendingUp, Globe, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Calendar, User, BookOpen } from 'lucide-react';
 
 export default async function PressReleasePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

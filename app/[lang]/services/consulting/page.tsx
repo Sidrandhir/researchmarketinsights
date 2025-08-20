@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Users, Lightbulb, ArrowLeft, BarChart3, Globe, TrendingUp, Target, Zap, Briefcase, Clock, Award } from 'lucide-react';
+import { Users, Lightbulb, ArrowLeft, BarChart3, Globe, TrendingUp, Target, Zap, Briefcase } from 'lucide-react';
 
 export default async function ConsultingPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

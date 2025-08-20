@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 
 interface Slide {
   id: number;
@@ -90,13 +91,14 @@ export default function HeroCarousel() {
             {/* Background Image */}
             <div className="relative w-full h-full">
               {!imageError[slide.id] ? (
-                <img
+                <Image
                   src={slide.image}
                   alt={slide.alt}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'center' }}
                   onError={() => handleImageError(slide.id)}
                   onLoad={() => handleImageLoad(slide.id)}
-                  style={{ objectPosition: 'center' }}
                 />
               ) : (
                 // Fallback background when image fails to load
