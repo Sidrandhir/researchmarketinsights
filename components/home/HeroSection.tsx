@@ -20,29 +20,29 @@ export default function HeroCarousel() {
     {
       id: 1,
       image: "/images/hero/hero1.webp",
-      fallbackImage: "/images/hero/hero1.png",
-      alt: "Market Research Insights",
-      title: "Navigate Your Market with Confidence",
-      subtitle: "Data-Driven Strategies for Business Growth",
-      description: "Unlock in-depth analysis and competitive intelligence to stay ahead of the curve with our comprehensive market research reports."
+      fallbackImage: "/images/hero/hero1.webp",
+      alt: "",
+      title: "",
+      subtitle: "",
+      description: ""
     },
     {
       id: 2,
       image: "/images/hero/hero2.webp",
-      fallbackImage: "/images/hero/hero11.jpg",
-      alt: "Industry Analysis",
-      title: "Discover the Future of Your Industry",
-      subtitle: "Predictive Insights & Emerging Trends",
-      description: "Leverage our predictive analytics to identify emerging trends and opportunities before they happen."
+      fallbackImage: "/images/hero/hero2.webp",
+      alt: "",
+      title: "",
+      subtitle: "",
+      description: ""
     },
     {
       id: 3,
       image: "/images/hero/hero3.webp",
-      fallbackImage: "/images/hero/hero1.png",
-      alt: "Strategic Consulting",
-      title: "Expert Strategic Consulting",
-      subtitle: "Transform Data into Actionable Insights",
-      description: "Get personalized guidance from industry experts to make informed decisions and drive your business forward."
+      fallbackImage: "/images/hero/hero1.webp",
+      alt: "",
+      title: "",
+      subtitle: "",
+      description: ""
     }
   ], []);
 
@@ -96,17 +96,14 @@ export default function HeroCarousel() {
             {/* Background Image */}
             <div className="relative w-full h-full">
               {!imageError[slide.id] ? (
-                <picture>
-                  <source srcSet={slide.image} type="image/webp" />
-                  <img
-                    src={slide.fallbackImage}
-                    alt={slide.alt}
-                    className="w-full h-full object-cover"
-                    onError={() => handleImageError(slide.id)}
-                    onLoad={() => handleImageLoad(slide.id)}
-                    style={{ objectPosition: 'center' }}
-                  />
-                </picture>
+                <img
+                  src={slide.image}
+                  alt={slide.alt}
+                  className="w-full h-full object-cover"
+                  onError={() => handleImageError(slide.id)}
+                  onLoad={() => handleImageLoad(slide.id)}
+                  style={{ objectPosition: 'center' }}
+                />
               ) : (
                 // Fallback background when image fails to load
                 <div className="w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800"></div>
@@ -130,12 +127,6 @@ export default function HeroCarousel() {
 
                 {/* CTA Button */}
                 <div className="flex justify-center">
-                  <button
-                    onClick={() => handleKnowMore(slide.id)}
-                    className="bg-white text-gray-900 font-semibold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                  >
-                    Know More
-                  </button>
                 </div>
               </div>
             </div>
