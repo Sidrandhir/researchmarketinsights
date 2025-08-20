@@ -44,7 +44,7 @@ export default function HeroCarousel() {
       subtitle: "",
       description: ""
     }
-  ], []); 
+  ], []);
 
   // Auto-advance slides
   useEffect(() => {
