@@ -46,16 +46,14 @@ export default function HeroCarousel() {
     }
   ], []);
 
+  // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
 
-    // Debug: Log image paths
-    console.log('HeroSection mounted with slides:', slides.map(s => ({ id: s.id, image: s.image })));
-
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [slides.length]); // Use slides.length instead of slides array
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -67,10 +65,6 @@ export default function HeroCarousel() {
 
   const goToPrev = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const handleKnowMore = (slideId: number) => {
-    console.log(`Know More clicked for slide ${slideId}`);
   };
 
   const handleImageError = (slideId: number) => {
@@ -124,10 +118,6 @@ export default function HeroCarousel() {
                 <p className="text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-shadow opacity-95">
                   {slide.description}
                 </p>
-
-                {/* CTA Button */}
-                <div className="flex justify-center">
-                </div>
               </div>
             </div>
           </div>
