@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -23,7 +23,11 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [clickedDropdown, setClickedDropdown] = useState<string | null>(null);
+  const [dropdownPositions, setDropdownPositions] = useState<{[key: string]: {left: number, width: number}}>({});
   const router = useRouter();
+  const navRefs = useRef<{[key: string]: HTMLDivElement | null}>({});
+
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navigationItems: NavigationItem[] = [
     { name: 'HOME', href: '/', hasDropdown: false },
@@ -87,10 +91,35 @@ export default function Header() {
   };
 
   const handleMouseEnter = (name: string) => {
+    // Clear any existing timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    
     setActiveDropdown(name);
+    calculateDropdownPosition(name);
   };
 
   const handleMouseLeave = () => {
+    // Add a small delay before closing to allow moving to dropdown
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150); // 150ms delay
+  };
+
+  const handleDropdownMouseEnter = (name: string) => {
+    // Clear timeout when hovering over dropdown
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setActiveDropdown(name);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    // Close dropdown when leaving dropdown area
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
     setActiveDropdown(null);
   };
 
@@ -99,6 +128,22 @@ export default function Header() {
       setClickedDropdown(null);
     } else {
       setClickedDropdown(name);
+      calculateDropdownPosition(name);
+    }
+  };
+
+  const calculateDropdownPosition = (name: string) => {
+    const navElement = navRefs.current[name];
+    if (navElement) {
+      const rect = navElement.getBoundingClientRect();
+      const left = rect.left + (rect.width / 2);
+      setDropdownPositions(prev => ({
+        ...prev,
+        [name]: {
+          left: left,
+          width: rect.width
+        }
+      }));
     }
   };
 
@@ -124,6 +169,15 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [activeDropdown, clickedDropdown]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Check if dropdown should be visible (either hover or click)
   const isDropdownVisible = (name: string) => {
     return activeDropdown === name || clickedDropdown === name;
@@ -139,16 +193,16 @@ export default function Header() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <div className="w-48 h-16 flex items-center justify-center">
-                                  <Image 
-                  src="/assets/logo.webp" 
-                  alt="Research Market Insight Logo" 
-                  width={192}
-                  height={64}
-                  priority
-                  onError={(e) => {
-                    console.error('Logo failed to load:', e);
-                  }}
-                />
+                                     <Image 
+                     src="/assets/logo.webp" 
+                     alt="Research Market Insight Logo" 
+                     width={192}
+                     height={64}
+                     priority
+                     onError={(e) => {
+                       console.error('Logo failed to load:', e);
+                     }}
+                   />
                 </div>
               </Link>
             </div>
@@ -160,8 +214,9 @@ export default function Header() {
                   <div key={item.name} className="relative dropdown-container">
                     <div 
                       className="relative"
+                      ref={(el) => { navRefs.current[item.name] = el; }}
                       onMouseEnter={() => handleMouseEnter(item.name)}
-                      onMouseLeave={handleMouseLeave}
+                                              onMouseLeave={handleMouseLeave}
                     >
                       <div className="flex items-center space-x-1">
                         {item.href ? (
@@ -240,7 +295,7 @@ export default function Header() {
                   <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="w-40 h-12 flex items-center justify-center">
                       <Image 
-                        src="/assets/logo.webp" 
+                        src="/assets/logo.svg" 
                         alt="Research Market Insight Logo" 
                         width={160}
                         height={48}
@@ -323,9 +378,12 @@ export default function Header() {
       {isDropdownVisible('INDUSTRIES') && (
         <div 
           className="hidden lg:block fixed top-20 z-50"
-          style={{ left: 'calc(50% - 200px)' }}
-          onMouseEnter={() => setActiveDropdown('INDUSTRIES')}
-          onMouseLeave={handleMouseLeave}
+          style={{ 
+            left: `${dropdownPositions['INDUSTRIES']?.left || 0}px`,
+            transform: 'translateX(-50%)'
+          }}
+          onMouseEnter={() => handleDropdownMouseEnter('INDUSTRIES')}
+          onMouseLeave={handleDropdownMouseLeave}
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[250px] py-2">
             <div className="space-y-1">
@@ -367,9 +425,12 @@ export default function Header() {
       {isDropdownVisible('SERVICES') && (
         <div 
           className="hidden lg:block fixed top-20 z-50"
-          style={{ left: 'calc(50% - 150px)' }}
-          onMouseEnter={() => setActiveDropdown('SERVICES')}
-          onMouseLeave={handleMouseLeave}
+          style={{ 
+            left: `${dropdownPositions['SERVICES']?.left || 0}px`,
+            transform: 'translateX(-50%)'
+          }}
+          onMouseEnter={() => handleDropdownMouseEnter('SERVICES')}
+          onMouseLeave={handleDropdownMouseLeave}
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[280px] py-2">
             <div className="space-y-1">
@@ -405,9 +466,12 @@ export default function Header() {
       {isDropdownVisible('INSIGHTS') && (
         <div 
           className="hidden lg:block fixed top-20 z-50"
-          style={{ left: 'calc(50% - 50px)' }}
-          onMouseEnter={() => setActiveDropdown('INSIGHTS')}
-          onMouseLeave={handleMouseLeave}
+          style={{ 
+            left: `${dropdownPositions['INSIGHTS']?.left || 0}px`,
+            transform: 'translateX(-50%)'
+          }}
+          onMouseEnter={() => handleDropdownMouseEnter('INSIGHTS')}
+          onMouseLeave={handleDropdownMouseLeave}
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[200px] py-2">
             <div className="space-y-1">
@@ -425,9 +489,12 @@ export default function Header() {
       {isDropdownVisible('ABOUT') && (
         <div 
           className="hidden lg:block fixed top-20 z-50"
-          style={{ left: 'calc(50% + 100px)' }}
-          onMouseEnter={() => setActiveDropdown('ABOUT')}
-          onMouseLeave={handleMouseLeave}
+          style={{ 
+            left: `${dropdownPositions['ABOUT']?.left || 0}px`,
+            transform: 'translateX(-50%)'
+          }}
+          onMouseEnter={() => handleDropdownMouseEnter('ABOUT')}
+          onMouseLeave={handleDropdownMouseLeave}
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[200px] py-2">
             <div className="space-y-1">
