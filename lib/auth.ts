@@ -2,6 +2,29 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './db';
+import { JWT } from 'next-auth/jwt';
+import { Session } from 'next-auth';
+
+interface ExtendedJWT extends JWT {
+  role: string;
+  id: string;
+}
+
+interface ExtendedSession extends Session {
+  user: {
+    id?: string;
+    role?: string;
+    email?: string;
+    name?: string;
+  } & Session['user'];
+}
+
+interface UserData {
+  id: string;
+  email: string;
+  name?: string;
+  role: string;
+}
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
@@ -35,14 +58,14 @@ export const authOptions = {
   ],
   session: { strategy: 'jwt' as const },
   callbacks: {
-    async jwt({ token, user }: { token: any; user: any }) {
+    async jwt({ token, user }: { token: ExtendedJWT; user: UserData | undefined }) {
       if (user) {
         token.role = user.role;
         token.id = user.id;
       }
       return token;
     },
-    async session({ session, token }: { session: any; token: any }) {
+    async session({ session, token }: { session: ExtendedSession; token: ExtendedJWT }) {
       if (token && session.user) {
         session.user.id = token.id as string;
         session.user.role = token.role as string;

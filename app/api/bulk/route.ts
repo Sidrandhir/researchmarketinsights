@@ -27,7 +27,7 @@ interface ReportData {
 interface PressReleaseData {
   title: string
   content?: string
-  excerpt?: string | null
+  excerpt?: string
   imageUrl?: string | null
   category?: string
   metaTitle?: string | null
@@ -35,7 +35,7 @@ interface PressReleaseData {
   keywords?: string | null
   status?: string
   featured?: boolean
-  publishedAt?: string | null
+  publishedAt?: string
 }
 
 interface FilterData {
@@ -47,9 +47,14 @@ interface FilterData {
 // FIX: We will now properly use this type
 type PrismaWhereClause = {
   id?: { in: string[] }
-  category?: any // Using 'any' to match the schema's enum type for now
-  status?: any   // Using 'any' to match the schema's enum type for now
+  category?: CategoryType
+  status?: StatusType
 }
+
+// Type for category and status values
+type CategoryType = 'AEROSPACE_DEFENSE' | 'AUTOMOTIVE_TRANSPORTATION' | 'BANKING_FINANCIAL_SERVICES_INSURANCE' | 'CHEMICALS_MATERIALS' | 'CONSUMER_GOODS' | 'ELECTRONICS_SEMICONDUCTOR' | 'ENERGY_POWER' | 'FOOD_BEVERAGES' | 'LIFE_SCIENCES' | 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS';
+
+type StatusType = 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
 
 export async function POST(request: Request) {
   try {
@@ -107,7 +112,7 @@ async function handleBulkReportUpload(data: ReportData[]) {
               price: parseFloat(reportData.price) || 0,
               discount: reportData.discount ? parseFloat(reportData.discount) : null,
               reportCode: reportData.reportCode || `REPORT-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-              category: (reportData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS') as any,
+              category: (reportData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS') as CategoryType,
               subcategory: reportData.subcategory || null,
               imageUrl: reportData.imageUrl || null,
               toc: reportData.toc || {},
@@ -117,7 +122,7 @@ async function handleBulkReportUpload(data: ReportData[]) {
               metaTitle: reportData.metaTitle || null,
               metaDescription: reportData.metaDescription || null,
               keywords: reportData.keywords || null,
-              status: (reportData.status || 'DRAFT') as any,
+              status: (reportData.status || 'DRAFT') as StatusType,
               featured: reportData.featured || false,
               authorId: 'system'
             }
@@ -154,11 +159,11 @@ async function handleBulkPressReleaseUpload(data: PressReleaseData[]) {
               content: prData.content || '',
               excerpt: prData.excerpt || null,
               imageUrl: prData.imageUrl || null,
-              category: (prData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS') as any,
+              category: (prData.category || 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS') as CategoryType,
               metaTitle: prData.metaTitle || null,
               metaDescription: prData.metaDescription || null,
               keywords: prData.keywords || null,
-              status: (prData.status || 'DRAFT') as any,
+              status: (prData.status || 'DRAFT') as StatusType,
               featured: prData.featured || false,
               publishedAt: prData.publishedAt ? new Date(prData.publishedAt) : null,
               authorId: 'system'
@@ -193,11 +198,11 @@ async function handleBulkReportDownload(data: FilterData) {
     }
     
     if (data.category) {
-      where.category = data.category
+      where.category = data.category as CategoryType
     }
     
     if (data.status) {
-      where.status = data.status
+      where.status = data.status as StatusType
     }
 
     const reports = await prisma.report.findMany({
@@ -241,11 +246,11 @@ async function handleBulkPressReleaseDownload(data: FilterData) {
     }
     
     if (data.category) {
-      where.category = data.category
+      where.category = data.category as CategoryType
     }
     
     if (data.status) {
-      where.status = data.status
+      where.status = data.status as StatusType
     }
 
     const pressReleases = await prisma.pressRelease.findMany({

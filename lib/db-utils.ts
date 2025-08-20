@@ -1,5 +1,3 @@
-import { prisma } from './db'
-
 /**
  * Check if database is available and configured
  */

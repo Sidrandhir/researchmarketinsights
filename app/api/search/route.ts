@@ -1,46 +1,53 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
+// Type for category values
+type CategoryType = 'AEROSPACE_DEFENSE' | 'AUTOMOTIVE_TRANSPORTATION' | 'BANKING_FINANCIAL_SERVICES_INSURANCE' | 'CHEMICALS_MATERIALS' | 'CONSUMER_GOODS' | 'ELECTRONICS_SEMICONDUCTOR' | 'ENERGY_POWER' | 'FOOD_BEVERAGES' | 'LIFE_SCIENCES' | 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS';
+
 export async function GET(request: Request) {
   try {
-    // Check if database is available
-    if (!process.env.DATABASE_URL) {
-      return NextResponse.json({ 
-        results: [], 
-        total: 0,
-        message: 'Database not configured'
-      });
-    }
-
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q') || '';
-    const category = searchParams.get('category') || '';
     const type = searchParams.get('type') || 'all';
-    const page = parseInt(searchParams.get('page') || '1');
+    const category = searchParams.get('category') as CategoryType | null;
     const limit = parseInt(searchParams.get('limit') || '10');
-    const offset = (page - 1) * limit;
+    const offset = parseInt(searchParams.get('offset') || '0');
 
-    if (!query) {
-      return NextResponse.json({ results: [], total: 0 });
+    if (!query.trim()) {
+      return NextResponse.json(
+        { error: 'Query parameter is required' },
+        { status: 400 }
+      );
     }
 
-    const results = [];
+    const results: Array<{
+      id: string;
+      type: 'REPORT' | 'PRESS_RELEASE';
+      title: string;
+      description: string;
+      category: string;
+      price?: number;
+      imageUrl?: string | null;
+      featured: boolean;
+      createdAt: Date;
+      url: string;
+    }> = [];
 
-            // Search reports
-        if (type === 'all' || type === 'reports') {
-          const reports = await prisma.report.findMany({
-            where: {
-              AND: [
-                {
-                  OR: [
-                    { title: { contains: query, mode: 'insensitive' } },
-                    { description: { contains: query, mode: 'insensitive' } },
-                  ],
-                },
-                { status: 'PUBLISHED' },
-                ...(category ? [{ category: category as any }] : []),
+    // Search reports
+    if (type === 'all' || type === 'reports') {
+      const reports = await prisma.report.findMany({
+        where: {
+          AND: [
+            {
+              OR: [
+                { title: { contains: query, mode: 'insensitive' } },
+                { description: { contains: query, mode: 'insensitive' } },
               ],
             },
+            { status: 'PUBLISHED' },
+            ...(category ? [{ category: category }] : []),
+          ],
+        },
         select: {
           id: true,
           title: true,
@@ -67,7 +74,7 @@ export async function GET(request: Request) {
           title: report.title,
           description: report.description || '',
           category: report.category,
-          price: report.price,
+          price: Number(report.price),
           imageUrl: report.imageUrl,
           featured: report.featured,
           createdAt: report.createdAt,
@@ -76,21 +83,21 @@ export async function GET(request: Request) {
       );
     }
 
-            // Search press releases
-        if (type === 'all' || type === 'press-releases') {
-          const pressReleases = await prisma.pressRelease.findMany({
-            where: {
-              AND: [
-                {
-                  OR: [
-                    { title: { contains: query, mode: 'insensitive' } },
-                    { content: { contains: query, mode: 'insensitive' } },
-                  ],
-                },
-                { status: 'PUBLISHED' },
-                ...(category ? [{ category: category as any }] : []),
+    // Search press releases
+    if (type === 'all' || type === 'press-releases') {
+      const pressReleases = await prisma.pressRelease.findMany({
+        where: {
+          AND: [
+            {
+              OR: [
+                { title: { contains: query, mode: 'insensitive' } },
+                { content: { contains: query, mode: 'insensitive' } },
               ],
             },
+            { status: 'PUBLISHED' },
+            ...(category ? [{ category: category }] : []),
+          ],
+        },
         select: {
           id: true,
           title: true,
@@ -132,27 +139,25 @@ export async function GET(request: Request) {
       if (!a.featured && b.featured) return 1;
       
       // Then by type priority
-      const typePriority = { REPORT: 1, PRESS_RELEASE: 2 };
-      return typePriority[a.type] - typePriority[b.type];
+      if (a.type === 'REPORT' && b.type === 'PRESS_RELEASE') return -1;
+      if (a.type === 'PRESS_RELEASE' && b.type === 'REPORT') return 1;
+      
+      // Finally by creation date
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
 
     return NextResponse.json({
       success: true,
-      data: results.slice(0, limit),
-      pagination: {
-        page,
-        limit,
-        total: results.length,
-        totalPages: Math.ceil(results.length / limit),
-      },
+      results,
+      total: results.length,
+      query,
+      type,
+      category,
     });
   } catch (error) {
     console.error('Search error:', error);
     return NextResponse.json(
-      {
-        success: false,
-        message: 'Internal server error',
-      },
+      { error: 'Search failed' },
       { status: 500 }
     );
   }

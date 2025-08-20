@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import ReportContent from '@/components/reports/ReportContent';
 import StickySidebar from '@/components/reports/StickySidebar';
+import React from 'react'; // Added missing import for React
 
 // This is our MOCK data for this specific report page
 const reportData = {
@@ -10,49 +11,44 @@ const reportData = {
   category: 'LIFE_SCIENCES',
   reportCode: 'RPT-PRS-001',
   content: {
-    marketOutlook: "Global patient repositioning system market size is poised to reach USD XX. XX Million by 2024...", // Truncated for brevity
-    marketDynamics: [
-      { heading: "Driver: Aging Population...", body: "The world population is aging and the elderly are increasingly in need of medical assistance and care..." },
-      { heading: "Driver: Demand for Customized...", body: "A considerable shift is observed toward patient positioning system solutions that can be customized..." }
-    ],
-    keyPlayers: ["Stryker Corporation (US)", "Steris Plc. (US)", "Hill-Rom, Inc. (US)"],
-    // Add all other JSON content sections here
+    summary: "Global patient repositioning system market size is poised to reach USD XX. XX Million by 2024, growing at a CAGR of X.X% during the forecast period. The market is driven by increasing demand for patient safety, rising healthcare expenditure, and technological advancements in medical devices.",
+    overview: "The global patient repositioning system market encompasses various devices and systems designed to safely move and reposition patients in healthcare settings. These systems help reduce the risk of injury to both patients and healthcare workers while improving patient comfort and care quality.",
+    methodology: "Our research methodology involves extensive primary and secondary research, including interviews with industry experts, analysis of company reports, and review of regulatory documents. We also analyze market trends, competitive landscape, and technological developments.",
+    toc: "1. Executive Summary\n2. Market Overview\n3. Market Dynamics\n4. Competitive Landscape\n5. Regional Analysis\n6. Market Forecast\n7. Appendix",
+    scope: "This report covers the global patient repositioning system market segmented by product type, end-user, and region. The analysis includes market size, growth trends, competitive landscape, and future outlook from 2024 to 2032.",
+    segments: "The market is segmented by product type (manual systems, powered systems, integrated systems), end-user (hospitals, long-term care facilities, home care), and region (North America, Europe, Asia-Pacific, Latin America, Middle East & Africa)."
   },
   faqs: [
-    { question: "What are the major factors driving the growth...?", answer: "Increasing government funds for hospitals expansions is expected to rise the market growth." },
-    // Add all other FAQs here
+    { question: "What are the major factors driving the growth of the patient repositioning system market?", answer: "Increasing government funds for hospitals expansions is expected to rise the market growth." },
+    { question: "Which region is expected to dominate the market?", answer: "North America is expected to dominate the market due to high healthcare expenditure and advanced healthcare infrastructure." },
+    { question: "What are the key challenges in the market?", answer: "High cost of advanced systems and lack of skilled healthcare professionals are key challenges." }
   ]
 };
 
 // NOTE: This is a simplified version of the reportData. 
 // You should copy the full JSON for `content` and `faqs` from my previous response here.
 
-export default async function PatientRepositioningReportPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = await params;
+export default function PatientRepositioningReportPage({ params }: { params: Promise<{ lang: string }> }) {
+  // Since this is a client component, we need to handle the async params differently
+  const [lang, setLang] = React.useState<string>('');
+  
+  React.useEffect(() => {
+    params.then(({ lang: resolvedLang }) => setLang(resolvedLang));
+  }, [params]);
+
   const categoryName = reportData.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
   // We need to simulate the full report object for our components
   const fullReportObject = {
-      ...reportData,
       id: '1',
-      slug: 'global-patient-repositioning-system-market',
-      description: 'Global Patient Repositioning System Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032.',
-      price: 4999.00,
-      subcategory: null,
-      imageUrl: null,
-      toc: null,
-      scope: null,
-      segments: null,
-      metaTitle: null,
-      metaDescription: null,
-      keywords: null,
-      status: 'PUBLISHED' as const, // Type assertion to match Status enum
-      featured: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      authorId: 'system',
-      discount: null
-  } as any; // Type assertion to bypass strict typing
+      title: reportData.title,
+      category: reportData.category,
+      content: reportData.content
+  };
+
+  if (!lang) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-white">
