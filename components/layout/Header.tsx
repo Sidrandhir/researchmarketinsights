@@ -142,9 +142,6 @@ export default function Header() {
                     width={192}
                     height={64}
                     priority
-                    onError={(e) => {
-                      console.error('Logo failed to load:', e);
-                    }}
                   />
                 </div>
               </Link>
