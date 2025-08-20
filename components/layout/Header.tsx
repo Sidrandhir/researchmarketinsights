@@ -13,7 +13,7 @@ interface DropdownItem {
 
 interface NavigationItem {
   name: string;
-  href: string;
+  href?: string;
   hasDropdown: boolean;
   dropdownItems?: DropdownItem[];
 }
@@ -29,7 +29,6 @@ export default function Header() {
     { name: 'HOME', href: '/', hasDropdown: false },
     {
       name: 'INDUSTRIES',
-      href: '/industry',
       hasDropdown: true,
       dropdownItems: [
         { name: '🚀 Aerospace and Defence', href: '/industry/aerospace-defence' },
@@ -46,7 +45,6 @@ export default function Header() {
     },
     {
       name: 'SERVICES',
-      href: '/services',
       hasDropdown: true,
       dropdownItems: [
         { name: '💼 Consulting Services', href: '/services/consulting' },
@@ -61,21 +59,19 @@ export default function Header() {
     },
     {
       name: 'INSIGHTS',
-      href: '/insights',
       hasDropdown: true,
       dropdownItems: [
-        { name: '📰 PRESS RELEASE', href: '/insights/press-release' },
-        { name: '✍️ BLOGS', href: '/insights/blogs' }
+        { name: '📰 Press Release', href: '/insights/press-release' },
+        { name: '✍️ Blogs', href: '/insights/blogs' }
       ]
     },
     {
       name: 'ABOUT',
-      href: '/about',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'ABOUT US', href: '/about' },
-        { name: 'CLIENT TESTIMONIALS', href: '/about/testimonials' },
-        { name: 'OUR CLIENTS', href: '/about/clients' }
+        { name: 'ℹ️ About Us', href: '/about' },
+        { name: '💬 Client Testimonials', href: '/about/testimonials' },
+        { name: '🤝 Our Clients', href: '/about/clients' }
       ]
     },
     { name: 'CONTACT', href: '/contact', hasDropdown: false }
@@ -109,10 +105,17 @@ export default function Header() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (activeDropdown && !(event.target as Element).closest('.dropdown-container')) {
+      const target = event.target as Element;
+      
+      // Don't close if clicking on dropdown items
+      if (target.closest('.dropdown-item')) {
+        return;
+      }
+      
+      if (activeDropdown && !target.closest('.dropdown-container')) {
         setActiveDropdown(null);
       }
-      if (clickedDropdown && !(event.target as Element).closest('.dropdown-container')) {
+      if (clickedDropdown && !target.closest('.dropdown-container')) {
         setClickedDropdown(null);
       }
     };
@@ -136,16 +139,16 @@ export default function Header() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <div className="w-48 h-16 flex items-center justify-center">
-                  <Image 
-                    src="/images/logo.webp" 
-                    alt="Research Market Insight Logo" 
-                    width={192}
-                    height={64}
-                    priority
-                    onError={(e) => {
-                      console.error('Logo failed to load:', e);
-                    }}
-                  />
+                                  <Image 
+                  src="/assets/logo.svg" 
+                  alt="Research Market Insight Logo" 
+                  width={192}
+                  height={64}
+                  priority
+                  onError={(e) => {
+                    console.error('Logo failed to load:', e);
+                  }}
+                />
                 </div>
               </Link>
             </div>
@@ -155,13 +158,13 @@ export default function Header() {
               <div className="flex items-center space-x-6">
                 {navigationItems.map((item) => (
                   <div key={item.name} className="relative dropdown-container">
-                    {item.hasDropdown ? (
-                      <div 
-                        className="relative"
-                        onMouseEnter={() => handleMouseEnter(item.name)}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        <div className="flex items-center space-x-1">
+                    <div 
+                      className="relative"
+                      onMouseEnter={() => handleMouseEnter(item.name)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="flex items-center space-x-1">
+                        {item.href ? (
                           <Link
                             href={item.href}
                             className="nav-link text-gray-700 hover:text-blue-600 font-medium py-3 px-3 rounded-md transition-all duration-200 text-sm relative group"
@@ -170,24 +173,25 @@ export default function Header() {
                             {/* Hover indicator */}
                             <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
                           </Link>
+                        ) : (
+                          <button
+                            className="nav-link text-gray-700 hover:text-blue-600 font-medium py-3 px-3 rounded-md transition-all duration-200 text-sm relative group"
+                          >
+                            <span>{item.name}</span>
+                            {/* Hover indicator */}
+                            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
+                          </button>
+                        )}
+                        {item.hasDropdown && (
                           <button
                             className="p-1 text-gray-600 hover:text-blue-600 transition-all duration-200"
                             onClick={() => handleDropdownToggle(item.name)}
                           >
                             <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isDropdownVisible(item.name) ? 'rotate-180' : ''}`} />
                           </button>
-                        </div>
+                        )}
                       </div>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        className="nav-link flex items-center space-x-1 text-gray-700 hover:text-blue-600 font-medium py-3 px-3 rounded-md transition-all duration-200 text-sm relative group"
-                      >
-                        <span>{item.name}</span>
-                        {/* Hover indicator */}
-                        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
-                      </Link>
-                    )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -236,7 +240,7 @@ export default function Header() {
                   <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="w-40 h-12 flex items-center justify-center">
                       <Image 
-                        src="/images/logo.webp" 
+                        src="/assets/logo.svg" 
                         alt="Research Market Insight Logo" 
                         width={160}
                         height={48}
@@ -269,13 +273,21 @@ export default function Header() {
                 {navigationItems.map((item) => (
                   <div key={item.name}>
                     <div className="flex items-center justify-between">
-                      <Link
-                        href={item.href}
-                        className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200 flex-1"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200 flex-1 text-left"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <button
+                          className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200 flex-1 text-left"
+                        >
+                          {item.name}
+                        </button>
+                      )}
                       {item.hasDropdown && (
                         <button
                           className="p-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
@@ -291,7 +303,7 @@ export default function Header() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200"
+                            className="dropdown-item block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             {subItem.name}
@@ -317,34 +329,34 @@ export default function Header() {
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[250px] py-2">
             <div className="space-y-1">
-              <Link href="/industry/aerospace-defence" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/aerospace-defence" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🚀 AEROSPACE AND DEFENCE
               </Link>
-              <Link href="/industry/automotive-transportation" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/automotive-transportation" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🚗 AUTOMOTIVE AND TRANSPORTATION
               </Link>
-              <Link href="/industry/banking-financial" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/banking-financial" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🏦 BANKING AND FINANCIAL
               </Link>
-              <Link href="/industry/chemicals-materials" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/chemicals-materials" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🧪 CHEMICALS AND MATERIALS
               </Link>
-              <Link href="/industry/consumer-goods" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/consumer-goods" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🛍️ CONSUMER GOODS
               </Link>
-              <Link href="/industry/electronics-semiconductor" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/electronics-semiconductor" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 💻 ELECTRONICS AND SEMICONDUCTOR
               </Link>
-              <Link href="/industry/energy-power" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/energy-power" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 ⚡ ENERGY AND POWER
               </Link>
-              <Link href="/industry/food-beverages" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/food-beverages" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🍔 FOOD AND BEVERAGES
               </Link>
-              <Link href="/industry/life-sciences" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/life-sciences" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🧬 LIFE SCIENCES
               </Link>
-              <Link href="/industry/technology-media" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/industry/technology-media" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 📱 TECHNOLOGY AND MEDIA
               </Link>
             </div>
@@ -361,28 +373,28 @@ export default function Header() {
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[280px] py-2">
             <div className="space-y-1">
-              <Link href="/services/consulting" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/consulting" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 💼 CONSULTING SERVICES
               </Link>
-              <Link href="/services/syndicated-research" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/syndicated-research" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 📊 SYNDICATED MARKET RESEARCH
               </Link>
-              <Link href="/services/market-intelligence" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/market-intelligence" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🔍 MARKET INTELLIGENCE
               </Link>
-              <Link href="/services/growth-strategy" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/growth-strategy" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 📈 GROWTH STRATEGY
               </Link>
-              <Link href="/services/go-to-market" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/go-to-market" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🎯 GO TO MARKET STRATEGY
               </Link>
-              <Link href="/services/esg-analysis" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/esg-analysis" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🌱 ESG ANALYSIS
               </Link>
-              <Link href="/services/ai-overview" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/ai-overview" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🤖 AI (ARTIFICIAL INTELLIGENCE) OVERVIEW
               </Link>
-              <Link href="/services/us-tariff" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/services/us-tariff" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🇺🇸 US TARIFF
               </Link>
             </div>
@@ -399,10 +411,10 @@ export default function Header() {
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[200px] py-2">
             <div className="space-y-1">
-              <Link href="/insights/press-release" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/insights/press-release" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 📰 PRESS RELEASE
               </Link>
-              <Link href="/insights/blogs" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/insights/blogs" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 ✍️ BLOGS
               </Link>
             </div>
@@ -419,13 +431,13 @@ export default function Header() {
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[200px] py-2">
             <div className="space-y-1">
-              <Link href="/about" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/about" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 ℹ️ ABOUT US
               </Link>
-              <Link href="/about/testimonials" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/about/testimonials" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 💬 CLIENT TESTIMONIALS
               </Link>
-              <Link href="/about/clients" className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
+              <Link href="/about/clients" className="dropdown-item block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm font-medium">
                 🤝 OUR CLIENTS
               </Link>
             </div>

@@ -9,11 +9,11 @@ export default function TestImagesPage() {
         <div className="bg-white rounded-lg shadow-md p-8 space-y-8">
           {/* Test 1: Logo from images directory */}
           <div>
-            <h2 className="text-xl font-semibold mb-4">1. Logo from /images/logo.webp</h2>
+            <h2 className="text-xl font-semibold mb-4">1. Logo from /assets/logo.svg</h2>
             <div className="border border-gray-200 rounded-lg p-4">
               <Image 
-                src="/images/logo.webp" 
-                alt="Logo from images directory" 
+                src="/assets/logo.svg" 
+                alt="Logo from assets directory" 
                 width={200}
                 height={80}
                 className="border border-red-500"
@@ -23,11 +23,11 @@ export default function TestImagesPage() {
 
           {/* Test 2: Logo from images directory */}
           <div>
-            <h2 className="text-xl font-semibold mb-4">2. Logo from /images/logo.webp</h2>
+            <h2 className="text-xl font-semibold mb-4">2. Logo from /assets/logo.svg</h2>
             <div className="border border-gray-200 rounded-lg p-4">
               <Image 
-                src="/images/logo.webp" 
-                alt="Logo from images directory" 
+                src="/assets/logo.svg" 
+                alt="Logo from assets directory" 
                 width={200}
                 height={80}
                 className="border border-blue-500"
@@ -52,7 +52,7 @@ export default function TestImagesPage() {
             <ul className="text-sm space-y-1">
               <li>• Current working directory: <code className="bg-gray-200 px-1 rounded">/app/test-images</code></li>
               <li>• Next.js config: <code className="bg-gray-200 px-1 rounded">unoptimized: true</code></li>
-              <li>• Image paths being tested: <code className="bg-gray-200 px-1 rounded">/images/logo.webp</code></li>
+              <li>• Image paths being tested: <code className="bg-gray-200 px-1 rounded">/assets/logo.svg</code></li>
               <li>• Check browser console for any image loading errors</li>
             </ul>
           </div>

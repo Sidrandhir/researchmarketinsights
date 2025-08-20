@@ -128,11 +128,8 @@ function SearchPageContent() {
                   Try adjusting your search terms or browse our categories instead.
                 </p>
                 <div className="mt-6">
-                  <Link
-                    href="/industry"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-                  >
-                    Browse Industries
+                  <Link href="/industry/life-sciences" className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
+                    Explore Industries
                   </Link>
                 </div>
               </div>

@@ -70,9 +70,9 @@ export default function CTASection() {
             >
               Contact Us
             </Link>
-            <Link 
-              href="/services"
-              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors duration-200"
+            <Link
+              href="/services/consulting"
+              className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200"
             >
               Our Services
             </Link>

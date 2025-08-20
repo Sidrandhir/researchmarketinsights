@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'Research Market Insights',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/assets/hero-placeholder.svg',
         width: 1200,
         height: 630,
         alt: 'Research Market Insights',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Research Market Insights - Global Market Research Reports',
     description: 'Discover comprehensive market research reports, industry analysis, and business insights across 25+ industry sectors.',
-    images: ['/og-image.jpg'],
+    images: ['/assets/hero-placeholder.svg'],
   },
   robots: {
     index: true,
@@ -83,11 +83,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Favicon and app icons */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg" />
         
         {/* Structured Data */}
         <script
@@ -97,8 +94,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Research Market Insights",
-              "url": "https://researchmarketinsights.com",
-              "logo": "https://researchmarketinsights.com/logo.png",
+              "url": "/",
+              "logo": "/assets/logo.svg",
               "description": "Global market research and business intelligence company",
               "address": {
                 "@type": "PostalAddress",

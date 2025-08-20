@@ -227,7 +227,7 @@ export default function PricingPage() {
             <Link href="/contact" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
               Contact Us
             </Link>
-            <Link href="/services" className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
+            <Link href="/services/consulting" className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
               Our Services
             </Link>
           </div>

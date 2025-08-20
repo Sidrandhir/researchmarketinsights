@@ -1,146 +1,248 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
+import { FileText, Search, Filter, ArrowRight, TrendingUp, Globe, BarChart3, Download } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Market Research Reports - Research Market Insights',
-  description: 'Browse our comprehensive collection of market research reports across 25+ industry sectors. Get expert analysis and insights.',
-};
-
-export default function ReportsPage() {
+export default async function ReportsPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Market Research Reports
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-            Access over 10,000 comprehensive market research reports with data-driven analysis from our expert analysts
-          </p>
+      <section className="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <div className="bg-white/20 p-4 rounded-full">
+                <FileText className="h-12 w-12 text-white" />
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Market Research Reports
+            </h1>
+            <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
+              Comprehensive industry analysis and market intelligence reports across diverse sectors
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Search and Filter Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="md:col-span-2">
+      {/* Search and Filter */}
+      <section className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                 <input
                   type="text"
                   placeholder="Search reports by title, industry, or keyword..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
-              <div>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  <option value="">All Industries</option>
-                  <option value="aerospace">Aerospace & Defence</option>
-                  <option value="automotive">Automotive & Transportation</option>
-                  <option value="banking">Banking & Financial</option>
-                  <option value="chemicals">Chemicals & Materials</option>
-                  <option value="consumer">Consumer Goods</option>
-                  <option value="electronics">Electronics & Semiconductor</option>
-                  <option value="energy">Energy & Power</option>
-                  <option value="food">Food & Beverages</option>
-                  <option value="healthcare">Life Sciences</option>
-                  <option value="technology">Technology & Media</option>
-                </select>
-              </div>
-              <div>
-                <button className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
-                  Search Reports
-                </button>
-              </div>
+            </div>
+            <div className="flex gap-3">
+              <select className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option>All Industries</option>
+                <option>Life Sciences</option>
+                <option>Aerospace & Defence</option>
+                <option>Automotive & Transportation</option>
+                <option>Banking & Financial</option>
+                <option>Chemicals & Materials</option>
+                <option>Consumer Goods</option>
+                <option>Electronics & Semiconductor</option>
+                <option>Energy & Power</option>
+                <option>Food & Beverages</option>
+                <option>Technology & Media</option>
+              </select>
+              <select className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                <option>All Regions</option>
+                <option>North America</option>
+                <option>Europe</option>
+                <option>Asia Pacific</option>
+                <option>Latin America</option>
+                <option>Middle East & Africa</option>
+              </select>
+              <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                <Filter className="w-4 h-4 mr-2" />
+                Filter
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Reports Grid */}
-      <section className="py-16">
+      {/* Featured Reports */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Available Reports */}
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    Life Sciences
-                  </span>
-                  <span className="text-sm text-gray-500">Jan 2024</span>
-                </div>
-                
-                <h3 className="text-lg font-bold text-gray-900 mb-4 line-clamp-3 leading-tight">
-                  Global Patient Repositioning System Market Size, Share & Industry Analysis
-                </h3>
-                
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                  Comprehensive analysis of patient repositioning systems market with air-assisted, mechanical, and robotic solutions.
-                </p>
-                
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-                  <span>189 Pages</span>
-                  <span>PDF + Excel</span>
-                </div>
-                
-                <div className="flex gap-3">
-                  <Link href="/reports/global-patient-repositioning-system-market" className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold text-center">
-                    View Report
-                  </Link>
-                  <button className="px-4 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-200 font-semibold">
-                    Sample
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    Life Sciences
-                  </span>
-                  <span className="text-sm text-gray-500">Jan 2024</span>
-                </div>
-                
-                <h3 className="text-lg font-bold text-gray-900 mb-4 line-clamp-3 leading-tight">
-                  Global Connected Drug Delivery Devices Market Size, Share & Industry Analysis
-                </h3>
-                
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                  In-depth research on connected drug delivery devices market including smart inhalers, connected injectors, and IoT integration.
-                </p>
-                
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-                  <span>245 Pages</span>
-                  <span>PDF + Excel</span>
-                </div>
-                
-                <div className="flex gap-3">
-                  <Link href="/reports/global-connected-drug-delivery-devices-market" className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold text-center">
-                    View Report
-                  </Link>
-                  <button className="px-4 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-200 font-semibold">
-                    Sample
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Reports</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Discover our latest and most comprehensive market research reports
+            </p>
           </div>
 
-          {/* CTA Section */}
-          <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Custom Research?</h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Get tailored market research solutions designed specifically for your business needs and industry requirements.
-              </p>
-              <Link href="/contact" className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Contact Us
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Global Patient Repositioning System Market",
+                industry: "Life Sciences",
+                description: "Analysis of patient positioning systems including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RPT-PRS-001",
+                features: ["Market Size & Forecast", "Competitive Analysis", "Regional Insights", "Technology Trends"]
+              },
+              {
+                title: "Connected Drug Delivery Devices Market",
+                industry: "Life Sciences",
+                description: "Comprehensive analysis of connected drug delivery technologies and market opportunities",
+                price: "$5,499",
+                reportCode: "RPT-CDD-002",
+                features: ["Device Types", "Market Drivers", "Regulatory Landscape", "Future Outlook"]
+              },
+              {
+                title: "Patient Monitoring Devices Market",
+                industry: "Life Sciences",
+                description: "In-depth analysis of patient monitoring technologies and market dynamics",
+                price: "$5,999",
+                reportCode: "RPT-PMD-003",
+                features: ["Device Categories", "Market Segmentation", "Growth Factors", "Regional Analysis"]
+              },
+              {
+                title: "Pharmaceutical Packaging Market",
+                industry: "Life Sciences",
+                description: "Analysis of pharmaceutical packaging solutions and market trends",
+                price: "$4,499",
+                reportCode: "RPT-PPM-004",
+                features: ["Packaging Types", "Material Analysis", "Sustainability Trends", "Market Forecast"]
+              },
+              {
+                title: "Medical Device Outsourcing Market",
+                industry: "Life Sciences",
+                description: "Comprehensive analysis of medical device outsourcing services and market opportunities",
+                price: "$5,499",
+                reportCode: "RPT-MDO-005",
+                features: ["Service Types", "Market Drivers", "Regional Analysis", "Future Trends"]
+              },
+              {
+                title: "Precision Medicine Market",
+                industry: "Life Sciences",
+                description: "Analysis of precision medicine technologies and market growth potential",
+                price: "$6,999",
+                reportCode: "RPT-PMM-006",
+                features: ["Technology Platforms", "Market Applications", "Regulatory Framework", "Growth Forecast"]
+              }
+            ].map((report, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">📊</div>
+                  <div className="text-right">
+                    <div className="text-sm font-medium text-green-600">Featured</div>
+                    <div className="text-xs text-gray-500">Report</div>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <span className="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mb-2">
+                    {report.industry}
+                  </span>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+                    {report.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                    {report.description}
+                  </p>
+                </div>
+
+                <div className="space-y-2 mb-4">
+                  {report.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm text-gray-700">
+                      <div className="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-sm text-gray-500">
+                    <span className="font-medium">Code:</span> {report.reportCode}
+                  </div>
+                  <div className="text-2xl font-bold text-indigo-600">
+                    {report.price}
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <Link 
+                    href={`/${lang}/reports/${report.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`}
+                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-200"
+                  >
+                    View Details
+                  </Link>
+                  <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-lg transition-colors duration-200">
+                    <Download className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Categories */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Browse by Industry</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Explore our comprehensive collection of reports across diverse industry sectors
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Life Sciences", count: "25+ Reports", color: "from-red-500 to-red-600" },
+              { name: "Aerospace & Defence", count: "15+ Reports", color: "from-gray-500 to-gray-600" },
+              { name: "Automotive & Transportation", count: "20+ Reports", color: "from-blue-500 to-blue-600" },
+              { name: "Banking & Financial", count: "18+ Reports", color: "from-green-500 to-green-600" },
+              { name: "Chemicals & Materials", count: "12+ Reports", color: "from-purple-500 to-purple-600" },
+              { name: "Consumer Goods", count: "22+ Reports", color: "from-pink-500 to-pink-600" },
+              { name: "Electronics & Semiconductor", count: "30+ Reports", color: "from-indigo-500 to-indigo-600" },
+              { name: "Energy & Power", count: "16+ Reports", color: "from-yellow-500 to-yellow-600" },
+              { name: "Food & Beverages", count: "14+ Reports", color: "from-orange-500 to-orange-600" },
+              { name: "Technology & Media", count: "28+ Reports", color: "from-teal-500 to-teal-600" }
+            ].map((industry, index) => (
+              <Link 
+                key={index}
+                href={`/${lang}/industry/${industry.name.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and')}`}
+                className="group"
+              >
+                <div className={`bg-gradient-to-r ${industry.color} text-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 group-hover:scale-105`}>
+                  <h3 className="text-xl font-bold mb-2">{industry.name}</h3>
+                  <p className="text-white/80">{industry.count}</p>
+                  <div className="flex items-center mt-4 text-white/80 group-hover:text-white transition-colors duration-200">
+                    <span className="text-sm">Explore Reports</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  </div>
+                </div>
               </Link>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Need Custom Research?</h2>
+          <p className="text-xl text-indigo-100 mb-8">
+            Can't find what you're looking for? We offer custom research solutions tailored to your specific needs
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href={`/${lang}/contact`} className="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+              Request Custom Report
+            </Link>
+            <Link href={`/${lang}/services`} className="border border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200">
+              Our Services
+            </Link>
           </div>
         </div>
       </section>

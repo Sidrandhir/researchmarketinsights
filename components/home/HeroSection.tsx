@@ -19,8 +19,8 @@ export default function HeroCarousel() {
   const slides: Slide[] = useMemo(() => [
     {
       id: 1,
-      image: "/images/hero/hero1.webp",
-      fallbackImage: "/images/hero/hero1.webp",
+          image: "/assets/hero-placeholder.svg",
+    fallbackImage: "/assets/hero-placeholder.svg",
       alt: "",
       title: "",
       subtitle: "",
@@ -28,8 +28,8 @@ export default function HeroCarousel() {
     },
     {
       id: 2,
-      image: "/images/hero/hero2.webp",
-      fallbackImage: "/images/hero/hero2.webp",
+          image: "/assets/hero-placeholder.svg",
+    fallbackImage: "/assets/hero-placeholder.svg",
       alt: "",
       title: "",
       subtitle: "",
@@ -37,8 +37,8 @@ export default function HeroCarousel() {
     },
     {
       id: 3,
-      image: "/images/hero/hero3.webp",
-      fallbackImage: "/images/hero/hero3.webp",
+          image: "/assets/hero-placeholder.svg",
+    fallbackImage: "/assets/hero-placeholder.svg",
       alt: "",
       title: "",
       subtitle: "",
