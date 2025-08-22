@@ -24,7 +24,7 @@ header {
 
 /* Add padding to body to account for fixed header */
 body {
-  padding-top: 80px; /* 20px (h-20) for header height */
+  padding-top: 64px; /* 16px (h-16) for header height */
 }
 
 /* Ensure main content doesn't hide behind header */

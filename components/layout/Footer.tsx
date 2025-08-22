@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="flex flex-col items-center space-y-4">
               <div className="w-48 h-20 flex items-center justify-center">
                 <Image 
-                  src="/assets/logo.webp" 
+                  src="/assets/log.jpg" 
                   alt="Research Market Insight Logo" 
                   width={192}
                   height={80}
