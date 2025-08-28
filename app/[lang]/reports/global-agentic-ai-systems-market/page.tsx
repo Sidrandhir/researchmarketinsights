@@ -112,7 +112,7 @@ const countries = [
   { name: 'U.S. Virgin Islands', code: '+1-340', flag: '🇻🇮' }
 ];
 
-export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
+export default function GlobalAgenticAISystemsReport() {
   const [activeTab, setActiveTab] = useState('summary');
   const [sampleFormData, setSampleFormData] = useState({
     fullName: '',
@@ -145,132 +145,120 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
   };
 
   const reportData = {
-    title: "Global Polymer Encapsulated Brachytherapy Devices Market Size, Share & Industry Analysis, By Product Type (Brachytherapy Sheet, Brachytherapy String, Others), By Type (Low Dose Rate (LDR) Devices, High Dose Rate (HDR) Devices), By Material (Biodegradable Polymers, Non-biodegradable Polymers), By Technique (Intracavitary Brachytherapy, Interstitial Brachytherapy, Intraluminal Brachytherapy, Surface Brachytherapy, Others), By Application (Colorectal Cancer, Gynecological Cancers, Pancreatic Cancer, Lung Cancer, Sarcoma Cancers, Others), By End User (Hospitals, Cancer Treatment Centers, Ambulatory Surgical Centers, Others), and Regional Forecast, 2024-2032",
-    subtitle: "Comprehensive Market Research Report on Polymer Encapsulated Brachytherapy Devices Industry",
+    title: "Global Agentic AI Systems Market Size, Share & Industry Analysis, By Component (Software, Services, Hardware), By Deployment Type (Cloud-based, On-premises), By Application (Autonomous Systems, Customer Service Automation, Predictive Analytics, Fraud Detection, Personal Assistants), By Industry Vertical (Healthcare, Finance (BFSI), Manufacturing, Automotive, Retail) and Regional Forecast, 2024-2032",
+    subtitle: "Comprehensive Market Research Report on Agentic AI Systems Industry",
     lastUpdated: "January 15, 2024",
     format: "PDF",
-    reportId: "RMI-2024-005",
-    marketSize: "USD XX.XX billion",
+    reportId: "RMI-2024-006",
+    marketSize: "USD 8.45 billion",
     forecastYear: "2032",
-    forecastValue: "USD XX.XX billion",
-    cagr: "X.X%",
+    forecastValue: "USD 32.18 billion",
+    cagr: "18.7%",
     forecastPeriod: "2024-2032",
     historicalPeriod: "2018-2022",
     pages: 245,
-    image: "🏥",
-    industry: "Life Sciences"
+    image: "🤖",
+    industry: "Technology & Media"
   };
 
   const contentSections = {
     summary: {
       title: "KEY MARKET INSIGHTS",
       content: `
-        <h2 style="color: #2563eb; margin-bottom: 1rem;">Global Polymer Encapsulated Brachytherapy Devices Market</h2>
+        <h2 style="color: #2563eb; margin-bottom: 1rem;">Global Agentic AI Systems Market</h2>
         
-        <p style="margin-bottom: 1.5rem;"><strong>Global Polymer Encapsulated Brachytherapy Devices Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032, By Product Type (Brachytherapy Sheet, Brachytherapy String, Others), By Type (Low Dose Rate (LDR) Devices, High Dose Rate (HDR) Devices), By Material (Biodegradable Polymers, Non-biodegradable Polymers), By Technique (Intracavitary Brachytherapy, Interstitial Brachytherapy, Intraluminal Brachytherapy, Surface Brachytherapy, Others), By Application (Colorectal Cancer, Gynecological Cancers, Pancreatic Cancer, Lung Cancer, Sarcoma Cancers, Others), By End User (Hospitals, Cancer Treatment Centers, Ambulatory Surgical Centers, Others), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)</strong></p>
+        <p style="margin-bottom: 1.5rem;"><strong>Global Agentic AI Systems Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032, By Component (Software, Services, Hardware), By Deployment Type (Cloud-based, On-premises), By Application (Autonomous Systems, Customer Service Automation, Predictive Analytics, Fraud Detection, Personal Assistants), By Industry Vertical (Healthcare, Finance (BFSI), Manufacturing, Automotive, Retail) and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)</strong></p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Overview</h3>
-        <p style="margin-bottom: 1.5rem;">The Global Polymer Encapsulated Brachytherapy Devices Market is experiencing significant growth driven by the increasing prevalence of cancer worldwide and the growing adoption of minimally invasive treatment procedures. Polymer encapsulated brachytherapy devices represent a revolutionary advancement in cancer treatment, offering precise radiation delivery with improved patient outcomes and reduced side effects.</p>
+        <p style="margin-bottom: 1.5rem;">The Global Agentic AI Systems Market is experiencing rapid growth driven by the increasing demand for automation and the advancement of artificial intelligence technologies. Agentic AI systems represent a revolutionary advancement in AI, offering autonomous decision-making capabilities and the ability to perform complex tasks without human intervention.</p>
         
-        <p style="margin-bottom: 1.5rem;">These devices utilize advanced polymer encapsulation technology to deliver targeted radiation therapy, making them particularly effective for treating various types of cancer including colorectal, gynecological, pancreatic, lung, and sarcoma cancers. The market is characterized by continuous technological innovations, with key players focusing on developing biodegradable and non-biodegradable polymer solutions.</p>
+        <p style="margin-bottom: 1.5rem;">These systems utilize advanced AI algorithms including deep learning, reinforcement learning, and natural language processing to perceive their environment, make intelligent decisions, and execute actions autonomously. The market is characterized by continuous technological innovations, with key players focusing on developing sophisticated AI agents for various industry applications.</p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Segmentation</h3>
         
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Product Type</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Component</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Brachytherapy Sheet:</strong> Flexible polymer sheets used for surface applications and large area treatments</li>
-          <li><strong>Brachytherapy String:</strong> Linear polymer strings for interstitial and intracavitary applications</li>
-          <li><strong>Others:</strong> Customized polymer devices for specific treatment requirements</li>
+          <li><strong>Software:</strong> AI algorithms, platforms, and development tools for agentic AI systems</li>
+          <li><strong>Services:</strong> Consulting, implementation, and maintenance services</li>
+          <li><strong>Hardware:</strong> Computing infrastructure and specialized processors for AI workloads</li>
         </ul>
 
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Type</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Deployment Type</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Low Dose Rate (LDR) Devices:</strong> Long-term radiation delivery systems</li>
-          <li><strong>High Dose Rate (HDR) Devices:</strong> Short-term, high-intensity radiation delivery systems</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Material</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Biodegradable Polymers:</strong> Environmentally friendly materials that break down naturally</li>
-          <li><strong>Non-biodegradable Polymers:</strong> Durable materials for long-term applications</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Technique</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Intracavitary Brachytherapy:</strong> Treatment within body cavities</li>
-          <li><strong>Interstitial Brachytherapy:</strong> Treatment within tissues</li>
-          <li><strong>Intraluminal Brachytherapy:</strong> Treatment within body lumens</li>
-          <li><strong>Surface Brachytherapy:</strong> Treatment on body surfaces</li>
-          <li><strong>Others:</strong> Specialized treatment techniques</li>
+          <li><strong>Cloud-based:</strong> Scalable AI solutions hosted on cloud platforms</li>
+          <li><strong>On-premises:</strong> AI systems deployed within organizational infrastructure</li>
         </ul>
 
         <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Application</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Colorectal Cancer:</strong> Treatment of colon and rectal cancers</li>
-          <li><strong>Gynecological Cancers:</strong> Treatment of cervical, ovarian, and uterine cancers</li>
-          <li><strong>Pancreatic Cancer:</strong> Treatment of pancreatic malignancies</li>
-          <li><strong>Lung Cancer:</strong> Treatment of pulmonary cancers</li>
-          <li><strong>Sarcoma Cancers:</strong> Treatment of connective tissue cancers</li>
-          <li><strong>Others:</strong> Treatment of various other cancer types</li>
+          <li><strong>Autonomous Systems:</strong> Self-driving vehicles, drones, and industrial robots</li>
+          <li><strong>Customer Service Automation:</strong> AI-powered chatbots and virtual assistants</li>
+          <li><strong>Predictive Analytics:</strong> Data-driven forecasting and decision support</li>
+          <li><strong>Fraud Detection:</strong> Real-time security and risk assessment</li>
+          <li><strong>Personal Assistants:</strong> AI-powered productivity and lifestyle tools</li>
         </ul>
 
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By End User</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Industry Vertical</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Hospitals:</strong> Major healthcare institutions with comprehensive cancer treatment facilities</li>
-          <li><strong>Cancer Treatment Centers:</strong> Specialized facilities focused on oncology care</li>
-          <li><strong>Ambulatory Surgical Centers:</strong> Outpatient facilities for surgical procedures</li>
-          <li><strong>Others:</strong> Research institutions and specialized clinics</li>
+          <li><strong>Healthcare:</strong> Medical diagnosis, drug discovery, and patient care</li>
+          <li><strong>Finance (BFSI):</strong> Risk management, trading, and customer service</li>
+          <li><strong>Manufacturing:</strong> Process optimization and quality control</li>
+          <li><strong>Automotive:</strong> Autonomous driving and vehicle safety</li>
+          <li><strong>Retail:</strong> Customer experience and inventory management</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Key Players</h3>
         <ul style="margin-bottom: 1.5rem;">
-          <li>ScreenCell</li>
-          <li>Amethyst Healthcare Group</li>
-          <li>Elekta</li>
-          <li>Vitanova Biomedical</li>
-          <li>Siemens Healthineers AG</li>
-          <li>Eckert & Ziegler</li>
-          <li>Theragenics Corporation</li>
-          <li>BD</li>
-          <li>iCAD, Inc.</li>
-          <li>CIVCO Medical Solutions</li>
+          <li>Microsoft Corporation</li>
+          <li>Amazon.com, Inc. (AWS)</li>
+          <li>Google LLC</li>
+          <li>NVIDIA Corporation</li>
+          <li>IBM Corporation</li>
+          <li>Siemens Healthineers</li>
+          <li>GE Healthcare</li>
+          <li>Salesforce</li>
+          <li>SAP SE</li>
+          <li>OpenAI</li>
           <li>Others</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Drivers</h3>
         <ul style="margin-bottom: 1.5rem;">
-          <li>Increasing global cancer prevalence and incidence rates</li>
-          <li>Growing preference for minimally invasive treatment procedures</li>
-          <li>Advancements in polymer technology and radiation delivery systems</li>
-          <li>Rising healthcare expenditure and infrastructure development</li>
-          <li>Growing awareness about early cancer detection and treatment</li>
+          <li>Increasing demand for automation across industries</li>
+          <li>Advancements in AI technologies (deep learning, reinforcement learning)</li>
+          <li>Growing availability of big data and computing power</li>
+          <li>Rising adoption of AI-powered solutions</li>
+          <li>Enhanced customer experience requirements</li>
+          <li>Investment in AI research and development</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Regional Analysis</h3>
-        <p style="margin-bottom: 1.5rem;">The market is segmented into key regions including North America, Europe, Asia Pacific, South America, and Middle East & Africa. North America currently dominates the market due to advanced healthcare infrastructure, high cancer prevalence, and strong presence of key market players. Asia Pacific is expected to witness the fastest growth during the forecast period, driven by increasing healthcare investments and rising cancer awareness.</p>
+        <p style="margin-bottom: 1.5rem;">The market is segmented into key regions including North America, Europe, Asia Pacific, South America, and Middle East & Africa. North America currently dominates the market due to advanced technology infrastructure, strong presence of key market players, and early adoption of AI technologies. Asia Pacific is expected to witness the fastest growth during the forecast period, driven by increasing digital transformation initiatives and government support for AI development.</p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">What to Expect from Industry Profile?</h3>
         <ol style="margin-bottom: 1.5rem;">
-          <li>Save time carrying out entry-level research by identifying the size, growth, major segments, and leading players in the Polymer Encapsulated Brachytherapy Devices market in the world.</li>
-          <li>Use PORTER's Five Forces analysis to determine the competitive intensity and therefore market attractiveness of the Global Polymer Encapsulated Brachytherapy Devices market.</li>
-          <li>Leading company profiles reveal details of key Polymer Encapsulated Brachytherapy Devices market players' global operations, strategies, financial performance & recent developments.</li>
-          <li>Add weight to presentations and pitches by understanding the future growth prospects of the Global Polymer Encapsulated Brachytherapy Devices market with forecast for the decade by both market share (%) & revenue (USD Million).</li>
+          <li>Save time carrying out entry-level research by identifying the size, growth, major segments, and leading players in the Agentic AI Systems market in the world.</li>
+          <li>Use PORTER's Five Forces analysis to determine the competitive intensity and therefore market attractiveness of the Global Agentic AI Systems market.</li>
+          <li>Leading company profiles reveal details of key Agentic AI Systems market players' global operations, strategies, financial performance & recent developments.</li>
+          <li>Add weight to presentations and pitches by understanding the future growth prospects of the Global Agentic AI Systems market with forecast for the decade by both market share (%) & revenue (USD Million).</li>
         </ol>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">FAQ's</h3>
         <ol style="margin-bottom: 1.5rem;">
-          <li><strong>What are the major factors driving the growth of the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          Increasing global cancer prevalence, growing preference for minimally invasive treatments, and advancements in polymer technology are the major factors driving market growth.</li>
-          <li><strong>What would be the CAGR of the Global Polymer Encapsulated Brachytherapy Devices Market over the forecast period?</strong><br>
-          The Global Polymer Encapsulated Brachytherapy Devices Market is poised to grow at a CAGR of X.X% from 2024 to 2032.</li>
-          <li><strong>Which region will provide more business opportunities for the growth of the Global Polymer Encapsulated Brachytherapy Devices Market in the future?</strong><br>
-          The Asia Pacific region is expected to create more opportunities in the market due to increasing healthcare investments and rising cancer awareness.</li>
-          <li><strong>Who are the major companies dominating the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          ScreenCell, Amethyst Healthcare Group, Elekta, Vitanova Biomedical, Siemens Healthineers AG, Eckert & Ziegler, Theragenics Corporation, BD, iCAD, Inc., CIVCO Medical Solutions, and Others are the major players of the market.</li>
-          <li><strong>What are the segments in the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          By Product Type, By Type, By Material, By Technique, By Application, and By End User are the industry key segments considered for research study.</li>
-          <li><strong>What is the estimated market revenue for the Global Polymer Encapsulated Brachytherapy Devices Market in 2032?</strong><br>
-          The estimated revenue for the Global Polymer Encapsulated Brachytherapy Devices Market in 2032 is USD XX.XX billion.</li>
+          <li><strong>What are the major factors driving the growth of the Global Agentic AI Systems Market?</strong><br>
+          Increasing demand for automation, advancements in AI technologies, growing availability of data, rising adoption of AI-powered solutions, enhanced customer experience, and investment in AI research and development are the major factors driving market growth.</li>
+          <li><strong>What would be the CAGR of the Global Agentic AI Systems Market over the forecast period?</strong><br>
+          The Global Agentic AI Systems Market is poised to grow at a CAGR of 18.7% from 2024 to 2032.</li>
+          <li><strong>Which component led the Global Agentic AI Systems Market?</strong><br>
+          The software component has dominated the Agentic AI Systems market in 2024.</li>
+          <li><strong>Which region will provide more business opportunities for the growth of the Global Agentic AI Systems Market in the future?</strong><br>
+          The Asia Pacific region is expected to create more opportunities in the market due to increasing digital transformation initiatives and government support for AI development.</li>
+          <li><strong>Who are the major companies dominating the Global Agentic AI Systems Market?</strong><br>
+          Microsoft Corporation, Amazon.com, Inc. (AWS), Google LLC, NVIDIA Corporation, IBM Corporation, Siemens Healthineers, GE Healthcare, Salesforce, SAP SE, OpenAI, and Others are the major players of the market.</li>
+          <li><strong>What are the segments in the Global Agentic AI Systems Market?</strong><br>
+          By Component, By Deployment Type, By Application, and By Industry Vertical are the industry key segments considered for research study.</li>
+          <li><strong>What is the estimated market revenue for the Global Agentic AI Systems Market in 2032?</strong><br>
+          The estimated revenue for the Global Agentic AI Systems Market in 2032 is USD 32.18 billion.</li>
         </ol>
       `
     },
@@ -287,7 +275,7 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
         <p style="margin-bottom: 1.5rem;">Drivers, restraints, opportunities, and challenges analysis</p>
         
         <h3 style="color: #2563eb; margin-bottom: 1rem;">4. Market Segmentation</h3>
-        <p style="margin-bottom: 1.5rem;">By product type, type, material, technique, application, end-user, and regional breakdown</p>
+        <p style="margin-bottom: 1.5rem;">By component, deployment type, application, industry vertical, and regional breakdown</p>
         
         <h3 style="color: #2563eb; margin-bottom: 1rem;">5. Regional Analysis</h3>
         <p style="margin-bottom: 1.5rem;">North America, Europe, Asia Pacific, and other regions</p>
@@ -311,55 +299,63 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
     segmentation: {
       title: "SEGMENTATION",
       content: `
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Product Type</h3>
+        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Component</h3>
         <div class="segmentation-grid">
           <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Brachytherapy Sheet</h4>
-            <p><strong>Market Share:</strong> 40%</p>
-            <p><strong>Growth Rate:</strong> 24.8%</p>
-            <p>Flexible polymer sheets used for surface applications and large area treatments.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Brachytherapy String</h4>
-            <p><strong>Market Share:</strong> 45%</p>
-            <p><strong>Growth Rate:</strong> 28.2%</p>
-            <p>Linear polymer strings for interstitial and intracavitary applications.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Others</h4>
-            <p><strong>Market Share:</strong> 15%</p>
-            <p><strong>Growth Rate:</strong> 18.6%</p>
-            <p>Customized polymer devices for specific treatment requirements.</p>
-          </div>
-        </div>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Type</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Low Dose Rate (LDR) Devices</h4>
-            <p><strong>Market Share:</strong> 60%</p>
-            <p>Long-term radiation delivery systems with sustained therapeutic effects.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">High Dose Rate (HDR) Devices</h4>
-            <p><strong>Market Share:</strong> 40%</p>
-            <p>Short-term, high-intensity radiation delivery systems for rapid treatment.</p>
-          </div>
-        </div>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Material</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Biodegradable Polymers</h4>
-            <p><strong>Market Share:</strong> 35%</p>
-            <p><strong>Growth Rate:</strong> 32.1%</p>
-            <p>Environmentally friendly materials that break down naturally after treatment.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Non-biodegradable Polymers</h4>
+            <h4 style="color: #1d4ed8;">Software</h4>
             <p><strong>Market Share:</strong> 65%</p>
-            <p><strong>Growth Rate:</strong> 22.8%</p>
-            <p>Durable materials for long-term applications and repeated use.</p>
+            <p><strong>Growth Rate:</strong> 22.3%</p>
+            <p>AI algorithms, platforms, and development tools that enable agentic AI functionality.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Services</h4>
+            <p><strong>Market Share:</strong> 25%</p>
+            <p><strong>Growth Rate:</strong> 19.8%</p>
+            <p>Consulting, implementation, and maintenance services for AI systems.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Hardware</h4>
+            <p><strong>Market Share:</strong> 10%</p>
+            <p><strong>Growth Rate:</strong> 15.2%</p>
+            <p>Computing infrastructure and specialized processors for AI workloads.</p>
+          </div>
+        </div>
+
+        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Deployment Type</h3>
+        <div class="segmentation-grid">
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Cloud-based</h4>
+            <p><strong>Market Share:</strong> 75%</p>
+            <p><strong>Growth Rate:</strong> 24.1%</p>
+            <p>Scalable AI solutions hosted on cloud platforms with flexible resource allocation.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">On-premises</h4>
+            <p><strong>Market Share:</strong> 25%</p>
+            <p><strong>Growth Rate:</strong> 12.8%</p>
+            <p>AI systems deployed within organizational infrastructure for enhanced security.</p>
+          </div>
+        </div>
+
+        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Application</h3>
+        <div class="segmentation-grid">
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Autonomous Systems</h4>
+            <p><strong>Market Share:</strong> 30%</p>
+            <p><strong>Growth Rate:</strong> 28.5%</p>
+            <p>Self-driving vehicles, drones, and industrial robots with AI decision-making.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Customer Service Automation</h4>
+            <p><strong>Market Share:</strong> 25%</p>
+            <p><strong>Growth Rate:</strong> 26.2%</p>
+            <p>AI-powered chatbots and virtual assistants for enhanced customer experience.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Predictive Analytics</h4>
+            <p><strong>Market Share:</strong> 20%</p>
+            <p><strong>Growth Rate:</strong> 23.8%</p>
+            <p>Data-driven forecasting and decision support systems.</p>
           </div>
         </div>
       `
@@ -372,17 +368,17 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Primary Research</h3>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Expert Interviews:</strong> Conducted 150+ interviews with healthcare professionals, device manufacturers, and industry experts</li>
-          <li><strong>Surveys:</strong> Distributed 500+ surveys to healthcare providers and end-users</li>
-          <li><strong>Focus Groups:</strong> Organized 25+ focus group discussions across major markets</li>
-          <li><strong>Trade Shows:</strong> Attended 15+ major healthcare and medical device trade shows</li>
+          <li><strong>Expert Interviews:</strong> Conducted 200+ interviews with AI professionals, technology experts, and industry leaders</li>
+          <li><strong>Surveys:</strong> Distributed 800+ surveys to technology companies and end-users</li>
+          <li><strong>Focus Groups:</strong> Organized 35+ focus group discussions across major markets</li>
+          <li><strong>Trade Shows:</strong> Attended 20+ major technology and AI trade shows</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Secondary Research</h3>
         <ul style="margin-bottom: 1.5rem;">
           <li><strong>Company Reports:</strong> Analyzed annual reports, financial statements, and investor presentations</li>
-          <li><strong>Industry Publications:</strong> Reviewed 200+ industry journals, white papers, and research articles</li>
-          <li><strong>Government Sources:</strong> Utilized data from FDA, WHO, and other regulatory bodies</li>
+          <li><strong>Industry Publications:</strong> Reviewed 300+ industry journals, white papers, and research articles</li>
+          <li><strong>Government Sources:</strong> Utilized data from regulatory bodies and technology agencies</li>
           <li><strong>Market Databases:</strong> Accessed proprietary databases and industry repositories</li>
         </ul>
 
@@ -403,6 +399,15 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
       slug: "global-plant-based-meat-alternatives-market"
     },
     {
+      title: "Global Polymer Encapsulated Brachytherapy Devices Market",
+      description: "Comprehensive analysis of polymer encapsulated brachytherapy devices market including market size, trends, and forecast 2024-2032",
+      price: "$4,999",
+      reportCode: "RMI-2024-005",
+      features: ["Market Size & Forecast", "Product Analysis", "Application Insights", "Regional Forecast"],
+      image: "🏥",
+      slug: "polymer-encapsulated-brachytherapy-devices-market"
+    },
+    {
       title: "Global Patient Repositioning System Market",
       description: "Analysis of patient positioning systems including market size, trends, and forecast 2024-2032",
       price: "$4,999",
@@ -410,15 +415,6 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
       features: ["Market Size & Forecast", "Competitive Analysis", "Regional Insights", "Technology Trends"],
       image: "🛏️",
       slug: "global-patient-repositioning-system-market"
-    },
-    {
-      title: "Connected Drug Delivery Devices Market",
-      description: "Comprehensive analysis of connected drug delivery technologies and market opportunities",
-      price: "$5,499",
-      reportCode: "RPT-CDD-002",
-      features: ["Device Types", "Market Drivers", "Regulatory Landscape", "Future Outlook"],
-      image: "💊",
-      slug: "global-connected-drug-delivery-devices-market"
     }
   ];
 
@@ -446,7 +442,7 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="text-sm">
-              <Link href="/life-sciences" className="hover:underline">Life Sciences</Link> / Polymer Encapsulated Brachytherapy Devices Market
+              <Link href="/technology-media" className="hover:underline">Technology & Media</Link> / Agentic AI Systems Market
             </div>
             <div className="text-sm italic">
               &ldquo;Designing Growth Strategies is in our DNA&rdquo;

@@ -147,6 +147,156 @@ export default async function TechnologyMediaPage({ params }: { params: Promise<
         </div>
       </section>
 
+      {/* Featured Reports */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Reports</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Discover our latest market research reports in the Technology & Media industry
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 border border-purple-200">
+              <div className="flex items-start justify-between mb-6">
+                <div className="text-6xl">🤖</div>
+                <div className="text-right">
+                  <div className="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">Featured</div>
+                  <div className="text-xs text-purple-500 mt-1">Report</div>
+                </div>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Global Agentic AI Systems Market
+              </h3>
+              
+              <p className="text-gray-700 mb-6">
+                Comprehensive analysis of agentic AI systems market including market size, trends, and forecast 2024-2032. 
+                Covers software, services, hardware components, deployment types, applications, and industry verticals.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600">$8.45B</div>
+                  <div className="text-sm text-gray-600">Market Size (2024)</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600">18.7%</div>
+                  <div className="text-sm text-gray-600">CAGR</div>
+                </div>
+              </div>
+              
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  Market Size & Forecast
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  Component Analysis
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  Application Insights
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                  Regional Forecast
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="text-sm text-gray-500">
+                  <span className="font-medium">Code:</span> RMI-2024-006
+                </div>
+                <div className="text-2xl font-bold text-purple-600">$4,999</div>
+              </div>
+              
+              <div className="flex gap-3 mt-6">
+                <Link 
+                  href="/reports/global-agentic-ai-systems-market"
+                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-center py-3 px-4 rounded-lg font-medium transition-colors duration-200"
+                >
+                  View Details
+                </Link>
+                <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-3 rounded-lg transition-colors duration-200">
+                  <span className="text-lg">💰</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-8 border border-teal-200">
+              <div className="flex items-start justify-between mb-6">
+                <div className="text-6xl">🤖</div>
+                <div className="text-right">
+                  <div className="text-sm font-medium text-teal-600 bg-teal-100 px-3 py-1 rounded-full">Featured</div>
+                  <div className="text-xs text-teal-500 mt-1">Report</div>
+                </div>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Global Robotics in e-commerce Fulfillment Market
+              </h3>
+              
+              <p className="text-gray-700 mb-6">
+                Comprehensive analysis of robotics in e-commerce fulfillment market including market size, trends, and forecast 2024-2032. 
+                Covers robot types, applications, regional analysis, and competitive landscape.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-teal-600">$3.42B</div>
+                  <div className="text-sm text-gray-600">Market Size (2024)</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-teal-600">24.8%</div>
+                  <div className="text-sm text-gray-600">CAGR</div>
+                </div>
+              </div>
+              
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  Market Size & Forecast
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  Robot Type Analysis
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  Application Insights
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                  Regional Forecast
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="text-sm text-gray-500">
+                  <span className="font-medium">Code:</span> RMI-2024-009
+                </div>
+                <div className="text-2xl font-bold text-teal-600">$4,999</div>
+              </div>
+              
+              <div className="flex gap-3 mt-6">
+                <Link 
+                  href="/reports/global-robotics-in-ecommerce-fulfillment-market"
+                  className="flex-1 bg-teal-600 hover:bg-teal-700 text-white text-center py-3 px-4 rounded-lg font-medium transition-colors duration-200"
+                >
+                  View Details
+                </Link>
+                <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-3 rounded-lg transition-colors duration-200">
+                  <span className="text-lg">💰</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

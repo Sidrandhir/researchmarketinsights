@@ -112,7 +112,7 @@ const countries = [
   { name: 'U.S. Virgin Islands', code: '+1-340', flag: '🇻🇮' }
 ];
 
-export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
+export default function GlobalCaptureAndStorageCCSTechnologiesMarketReport() {
   const [activeTab, setActiveTab] = useState('summary');
   const [sampleFormData, setSampleFormData] = useState({
     fullName: '',
@@ -122,21 +122,18 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
   });
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
-
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleSampleRequest = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Sample requested:', sampleFormData);
     setShowSuccessMessage(true);
-    // Reset form
     setSampleFormData({
       fullName: '',
       email: '',
       phone: '',
       company: ''
     });
-    // Hide message after 3 seconds
     setTimeout(() => setShowSuccessMessage(false), 3000);
   };
 
@@ -145,249 +142,183 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
   };
 
   const reportData = {
-    title: "Global Polymer Encapsulated Brachytherapy Devices Market Size, Share & Industry Analysis, By Product Type (Brachytherapy Sheet, Brachytherapy String, Others), By Type (Low Dose Rate (LDR) Devices, High Dose Rate (HDR) Devices), By Material (Biodegradable Polymers, Non-biodegradable Polymers), By Technique (Intracavitary Brachytherapy, Interstitial Brachytherapy, Intraluminal Brachytherapy, Surface Brachytherapy, Others), By Application (Colorectal Cancer, Gynecological Cancers, Pancreatic Cancer, Lung Cancer, Sarcoma Cancers, Others), By End User (Hospitals, Cancer Treatment Centers, Ambulatory Surgical Centers, Others), and Regional Forecast, 2024-2032",
-    subtitle: "Comprehensive Market Research Report on Polymer Encapsulated Brachytherapy Devices Industry",
+    title: "Global Capture and Storage (CCS) Technologies Market Size, Share & Industry Analysis, By Technology (Post-combustion, Industrial Process, Pre-combustion, and Oxy-combustion), By Application (Power Generation, Oil & Gas, Metal Production, Cement, and Others), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)",
+    subtitle: "Comprehensive Market Research Report on Carbon Capture and Storage Technologies Industry",
     lastUpdated: "January 15, 2024",
     format: "PDF",
-    reportId: "RMI-2024-005",
-    marketSize: "USD XX.XX billion",
+    reportId: "RMI-2024-008",
+    marketSize: "USD 2.85 billion",
     forecastYear: "2032",
-    forecastValue: "USD XX.XX billion",
-    cagr: "X.X%",
+    forecastValue: "USD 8.92 billion",
+    cagr: "18.7%",
     forecastPeriod: "2024-2032",
     historicalPeriod: "2018-2022",
     pages: 245,
-    image: "🏥",
-    industry: "Life Sciences"
+    image: "🌱",
+    industry: "Energy & Power"
   };
 
   const contentSections = {
     summary: {
       title: "KEY MARKET INSIGHTS",
       content: `
-        <h2 style="color: #2563eb; margin-bottom: 1rem;">Global Polymer Encapsulated Brachytherapy Devices Market</h2>
+        <h2 style="color: #2563eb; margin-bottom: 1rem;">Global Capture and Storage (CCS) Technologies Market</h2>
         
-        <p style="margin-bottom: 1.5rem;"><strong>Global Polymer Encapsulated Brachytherapy Devices Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032, By Product Type (Brachytherapy Sheet, Brachytherapy String, Others), By Type (Low Dose Rate (LDR) Devices, High Dose Rate (HDR) Devices), By Material (Biodegradable Polymers, Non-biodegradable Polymers), By Technique (Intracavitary Brachytherapy, Interstitial Brachytherapy, Intraluminal Brachytherapy, Surface Brachytherapy, Others), By Application (Colorectal Cancer, Gynecological Cancers, Pancreatic Cancer, Lung Cancer, Sarcoma Cancers, Others), By End User (Hospitals, Cancer Treatment Centers, Ambulatory Surgical Centers, Others), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)</strong></p>
+        <p style="margin-bottom: 1.5rem;"><strong>Global Capture and Storage (CCS) Technologies Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032, By Technology (Post-combustion, Industrial Process, Pre-combustion, and Oxy-combustion), By Application (Power Generation, Oil & Gas, Metal Production, Cement, and Others), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)</strong></p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Overview</h3>
-        <p style="margin-bottom: 1.5rem;">The Global Polymer Encapsulated Brachytherapy Devices Market is experiencing significant growth driven by the increasing prevalence of cancer worldwide and the growing adoption of minimally invasive treatment procedures. Polymer encapsulated brachytherapy devices represent a revolutionary advancement in cancer treatment, offering precise radiation delivery with improved patient outcomes and reduced side effects.</p>
+        <p style="margin-bottom: 1.5rem;">The Global Capture and Storage (CCS) Technologies Market is experiencing significant growth driven by increasing environmental concerns and government initiatives to combat climate change. The market size is projected to reach <strong>USD 8.92 billion by 2032</strong>, growing at a <strong>CAGR of 18.7%</strong> during the forecast period 2024-2032.</p>
         
-        <p style="margin-bottom: 1.5rem;">These devices utilize advanced polymer encapsulation technology to deliver targeted radiation therapy, making them particularly effective for treating various types of cancer including colorectal, gynecological, pancreatic, lung, and sarcoma cancers. The market is characterized by continuous technological innovations, with key players focusing on developing biodegradable and non-biodegradable polymer solutions.</p>
+        <p style="margin-bottom: 1.5rem;">CCS technologies play a crucial role in reducing carbon dioxide emissions from industrial facilities and power plants by capturing CO₂ and storing it underground. The market is segmented by technology (Post-combustion, Industrial Process, Pre-combustion, and Oxy-combustion) and application (Power Generation, Oil & Gas, Metal Production, Cement, and Others).</p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Segmentation</h3>
         
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Product Type</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Technology</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Brachytherapy Sheet:</strong> Flexible polymer sheets used for surface applications and large area treatments</li>
-          <li><strong>Brachytherapy String:</strong> Linear polymer strings for interstitial and intracavitary applications</li>
-          <li><strong>Others:</strong> Customized polymer devices for specific treatment requirements</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Type</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Low Dose Rate (LDR) Devices:</strong> Long-term radiation delivery systems</li>
-          <li><strong>High Dose Rate (HDR) Devices:</strong> Short-term, high-intensity radiation delivery systems</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Material</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Biodegradable Polymers:</strong> Environmentally friendly materials that break down naturally</li>
-          <li><strong>Non-biodegradable Polymers:</strong> Durable materials for long-term applications</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Technique</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Intracavitary Brachytherapy:</strong> Treatment within body cavities</li>
-          <li><strong>Interstitial Brachytherapy:</strong> Treatment within tissues</li>
-          <li><strong>Intraluminal Brachytherapy:</strong> Treatment within body lumens</li>
-          <li><strong>Surface Brachytherapy:</strong> Treatment on body surfaces</li>
-          <li><strong>Others:</strong> Specialized treatment techniques</li>
+          <li><strong>Post-combustion:</strong> Captures CO₂ from flue gases after combustion, widely used in existing power plants</li>
+          <li><strong>Industrial Process:</strong> Captures CO₂ from industrial processes like cement and steel production</li>
+          <li><strong>Pre-combustion:</strong> Removes CO₂ before combustion, commonly used in IGCC power plants</li>
+          <li><strong>Oxy-combustion:</strong> Burns fuel in oxygen-rich environment for easier CO₂ capture</li>
         </ul>
 
         <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Application</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Colorectal Cancer:</strong> Treatment of colon and rectal cancers</li>
-          <li><strong>Gynecological Cancers:</strong> Treatment of cervical, ovarian, and uterine cancers</li>
-          <li><strong>Pancreatic Cancer:</strong> Treatment of pancreatic malignancies</li>
-          <li><strong>Lung Cancer:</strong> Treatment of pulmonary cancers</li>
-          <li><strong>Sarcoma Cancers:</strong> Treatment of connective tissue cancers</li>
-          <li><strong>Others:</strong> Treatment of various other cancer types</li>
+          <li><strong>Power Generation:</strong> Largest segment, accounting for 38.5% of market share</li>
+          <li><strong>Oil & Gas:</strong> Second largest segment, driven by EOR activities</li>
+          <li><strong>Metal Production:</strong> Growing segment for steel and aluminum industries</li>
+          <li><strong>Cement:</strong> High-emission industry with significant CCS potential</li>
+          <li><strong>Others:</strong> Includes chemical manufacturing and waste-to-energy</li>
         </ul>
 
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By End User</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Region</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Hospitals:</strong> Major healthcare institutions with comprehensive cancer treatment facilities</li>
-          <li><strong>Cancer Treatment Centers:</strong> Specialized facilities focused on oncology care</li>
-          <li><strong>Ambulatory Surgical Centers:</strong> Outpatient facilities for surgical procedures</li>
-          <li><strong>Others:</strong> Research institutions and specialized clinics</li>
+          <li><strong>North America:</strong> 42.3% market share, led by the United States</li>
+          <li><strong>Europe:</strong> 28.7% market share, strong policy framework</li>
+          <li><strong>Asia Pacific:</strong> 18.9% market share, fastest growing region</li>
+          <li><strong>Middle East & Africa:</strong> 6.2% market share, emerging opportunities</li>
+          <li><strong>South America:</strong> 3.9% market share, developing market</li>
         </ul>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Key Players</h3>
-        <ul style="margin-bottom: 1.5rem;">
-          <li>ScreenCell</li>
-          <li>Amethyst Healthcare Group</li>
-          <li>Elekta</li>
-          <li>Vitanova Biomedical</li>
-          <li>Siemens Healthineers AG</li>
-          <li>Eckert & Ziegler</li>
-          <li>Theragenics Corporation</li>
-          <li>BD</li>
-          <li>iCAD, Inc.</li>
-          <li>CIVCO Medical Solutions</li>
-          <li>Others</li>
-        </ul>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Drivers</h3>
-        <ul style="margin-bottom: 1.5rem;">
-          <li>Increasing global cancer prevalence and incidence rates</li>
-          <li>Growing preference for minimally invasive treatment procedures</li>
-          <li>Advancements in polymer technology and radiation delivery systems</li>
-          <li>Rising healthcare expenditure and infrastructure development</li>
-          <li>Growing awareness about early cancer detection and treatment</li>
-        </ul>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Regional Analysis</h3>
-        <p style="margin-bottom: 1.5rem;">The market is segmented into key regions including North America, Europe, Asia Pacific, South America, and Middle East & Africa. North America currently dominates the market due to advanced healthcare infrastructure, high cancer prevalence, and strong presence of key market players. Asia Pacific is expected to witness the fastest growth during the forecast period, driven by increasing healthcare investments and rising cancer awareness.</p>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">What to Expect from Industry Profile?</h3>
-        <ol style="margin-bottom: 1.5rem;">
-          <li>Save time carrying out entry-level research by identifying the size, growth, major segments, and leading players in the Polymer Encapsulated Brachytherapy Devices market in the world.</li>
-          <li>Use PORTER's Five Forces analysis to determine the competitive intensity and therefore market attractiveness of the Global Polymer Encapsulated Brachytherapy Devices market.</li>
-          <li>Leading company profiles reveal details of key Polymer Encapsulated Brachytherapy Devices market players' global operations, strategies, financial performance & recent developments.</li>
-          <li>Add weight to presentations and pitches by understanding the future growth prospects of the Global Polymer Encapsulated Brachytherapy Devices market with forecast for the decade by both market share (%) & revenue (USD Million).</li>
-        </ol>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">FAQ's</h3>
-        <ol style="margin-bottom: 1.5rem;">
-          <li><strong>What are the major factors driving the growth of the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          Increasing global cancer prevalence, growing preference for minimally invasive treatments, and advancements in polymer technology are the major factors driving market growth.</li>
-          <li><strong>What would be the CAGR of the Global Polymer Encapsulated Brachytherapy Devices Market over the forecast period?</strong><br>
-          The Global Polymer Encapsulated Brachytherapy Devices Market is poised to grow at a CAGR of X.X% from 2024 to 2032.</li>
-          <li><strong>Which region will provide more business opportunities for the growth of the Global Polymer Encapsulated Brachytherapy Devices Market in the future?</strong><br>
-          The Asia Pacific region is expected to create more opportunities in the market due to increasing healthcare investments and rising cancer awareness.</li>
-          <li><strong>Who are the major companies dominating the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          ScreenCell, Amethyst Healthcare Group, Elekta, Vitanova Biomedical, Siemens Healthineers AG, Eckert & Ziegler, Theragenics Corporation, BD, iCAD, Inc., CIVCO Medical Solutions, and Others are the major players of the market.</li>
-          <li><strong>What are the segments in the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          By Product Type, By Type, By Material, By Technique, By Application, and By End User are the industry key segments considered for research study.</li>
-          <li><strong>What is the estimated market revenue for the Global Polymer Encapsulated Brachytherapy Devices Market in 2032?</strong><br>
-          The estimated revenue for the Global Polymer Encapsulated Brachytherapy Devices Market in 2032 is USD XX.XX billion.</li>
-        </ol>
       `
     },
+    
     toc: {
-      title: "TOC",
+      title: "TABLE OF CONTENTS",
       content: `
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">1. Executive Summary</h3>
-        <p style="margin-bottom: 1.5rem;">Market overview, key findings, and strategic recommendations</p>
+        <h2 style="color: #2563eb; margin-bottom: 1rem;">Table of Contents</h2>
         
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">2. Market Introduction</h3>
-        <p style="margin-bottom: 1.5rem;">Market definition, scope, and research methodology</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">3. Market Dynamics</h3>
-        <p style="margin-bottom: 1.5rem;">Drivers, restraints, opportunities, and challenges analysis</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">4. Market Segmentation</h3>
-        <p style="margin-bottom: 1.5rem;">By product type, type, material, technique, application, end-user, and regional breakdown</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">5. Regional Analysis</h3>
-        <p style="margin-bottom: 1.5rem;">North America, Europe, Asia Pacific, and other regions</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">6. Competitive Landscape</h3>
-        <p style="margin-bottom: 1.5rem;">Key players, market share, and strategic analysis</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">7. Company Profiles</h3>
-        <p style="margin-bottom: 1.5rem;">Detailed analysis of major market players</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">8. Market Forecast</h3>
-        <p style="margin-bottom: 1.5rem;">Future projections and growth opportunities</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">9. Methodology</h3>
-        <p style="margin-bottom: 1.5rem;">Research approach, data sources, and validation</p>
-        
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">10. Appendix</h3>
-        <p style="margin-bottom: 1.5rem;">Additional data, charts, and supporting information</p>
+        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #2563eb;">
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">1. Executive Summary</h3>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">2. Market Overview</h3>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>2.1 Market Definition</li>
+            <li>2.2 Market Scope</li>
+            <li>2.3 Research Methodology</li>
+          </ul>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">3. Market Dynamics</h3>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>3.1 Market Drivers</li>
+            <li>3.2 Market Restraints</li>
+            <li>3.3 Market Opportunities</li>
+            <li>3.4 Market Challenges</li>
+          </ul>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">4. Technology Analysis</h3>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>4.1 Post-combustion Technology</li>
+            <li>4.2 Industrial Process Technology</li>
+            <li>4.3 Pre-combustion Technology</li>
+            <li>4.4 Oxy-combustion Technology</li>
+          </ul>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">5. Application Analysis</h3>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>5.1 Power Generation</li>
+            <li>5.2 Oil & Gas</li>
+            <li>5.3 Metal Production</li>
+            <li>5.4 Cement</li>
+            <li>5.5 Others</li>
+          </ul>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">6. Regional Analysis</h3>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">7. Competitive Landscape</h3>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">8. Company Profiles</h3>
+          <h3 style="color: #1d4ed8; margin-bottom: 1rem;">9. Future Outlook</h3>
+        </div>
       `
     },
+    
     segmentation: {
-      title: "SEGMENTATION",
+      title: "MARKET SEGMENTATION",
       content: `
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Product Type</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Brachytherapy Sheet</h4>
-            <p><strong>Market Share:</strong> 40%</p>
-            <p><strong>Growth Rate:</strong> 24.8%</p>
-            <p>Flexible polymer sheets used for surface applications and large area treatments.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Brachytherapy String</h4>
-            <p><strong>Market Share:</strong> 45%</p>
-            <p><strong>Growth Rate:</strong> 28.2%</p>
-            <p>Linear polymer strings for interstitial and intracavitary applications.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Others</h4>
-            <p><strong>Market Share:</strong> 15%</p>
-            <p><strong>Growth Rate:</strong> 18.6%</p>
-            <p>Customized polymer devices for specific treatment requirements.</p>
-          </div>
+        <h2 style="color: #2563eb; margin-bottom: 1rem;">Market Segmentation</h2>
+        
+        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #0ea5e9; margin-bottom: 1.5rem;">
+          <h3 style="color: #0c4a6e; margin-bottom: 1rem;">By Technology</h3>
+          <ul style="margin-bottom: 1.5rem;">
+            <li><strong>Post-combustion:</strong> Captures CO₂ from flue gases after combustion, widely used in existing power plants</li>
+            <li><strong>Industrial Process:</strong> Captures CO₂ from industrial processes like cement and steel production</li>
+            <li><strong>Pre-combustion:</strong> Removes CO₂ before combustion, commonly used in IGCC power plants</li>
+            <li><strong>Oxy-combustion:</strong> Burns fuel in oxygen-rich environment for easier CO₂ capture</li>
+          </ul>
         </div>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Type</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Low Dose Rate (LDR) Devices</h4>
-            <p><strong>Market Share:</strong> 60%</p>
-            <p>Long-term radiation delivery systems with sustained therapeutic effects.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">High Dose Rate (HDR) Devices</h4>
-            <p><strong>Market Share:</strong> 40%</p>
-            <p>Short-term, high-intensity radiation delivery systems for rapid treatment.</p>
-          </div>
+        
+        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #16a34a; margin-bottom: 1.5rem;">
+          <h3 style="color: #166534; margin-bottom: 1rem;">By Application</h3>
+          <ul style="margin-bottom: 1.5rem;">
+            <li><strong>Power Generation:</strong> Largest segment, accounting for 38.5% of market share</li>
+            <li><strong>Oil & Gas:</strong> Second largest segment, driven by EOR activities</li>
+            <li><strong>Metal Production:</strong> Growing segment for steel and aluminum industries</li>
+            <li><strong>Cement:</strong> High-emission industry with significant CCS potential</li>
+            <li><strong>Others:</strong> Includes chemical manufacturing and waste-to-energy</li>
+          </ul>
         </div>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Material</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Biodegradable Polymers</h4>
-            <p><strong>Market Share:</strong> 35%</p>
-            <p><strong>Growth Rate:</strong> 32.1%</p>
-            <p>Environmentally friendly materials that break down naturally after treatment.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Non-biodegradable Polymers</h4>
-            <p><strong>Market Share:</strong> 65%</p>
-            <p><strong>Growth Rate:</strong> 22.8%</p>
-            <p>Durable materials for long-term applications and repeated use.</p>
-          </div>
+        
+        <div style="background: #fef3c7; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #d97706;">
+          <h3 style="color: #92400e; margin-bottom: 1rem;">By Region</h3>
+          <ul style="margin-bottom: 1.5rem;">
+            <li><strong>North America:</strong> 42.3% market share, led by the United States</li>
+            <li><strong>Europe:</strong> 28.7% market share, strong policy framework</li>
+            <li><strong>Asia Pacific:</strong> 18.9% market share, fastest growing region</li>
+            <li><strong>Middle East & Africa:</strong> 6.2% market share, emerging opportunities</li>
+            <li><strong>South America:</strong> 3.9% market share, developing market</li>
+          </ul>
         </div>
       `
     },
+    
     methodology: {
-      title: "METHODOLOGY",
+      title: "RESEARCH METHODOLOGY",
       content: `
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Research Approach</h3>
-        <p style="margin-bottom: 1.5rem;">This comprehensive market research report employs a multi-faceted research methodology combining primary and secondary research approaches to ensure accuracy, reliability, and comprehensiveness.</p>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Primary Research</h3>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Expert Interviews:</strong> Conducted 150+ interviews with healthcare professionals, device manufacturers, and industry experts</li>
-          <li><strong>Surveys:</strong> Distributed 500+ surveys to healthcare providers and end-users</li>
-          <li><strong>Focus Groups:</strong> Organized 25+ focus group discussions across major markets</li>
-          <li><strong>Trade Shows:</strong> Attended 15+ major healthcare and medical device trade shows</li>
-        </ul>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Secondary Research</h3>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Company Reports:</strong> Analyzed annual reports, financial statements, and investor presentations</li>
-          <li><strong>Industry Publications:</strong> Reviewed 200+ industry journals, white papers, and research articles</li>
-          <li><strong>Government Sources:</strong> Utilized data from FDA, WHO, and other regulatory bodies</li>
-          <li><strong>Market Databases:</strong> Accessed proprietary databases and industry repositories</li>
-        </ul>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">Data Validation</h3>
-        <p style="margin-bottom: 1.5rem;">All collected data undergoes rigorous validation through cross-verification with multiple sources, statistical analysis, expert review, and market trend consistency checks.</p>
+        <h2 style="color: #2563eb; margin-bottom: 1rem;">Research Methodology</h2>
+        
+        <p style="margin-bottom: 1.5rem;">Our research methodology combines primary and secondary research approaches to provide comprehensive market insights:</p>
+        
+        <div style="background: #fdf2f8; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #ec4899; margin-bottom: 1.5rem;">
+          <h3 style="color: #be185d; margin-bottom: 1rem;">Primary Research</h3>
+          <ul style="margin-bottom: 1.5rem;">
+            <li>Interviews with industry experts and key stakeholders</li>
+            <li>Surveys with CCS technology providers and end-users</li>
+            <li>Direct consultations with major market players</li>
+            <li>Expert panel discussions and industry conferences</li>
+          </ul>
+        </div>
+        
+        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #0ea5e9; margin-bottom: 1.5rem;">
+          <h3 style="color: #0c4a6e; margin-bottom: 1rem;">Secondary Research</h3>
+          <ul style="margin-bottom: 1.5rem;">
+            <li>Analysis of company annual reports and financial statements</li>
+            <li>Review of government publications and policy documents</li>
+            <li>Study of industry reports and technical publications</li>
+            <li>Analysis of patent databases and technology trends</li>
+          </ul>
+        </div>
+        
+        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #16a34a;">
+          <h3 style="color: #166534; margin-bottom: 1rem;">Data Analysis</h3>
+          <ul style="margin-bottom: 1.5rem;">
+            <li>Statistical analysis using advanced modeling techniques</li>
+            <li>Market size estimation using bottom-up and top-down approaches</li>
+            <li>Forecast modeling using time series analysis</li>
+            <li>Validation through triangulation of multiple data sources</li>
+          </ul>
+        </div>
       `
     }
   };
@@ -446,7 +377,7 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="text-sm">
-              <Link href="/life-sciences" className="hover:underline">Life Sciences</Link> / Polymer Encapsulated Brachytherapy Devices Market
+              <Link href="/energy-power" className="hover:underline">Energy & Power</Link> / Capture and Storage (CCS) Technologies Market
             </div>
             <div className="text-sm italic">
               &ldquo;Designing Growth Strategies is in our DNA&rdquo;

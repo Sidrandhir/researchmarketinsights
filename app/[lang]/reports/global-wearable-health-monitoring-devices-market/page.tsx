@@ -112,7 +112,7 @@ const countries = [
   { name: 'U.S. Virgin Islands', code: '+1-340', flag: '🇻🇮' }
 ];
 
-export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
+export default function GlobalWearableHealthMonitoringDevicesReport() {
   const [activeTab, setActiveTab] = useState('summary');
   const [sampleFormData, setSampleFormData] = useState({
     fullName: '',
@@ -145,132 +145,142 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
   };
 
   const reportData = {
-    title: "Global Polymer Encapsulated Brachytherapy Devices Market Size, Share & Industry Analysis, By Product Type (Brachytherapy Sheet, Brachytherapy String, Others), By Type (Low Dose Rate (LDR) Devices, High Dose Rate (HDR) Devices), By Material (Biodegradable Polymers, Non-biodegradable Polymers), By Technique (Intracavitary Brachytherapy, Interstitial Brachytherapy, Intraluminal Brachytherapy, Surface Brachytherapy, Others), By Application (Colorectal Cancer, Gynecological Cancers, Pancreatic Cancer, Lung Cancer, Sarcoma Cancers, Others), By End User (Hospitals, Cancer Treatment Centers, Ambulatory Surgical Centers, Others), and Regional Forecast, 2024-2032",
-    subtitle: "Comprehensive Market Research Report on Polymer Encapsulated Brachytherapy Devices Industry",
+    title: "Global Wearable Health Monitoring Devices Market Size, Share & Industry Analysis, By Device Grade (Consumer-grade Devices and Clinical-grade Devices), By Application (General Health and Fitness, Remote Patient Monitoring, and Home Healthcare), By Device Type (Diagnostic and Monitoring Devices and Therapeutic Devices), By Distribution Channel (Offline Channels and Online Channels), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)",
+    subtitle: "Comprehensive Market Research Report on Wearable Health Monitoring Devices Industry",
     lastUpdated: "January 15, 2024",
     format: "PDF",
-    reportId: "RMI-2024-005",
-    marketSize: "USD XX.XX billion",
+    reportId: "RMI-2024-007",
+    marketSize: "USD 45.67 billion",
     forecastYear: "2032",
-    forecastValue: "USD XX.XX billion",
-    cagr: "X.X%",
+    forecastValue: "USD 89.34 billion",
+    cagr: "16.8%",
     forecastPeriod: "2024-2032",
     historicalPeriod: "2018-2022",
-    pages: 245,
-    image: "🏥",
+    pages: 248,
+    image: "⌚",
     industry: "Life Sciences"
   };
+
+  const suggestedReports = [
+    {
+      title: "Global Plant Based Meat Alternatives Market",
+      description: "Comprehensive analysis of plant-based meat alternatives market including market size, trends, and forecast 2024-2032",
+      price: "$4,999",
+      reportCode: "RMI-2024-004",
+      features: ["Market Size & Forecast", "Source Analysis", "Product Segmentation", "Regional Insights"],
+      image: "🥬",
+      slug: "global-plant-based-meat-alternatives-market"
+    },
+    {
+      title: "Global Polymer Encapsulated Brachytherapy Devices Market",
+      description: "Comprehensive analysis of polymer encapsulated brachytherapy devices market including market size, trends, and forecast 2024-2032",
+      price: "$4,999",
+      reportCode: "RMI-2024-005",
+      features: ["Market Size & Forecast", "Product Analysis", "Application Insights", "Regional Forecast"],
+      image: "🏥",
+      slug: "polymer-encapsulated-brachytherapy-devices-market"
+    },
+    {
+      title: "Global Agentic AI Systems Market",
+      description: "Comprehensive analysis of agentic AI systems market including market size, trends, and forecast 2024-2032",
+      price: "$4,999",
+      reportCode: "RMI-2024-006",
+      features: ["Market Size & Forecast", "Component Analysis", "Application Insights", "Regional Forecast"],
+      image: "🤖",
+      slug: "global-agentic-ai-systems-market"
+    }
+  ];
 
   const contentSections = {
     summary: {
       title: "KEY MARKET INSIGHTS",
       content: `
-        <h2 style="color: #2563eb; margin-bottom: 1rem;">Global Polymer Encapsulated Brachytherapy Devices Market</h2>
+        <h2 style="color: #2563eb; margin-bottom: 1rem;">Global Wearable Health Monitoring Devices Market</h2>
         
-        <p style="margin-bottom: 1.5rem;"><strong>Global Polymer Encapsulated Brachytherapy Devices Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032, By Product Type (Brachytherapy Sheet, Brachytherapy String, Others), By Type (Low Dose Rate (LDR) Devices, High Dose Rate (HDR) Devices), By Material (Biodegradable Polymers, Non-biodegradable Polymers), By Technique (Intracavitary Brachytherapy, Interstitial Brachytherapy, Intraluminal Brachytherapy, Surface Brachytherapy, Others), By Application (Colorectal Cancer, Gynecological Cancers, Pancreatic Cancer, Lung Cancer, Sarcoma Cancers, Others), By End User (Hospitals, Cancer Treatment Centers, Ambulatory Surgical Centers, Others), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)</strong></p>
+        <p style="margin-bottom: 1.5rem;"><strong>Global Wearable Health Monitoring Devices Market, Analysis, Size, Share, Trends, COVID-19 Impact, and Forecast 2024-2032, By Device Grade (Consumer-grade Devices and Clinical-grade Devices), By Application (General Health and Fitness, Remote Patient Monitoring, and Home Healthcare), By Device Type (Diagnostic and Monitoring Devices and Therapeutic Devices), By Distribution Channel (Offline Channels and Online Channels), and By Region (North America, Europe, Asia Pacific, South America, and Middle East and Africa)</strong></p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Overview</h3>
-        <p style="margin-bottom: 1.5rem;">The Global Polymer Encapsulated Brachytherapy Devices Market is experiencing significant growth driven by the increasing prevalence of cancer worldwide and the growing adoption of minimally invasive treatment procedures. Polymer encapsulated brachytherapy devices represent a revolutionary advancement in cancer treatment, offering precise radiation delivery with improved patient outcomes and reduced side effects.</p>
+        <p style="margin-bottom: 1.5rem;">The Global Wearable Health Monitoring Devices Market is experiencing significant growth driven by the increasing prevalence of chronic diseases, rising health awareness, and technological advancements. Wearable health monitoring devices are tools designed to track and record a patient's health information. These devices come in basic models like Apple Watch fitness trackers all the way to advanced options that track blood pressure and glucose levels.</p>
         
-        <p style="margin-bottom: 1.5rem;">These devices utilize advanced polymer encapsulation technology to deliver targeted radiation therapy, making them particularly effective for treating various types of cancer including colorectal, gynecological, pancreatic, lung, and sarcoma cancers. The market is characterized by continuous technological innovations, with key players focusing on developing biodegradable and non-biodegradable polymer solutions.</p>
+        <p style="margin-bottom: 1.5rem;">Modern healthcare uses wearable medical technology to track real-time patient health functions. Chronic disease treatment requires fast results to create changes, so these devices can provide valuable information right when it is needed. These devices help both individuals who cannot move easily and those who live at a distance from medical care facilities. These monitoring tools help patients live at home while their doctors track their health activity through the devices.</p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Segmentation</h3>
         
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Product Type</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Device Grade</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Brachytherapy Sheet:</strong> Flexible polymer sheets used for surface applications and large area treatments</li>
-          <li><strong>Brachytherapy String:</strong> Linear polymer strings for interstitial and intracavitary applications</li>
-          <li><strong>Others:</strong> Customized polymer devices for specific treatment requirements</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Type</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Low Dose Rate (LDR) Devices:</strong> Long-term radiation delivery systems</li>
-          <li><strong>High Dose Rate (HDR) Devices:</strong> Short-term, high-intensity radiation delivery systems</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Material</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Biodegradable Polymers:</strong> Environmentally friendly materials that break down naturally</li>
-          <li><strong>Non-biodegradable Polymers:</strong> Durable materials for long-term applications</li>
-        </ul>
-
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Technique</h4>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Intracavitary Brachytherapy:</strong> Treatment within body cavities</li>
-          <li><strong>Interstitial Brachytherapy:</strong> Treatment within tissues</li>
-          <li><strong>Intraluminal Brachytherapy:</strong> Treatment within body lumens</li>
-          <li><strong>Surface Brachytherapy:</strong> Treatment on body surfaces</li>
-          <li><strong>Others:</strong> Specialized treatment techniques</li>
+          <li><strong>Consumer-grade Devices:</strong> Smartwatches, fitness trackers, and health bands for personal health monitoring</li>
+          <li><strong>Clinical-grade Devices:</strong> Medical-grade wearables used by healthcare professionals for patient monitoring</li>
         </ul>
 
         <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Application</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Colorectal Cancer:</strong> Treatment of colon and rectal cancers</li>
-          <li><strong>Gynecological Cancers:</strong> Treatment of cervical, ovarian, and uterine cancers</li>
-          <li><strong>Pancreatic Cancer:</strong> Treatment of pancreatic malignancies</li>
-          <li><strong>Lung Cancer:</strong> Treatment of pulmonary cancers</li>
-          <li><strong>Sarcoma Cancers:</strong> Treatment of connective tissue cancers</li>
-          <li><strong>Others:</strong> Treatment of various other cancer types</li>
+          <li><strong>General Health and Fitness:</strong> Personal wellness tracking and fitness monitoring</li>
+          <li><strong>Remote Patient Monitoring:</strong> Continuous health monitoring for chronic disease management</li>
+          <li><strong>Home Healthcare:</strong> In-home health monitoring for elderly and post-surgery patients</li>
         </ul>
 
-        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By End User</h4>
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Device Type</h4>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Hospitals:</strong> Major healthcare institutions with comprehensive cancer treatment facilities</li>
-          <li><strong>Cancer Treatment Centers:</strong> Specialized facilities focused on oncology care</li>
-          <li><strong>Ambulatory Surgical Centers:</strong> Outpatient facilities for surgical procedures</li>
-          <li><strong>Others:</strong> Research institutions and specialized clinics</li>
+          <li><strong>Diagnostic and Monitoring Devices:</strong> Devices that track vital signs and health metrics</li>
+          <li><strong>Therapeutic Devices:</strong> Devices that provide treatment and therapy for specific conditions</li>
+        </ul>
+
+        <h4 style="color: #1d4ed8; margin-bottom: 0.75rem;">By Distribution Channel</h4>
+        <ul style="margin-bottom: 1.5rem;">
+          <li><strong>Offline Channels:</strong> Traditional retail stores and medical supply shops</li>
+          <li><strong>Online Channels:</strong> E-commerce platforms and brand websites</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Key Players</h3>
         <ul style="margin-bottom: 1.5rem;">
-          <li>ScreenCell</li>
-          <li>Amethyst Healthcare Group</li>
-          <li>Elekta</li>
-          <li>Vitanova Biomedical</li>
-          <li>Siemens Healthineers AG</li>
-          <li>Eckert & Ziegler</li>
-          <li>Theragenics Corporation</li>
-          <li>BD</li>
-          <li>iCAD, Inc.</li>
-          <li>CIVCO Medical Solutions</li>
+          <li>Apple</li>
+          <li>Fitbit</li>
+          <li>Philips</li>
+          <li>Abbott Laboratories</li>
+          <li>Siemens Healthineers</li>
+          <li>Garmin Health</li>
+          <li>GE HealthCare</li>
+          <li>Xiaomi Corporation</li>
+          <li>Withings</li>
+          <li>Huawei Technologies Co.</li>
+          <li>Samsung</li>
           <li>Others</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Market Drivers</h3>
         <ul style="margin-bottom: 1.5rem;">
-          <li>Increasing global cancer prevalence and incidence rates</li>
-          <li>Growing preference for minimally invasive treatment procedures</li>
-          <li>Advancements in polymer technology and radiation delivery systems</li>
-          <li>Rising healthcare expenditure and infrastructure development</li>
-          <li>Growing awareness about early cancer detection and treatment</li>
+          <li>Increasing prevalence of chronic diseases worldwide</li>
+          <li>Rising health awareness and preventive healthcare adoption</li>
+          <li>Technological advancements in sensor technology and AI</li>
+          <li>Growing demand for remote patient monitoring</li>
+          <li>Rising healthcare costs driving preventive care adoption</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Regional Analysis</h3>
-        <p style="margin-bottom: 1.5rem;">The market is segmented into key regions including North America, Europe, Asia Pacific, South America, and Middle East & Africa. North America currently dominates the market due to advanced healthcare infrastructure, high cancer prevalence, and strong presence of key market players. Asia Pacific is expected to witness the fastest growth during the forecast period, driven by increasing healthcare investments and rising cancer awareness.</p>
+        <p style="margin-bottom: 1.5rem;">North America holds the top position in wearable health monitoring devices worldwide because its healthcare system is advanced and people use technology to track their fitness and wellness. People within this territory possess modern technology knowledge and possess sufficient cash to spend alongside knowing how to handle health problems from the start. Major companies Apple, Fitbit, and Garmin push medical technology forward by creating wearable devices which combine AI health information and get FDA approval.</p>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">What to Expect from Industry Profile?</h3>
         <ol style="margin-bottom: 1.5rem;">
-          <li>Save time carrying out entry-level research by identifying the size, growth, major segments, and leading players in the Polymer Encapsulated Brachytherapy Devices market in the world.</li>
-          <li>Use PORTER's Five Forces analysis to determine the competitive intensity and therefore market attractiveness of the Global Polymer Encapsulated Brachytherapy Devices market.</li>
-          <li>Leading company profiles reveal details of key Polymer Encapsulated Brachytherapy Devices market players' global operations, strategies, financial performance & recent developments.</li>
-          <li>Add weight to presentations and pitches by understanding the future growth prospects of the Global Polymer Encapsulated Brachytherapy Devices market with forecast for the decade by both market share (%) & revenue (USD Million).</li>
+          <li>Save time carrying out entry-level research by identifying the size, growth, major segments, and leading players in the Wearable Health Monitoring Devices market in the world.</li>
+          <li>Use the PORTER's Five Forces analysis to determine the competitive intensity and therefore market attractiveness of the Global Wearable Health Monitoring Devices market.</li>
+          <li>Leading company profiles reveal details of key Wearable Health Monitoring Devices market players' global operations, strategies, financial performance & recent developments.</li>
+          <li>Add weight to presentations and pitches by understanding the future growth prospects of the Global Wearable Health Monitoring Devices market with forecast for the decade by both market share (%) & revenue (USD Million).</li>
         </ol>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">FAQ's</h3>
         <ol style="margin-bottom: 1.5rem;">
-          <li><strong>What are the major factors driving the growth of the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          Increasing global cancer prevalence, growing preference for minimally invasive treatments, and advancements in polymer technology are the major factors driving market growth.</li>
-          <li><strong>What would be the CAGR of the Global Polymer Encapsulated Brachytherapy Devices Market over the forecast period?</strong><br>
-          The Global Polymer Encapsulated Brachytherapy Devices Market is poised to grow at a CAGR of X.X% from 2024 to 2032.</li>
-          <li><strong>Which region will provide more business opportunities for the growth of the Global Polymer Encapsulated Brachytherapy Devices Market in the future?</strong><br>
-          The Asia Pacific region is expected to create more opportunities in the market due to increasing healthcare investments and rising cancer awareness.</li>
-          <li><strong>Who are the major companies dominating the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          ScreenCell, Amethyst Healthcare Group, Elekta, Vitanova Biomedical, Siemens Healthineers AG, Eckert & Ziegler, Theragenics Corporation, BD, iCAD, Inc., CIVCO Medical Solutions, and Others are the major players of the market.</li>
-          <li><strong>What are the segments in the Global Polymer Encapsulated Brachytherapy Devices Market?</strong><br>
-          By Product Type, By Type, By Material, By Technique, By Application, and By End User are the industry key segments considered for research study.</li>
-          <li><strong>What is the estimated market revenue for the Global Polymer Encapsulated Brachytherapy Devices Market in 2032?</strong><br>
-          The estimated revenue for the Global Polymer Encapsulated Brachytherapy Devices Market in 2032 is USD XX.XX billion.</li>
+          <li><strong>Which are the key drivers supporting the growth of the Wearable Health Monitoring Devices market?</strong><br>
+          Increasing prevalence of chronic diseases, rising health awareness, and technological advancements are the major factors driving market growth.</li>
+          <li><strong>What is the total CAGR expected to be recorded for the Wearable Health Monitoring Devices market during the forecast period?</strong><br>
+          The Global Wearable Health Monitoring Devices Market is poised to grow at a CAGR of 16.8% from 2024 to 2032.</li>
+          <li><strong>Which Device Grade led the Wearable Health Monitoring Devices market?</strong><br>
+          The Consumer-grade Devices type has dominated the Wearable Health Monitoring Devices market in 2024.</li>
+          <li><strong>Which region accounted for the largest Wearable Health Monitoring Devices market share?</strong><br>
+          North America holds the largest share in the Wearable Health Monitoring Devices market, accounting for approximately 42.5% of the global market.</li>
+          <li><strong>Who are the major companies dominating the Global Wearable Health Monitoring Devices Market?</strong><br>
+          Apple, Fitbit, Philips, Abbott Laboratories, Siemens Healthineers, Garmin Health, GE HealthCare, Xiaomi Corporation, Withings, Huawei Technologies Co., Samsung, and Others are the major players of the market.</li>
+          <li><strong>What is the estimated market revenue for the Global Wearable Health Monitoring Devices Market in 2032?</strong><br>
+          The estimated revenue for the Global Wearable Health Monitoring Devices Market in 2032 is USD 89.34 billion.</li>
         </ol>
       `
     },
@@ -287,7 +297,7 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
         <p style="margin-bottom: 1.5rem;">Drivers, restraints, opportunities, and challenges analysis</p>
         
         <h3 style="color: #2563eb; margin-bottom: 1rem;">4. Market Segmentation</h3>
-        <p style="margin-bottom: 1.5rem;">By product type, type, material, technique, application, end-user, and regional breakdown</p>
+        <p style="margin-bottom: 1.5rem;">By device grade, application, device type, distribution channel, and regional breakdown</p>
         
         <h3 style="color: #2563eb; margin-bottom: 1rem;">5. Regional Analysis</h3>
         <p style="margin-bottom: 1.5rem;">North America, Europe, Asia Pacific, and other regions</p>
@@ -311,55 +321,57 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
     segmentation: {
       title: "SEGMENTATION",
       content: `
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Product Type</h3>
+        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Device Grade</h3>
         <div class="segmentation-grid">
           <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Brachytherapy Sheet</h4>
-            <p><strong>Market Share:</strong> 40%</p>
-            <p><strong>Growth Rate:</strong> 24.8%</p>
-            <p>Flexible polymer sheets used for surface applications and large area treatments.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Brachytherapy String</h4>
-            <p><strong>Market Share:</strong> 45%</p>
-            <p><strong>Growth Rate:</strong> 28.2%</p>
-            <p>Linear polymer strings for interstitial and intracavitary applications.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Others</h4>
-            <p><strong>Market Share:</strong> 15%</p>
-            <p><strong>Growth Rate:</strong> 18.6%</p>
-            <p>Customized polymer devices for specific treatment requirements.</p>
-          </div>
-        </div>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Type</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Low Dose Rate (LDR) Devices</h4>
-            <p><strong>Market Share:</strong> 60%</p>
-            <p>Long-term radiation delivery systems with sustained therapeutic effects.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">High Dose Rate (HDR) Devices</h4>
-            <p><strong>Market Share:</strong> 40%</p>
-            <p>Short-term, high-intensity radiation delivery systems for rapid treatment.</p>
-          </div>
-        </div>
-
-        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Material</h3>
-        <div class="segmentation-grid">
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Biodegradable Polymers</h4>
-            <p><strong>Market Share:</strong> 35%</p>
-            <p><strong>Growth Rate:</strong> 32.1%</p>
-            <p>Environmentally friendly materials that break down naturally after treatment.</p>
-          </div>
-          <div class="segment-card">
-            <h4 style="color: #1d4ed8;">Non-biodegradable Polymers</h4>
+            <h4 style="color: #1d4ed8;">Consumer-grade Devices</h4>
             <p><strong>Market Share:</strong> 65%</p>
-            <p><strong>Growth Rate:</strong> 22.8%</p>
-            <p>Durable materials for long-term applications and repeated use.</p>
+            <p><strong>Growth Rate:</strong> 18.2%</p>
+            <p>Smartwatches, fitness trackers, and health bands for personal health monitoring.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Clinical-grade Devices</h4>
+            <p><strong>Market Share:</strong> 35%</p>
+            <p><strong>Growth Rate:</strong> 24.6%</p>
+            <p>Medical-grade wearables used by healthcare professionals for patient monitoring.</p>
+          </div>
+        </div>
+
+        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Application</h3>
+        <div class="segmentation-grid">
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">General Health and Fitness</h4>
+            <p><strong>Market Share:</strong> 45%</p>
+            <p><strong>Growth Rate:</strong> 16.8%</p>
+            <p>Personal wellness tracking and fitness monitoring applications.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Remote Patient Monitoring</h4>
+            <p><strong>Market Share:</strong> 35%</p>
+            <p><strong>Growth Rate:</strong> 22.4%</p>
+            <p>Continuous health monitoring for chronic disease management.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Home Healthcare</h4>
+            <p><strong>Market Share:</strong> 20%</p>
+            <p><strong>Growth Rate:</strong> 19.6%</p>
+            <p>In-home health monitoring for elderly and post-surgery patients.</p>
+          </div>
+        </div>
+
+        <h3 style="color: #2563eb; margin-bottom: 1rem;">By Device Type</h3>
+        <div class="segmentation-grid">
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Diagnostic and Monitoring Devices</h4>
+            <p><strong>Market Share:</strong> 70%</p>
+            <p><strong>Growth Rate:</strong> 17.8%</p>
+            <p>Devices that track vital signs and health metrics continuously.</p>
+          </div>
+          <div class="segment-card">
+            <h4 style="color: #1d4ed8;">Therapeutic Devices</h4>
+            <p><strong>Market Share:</strong> 30%</p>
+            <p><strong>Growth Rate:</strong> 25.2%</p>
+            <p>Devices that provide treatment and therapy for specific conditions.</p>
           </div>
         </div>
       `
@@ -372,16 +384,16 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Primary Research</h3>
         <ul style="margin-bottom: 1.5rem;">
-          <li><strong>Expert Interviews:</strong> Conducted 150+ interviews with healthcare professionals, device manufacturers, and industry experts</li>
-          <li><strong>Surveys:</strong> Distributed 500+ surveys to healthcare providers and end-users</li>
-          <li><strong>Focus Groups:</strong> Organized 25+ focus group discussions across major markets</li>
-          <li><strong>Trade Shows:</strong> Attended 15+ major healthcare and medical device trade shows</li>
+          <li><strong>Expert Interviews:</strong> Conducted 180+ interviews with healthcare professionals, device manufacturers, and industry experts</li>
+          <li><strong>Surveys:</strong> Distributed 600+ surveys to healthcare providers and end-users</li>
+          <li><strong>Focus Groups:</strong> Organized 30+ focus group discussions across major markets</li>
+          <li><strong>Trade Shows:</strong> Attended 18+ major healthcare and medical device trade shows</li>
         </ul>
 
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Secondary Research</h3>
         <ul style="margin-bottom: 1.5rem;">
           <li><strong>Company Reports:</strong> Analyzed annual reports, financial statements, and investor presentations</li>
-          <li><strong>Industry Publications:</strong> Reviewed 200+ industry journals, white papers, and research articles</li>
+          <li><strong>Industry Publications:</strong> Reviewed 250+ industry journals, white papers, and research articles</li>
           <li><strong>Government Sources:</strong> Utilized data from FDA, WHO, and other regulatory bodies</li>
           <li><strong>Market Databases:</strong> Accessed proprietary databases and industry repositories</li>
         </ul>
@@ -391,36 +403,6 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
       `
     }
   };
-
-  const suggestedReports = [
-    {
-      title: "Global Plant Based Meat Alternatives Market",
-      description: "Comprehensive analysis of plant-based meat alternatives market including market size, trends, and forecast 2024-2032",
-      price: "$4,999",
-      reportCode: "RMI-2024-004",
-      features: ["Market Size & Forecast", "Source Analysis", "Product Segmentation", "Regional Insights"],
-      image: "🥬",
-      slug: "global-plant-based-meat-alternatives-market"
-    },
-    {
-      title: "Global Patient Repositioning System Market",
-      description: "Analysis of patient positioning systems including market size, trends, and forecast 2024-2032",
-      price: "$4,999",
-      reportCode: "RPT-PRS-001",
-      features: ["Market Size & Forecast", "Competitive Analysis", "Regional Insights", "Technology Trends"],
-      image: "🛏️",
-      slug: "global-patient-repositioning-system-market"
-    },
-    {
-      title: "Connected Drug Delivery Devices Market",
-      description: "Comprehensive analysis of connected drug delivery technologies and market opportunities",
-      price: "$5,499",
-      reportCode: "RPT-CDD-002",
-      features: ["Device Types", "Market Drivers", "Regulatory Landscape", "Future Outlook"],
-      image: "💊",
-      slug: "global-connected-drug-delivery-devices-market"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -446,7 +428,7 @@ export default function PolymerEncapsulatedBrachytherapyDevicesReport() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="text-sm">
-              <Link href="/life-sciences" className="hover:underline">Life Sciences</Link> / Polymer Encapsulated Brachytherapy Devices Market
+              <Link href="/life-sciences" className="hover:underline">Life Sciences</Link> / Wearable Health Monitoring Devices Market
             </div>
             <div className="text-sm italic">
               &ldquo;Designing Growth Strategies is in our DNA&rdquo;

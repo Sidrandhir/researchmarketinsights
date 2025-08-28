@@ -25,6 +25,34 @@ export default function LatestReports() {
     },
     {
       id: 2,
+      title: "Global Wearable Health Monitoring Devices Market Size, Share & Industry Analysis",
+      category: "Life Sciences",
+      pages: 248,
+      lastUpdated: "January 15, 2024",
+      image: "⌚",
+      slug: "global-wearable-health-monitoring-devices-market",
+      description: "Comprehensive analysis of wearable health monitoring devices market including market size, trends, and forecast 2024-2032.",
+      marketSize: "USD 45.67 billion",
+      forecastValue: "USD 89.34 billion",
+      cagr: "16.8%",
+      isAvailable: true
+    },
+    {
+      id: 3,
+      title: "Global Agentic AI Systems Market Size, Share & Industry Analysis",
+      category: "Technology & Media",
+      pages: 245,
+      lastUpdated: "January 15, 2024",
+      image: "🤖",
+      slug: "global-agentic-ai-systems-market",
+      description: "Comprehensive analysis of agentic AI systems market including market size, trends, and forecast 2024-2032.",
+      marketSize: "USD 8.45 billion",
+      forecastValue: "USD 32.18 billion",
+      cagr: "18.7%",
+      isAvailable: true
+    },
+    {
+      id: 4,
       title: "Global Polymer Encapsulated Brachytherapy Devices Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 245,
@@ -38,7 +66,7 @@ export default function LatestReports() {
       isAvailable: true
     },
     {
-      id: 3,
+      id: 5,
       title: "Global Patient Repositioning System Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 189,
@@ -52,7 +80,7 @@ export default function LatestReports() {
       isAvailable: true
     },
     {
-      id: 4,
+      id: 6,
       title: "Global Connected Drug Delivery Devices Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 245,
@@ -64,6 +92,34 @@ export default function LatestReports() {
       forecastValue: "USD 8.5 billion",
       cagr: "22.4%",
       isAvailable: true
+    },
+    {
+      id: 7,
+      title: "Global Capture and Storage (CCS) Technologies Market Size, Share & Industry Analysis",
+      category: "Energy & Power",
+      pages: 245,
+      lastUpdated: "January 15, 2024",
+      image: "🌱",
+      slug: "global-capture-and-storage-ccs-technologies-market",
+      description: "Comprehensive analysis of carbon capture and storage technologies market including market size, trends, and forecast 2024-2032.",
+      marketSize: "USD 2.85 billion",
+      forecastValue: "USD 8.92 billion",
+      cagr: "18.7%",
+      isAvailable: true
+    },
+    {
+      id: 8,
+      title: "Global Robotics in e-commerce Fulfillment Market Size, Share & Industry Analysis",
+      category: "Technology & Media",
+      pages: 268,
+      lastUpdated: "January 15, 2024",
+      image: "🤖",
+      slug: "global-robotics-in-ecommerce-fulfillment-market",
+      description: "Comprehensive analysis of robotics in e-commerce fulfillment market including market size, trends, and forecast 2024-2032.",
+      marketSize: "USD 3.42 billion",
+      forecastValue: "USD 12.85 billion",
+      cagr: "24.8%",
+      isAvailable: true
     }
   ];
 
@@ -71,7 +127,8 @@ export default function LatestReports() {
   const categories = [
     { key: 'all', label: 'All Reports', count: latestReports.filter(r => r.isAvailable).length },
     { key: 'life-sciences', label: 'Life Sciences', count: latestReports.filter(r => r.category.toLowerCase() === 'life sciences' && r.isAvailable).length },
-    { key: 'food-beverages', label: 'Food & Beverages', count: latestReports.filter(r => r.category.toLowerCase() === 'food & beverages' && r.isAvailable).length }
+    { key: 'food-beverages', label: 'Food & Beverages', count: latestReports.filter(r => r.category.toLowerCase() === 'food & beverages' && r.isAvailable).length },
+    { key: 'technology-media', label: 'Technology & Media', count: latestReports.filter(r => r.category.toLowerCase() === 'technology & media' && r.isAvailable).length }
   ];
 
   // Filter reports based on selected category
@@ -81,6 +138,8 @@ export default function LatestReports() {
     ? latestReports.filter(report => report.category.toLowerCase() === 'life sciences')
     : activeCategory === 'food-beverages'
     ? latestReports.filter(report => report.category.toLowerCase() === 'food & beverages')
+    : activeCategory === 'technology-media'
+    ? latestReports.filter(report => report.category.toLowerCase() === 'technology & media')
     : latestReports;
 
   return (
@@ -205,8 +264,16 @@ export default function LatestReports() {
                       <Link
                         href={report.title === "Global Plant Based Meat Alternatives Market"
                           ? `/reports/global-plant-based-meat-alternatives-market`
+                          : report.title === "Global Wearable Health Monitoring Devices Market"
+                          ? `/reports/global-wearable-health-monitoring-devices-market`
+                          : report.title === "Global Agentic AI Systems Market"
+                          ? `/reports/global-agentic-ai-systems-market`
                           : report.title === "Global Polymer Encapsulated Brachytherapy Devices Market"
                           ? `/reports/polymer-encapsulated-brachytherapy-devices-market`
+                          : report.title === "Global Capture and Storage (CCS) Technologies Market"
+                          ? `/reports/global-capture-and-storage-ccs-technologies-market`
+                          : report.title === "Global Robotics in e-commerce Fulfillment Market"
+                          ? `/reports/global-robotics-in-ecommerce-fulfillment-market`
                           : `/reports/${report.slug}`
                         }
                         className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors duration-200 text-center"

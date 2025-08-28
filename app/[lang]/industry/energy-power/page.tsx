@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Zap, Sun, Wind, Battery, ArrowLeft, Leaf } from 'lucide-react';
+import { Zap, Sun, Wind, Battery, ArrowLeft, Leaf, Download } from 'lucide-react';
 
 export default async function EnergyPowerPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -142,6 +142,102 @@ export default async function EnergyPowerPage({ params }: { params: Promise<{ la
                     </li>
                   ))}
                 </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Reports */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Reports</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Discover our latest and most comprehensive energy and power market research reports
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Global Capture and Storage (CCS) Technologies Market",
+                description: "Comprehensive analysis of carbon capture and storage technologies market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-008",
+                features: ["Market Size & Forecast", "Technology Analysis", "Application Insights", "Regional Forecast"],
+                image: "🌱"
+              },
+              {
+                title: "Global Renewable Energy Market",
+                description: "Analysis of solar, wind, and hydroelectric power markets with comprehensive market insights",
+                price: "$4,999",
+                reportCode: "RMI-2024-009",
+                features: ["Solar Energy", "Wind Power", "Hydroelectric", "Market Trends"],
+                image: "☀️"
+              },
+              {
+                title: "Global Energy Storage Market",
+                description: "Comprehensive analysis of energy storage technologies and market opportunities",
+                price: "$4,999",
+                reportCode: "RMI-2024-010",
+                features: ["Battery Storage", "Grid Storage", "Market Drivers", "Future Outlook"],
+                image: "⚡"
+              }
+            ].map((report, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">{report.image}</div>
+                  <div className="text-right">
+                    <div className="text-sm font-medium text-green-600">Featured</div>
+                    <div className="text-xs text-gray-500">Report</div>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full mb-2">
+                    Energy & Power
+                  </span>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+                    {report.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                    {report.description}
+                  </p>
+                </div>
+
+                <div className="space-y-2 mb-4">
+                  {report.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-2"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-sm text-gray-500">
+                    <span className="font-medium">Code:</span> {report.reportCode}
+                  </div>
+                  <div className="text-2xl font-bold text-yellow-600">
+                    {report.price}
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <Link 
+                    href={report.title === "Global Capture and Storage (CCS) Technologies Market" 
+                      ? `/${lang}/reports/global-capture-and-storage-ccs-technologies-market`
+                      : `/${lang}/reports/${report.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`
+                    }
+                    className="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-200"
+                  >
+                    View Details
+                  </Link>
+                  <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-lg transition-colors duration-200">
+                    <Download className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>

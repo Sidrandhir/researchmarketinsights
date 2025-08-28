@@ -160,6 +160,14 @@ export default async function LifeSciencesPage({ params }: { params: Promise<{ l
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                title: "Global Wearable Health Monitoring Devices Market",
+                description: "Comprehensive analysis of wearable health monitoring devices market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-007",
+                features: ["Market Size & Forecast", "Device Grade Analysis", "Application Insights", "Regional Forecast"],
+                image: "⌚"
+              },
+              {
                 title: "Global Polymer Encapsulated Brachytherapy Devices Market",
                 description: "Comprehensive analysis of polymer encapsulated brachytherapy devices market including market size, trends, and forecast 2024-2032",
                 price: "$4,999",
@@ -225,7 +233,9 @@ export default async function LifeSciencesPage({ params }: { params: Promise<{ l
 
                 <div className="flex gap-2">
                   <Link 
-                    href={report.title === "Global Polymer Encapsulated Brachytherapy Devices Market"
+                    href={report.title === "Global Wearable Health Monitoring Devices Market"
+                      ? `/${lang}/reports/global-wearable-health-monitoring-devices-market`
+                      : report.title === "Global Polymer Encapsulated Brachytherapy Devices Market"
                       ? `/${lang}/reports/polymer-encapsulated-brachytherapy-devices-market`
                       : report.title === "Global Patient Repositioning System Market"
                       ? `/${lang}/reports/global-patient-repositioning-system-market`

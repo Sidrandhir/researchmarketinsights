@@ -150,6 +150,13 @@ export default function IndustryCategories() {
         date: "October 2024",
         pages: 195,
         format: "PDF + Excel"
+      },
+      {
+        id: 10,
+        title: "Global Robotics in e-commerce Fulfillment Market",
+        date: "January 2024",
+        pages: 268,
+        format: "PDF + Excel"
       }
     ]
   };

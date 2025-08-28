@@ -91,6 +91,38 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
                 features: ["Market Size & Forecast", "Source Analysis", "Product Segmentation", "Regional Insights"]
               },
               {
+                title: "Global Wearable Health Monitoring Devices Market",
+                industry: "Life Sciences",
+                description: "Comprehensive analysis of wearable health monitoring devices market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-007",
+                features: ["Market Size & Forecast", "Device Grade Analysis", "Application Insights", "Regional Forecast"]
+              },
+              {
+                title: "Global Capture and Storage (CCS) Technologies Market",
+                industry: "Energy & Power",
+                description: "Comprehensive analysis of carbon capture and storage technologies market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-008",
+                features: ["Market Size & Forecast", "Technology Analysis", "Application Insights", "Regional Forecast"]
+              },
+              {
+                title: "Global Robotics in e-commerce Fulfillment Market",
+                industry: "Technology & Media",
+                description: "Comprehensive analysis of robotics in e-commerce fulfillment market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-009",
+                features: ["Market Size & Forecast", "Robot Type Analysis", "Application Insights", "Regional Forecast"]
+              },
+              {
+                title: "Global Agentic AI Systems Market",
+                industry: "Technology & Media",
+                description: "Comprehensive analysis of agentic AI systems market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-006",
+                features: ["Market Size & Forecast", "Component Analysis", "Application Insights", "Regional Forecast"]
+              },
+              {
                 title: "Global Polymer Encapsulated Brachytherapy Devices Market",
                 industry: "Life Sciences",
                 description: "Comprehensive analysis of polymer encapsulated brachytherapy devices market including market size, trends, and forecast 2024-2032",
@@ -182,8 +214,16 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
                   <Link 
                     href={report.title === "Global Plant Based Meat Alternatives Market" 
                       ? `/${lang}/reports/global-plant-based-meat-alternatives-market`
+                      : report.title === "Global Wearable Health Monitoring Devices Market"
+                      ? `/${lang}/reports/global-wearable-health-monitoring-devices-market`
+                      : report.title === "Global Agentic AI Systems Market"
+                      ? `/${lang}/reports/global-agentic-ai-systems-market`
                       : report.title === "Global Polymer Encapsulated Brachytherapy Devices Market"
                       ? `/${lang}/reports/polymer-encapsulated-brachytherapy-devices-market`
+                      : report.title === "Global Capture and Storage (CCS) Technologies Market"
+                      ? `/${lang}/reports/global-capture-and-storage-ccs-technologies-market`
+                      : report.title === "Global Robotics in e-commerce Fulfillment Market"
+                      ? `/${lang}/reports/global-robotics-in-e-commerce-fulfillment-market`
                       : `/${lang}/reports/${report.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`
                     }
                     className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-200"
@@ -212,16 +252,16 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Life Sciences", count: "26+ Reports", color: "from-red-500 to-red-600" },
+              { name: "Life Sciences", count: "27+ Reports", color: "from-red-500 to-red-600" },
               { name: "Aerospace & Defence", count: "15+ Reports", color: "from-gray-500 to-gray-600" },
               { name: "Automotive & Transportation", count: "20+ Reports", color: "from-blue-500 to-blue-600" },
               { name: "Banking & Financial", count: "18+ Reports", color: "from-green-500 to-green-600" },
               { name: "Chemicals & Materials", count: "12+ Reports", color: "from-purple-500 to-purple-600" },
               { name: "Consumer Goods", count: "22+ Reports", color: "from-pink-500 to-pink-600" },
               { name: "Electronics & Semiconductor", count: "30+ Reports", color: "from-indigo-500 to-indigo-600" },
-              { name: "Energy & Power", count: "16+ Reports", color: "from-yellow-500 to-yellow-600" },
+              { name: "Energy & Power", count: "17+ Reports", color: "from-yellow-500 to-yellow-600" },
               { name: "Food & Beverages", count: "15+ Reports", color: "from-orange-500 to-orange-600" },
-              { name: "Technology & Media", count: "28+ Reports", color: "from-teal-500 to-teal-600" }
+              { name: "Technology & Media", count: "29+ Reports", color: "from-teal-500 to-teal-600" }
             ].map((industry, index) => (
               <Link 
                 key={index}
