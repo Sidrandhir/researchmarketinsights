@@ -25,6 +25,20 @@ export default function LatestReports() {
     },
     {
       id: 2,
+      title: "Global Polymer Encapsulated Brachytherapy Devices Market Size, Share & Industry Analysis",
+      category: "Life Sciences",
+      pages: 245,
+      lastUpdated: "January 15, 2024",
+      image: "🏥",
+      slug: "polymer-encapsulated-brachytherapy-devices-market",
+      description: "Comprehensive analysis of polymer encapsulated brachytherapy devices market including market size, trends, and forecast 2024-2032.",
+      marketSize: "USD XX.XX billion",
+      forecastValue: "USD XX.XX billion",
+      cagr: "X.X%",
+      isAvailable: true
+    },
+    {
+      id: 3,
       title: "Global Patient Repositioning System Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 189,
@@ -38,7 +52,7 @@ export default function LatestReports() {
       isAvailable: true
     },
     {
-      id: 3,
+      id: 4,
       title: "Global Connected Drug Delivery Devices Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 245,
@@ -189,7 +203,12 @@ export default function LatestReports() {
                   {report.isAvailable ? (
                     <>
                       <Link
-                        href={`/reports/${report.slug}`}
+                        href={report.title === "Global Plant Based Meat Alternatives Market"
+                          ? `/reports/global-plant-based-meat-alternatives-market`
+                          : report.title === "Global Polymer Encapsulated Brachytherapy Devices Market"
+                          ? `/reports/polymer-encapsulated-brachytherapy-devices-market`
+                          : `/reports/${report.slug}`
+                        }
                         className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors duration-200 text-center"
                       >
                         View Report

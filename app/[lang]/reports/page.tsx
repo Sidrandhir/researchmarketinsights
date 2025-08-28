@@ -91,6 +91,14 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
                 features: ["Market Size & Forecast", "Source Analysis", "Product Segmentation", "Regional Insights"]
               },
               {
+                title: "Global Polymer Encapsulated Brachytherapy Devices Market",
+                industry: "Life Sciences",
+                description: "Comprehensive analysis of polymer encapsulated brachytherapy devices market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-005",
+                features: ["Market Size & Forecast", "Product Analysis", "Application Insights", "Regional Forecast"]
+              },
+              {
                 title: "Global Patient Repositioning System Market",
                 industry: "Life Sciences",
                 description: "Analysis of patient positioning systems including market size, trends, and forecast 2024-2032",
@@ -174,6 +182,8 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
                   <Link 
                     href={report.title === "Global Plant Based Meat Alternatives Market" 
                       ? `/${lang}/reports/global-plant-based-meat-alternatives-market`
+                      : report.title === "Global Polymer Encapsulated Brachytherapy Devices Market"
+                      ? `/${lang}/reports/polymer-encapsulated-brachytherapy-devices-market`
                       : `/${lang}/reports/${report.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`
                     }
                     className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-200"
@@ -202,7 +212,7 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Life Sciences", count: "25+ Reports", color: "from-red-500 to-red-600" },
+              { name: "Life Sciences", count: "26+ Reports", color: "from-red-500 to-red-600" },
               { name: "Aerospace & Defence", count: "15+ Reports", color: "from-gray-500 to-gray-600" },
               { name: "Automotive & Transportation", count: "20+ Reports", color: "from-blue-500 to-blue-600" },
               { name: "Banking & Financial", count: "18+ Reports", color: "from-green-500 to-green-600" },
