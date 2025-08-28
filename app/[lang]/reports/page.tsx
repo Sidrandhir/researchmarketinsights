@@ -83,6 +83,14 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                title: "Global Plant Based Meat Alternatives Market",
+                industry: "Food & Beverages",
+                description: "Comprehensive analysis of plant-based meat alternatives market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-004",
+                features: ["Market Size & Forecast", "Source Analysis", "Product Segmentation", "Regional Insights"]
+              },
+              {
                 title: "Global Patient Repositioning System Market",
                 industry: "Life Sciences",
                 description: "Analysis of patient positioning systems including market size, trends, and forecast 2024-2032",
@@ -121,14 +129,6 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
                 price: "$5,499",
                 reportCode: "RPT-MDO-005",
                 features: ["Service Types", "Market Drivers", "Regional Analysis", "Future Trends"]
-              },
-              {
-                title: "Precision Medicine Market",
-                industry: "Life Sciences",
-                description: "Analysis of precision medicine technologies and market growth potential",
-                price: "$6,999",
-                reportCode: "RPT-PMM-006",
-                features: ["Technology Platforms", "Market Applications", "Regulatory Framework", "Growth Forecast"]
               }
             ].map((report, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
@@ -172,7 +172,10 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
 
                 <div className="flex gap-2">
                   <Link 
-                    href={`/${lang}/reports/${report.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`}
+                    href={report.title === "Global Plant Based Meat Alternatives Market" 
+                      ? `/${lang}/reports/global-plant-based-meat-alternatives-market`
+                      : `/${lang}/reports/${report.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`
+                    }
                     className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-200"
                   >
                     View Details
@@ -207,7 +210,7 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
               { name: "Consumer Goods", count: "22+ Reports", color: "from-pink-500 to-pink-600" },
               { name: "Electronics & Semiconductor", count: "30+ Reports", color: "from-indigo-500 to-indigo-600" },
               { name: "Energy & Power", count: "16+ Reports", color: "from-yellow-500 to-yellow-600" },
-              { name: "Food & Beverages", count: "14+ Reports", color: "from-orange-500 to-orange-600" },
+              { name: "Food & Beverages", count: "15+ Reports", color: "from-orange-500 to-orange-600" },
               { name: "Technology & Media", count: "28+ Reports", color: "from-teal-500 to-teal-600" }
             ].map((industry, index) => (
               <Link 

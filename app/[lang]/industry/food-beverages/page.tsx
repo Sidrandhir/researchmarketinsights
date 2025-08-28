@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Utensils, Coffee, Wine, ArrowLeft, Leaf, Package } from 'lucide-react';
+import { Utensils, Coffee, Wine, ArrowLeft, Leaf, Package, Download } from 'lucide-react';
 
 export default async function FoodBeveragesPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -141,6 +141,83 @@ export default async function FoodBeveragesPage({ params }: { params: Promise<{ 
                     </li>
                   ))}
                 </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Reports */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Reports</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Discover our latest market research reports in the Food & Beverages industry
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Global Plant Based Meat Alternatives Market",
+                description: "Comprehensive analysis of plant-based meat alternatives market including market size, trends, and forecast 2024-2032",
+                price: "$4,999",
+                reportCode: "RMI-2024-004",
+                features: ["Market Size & Forecast", "Source Analysis", "Product Segmentation", "Regional Insights"],
+                image: "🥬"
+              }
+            ].map((report, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-4xl">{report.image}</div>
+                  <div className="text-right">
+                    <div className="text-sm font-medium text-green-600">Featured</div>
+                    <div className="text-xs text-gray-500">Report</div>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <span className="inline-block bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded-full mb-2">
+                    Food & Beverages
+                  </span>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+                    {report.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                    {report.description}
+                  </p>
+                </div>
+
+                <div className="space-y-2 mb-4">
+                  {report.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm text-gray-700">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-sm text-gray-500">
+                    <span className="font-medium">Code:</span> {report.reportCode}
+                  </div>
+                  <div className="text-2xl font-bold text-orange-600">
+                    {report.price}
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <Link 
+                    href={`/${lang}/reports/global-plant-based-meat-alternatives-market`}
+                    className="flex-1 bg-orange-600 hover:bg-orange-700 text-white text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-200"
+                  >
+                    View Details
+                  </Link>
+                  <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-lg transition-colors duration-200">
+                    <Download className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>

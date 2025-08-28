@@ -11,6 +11,20 @@ export default function LatestReports() {
   const latestReports = [
     {
       id: 1,
+      title: "Global Plant Based Meat Alternatives Market Size, Share & Industry Analysis",
+      category: "Food & Beverages",
+      pages: 245,
+      lastUpdated: "January 15, 2024",
+      image: "🥬",
+      slug: "global-plant-based-meat-alternatives-market",
+      description: "Comprehensive analysis of plant-based meat alternatives market including market size, trends, and forecast 2024-2032.",
+      marketSize: "USD XX.XX billion",
+      forecastValue: "USD XX.XX billion",
+      cagr: "X.X%",
+      isAvailable: true
+    },
+    {
+      id: 2,
       title: "Global Patient Repositioning System Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 189,
@@ -24,7 +38,7 @@ export default function LatestReports() {
       isAvailable: true
     },
     {
-      id: 2,
+      id: 3,
       title: "Global Connected Drug Delivery Devices Market Size, Share & Industry Analysis",
       category: "Life Sciences",
       pages: 245,
@@ -42,7 +56,8 @@ export default function LatestReports() {
   // Categories for filtering
   const categories = [
     { key: 'all', label: 'All Reports', count: latestReports.filter(r => r.isAvailable).length },
-    { key: 'life-sciences', label: 'Life Sciences', count: latestReports.filter(r => r.category.toLowerCase() === 'life sciences' && r.isAvailable).length }
+    { key: 'life-sciences', label: 'Life Sciences', count: latestReports.filter(r => r.category.toLowerCase() === 'life sciences' && r.isAvailable).length },
+    { key: 'food-beverages', label: 'Food & Beverages', count: latestReports.filter(r => r.category.toLowerCase() === 'food & beverages' && r.isAvailable).length }
   ];
 
   // Filter reports based on selected category
@@ -50,6 +65,8 @@ export default function LatestReports() {
     ? latestReports 
     : activeCategory === 'life-sciences'
     ? latestReports.filter(report => report.category.toLowerCase() === 'life sciences')
+    : activeCategory === 'food-beverages'
+    ? latestReports.filter(report => report.category.toLowerCase() === 'food & beverages')
     : latestReports;
 
   return (
