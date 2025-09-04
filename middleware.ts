@@ -6,10 +6,14 @@ const defaultLanguage = 'en';
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Skip middleware for API routes and static files
+  // Skip middleware for API routes, admin routes, auth routes, login, upload, and static files
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/auth') ||
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/upload') ||
     pathname.startsWith('/static') ||
     pathname.includes('.')
   ) {
@@ -34,7 +38,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!_next|api|favicon.ico).*)',
+    // Skip all internal paths (_next), API routes, admin routes, auth routes, login, and upload
+    '/((?!_next|api|admin|auth|login|upload|favicon.ico).*)',
   ],
 }; 

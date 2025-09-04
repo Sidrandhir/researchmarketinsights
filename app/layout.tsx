@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ErrorBoundary from '@/components/ui/ErrorBoundary'
+import PerformanceMonitor from '@/components/ui/PerformanceMonitor'
+import AuthSessionProvider from '@/components/providers/SessionProvider'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -122,11 +126,26 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen w-full overflow-x-hidden">
-          {children}
-        </main>
-        <Footer />
+        <ErrorBoundary>
+          <AuthSessionProvider>
+            <Header />
+            <main className="min-h-screen w-full overflow-x-hidden">
+              {children}
+            </main>
+            <Footer />
+            <Toaster 
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: '#363636',
+                  color: '#fff',
+                },
+              }}
+            />
+            <PerformanceMonitor />
+          </AuthSessionProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )

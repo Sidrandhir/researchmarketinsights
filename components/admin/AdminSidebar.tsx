@@ -15,7 +15,8 @@ import {
   ShoppingCart,
   CreditCard,
   HelpCircle,
-  LogOut
+  LogOut,
+  Upload
 } from 'lucide-react'
 
 interface MenuItem {
@@ -39,6 +40,8 @@ const menuItems: MenuItem[] = [
     children: [
       { name: 'All Reports', href: '/admin/reports', icon: FileText },
       { name: 'Create Report', href: '/admin/reports/create', icon: FileText },
+      { name: 'Upload Reports', href: '/admin/upload-reports', icon: Upload },
+      { name: 'Fix Slugs', href: '/admin/fix-slugs', icon: Settings },
       { name: 'Categories', href: '/admin/reports/categories', icon: FileText },
       { name: 'Analytics', href: '/admin/reports/analytics', icon: BarChart3 }
     ]
@@ -146,10 +149,11 @@ export default function AdminSidebar() {
   }
 
   return (
-    <aside className={`bg-white border-r border-gray-200 transition-all duration-300 ${
+    <aside className={`bg-white border-r border-gray-200 transition-all duration-300 flex flex-col h-full ${
       collapsed ? 'w-16' : 'w-64'
     }`}>
-      <div className="p-4 border-b border-gray-200">
+      {/* Header */}
+      <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center justify-between">
           {!collapsed && (
             <h2 className="text-lg font-bold text-gray-900">Admin Panel</h2>
@@ -166,7 +170,8 @@ export default function AdminSidebar() {
         </div>
       </div>
 
-      <nav className="p-4 space-y-2">
+      {/* Navigation - Scrollable */}
+      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {menuItems.map((item) => {
           const hasChildren = item.children && item.children.length > 0
           const isExpanded = expandedItems.has(item.name)
@@ -229,9 +234,19 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      {/* Bottom section */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-white">
+      {/* Bottom section - Fixed */}
+      <div className="p-4 border-t border-gray-200 bg-white flex-shrink-0">
         <div className="space-y-2">
+          <Link
+            href="/admin/profile"
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+          >
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            {!collapsed && <span>Profile</span>}
+          </Link>
+          
           <Link
             href="/admin/help"
             className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"

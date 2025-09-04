@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // Remove appDir as it's now default in Next.js 14
-  },
+  // Performance optimizations
+  swcMinify: true,
+  compress: true,
+  
+  // Image optimization
   images: {
     unoptimized: true,
     domains: ['localhost'],
@@ -13,9 +15,27 @@ const nextConfig = {
       },
     ],
   },
-  // Remove i18n config as we're using middleware for internationalization
+  
+  // Security headers
   async headers() {
     return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
       {
         source: '/sitemap.xml',
         headers: [
@@ -36,6 +56,8 @@ const nextConfig = {
       },
     ];
   },
+  
+  // URL rewrites
   async rewrites() {
     return [
       {
@@ -47,6 +69,23 @@ const nextConfig = {
         destination: '/api/robots',
       },
     ];
+  },
+  
+  // Webpack optimizations
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      };
+    }
+    return config;
   },
 };
 

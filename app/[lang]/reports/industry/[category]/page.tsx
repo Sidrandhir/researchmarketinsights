@@ -1,31 +1,67 @@
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/db';
 import Link from 'next/link';
-import { FileText, ArrowRight, Download, Calendar, DollarSign } from 'lucide-react';
+import { FileText, Search, Filter, ArrowRight, Download, Calendar, DollarSign } from 'lucide-react';
 
-export default async function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }> }) {
-  const { categorySlug, lang } = await params;
+interface IndustryReportsPageProps {
+  params: Promise<{ lang: string; category: string }>;
+}
 
+export async function generateStaticParams() {
+  // Generate static params for all industry categories
+  const categories = [
+    'life-sciences',
+    'technology',
+    'automotive',
+    'automotive-transportation', // Support both formats
+    'energy',
+    'food',
+    'chemicals',
+    'aerospace',
+    'banking',
+    'consumer',
+    'electronics'
+  ];
+
+  return categories.map((category) => ({
+    category: category,
+  }));
+}
+
+export async function generateMetadata({ params }: IndustryReportsPageProps) {
+  const { category } = await params;
+  
+  const categoryDisplayName = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  
+  return {
+    title: `${categoryDisplayName} Market Research Reports | Research Market Insights`,
+    description: `Comprehensive ${categoryDisplayName} market research reports and industry analysis. Get insights on market trends, growth opportunities, and competitive landscape.`,
+  };
+}
+
+export default async function IndustryReportsPage({ params }: IndustryReportsPageProps) {
+  const { category } = await params;
+  
   // Map URL category to database category
   const categoryMap: { [key: string]: string } = {
-    'aerospace-defence': 'AEROSPACE_DEFENSE',
-    'automotive-transportation': 'AUTOMOTIVE_TRANSPORTATION',
-    'banking-financial': 'BANKING_FINANCIAL_SERVICES_INSURANCE',
-    'chemicals-materials': 'CHEMICALS_MATERIALS',
-    'consumer-goods': 'CONSUMER_GOODS',
-    'electronics-semiconductor': 'ELECTRONICS_SEMICONDUCTOR',
-    'energy-power': 'ENERGY_POWER',
-    'food-beverages': 'FOOD_BEVERAGES',
     'life-sciences': 'LIFE_SCIENCES',
-    'technology-media': 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS'
+    'technology': 'TECHNOLOGY_MEDIA_TELECOMMUNICATIONS',
+    'automotive': 'AUTOMOTIVE_TRANSPORTATION',
+    'automotive-transportation': 'AUTOMOTIVE_TRANSPORTATION', // Support both formats
+    'energy': 'ENERGY_POWER',
+    'food': 'FOOD_BEVERAGES',
+    'chemicals': 'CHEMICALS_MATERIALS',
+    'aerospace': 'AEROSPACE_DEFENSE',
+    'banking': 'BANKING_FINANCIAL_SERVICES_INSURANCE',
+    'consumer': 'CONSUMER_GOODS',
+    'electronics': 'ELECTRONICS_SEMICONDUCTOR'
   };
 
-  const dbCategory = categoryMap[categorySlug];
+  const dbCategory = categoryMap[category];
   if (!dbCategory) {
     notFound();
   }
 
-  // Fetch reports for this category
   const reports = await prisma.report.findMany({
     where: { 
       category: dbCategory as any,
@@ -43,7 +79,7 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
     }
   });
 
-  const categoryDisplayName = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const categoryDisplayName = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -64,10 +100,10 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              {categoryDisplayName} Reports
+              {categoryDisplayName} Market Research Reports
             </h1>
             <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
-              Comprehensive market research and industry analysis for {categoryDisplayName} sector
+              Comprehensive industry analysis and market intelligence reports for {categoryDisplayName} sector
             </p>
           </div>
         </div>
@@ -77,9 +113,9 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex items-center space-x-2 text-sm text-gray-500">
-            <Link href={`/${lang}`} className="hover:text-gray-700">Home</Link>
+            <Link href="/" className="hover:text-gray-700">Home</Link>
             <ArrowRight className="h-4 w-4" />
-            <Link href={`/${lang}/reports`} className="hover:text-gray-700">Reports</Link>
+            <Link href="/reports" className="hover:text-gray-700">Reports</Link>
             <ArrowRight className="h-4 w-4" />
             <span className="text-gray-900 font-medium">{categoryDisplayName}</span>
           </nav>
@@ -134,7 +170,7 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
                         {new Date(report.createdAt).toLocaleDateString()}
                       </div>
                       <div className="flex items-center text-sm text-gray-500">
-                        <span>By {report.author?.name || 'Admin'}</span>
+                        <span>By {report.author.name}</span>
                       </div>
                     </div>
                     
@@ -151,7 +187,7 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
                     
                     <div className="flex space-x-3">
                       <Link
-                        href={`/${lang}/reports/${report.slug}`}
+                        href={`/reports/${report.slug}`}
                         className="flex-1 bg-indigo-600 text-white text-center py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200"
                       >
                         View Report

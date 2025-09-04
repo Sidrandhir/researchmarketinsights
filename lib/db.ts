@@ -9,11 +9,13 @@ const createPrismaClient = () => {
     console.warn('DATABASE_URL not found, creating PrismaClient without datasource override');
     return new PrismaClient({
       log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+      errorFormat: 'pretty',
     });
   }
 
   return new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+    errorFormat: 'pretty',
     datasources: {
       db: {
         url: process.env.DATABASE_URL,
@@ -29,6 +31,16 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 // Graceful shutdown
 process.on('beforeExit', async () => {
   await prisma.$disconnect();
+});
+
+process.on('SIGINT', async () => {
+  await prisma.$disconnect();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  await prisma.$disconnect();
+  process.exit(0);
 });
 
 export default prisma;
