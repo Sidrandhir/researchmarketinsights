@@ -27,7 +27,7 @@ class RateLimiter {
 
   check(identifier: string): { allowed: boolean; remaining: number; resetTime: number } {
     const now = Date.now();
-    const windowStart = now - this.options.windowMs;
+    // const windowStart = now - this.options.windowMs;
     
     const current = this.requests.get(identifier);
     

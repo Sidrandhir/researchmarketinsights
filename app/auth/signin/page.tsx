@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { signIn, getSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 
@@ -28,7 +28,7 @@ export default function SignInPage() {
         toast.success('Signed in successfully')
         router.push('/admin')
       }
-    } catch (error) {
+    } catch {
       toast.error('An error occurred')
     } finally {
       setLoading(false)

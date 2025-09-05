@@ -56,7 +56,7 @@ export default class ErrorBoundary extends Component<Props, State> {
             
             <div className="mb-4">
               <p className="text-sm text-gray-600">
-                We're sorry, but something unexpected happened. Please try refreshing the page.
+                We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
               </p>
             </div>
 

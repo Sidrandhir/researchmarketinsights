@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/db';
@@ -8,7 +8,7 @@ function cleanSlug(input: string): string {
   if (!input) return '';
   
   // Remove URLs and clean the input
-  let cleaned = input
+  const cleaned = input
     .replace(/^https?:\/\//, '') // Remove http:// or https://
     .replace(/^www\./, '') // Remove www.
     .replace(/\/$/, '') // Remove trailing slash
@@ -40,7 +40,7 @@ function generateSlugFromTitle(title: string): string {
     .substring(0, 100); // Limit length
 }
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     // Check if user is admin
     const session = await getServerSession(authOptions);
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Update the report with new slug
-        const updatedReport = await prisma.report.update({
+        await prisma.report.update({
           where: { id: report.id },
           data: { slug: finalSlug }
         });

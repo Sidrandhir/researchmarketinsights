@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, Search, Filter, ArrowRight, Download, Calendar, DollarSign } from 'lucide-react';
+import { FileText, Search, Filter, ArrowRight, Download, Calendar } from 'lucide-react';
 import { prisma } from '@/lib/db';
 
 export default async function ReportsPage({ params }: { params: Promise<{ lang: string }> }) {
@@ -141,11 +141,11 @@ export default async function ReportsPage({ params }: { params: Promise<{ lang: 
                     
                     <div className="flex items-center justify-between mb-6">
                       <div className="text-2xl font-bold text-gray-900">
-                        {formatPrice(report.price)}
+                        {formatPrice(Number(report.price))}
                       </div>
                       {report.discount && (
                         <div className="text-lg text-green-600 font-medium">
-                          {formatPrice(report.discount)}
+                          {formatPrice(Number(report.discount))}
                         </div>
                       )}
                     </div>

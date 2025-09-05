@@ -88,7 +88,7 @@ function cleanSlug(input: string): string {
   if (!input) return '';
   
   // Remove URLs and clean the input
-  let cleaned = input
+  const cleaned = input
     .replace(/^https?:\/\//, '') // Remove http:// or https://
     .replace(/^www\./, '') // Remove www.
     .replace(/\/$/, '') // Remove trailing slash

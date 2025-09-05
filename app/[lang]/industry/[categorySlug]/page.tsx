@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/db';
 import Link from 'next/link';
-import { FileText, ArrowRight, Download, Calendar, DollarSign } from 'lucide-react';
+import { FileText, ArrowRight, Download, Calendar } from 'lucide-react';
 
 export default async function IndustryCategoryPage({ params }: { params: Promise<{ lang: string, categorySlug: string }> }) {
   const { categorySlug, lang } = await params;
@@ -140,11 +140,11 @@ export default async function IndustryCategoryPage({ params }: { params: Promise
                     
                     <div className="flex items-center justify-between mb-6">
                       <div className="text-2xl font-bold text-gray-900">
-                        {formatPrice(report.price)}
+                        {formatPrice(Number(report.price))}
                       </div>
                       {report.discount && (
                         <div className="text-lg text-green-600 font-medium">
-                          {formatPrice(report.discount)}
+                          {formatPrice(Number(report.discount))}
                         </div>
                       )}
                     </div>

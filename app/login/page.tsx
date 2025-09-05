@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn, getSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
@@ -28,7 +28,7 @@ export default function LoginPage() {
         toast.success('Login successful!');
         router.push('/upload');
       }
-    } catch (error) {
+    } catch {
       toast.error('Login failed');
     } finally {
       setLoading(false);

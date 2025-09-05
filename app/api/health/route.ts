@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const startTime = Date.now();
   
   try {
@@ -14,7 +14,6 @@ export async function GET(request: NextRequest) {
     const uptime = process.uptime();
     
     // Check if we're in production
-    const isProduction = process.env.NODE_ENV === 'production';
     
     const health = {
       status: 'healthy',

@@ -54,7 +54,7 @@ export default function AdminHelpPage() {
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-4">Welcome to Admin Panel</h3>
               <p className="text-blue-800 mb-4">
-                This admin panel gives you complete control over your market research platform. Here's how to get started:
+                This admin panel gives you complete control over your market research platform. Here&apos;s how to get started:
               </p>
               <ul className="list-disc list-inside space-y-2 text-blue-800">
                 <li>Upload reports using the Excel template</li>
@@ -316,7 +316,7 @@ export default function AdminHelpPage() {
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h4 className="font-semibold text-blue-900 mb-2">Need More Help?</h4>
               <p className="text-blue-800 mb-4">
-                If you can't find the answer to your question, please contact our support team.
+                If you can&apos;t find the answer to your question, please contact our support team.
               </p>
               <div className="flex space-x-4">
                 <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">

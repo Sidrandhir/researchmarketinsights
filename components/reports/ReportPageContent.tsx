@@ -13,10 +13,10 @@ interface Report {
   id: string;
   title: string;
   slug: string;
-  description: string;
+  description: string | null;
   content: any;
-  price: number;
-  discount?: number;
+  price: number | any;
+  discount?: number | any;
   reportCode: string;
   category: string;
   metaTitle?: string;
@@ -181,10 +181,10 @@ export default function ReportPageContent({ report }: ReportPageContentProps) {
   };
 
   const content = parseJsonContent(report.content);
-  const toc = parseJsonContent(report.toc);
-  const scope = parseJsonContent(report.scope);
-  const segments = parseJsonContent(report.segments);
-  const faqs = parseJsonContent(report.faqs);
+  // const toc = parseJsonContent(report.toc);
+  // const scope = parseJsonContent(report.scope);
+  // const segments = parseJsonContent(report.segments);
+  // const faqs = parseJsonContent(report.faqs);
 
   const getCategoryDisplayName = (category: string) => {
     return category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -204,7 +204,7 @@ export default function ReportPageContent({ report }: ReportPageContentProps) {
       content: content.keyInsights || `
         <h2 style="color: #2563eb; margin-bottom: 1rem;">${report.title}</h2>
         <p style="margin-bottom: 1.5rem;"><strong>${report.title}</strong></p>
-        <p style="margin-bottom: 1.5rem;">${report.description}</p>
+        <p style="margin-bottom: 1.5rem;">${report.description || 'No description available'}</p>
         <p style="margin-bottom: 1.5rem;">This comprehensive market research report provides detailed analysis of the ${getCategoryDisplayName(report.category)} market, including market size, trends, growth opportunities, and competitive landscape.</p>
         <h3 style="color: #2563eb; margin-bottom: 1rem;">Report Highlights</h3>
         <ul style="margin-bottom: 1.5rem;">
@@ -506,7 +506,7 @@ export default function ReportPageContent({ report }: ReportPageContentProps) {
                     onClick={handleBuyNow}
                     className="bg-gradient-to-r from-green-500 to-emerald-600 text-white py-2 px-4 rounded-lg font-bold text-sm hover:from-green-600 hover:to-emerald-700 transition-all duration-200 w-full transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                    🛒 Buy Now - {formatPrice(report.price)}
+                    🛒 Buy Now - {formatPrice(Number(report.price))}
                   </button>
                 </div>
 

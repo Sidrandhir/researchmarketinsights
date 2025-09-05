@@ -51,12 +51,6 @@ export default function ReportsPage() {
     search: ''
   });
 
-  if (status === 'loading') return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
-  if (!session || session.user.role !== 'ADMIN') {
-    router.push('/admin');
-    return null;
-  }
-
   const fetchReports = async () => {
     try {
       setLoading(true);
@@ -80,8 +74,16 @@ export default function ReportsPage() {
   };
 
   useEffect(() => {
-    fetchReports();
-  }, [pagination.page, filters]);
+    if (session && session.user.role === 'ADMIN') {
+      fetchReports();
+    }
+  }, [pagination.page, filters, session]);
+
+  if (status === 'loading') return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+  if (!session || session.user.role !== 'ADMIN') {
+    router.push('/admin');
+    return null;
+  }
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
